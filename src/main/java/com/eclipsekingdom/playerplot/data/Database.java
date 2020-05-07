@@ -82,7 +82,7 @@ public class Database {
         synchronized (this) {
             if (connection != null && !connection.isClosed()) return;
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + "?autoReconnect=true&useSSL=" + PluginConfig.isSsl() + "&maxReconnects=108", this.username, this.password);
+            connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + "?autoReconnect=true&useSSL=" + PluginConfig.isSsl(), this.username, this.password);
             connection.setNetworkTimeout(Executors.newFixedThreadPool(1), 0);
         }
     }
