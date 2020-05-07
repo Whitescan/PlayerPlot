@@ -1,0 +1,95 @@
+package com.eclipsekingdom.playerplot.loot;
+
+import com.eclipsekingdom.playerplot.PlayerPlot;
+import com.eclipsekingdom.playerplot.data.UserCache;
+import com.eclipsekingdom.playerplot.data.UserData;
+import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.util.PermInfo;
+import com.eclipsekingdom.playerplot.util.PlotUtil;
+import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.plugin.Plugin;
+
+import java.util.UUID;
+
+import static com.eclipsekingdom.playerplot.sys.lang.Message.WARN_PLOT_MAX;
+
+public class PlotDeedListener implements Listener {
+
+    public PlotDeedListener() {
+        Plugin plugin = PlayerPlot.getPlugin();
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    @EventHandler
+    public void onClick(PlayerInteractEvent e) {
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR) {
+            if (PlotDeed.isPlotDeed(e.getItem())) {
+                e.setCancelled(true);
+                Player player = e.getPlayer();
+                UUID playerID = player.getUniqueId();
+                if (UserCache.hasData(playerID)) {
+                    UserData userData = UserCache.getData(playerID);
+                    PermInfo permInfo = UserCache.getPerms(playerID);
+                    int availablePlots = PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus();
+                    if ((availablePlots < permInfo.getPlotMax())) {
+                        userData.unlockPlot();
+                        player.sendMessage(ChatColor.LIGHT_PURPLE + "+1 plot");
+                        if (Version.current.hasPageTurnSound()) {
+                            player.playSound(player.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                        }
+                        if (Version.current.isNormalItemConsume()) {
+                            consumeItem(e.getItem());
+                        } else {
+                            if (Version.current.hasOffhand()) {
+                                consumeLegacyItem(player, e.getItem());
+                            } else {
+                                consumePreDuelItem(player, e.getItem());
+                            }
+                        }
+                    } else {
+                        player.sendMessage(ChatColor.RED + WARN_PLOT_MAX.toString());
+                    }
+                } else {
+                    PlotUtil.fetchUnloadedData(player);
+                }
+
+            }
+        }
+    }
+
+    private void consumeItem(ItemStack itemStack) {
+        itemStack.setAmount(itemStack.getAmount() - 1);
+    }
+
+    private void consumeLegacyItem(Player player, ItemStack itemStack) {
+        ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
+        if (toSet != null) {
+            toSet.setItemMeta(itemStack.getItemMeta());
+        }
+        PlayerInventory playerInventory = player.getInventory();
+        if (itemStack.equals(playerInventory.getItemInMainHand())) {
+            playerInventory.setItemInMainHand(toSet);
+        } else if (itemStack.equals(playerInventory.getItemInOffHand())) {
+            playerInventory.setItemInOffHand(toSet);
+        }
+    }
+
+    @Deprecated
+    private void consumePreDuelItem(Player player, ItemStack itemStack) {
+        ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
+        if (toSet != null) {
+            toSet.setItemMeta(itemStack.getItemMeta());
+        }
+        player.setItemInHand(toSet);
+    }
+
+}

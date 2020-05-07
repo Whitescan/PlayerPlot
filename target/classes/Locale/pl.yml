@@ -1,0 +1,67 @@
+Label - commands: Komendy
+Label - plots: działki
+Label - friend plots: Zaufane działki
+Label - page: Strona
+Label - area: Obszar
+Label - center: Środek
+Label - min corner: Minimalny róg
+Label - max corner: Maksymalny róg
+Label - world: Świat
+Label - components: Elementy
+Label - friends: Zaufani
+Label - plot deed: Działek Dokumenty
+Help - plot scan: pokaż granice działki
+Help - plot claim: zajmij działkę
+Help - plot rename: zmień nazwę działki
+Help - plot free: usuń działkę
+Help - plot info: informacje o działce
+Help - plot list: lista Twoich działek
+Help - plot flist: lista zaufanych działek
+Help - plot trust: dodaj gracza do działki
+Help - plot untrust: usuń gracza z działki
+Help - plot upgrade: zwiększ rozmiar działki
+Help - plot downgrade: zmniejsz rozmiar działki
+Help - plot center: set plot center
+Help - plot deed: give plot deeds to player
+Console - plugin detected: '%plugin% znaleziony'
+Console - file error: Błąd przy zapisywaniu %file%
+Arg - amount: liczba
+Arg - player: gracz
+Arg - name: name
+Warn - no permission: Nie masz permisji, żeby użyc tej komendy.
+Warn - plot limit: Osiągnąłeś limit ilości działek.
+Warn - not friend: '%player% nie jest dodany do %plot%, jako zaufana osoba.'
+Warn - not downgradeable: '%plot% nie może być mniejsza.'
+Warn - already friend: '%player% jest już przypisany do %plot%.'
+Warn - add self: Nie możesz dodać samego siebie!
+Warn - player offline: Gracz %player% nie jest online.
+Warn - player not found: Player %player% not found
+Warn - plot max: Osiągnąłeś limit ilości działek.
+Warn - protected: Ten teren jest chroniony.
+Warn - plot not found: Działka %plot% nie została znaleziona.
+Success - plot upgrade: '%plot% została powiększona.'
+Success - plot downgrade: '%plot% została zmniejszona.'
+Success - plot rename: Nazwa działki zostala zmieniona na %plot%.
+Success - plot trust: '%player% został dodany do %plot%.'
+Success - plot untrust: '%player% został usunięty %plot%.'
+Success - plot claim: Działka %plot% została zajęta.
+Success - plot free: Działka %plot% została usunięta.
+Success - plot center: '%plot% center updated.'
+Success - invited: '%player% zaprosił Cię do jego działki - %plot%.'
+Success - plot delete: Działka usunięta.
+Success - items sent: items sent to %player%
+Misc - format: Format to %format%
+Misc - plot deed lore: poważnie wyglądający kawałek papieru
+Misc - one use: Tylko 1 użycie - kliknij aby aktywować
+Status - not standing in plot: Nie stoisz na terenie działki.
+Status - not owner of plot: Nie jesteś właścicielem tej działki.
+Status - region occupied: Twój region jest zbyt blisko. Twoja działka pokryłaby się.
+Status - success: Powodzenie.
+Status - load error: Nie można załadować danych.
+Status - unloaded data: Twoje dane użytkownika nie są załadowane. Ładowanie danych . . .
+Status - name special characters: Nazwy działek mogą zawierać tylko a-z, A-Z, 0-9, _,
+  oraz -
+Status - name too long: Nazwa działki może zawierać maksymalnie 20 znaków
+Status - name taken: Już posiadasz działkę o takiej nazwie
+Scanner - plot overview: '%plot% ~ %player% ~'
+Scanner - no plots: Żadne działki nie zostały wykryte.
