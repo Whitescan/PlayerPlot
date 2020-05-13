@@ -8,11 +8,14 @@ import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
 import com.eclipsekingdom.playerplot.util.PlotUtil;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -32,7 +35,8 @@ public class PlotDeedListener implements Listener {
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR) {
-            if (PlotDeed.isPlotDeed(e.getItem())) {
+            ItemStack itemStack = e.getItem();
+            if (PlotDeed.isPlotDeed(itemStack)) {
                 e.setCancelled(true);
                 Player player = e.getPlayer();
                 UUID playerID = player.getUniqueId();
@@ -46,15 +50,7 @@ public class PlotDeedListener implements Listener {
                         if (Version.current.hasPageTurnSound()) {
                             player.playSound(player.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
                         }
-                        if (Version.current.isNormalItemConsume()) {
-                            consumeItem(e.getItem());
-                        } else {
-                            if (Version.current.hasOffhand()) {
-                                consumeLegacyItem(player, e.getItem());
-                            } else {
-                                consumePreDuelItem(player, e.getItem());
-                            }
-                        }
+                        consumeItem(player, itemStack);
                     } else {
                         player.sendMessage(ChatColor.RED + WARN_PLOT_MAX.toString());
                     }
@@ -66,30 +62,50 @@ public class PlotDeedListener implements Listener {
         }
     }
 
-    private void consumeItem(ItemStack itemStack) {
-        itemStack.setAmount(itemStack.getAmount() - 1);
-    }
-
-    private void consumeLegacyItem(Player player, ItemStack itemStack) {
-        ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
-        if (toSet != null) {
-            toSet.setItemMeta(itemStack.getItemMeta());
-        }
-        PlayerInventory playerInventory = player.getInventory();
-        if (itemStack.equals(playerInventory.getItemInMainHand())) {
-            playerInventory.setItemInMainHand(toSet);
-        } else if (itemStack.equals(playerInventory.getItemInOffHand())) {
-            playerInventory.setItemInOffHand(toSet);
-        }
-    }
-
     @Deprecated
-    private void consumePreDuelItem(Player player, ItemStack itemStack) {
-        ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
-        if (toSet != null) {
-            toSet.setItemMeta(itemStack.getItemMeta());
+    private void consumeItem(Player player, ItemStack itemStack) {
+        if (Version.current.isNormalItemConsume()) {
+            itemStack.setAmount(itemStack.getAmount() - 1);
+        } else {
+            if (Version.current.hasOffhand()) {
+                ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
+                if (toSet != null) {
+                    toSet.setItemMeta(itemStack.getItemMeta());
+                }
+                PlayerInventory playerInventory = player.getInventory();
+                if (itemStack.equals(playerInventory.getItemInMainHand())) {
+                    playerInventory.setItemInMainHand(toSet);
+                } else if (itemStack.equals(playerInventory.getItemInOffHand())) {
+                    playerInventory.setItemInOffHand(toSet);
+                }
+            } else {
+                ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
+                if (toSet != null) {
+                    toSet.setItemMeta(itemStack.getItemMeta());
+                }
+                player.setItemInHand(toSet);
+            }
         }
-        player.setItemInHand(toSet);
+    }
+
+    @EventHandler
+    public void onCraft(CraftItemEvent e) {
+        for (ItemStack itemStack : e.getInventory()) {
+            if (PlotDeed.isPlotDeed(itemStack)) {
+                e.setCancelled(true);
+                return;
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPrepareCraft(PrepareItemCraftEvent e) {
+        for (ItemStack itemStack : e.getInventory()) {
+            if (PlotDeed.isPlotDeed(itemStack)) {
+                e.getInventory().setItem(0, new ItemStack(Material.AIR, 1));
+                return;
+            }
+        }
     }
 
 }

@@ -36,7 +36,6 @@ public class PluginHelp {
                 sender.sendMessage(getFormatted(entry));
             }
         }
-
     }
 
     public static void showPlots(Player player) {
