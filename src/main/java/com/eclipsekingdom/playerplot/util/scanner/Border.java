@@ -6,6 +6,8 @@ public class Border {
 
     public static IBorder select() {
         switch (Version.current) {
+            case V1_16:
+                return new Border_V1_16();
             case V1_15:
                 return new Border_V1_15();
             case V1_14:
