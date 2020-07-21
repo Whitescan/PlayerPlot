@@ -161,7 +161,7 @@ public class PlotProtection implements Listener {
                 }
             }
         } else if (action == Action.PHYSICAL) {
-            if (blockMaterial == Material.FARMLAND) {
+            if (blockMaterial == farmMaterial) {
                 if (!isAllowed(e.getPlayer(), block.getLocation())) {
                     e.setCancelled(true);
                     player.sendMessage(PROTECTED_WARNING);
