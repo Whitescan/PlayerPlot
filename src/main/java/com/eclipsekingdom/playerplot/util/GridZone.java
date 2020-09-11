@@ -57,5 +57,4 @@ public class GridZone {
         return new HashCodeBuilder(17, 31).append(x).append(z).toHashCode();
     }
 
-
 }

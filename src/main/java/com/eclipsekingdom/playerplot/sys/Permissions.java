@@ -33,10 +33,10 @@ public class Permissions {
             String permString = perm.getPermission();
             try {
                 if (permString.startsWith("plot.bonus.")) {
-                    int newBonus = Integer.parseInt(permString.split("warp\\.bonus\\.")[1]);
+                    int newBonus = Integer.parseInt(permString.split("plot\\.bonus\\.")[1]);
                     if (newBonus > bonusPlots) bonusPlots = newBonus;
                 } else if (permString.startsWith("plot.cap.")) {
-                    int newCap = Integer.parseInt(permString.split("warp\\.cap\\.")[1]);
+                    int newCap = Integer.parseInt(permString.split("plot\\.cap\\.")[1]);
                     if (newCap > maxPlots) maxPlots = newCap;
                 }
             } catch (Exception e) {

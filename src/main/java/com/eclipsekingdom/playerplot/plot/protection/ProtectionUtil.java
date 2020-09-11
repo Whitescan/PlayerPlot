@@ -75,14 +75,11 @@ public class ProtectionUtil {
         xMaterials.add(XMaterial.SPAWNER);
         xMaterials.add(XMaterial.ITEM_FRAME);
         xMaterials.add(XMaterial.LEVER);
-        xMaterials.add(XMaterial.MINECART);
         xMaterials.add(XMaterial.HOPPER);
         xMaterials.add(XMaterial.CHEST);
         xMaterials.add(XMaterial.BREWING_STAND);
         xMaterials.add(XMaterial.FURNACE);
-        xMaterials.add(XMaterial.ENDER_CHEST);
         xMaterials.add(XMaterial.COMPARATOR);
-        xMaterials.add(XMaterial.ENCHANTING_TABLE);
         xMaterials.add(XMaterial.NOTE_BLOCK);
         xMaterials.add(XMaterial.ANVIL);
         xMaterials.add(XMaterial.CHIPPED_ANVIL);
