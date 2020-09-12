@@ -41,6 +41,7 @@ Warn - protected: Ten teren jest chroniony.
 Warn - plot not found: Działka %plot% nie została znaleziona.
 Warn - not standing in plot: Nie stoisz na terenie działki.
 Warn - not owner of plot: Nie jesteś właścicielem tej działki.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% została powiększona.'
 Success - plot downgrade: '%plot% została zmniejszona.'
 Success - plot rename: Nazwa działki zostala zmieniona na %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% zaprosił Cię do jego działki - %plot%.'
 Success - plot delete: Działka usunięta.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Format to %format%
 Misc - plot deed lore: poważnie wyglądający kawałek papieru

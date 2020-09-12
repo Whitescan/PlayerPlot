@@ -2,8 +2,8 @@ package com.eclipsekingdom.playerplot.data;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.Friend;
+import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
-import com.eclipsekingdom.playerplot.sys.SendConsole;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,8 +13,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_FILE_ERROR;
 
 public class PlotFlatFile {
 
@@ -41,6 +39,11 @@ public class PlotFlatFile {
                 config.set(friendKey, friendsList);
             } else {
                 config.set(friendKey, null);
+            }
+
+            LocationParts spawn = plot.getSpawn();
+            if (spawn != null) {
+                config.set(key + ".spawn", plot.getSpawn().toString());
             }
         } else {
             config.set(key, null);
@@ -88,8 +91,10 @@ public class PlotFlatFile {
                     }
                 }
 
+                LocationParts spawn = config.contains(key + ".spawn") ? LocationParts.parseParts(config.getString(key + ".spawn")) : null;
+
                 if (world != null) {
-                    plots.add(new Plot(plotID, plotName, ownerID, ownerName, min, max, world, components, friends));
+                    plots.add(new Plot(plotID, plotName, ownerID, ownerName, min, max, world, components, friends, spawn));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

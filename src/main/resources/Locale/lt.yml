@@ -41,6 +41,7 @@ Warn - protected: Šis regionas yra apsaugotas.
 Warn - plot not found: Plotas %plot% nebuvo rastas.
 Warn - not standing in plot: Jūs ne stovite plote.
 Warn - not owner of plot: Jūs ne esate šio ploto savininkas.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% buvo padidintas.'
 Success - plot downgrade: Plotas %plot% buvo pamažinas.
 Success - plot rename: Sklypas sėkmingai pervadintas į%plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% buvo pakviestas į plotą, %plot%.'
 Success - plot delete: Plotas ištrintas.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Formatas yra %format%
 Misc - plot deed lore: rimtai atrodantis popieriaus lapas

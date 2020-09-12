@@ -24,12 +24,15 @@ public class CommandToPlot implements CommandExecutor {
                     Plot targetPlot = PlotCache.getPlayerPlot(player.getUniqueId(), args[0]);
                     if (targetPlot != null) {
                         World w = targetPlot.getWorld();
-                        Location targetLoc = targetPlot.getCenter().asLocation(w);
+                        Location targetLoc = targetPlot.getSpawn() != null ? targetPlot.getSpawn().getLocation() : null;
+                        if (targetLoc == null)
+                            targetLoc = w.getHighestBlockAt(targetPlot.getCenter().asLocation(w)).getLocation().add(0.5, 1, 0.5);
                         XSound tpSound = XSound.BLOCK_BEACON_POWER_SELECT;
-                        if (tpSound.isSupported()) player.playSound(player.getLocation(), tpSound.parseSound(), 0.5f, 1.9f);
-                        player.teleport(w.getHighestBlockAt(targetLoc).getLocation().add(0.5, 1, 0.5));
-                        PlotScanner.showPlot(player, new Plot(player, player.getLocation(), "portal",5), 1);
-                        if (tpSound.isSupported()) player.playSound(player.getLocation(), tpSound.parseSound(), 0.5f, 1.9f);
+                        if (tpSound.isSupported())
+                            player.playSound(player.getLocation(), tpSound.parseSound(), 0.5f, 1.9f);
+                        player.teleport(targetLoc);
+                        PlotScanner.showPlot(player, new Plot(player, targetLoc, "portal", 3), 1);
+                        if (tpSound.isSupported()) player.playSound(targetLoc, tpSound.parseSound(), 0.5f, 1.9f);
                         return true;
                     } else {
                         player.sendMessage(Language.WARN_PLOT_NOT_FOUND.coloredFromPlot(args[0], ChatColor.RED, ChatColor.DARK_RED));

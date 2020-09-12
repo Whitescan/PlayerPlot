@@ -1,10 +1,11 @@
 package com.eclipsekingdom.playerplot.data;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.Friend;
+import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import com.eclipsekingdom.playerplot.util.PlotUtil;
 import org.bukkit.Bukkit;
@@ -47,27 +48,37 @@ public class Database {
             openConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS PUser (" +
-                    "uuid char(36)," +
-                    "unlockedPlots int(4) DEFAULT 0," +
+                    "uuid CHAR(36)," +
+                    "unlockedPlots INT(4) DEFAULT 0," +
                     "PRIMARY KEY (uuid)" +
                     ");");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS PPlot (" +
-                    "uuid char(36)," +
-                    "name varchar(20)," +
-                    "ownerID varchar(36)," +
-                    "ownerName varchar(16)," +
-                    "minX int," +
-                    "minZ int," +
-                    "maxX int," +
-                    "maxZ int," +
-                    "world varchar(36)," +
-                    "components smallint," +
+                    "uuid CHAR(36)," +
+                    "name VARCHAR(20)," +
+                    "ownerID CHAR(36)," +
+                    "ownerName VARCHAR(16)," +
+                    "minX INT," +
+                    "minZ INT," +
+                    "maxX INT," +
+                    "maxZ INT," +
+                    "world VARCHAR(36)," +
+                    "components SMALLINT," +
                     "PRIMARY KEY (uuid)" +
                     ");");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS PSpawn (" +
+                    "plotId CHAR(36)," +
+                    "worldName VARCHAR(36)," +
+                    "x DOUBLE," +
+                    "y DOUBLE," +
+                    "z DOUBLE," +
+                    "yaw FLOAT," +
+                    "pitch FLOAT," +
+                    "PRIMARY KEY (plotId)" +
+                    ");");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS PTrusts (" +
-                    "plotID char(36)," +
-                    "friendID varchar(36)," +
-                    "friendName varchar(16)," +
+                    "plotID CHAR(36)," +
+                    "friendID CHAR(36)," +
+                    "friendName VARCHAR(16)," +
                     "PRIMARY KEY (plotID, friendID) " +
                     ");");
             initialized = true;
@@ -148,7 +159,7 @@ public class Database {
         try {
             openConnection();
             connection.createStatement().executeUpdate("REPLACE INTO PUser (uuid, unlockedPlots)" +
-                    "VALUES ('" + playerID + "', " + unlockedPlots + "');");
+                    "VALUES ('" + playerID + "', " + unlockedPlots + ");");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -193,12 +204,26 @@ public class Database {
             String friendName = friendsResult.getString("friendName");
             friends.add(new Friend(friendID, friendName));
         }
-        return new Plot(plotID, name, ownerID, ownerName, min, max, world, components, friends);
+
+        ResultSet spawnResult = connection.createStatement().executeQuery("SELECT * FROM PSpawn WHERE plotID = '" + plotID + "';");
+        LocationParts locationParts = null;
+        if (spawnResult.next()) {
+            String worldName = spawnResult.getString("worldName");
+            double x = spawnResult.getDouble("x");
+            double y = spawnResult.getDouble("y");
+            double z = spawnResult.getDouble("z");
+            float yaw = spawnResult.getFloat("yaw");
+            float pitch = spawnResult.getFloat("pitch");
+            locationParts = new LocationParts(worldName, x, y, z, yaw, pitch);
+        }
+
+        return new Plot(plotID, name, ownerID, ownerName, min, max, world, components, friends, locationParts);
     }
 
     public void storePlot(UUID plotID, Plot plot) {
         try {
             openConnection();
+            Statement statement = connection.createStatement();
             if (plot != null) {
                 String name = plot.getName();
                 UUID ownerID = plot.getOwnerID();
@@ -211,18 +236,25 @@ public class Database {
                 int maxZ = max.getZ();
                 String world = plot.getWorld().getName();
                 int components = plot.getComponents();
-                List<Friend> friends = plot.getFriends();
-                connection.createStatement().executeUpdate("REPLACE INTO PPlot (uuid, name, ownerID, ownerName, minX, minZ, maxX, maxZ, world, components) " +
+                statement.executeUpdate("REPLACE INTO PPlot (uuid, name, ownerID, ownerName, minX, minZ, maxX, maxZ, world, components) " +
                         "VALUES ('" + plotID + "', '" + name + "', '" + ownerID + "', '" + ownerName + "', " + minX + ", " + minZ + ", " + maxX + ", " + maxZ + ", '" + world + "', " + components + ");");
-
-                connection.createStatement().executeUpdate("DELETE FROM PTrusts WHERE plotID = '" + plotID + "'");
+                List<Friend> friends = plot.getFriends();
+                statement.executeUpdate("DELETE FROM PTrusts WHERE plotID = '" + plotID + "'");
                 for (Friend friend : friends) {
-                    connection.createStatement().executeUpdate("INSERT INTO PTrusts (plotID, friendID, friendName) " +
+                    statement.executeUpdate("INSERT INTO PTrusts (plotID, friendID, friendName) " +
                             "VALUES ('" + plotID + "','" + friend.getUuid() + "', '" + friend.getName() + "');");
                 }
+                LocationParts spawn = plot.getSpawn();
+                if (spawn != null) {
+                    statement.executeUpdate("REPLACE INTO PSpawn (plotId, worldName, x, y, z, yaw, pitch) " +
+                            "VALUES ('" + plotID + "', '" + spawn.getWorldName() + "', '" + spawn.getX() + "', '" +
+                            spawn.getY() + "', '" + spawn.getZ() + "', '" + spawn.getYaw() + "', '" + spawn.getPitch() + "');");
+                } else {
+                    statement.executeUpdate("DELETE FROM PSpawn WHERE plotId = '" + plotID + "'");
+                }
             } else {
-                connection.createStatement().executeUpdate("DELETE FROM PTrusts WHERE plotID = '" + plotID + "'");
-                connection.createStatement().executeUpdate("DELETE FROM PPlot WHERE uuid = '" + plotID + "'");
+                statement.executeUpdate("DELETE FROM PTrusts WHERE plotID = '" + plotID + "'");
+                statement.executeUpdate("DELETE FROM PPlot WHERE uuid = '" + plotID + "'");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

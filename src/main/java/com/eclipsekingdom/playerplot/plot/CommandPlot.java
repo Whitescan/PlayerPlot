@@ -7,6 +7,7 @@ import com.eclipsekingdom.playerplot.data.UserData;
 import com.eclipsekingdom.playerplot.plot.validation.NameValidation;
 import com.eclipsekingdom.playerplot.plot.validation.RegionValidation;
 import com.eclipsekingdom.playerplot.sys.Language;
+import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
 import com.eclipsekingdom.playerplot.sys.PluginHelp;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
@@ -42,6 +43,7 @@ public class CommandPlot implements CommandExecutor {
             .add("upgrade")
             .add("downgrade")
             .add("setcenter")
+            .add("setspawn")
             .add("rename")
             .build();
 
@@ -89,6 +91,9 @@ public class CommandPlot implements CommandExecutor {
                                         break;
                                     case "setcenter":
                                         processSetCenter(player, plot);
+                                        break;
+                                    case "setspawn":
+                                        processSetSpawn(player, plot);
                                         break;
                                     case "rename":
                                         processRename(player, plot, effectiveArgs);
@@ -252,7 +257,7 @@ public class CommandPlot implements CommandExecutor {
                     if (!plot.getOwnerID().equals(friend.getUuid())) {
                         plot.addFriend(friend);
                         PlotCache.registerFriendAdd(friend, plot);
-                        PlotCache.reportPlotModification(plot);
+                        PlotCache.touch(plot);
                         player.sendMessage(SUCCESS_PLOT_TRUST.coloredFromPlayerAndPlot(target.getName(), plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
                         target.sendMessage(SUCCESS_INVITED.coloredFromPlayerAndPlot(player.getName(), plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
                     } else {
@@ -275,7 +280,7 @@ public class CommandPlot implements CommandExecutor {
             if (plot.isFriend(friendName)) {
                 Friend friend = plot.getFriend(friendName);
                 plot.removeFriend(friendName);
-                PlotCache.reportPlotModification(plot);
+                PlotCache.touch(plot);
                 PlotCache.registerFriendRemove(friend, plot);
                 player.sendMessage(SUCCESS_PLOT_UNTRUST.coloredFromPlayerAndPlot(friendName, plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
             } else {
@@ -303,7 +308,7 @@ public class CommandPlot implements CommandExecutor {
                 PlotPoint newMax = center.getMaxCorner(newSideLength);
                 plot.setRegion(newMin, newMax);
                 plot.incrementComponents();
-                PlotCache.reportPlotModification(plot);
+                PlotCache.touch(plot);
 
                 if (usingDynmap) dynmap.updateMarker(plot);
 
@@ -335,7 +340,7 @@ public class CommandPlot implements CommandExecutor {
             PlotPoint newMax = center.getMaxCorner(newSideLength);
             plot.setRegion(newMin, newMax);
             plot.decrementComponents();
-            PlotCache.reportPlotModification(plot);
+            PlotCache.touch(plot);
 
             if (usingDynmap) dynmap.updateMarker(plot);
 
@@ -354,7 +359,7 @@ public class CommandPlot implements CommandExecutor {
         RegionValidation.Status regionStatus = RegionValidation.canPlotBeRegisteredAt(location, plot.getSideLength(), plot.getID());
         if (regionStatus == RegionValidation.Status.VALID) {
             plot.setCenter(location);
-            PlotCache.reportPlotModification(plot);
+            PlotCache.touch(plot);
             player.sendMessage(SUCCESS_PLOT_CENTER.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
             PlotScanner.showPlot(player, plot, 7);
             if (usingDynmap) dynmap.updatePlot(plot);
@@ -365,13 +370,28 @@ public class CommandPlot implements CommandExecutor {
         }
     }
 
+    private void processSetSpawn(Player player, Plot plot) { //TODO downgrade, setcenter remove if out of bounds,
+        if (Permissions.canTeleport(player)) {
+            Location location = player.getLocation();
+            if (plot.contains(location)) {
+                plot.setSpawn(new LocationParts(location));
+                PlotCache.touch(plot);
+                player.sendMessage(ChatColor.LIGHT_PURPLE + SUCCESS_SPAWN_SET.toString());
+            } else {
+                player.sendMessage(ChatColor.RED + WARN_OUTSIDE_PLOT_BOUNDS.toString());
+            }
+        } else {
+            player.sendMessage(ChatColor.RED + WARN_NOT_PERMITTED.toString());
+        }
+    }
+
     private void processRename(Player player, Plot plot, String[] args) {
         if (args.length > 1) {
             String newName = args[1];
             NameValidation.Status nameStatus = NameValidation.clean(newName, player.getUniqueId());
             if (nameStatus == NameValidation.Status.VALID) {
                 plot.setName(newName);
-                PlotCache.reportPlotModification(plot);
+                PlotCache.touch(plot);
                 if (usingDynmap) dynmap.updatePlot(plot);
                 player.sendMessage(SUCCESS_PLOT_RENAME.coloredFromPlot(newName, ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
             } else {

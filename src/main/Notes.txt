@@ -5,5 +5,11 @@ use plot command
 Todo:
 add reserved name to language files
 add here to language file
+add success spawn set
+add warn outside bounds
 toplot in 1.8
 teleport perm to wiki
+
+Freeze (or remove early on move) for a few secs after tp
+
+plot tp --> go up then down the beam!!!! (highest block unobstructued (up to 20)) -- slow fall at very end?

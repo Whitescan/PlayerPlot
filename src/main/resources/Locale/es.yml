@@ -41,6 +41,7 @@ Warn - protected: Esta región está protegida.
 Warn - plot not found: No se ha encontrado la parcela %plot%.
 Warn - not standing in plot: No estás en ninguna parcela.
 Warn - not owner of plot: No eres el dueño de esta parcela.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% ha sido mejorado.'
 Success - plot downgrade: La parcela %plot% ha sido degradada.
 Success - plot rename: La parcela se ha renombrado a %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% te ha invitado a su parcela, %plot%.'
 Success - plot delete: La parcela ha sido eliminado.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: El formato es %format%
 Misc - one use: solo 1 uso - clic para activar

@@ -34,7 +34,7 @@ public class AutoCompleteListener implements Listener {
                 int args = numberOfFullArgs(buffer);
                 if (args == 0) {
                     String root = "/" + rootCommand;
-                    e.setCompletions(getRefinedCompletions(root, buffer, getPlotNames(player)));
+                    e.setCompletions(getRefinedCompletions(root, buffer, getAtPlotNames(player)));
                 } else if (args == 1) {
                     String root = "/" + rootCommand + " " + getArg(buffer, 0);
                     e.setCompletions(getRefinedCompletions(root, buffer, plotActionCompletions));
@@ -63,6 +63,9 @@ public class AutoCompleteListener implements Listener {
                         e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
                     }
                 }
+            } else if (buffer.startsWith("/toplot ")) {
+                String root = "/toplot";
+                e.setCompletions(getRefinedCompletions(root, buffer, getPlotNames(player)));
             }
         }
     }
@@ -111,6 +114,7 @@ public class AutoCompleteListener implements Listener {
             .add("upgrade")
             .add("downgrade")
             .add("setcenter")
+            .add("setspawn")
             .build();
 
 
@@ -125,12 +129,20 @@ public class AutoCompleteListener implements Listener {
             .add("setcenter")
             .build();
 
-    private List<String> getPlotNames(Player player) {
+    private List<String> getAtPlotNames(Player player) {
         List<String> plotNames = new ArrayList<>();
         for (Plot plot : PlotCache.getPlayerPlots(player.getUniqueId())) {
             plotNames.add("@" + plot.getName());
         }
         plotNames.add("@here");
+        return plotNames;
+    }
+
+    private List<String> getPlotNames(Player player) {
+        List<String> plotNames = new ArrayList<>();
+        for (Plot plot : PlotCache.getPlayerPlots(player.getUniqueId())) {
+            plotNames.add(plot.getName());
+        }
         return plotNames;
     }
 

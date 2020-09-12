@@ -56,6 +56,7 @@ public enum Language {
     WARN_PLOT_NOT_FOUND("Warn - plot not found", "Plot %plot% not found."),
     WARN_NOT_STANDING_IN_PLOT("Warn - not standing in plot", "You are not standing in a plot."),
     WARN_NOT_OWNER("Warn - not owner of plot", "You are not the owner of this plot."),
+    WARN_OUTSIDE_PLOT_BOUNDS("Warn - outside plot bounds", "Spawn must be within plot bounds."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),
@@ -68,6 +69,7 @@ public enum Language {
     SUCCESS_INVITED("Success - invited", "%player% has invited you to their plot, %plot%."),
     SUCCESS_PLOT_DELETE("Success - plot delete", "Plot deleted."),
     SUCCESS_ITEMS_SENT("Success - items sent", "items sent to %player%"),
+    SUCCESS_SPAWN_SET("Success - spawn set", "Spawn point set."),
 
     MISC_HERE("Misc - here", "here"),
     MISC_FORMAT("Misc - format", "Format is %format%"),

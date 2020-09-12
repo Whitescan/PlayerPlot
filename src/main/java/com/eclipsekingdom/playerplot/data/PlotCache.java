@@ -141,7 +141,7 @@ public class PlotCache {
         }
     }
 
-    public static void reportPlotModification(Plot plot) {
+    public static void touch(Plot plot) {
         unsavedPlots.add(plot.getID());
     }
 

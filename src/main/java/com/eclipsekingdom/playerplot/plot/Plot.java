@@ -2,6 +2,7 @@ package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.util.Friend;
+import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
@@ -22,6 +23,7 @@ public class Plot {
     private PlotPoint minCorner;
     private PlotPoint maxCorner;
     private int components = 1;
+    private LocationParts spawn;
 
     //initialized
     private int sideLength;
@@ -40,7 +42,7 @@ public class Plot {
         initialize();
     }
 
-    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, World world, int components, List<Friend> friends) {
+    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, World world, int components, List<Friend> friends, LocationParts spawn) {
         this.ID = plotID;
         this.name = name;
         this.ownerID = ownerID;
@@ -50,6 +52,7 @@ public class Plot {
         this.components = components;
         this.world = world;
         this.friends = friends;
+        this.spawn = spawn;
 
         initialize();
     }
@@ -95,9 +98,17 @@ public class Plot {
         PlotPoint[] corners = new PlotPoint[4];
         corners[0] = minCorner; //bottom left
         corners[1] = maxCorner; //top right
-        corners[2] = new PlotPoint(minCorner.getX(), maxCorner.getZ());//top left
-        corners[3] = new PlotPoint(maxCorner.getX(), minCorner.getZ());//bottom right
+        corners[2] = new PlotPoint(minCorner.getX(), maxCorner.getZ()); //top left
+        corners[3] = new PlotPoint(maxCorner.getX(), minCorner.getZ()); //bottom right
         return corners;
+    }
+
+    public void setSpawn(LocationParts spawn) {
+        this.spawn = spawn;
+    }
+
+    public LocationParts getSpawn() {
+        return spawn;
     }
 
     public UUID getID() {

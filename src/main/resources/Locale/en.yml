@@ -41,6 +41,7 @@ Warn - protected: This region is protected.
 Warn - plot not found: Plot %plot% not found.
 Warn - not standing in plot: You are not standing in a plot.
 Warn - not owner of plot: You are not the owner of this plot.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% was upgraded.'
 Success - plot downgrade: Plot %plot% was downgraded.
 Success - plot rename: Plot successfully renamed to %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% has invited you to their plot, %plot%.'
 Success - plot delete: Plot deleted.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Format is %format%
 Misc - one use: 1 use only - click to activate

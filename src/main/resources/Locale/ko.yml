@@ -41,6 +41,7 @@ Warn - protected: �� ������ ��ȣ�Ǿ� �ֽ��ϴ�.
 Warn - plot not found: �� %plot%��(��) ã���� �����ϴ�.
 Warn - not standing in plot: ����� ���� ������ �ʽ��ϴ�.
 Warn - not owner of plot: �� �� �� �����ڰ� �ƴմϴ�.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% ���� ���׷��̵� �Ǿ����ϴ�.'
 Success - plot downgrade: �� %plot%�� �ٿ�׷��̵� �Ǿ����ϴ�.
 Success - plot rename: �ø� �̸��� %plot%���� ����Ǿ����ϴ�.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player%��(��) �׵鿡 ���� �ʴ�Ǿ����ϴ�, %plot%.'
 Success - plot delete: ���� �����Ǿ����ϴ�.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: �ùٸ� ���� %format%.
 Misc - plot deed lore: �����ϰ� ���̴� ����

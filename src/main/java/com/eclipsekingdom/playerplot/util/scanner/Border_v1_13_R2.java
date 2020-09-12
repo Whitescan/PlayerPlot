@@ -20,6 +20,7 @@ public class Border_v1_13_R2 implements IBorder {
         worldBorder.setCenter(center.getX() + offSet, center.getZ() + offSet);
         worldBorder.setSize(length);
         worldBorder.setDamageAmount(0);
+        worldBorder.setWarningDistance(0);
         PacketPlayOutWorldBorder packetPlayOutWorldBorder = new PacketPlayOutWorldBorder(worldBorder, PacketPlayOutWorldBorder.EnumWorldBorderAction.INITIALIZE);
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packetPlayOutWorldBorder);
     }

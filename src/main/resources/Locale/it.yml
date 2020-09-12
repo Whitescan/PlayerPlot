@@ -41,6 +41,7 @@ Warn - protected: Questa regione è protetta.
 Warn - plot not found: Lotto %plot% non trovato.
 Warn - not standing in plot: Non sei in un lotto.
 Warn - not owner of plot: Non sei il proprietario di questo lotto.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% è stato migliorato.'
 Success - plot downgrade: '%plot% è stato degratato.'
 Success - plot rename: Lotto rinominato con successo in %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% ti ha invitato nel suo lotto, %plot%.'
 Success - plot delete: Lotto eliminato.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Il formato è %format%
 Misc - one use: Solo un utilizzo - clicca per attivare

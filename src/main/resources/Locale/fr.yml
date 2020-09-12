@@ -41,6 +41,7 @@ Warn - protected: Cette région est protégée.
 Warn - plot not found: La parcelle %plot% n'existe pas.
 Warn - not standing in plot: Vous ne vous situez pas sur une parcelle.
 Warn - not owner of plot: Vous n'êtes pas le propriétaire de cette parcelle.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: 'La parcelle %plot% a été améliorée .'
 Success - plot downgrade: La parcelle %plot% a été rétrogradée.
 Success - plot rename: Parcelle renommée en %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% vous à invité sur ça parcelle: %plot%.'
 Success - plot delete: Parcelle supprimée.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Le format est %format%
 Misc - plot deed lore: un morceau de papier qui semble sérieux

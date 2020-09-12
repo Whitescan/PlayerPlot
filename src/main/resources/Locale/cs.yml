@@ -41,6 +41,7 @@ Warn - protected: Tento region je chráněn.
 Warn - plot not found: Parcela %plot% nebyla nalezena.
 Warn - not standing in plot: Nestojíš v parcele.
 Warn - not owner of plot: Nejsi vlastník této parcely.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% byl vylepšen.'
 Success - plot downgrade: Parcela %plot% byla downgradována.
 Success - plot rename: Parcela úspěšně přejmenována na %plot%.
@@ -52,6 +53,7 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% tě přizval na svoji parcelu, %plot%.'
 Success - plot delete: Parcela Smazána.
 Success - items sent: items sent to %player%
+Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Formát je %format%
 Misc - one use: Pouze 1 použití - klikni pro aktivaci
