@@ -2,13 +2,13 @@ package com.eclipsekingdom.playerplot.util.scanner;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
-import net.minecraft.server.v1_9_R2.PacketPlayOutWorldBorder;
-import net.minecraft.server.v1_9_R2.WorldBorder;
-import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
+import net.minecraft.server.v1_9_R1.PacketPlayOutWorldBorder;
+import net.minecraft.server.v1_9_R1.WorldBorder;
+import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class Border_V1_9 implements IBorder {
+public class Border_v1_9_R1 implements IBorder {
 
     @Override
     public void show(Player player, Plot plot) {

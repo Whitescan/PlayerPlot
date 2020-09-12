@@ -7,6 +7,7 @@ import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
 import com.eclipsekingdom.playerplot.util.PlotUtil;
+import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -23,7 +24,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.WARN_PLOT_MAX;
+import static com.eclipsekingdom.playerplot.sys.Language.WARN_PLOT_MAX;
 
 public class PlotDeedListener implements Listener {
 
@@ -47,8 +48,8 @@ public class PlotDeedListener implements Listener {
                     if ((availablePlots < permInfo.getPlotMax())) {
                         userData.unlockPlot();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "+1 plot");
-                        if (Version.current.hasPageTurnSound()) {
-                            player.playSound(player.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1f, 1f);
+                        if (XSound.ITEM_BOOK_PAGE_TURN.isSupported()) {
+                            player.playSound(player.getLocation(), XSound.ITEM_BOOK_PAGE_TURN.parseSound(), 1f, 1f);
                         }
                         consumeItem(player, itemStack);
                     } else {
@@ -64,10 +65,10 @@ public class PlotDeedListener implements Listener {
 
     @Deprecated
     private void consumeItem(Player player, ItemStack itemStack) {
-        if (Version.current.isNormalItemConsume()) {
+        if (Version.isNormalItemConsume()) {
             itemStack.setAmount(itemStack.getAmount() - 1);
         } else {
-            if (Version.current.hasOffhand()) {
+            if (Version.hasOffhand()) {
                 ItemStack toSet = itemStack.getAmount() > 1 ? new ItemStack(itemStack.getType(), itemStack.getAmount() - 1) : null;
                 if (toSet != null) {
                     toSet.setItemMeta(itemStack.getItemMeta());

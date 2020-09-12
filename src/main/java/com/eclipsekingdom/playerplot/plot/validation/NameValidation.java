@@ -1,10 +1,9 @@
 package com.eclipsekingdom.playerplot.plot.validation;
 
 import com.eclipsekingdom.playerplot.data.PlotCache;
+import com.eclipsekingdom.playerplot.sys.Language;
 
 import java.util.UUID;
-
-import static com.eclipsekingdom.playerplot.sys.lang.Message.*;
 
 public class NameValidation {
 
@@ -13,6 +12,8 @@ public class NameValidation {
             return Status.SPECIAL_CHARACTERS;
         } else if (name.length() > 20) {
             return Status.TOO_LONG;
+        } else if (name.toLowerCase().equals(Language.MISC_HERE.toString())) {
+            return Status.RESERVED_NAME;
         } else {
             if (PlotCache.getPlayerPlot(playerID, name) != null) {
                 return Status.NAME_TAKEN;
@@ -25,9 +26,11 @@ public class NameValidation {
     public enum Status {
 
         VALID(""),
-        SPECIAL_CHARACTERS(STATUS_SPECIAL_CHARACTERS.toString()),
-        TOO_LONG(STATUS_TOO_LONG.toString()),
-        NAME_TAKEN(STATUS_NAME_TAKEN.toString());
+        SPECIAL_CHARACTERS(Language.STATUS_SPECIAL_CHARACTERS.toString()),
+        TOO_LONG(Language.STATUS_TOO_LONG.toString()),
+        NAME_TAKEN(Language.STATUS_NAME_TAKEN.toString()),
+        RESERVED_NAME(Language.STATUS_RESERVED_NAME.toString()),
+        ;
 
         Status(String message) {
             this.message = message;

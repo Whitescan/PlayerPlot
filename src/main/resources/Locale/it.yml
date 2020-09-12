@@ -39,6 +39,8 @@ Warn - player not found: Player %player% not found
 Warn - plot max: Hai già il numero massimo di lotti.
 Warn - protected: Questa regione è protetta.
 Warn - plot not found: Lotto %plot% non trovato.
+Warn - not standing in plot: Non sei in un lotto.
+Warn - not owner of plot: Non sei il proprietario di questo lotto.
 Success - plot upgrade: '%plot% è stato migliorato.'
 Success - plot downgrade: '%plot% è stato degratato.'
 Success - plot rename: Lotto rinominato con successo in %plot%.
@@ -50,17 +52,16 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% ti ha invitato nel suo lotto, %plot%.'
 Success - plot delete: Lotto eliminato.
 Success - items sent: items sent to %player%
+Misc - here: here
 Misc - format: Il formato è %format%
 Misc - one use: Solo un utilizzo - clicca per attivare
 Misc - plot deed lore: un documento dall'aspetto serio
-Status - not standing in plot: Non sei in un lotto.
-Status - not owner of plot: Non sei il proprietario di questo lotto.
 Status - region occupied: C'è un'altra regione vicina. Il tuo lotto si sovrapporrà.
-Status - success: Successo.
 Status - load error: Impossibile caricare i dati.
 Status - unloaded data: I dati utenti non sono caricati. Recupero data . . .
-Status - name special characters: Il nome del lotto può contenere solo i seguenti caratteri a-z, A-Z, 0-9, _, e -
-Status - name too long: Il nome del lotto deve contenere al massimo 20 caratteri
-Status - name taken: Hai già un lotto con questo nome
+Status - name special characters: Il nome del lotto può contenere solo i seguenti caratteri a-z, A-Z, 0-9, _, e -.
+Status - name too long: Il nome del lotto deve contenere al massimo 20 caratteri.
+Status - name taken: Hai già un lotto con questo nome.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Nessun lotto rilevato.

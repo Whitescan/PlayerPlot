@@ -39,7 +39,8 @@ Warn - player not found: Player %player% not found
 Warn - plot max: Vous avez déjà atteint le nombre maximal de parcelles.
 Warn - protected: Cette région est protégée.
 Warn - plot not found: La parcelle %plot% n'existe pas.
-
+Warn - not standing in plot: Vous ne vous situez pas sur une parcelle.
+Warn - not owner of plot: Vous n'êtes pas le propriétaire de cette parcelle.
 Success - plot upgrade: 'La parcelle %plot% a été améliorée .'
 Success - plot downgrade: La parcelle %plot% a été rétrogradée.
 Success - plot rename: Parcelle renommée en %plot%.
@@ -51,18 +52,16 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% vous à invité sur ça parcelle: %plot%.'
 Success - plot delete: Parcelle supprimée.
 Success - items sent: items sent to %player%
+Misc - here: here
 Misc - format: Le format est %format%
 Misc - plot deed lore: un morceau de papier qui semble sérieux
 Misc - one use: 1 utilisation seulement - cliquez pour activer
-Status - not standing in plot: Vous ne vous situez pas sur une parcelle.
-Status - not owner of plot: Vous n'êtes pas le propriétaire de cette parcelle.
 Status - region occupied: Une autre région est trop proche. Votre parcelle pourrait être chevauchée.
-Status - success: Succès.
 Status - load error: Impossible de charger les données.
 Status - unloaded data: Vos données d'utilisateur ne sont pas chargées. Récupération en cours . . .
-Status - name special characters: Les noms de parcelles doivent être constitués uniquement de a-z, A-Z, 0-9, _,
-  et -
-Status - name too long: Les noms de parcelle doivent faire au max 20 caractères
-Status - name taken: Vous avez déjà une parcelle avec ce nom
+Status - name special characters: Les noms de parcelles doivent être constitués uniquement de a-z, A-Z, 0-9, _, et -.
+Status - name too long: Les noms de parcelle doivent faire au max 20 caractères.
+Status - name taken: Vous avez déjà une parcelle avec ce nom.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Aucune parcelle détectée.

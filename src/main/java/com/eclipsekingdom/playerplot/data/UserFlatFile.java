@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.CONSOLE_FILE_ERROR;
+import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_FILE_ERROR;
 
 public class UserFlatFile {
 

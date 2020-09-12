@@ -3,7 +3,7 @@ package com.eclipsekingdom.playerplot.data;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
-import com.eclipsekingdom.playerplot.sys.ConsoleSender;
+import com.eclipsekingdom.playerplot.sys.SendConsole;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.CONSOLE_FILE_ERROR;
+import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_FILE_ERROR;
 
 public class PlotFlatFile {
 
@@ -102,7 +102,7 @@ public class PlotFlatFile {
         try {
             config.save(file);
         } catch (Exception e) {
-            ConsoleSender.sendMessage(CONSOLE_FILE_ERROR.fromFile(file.getName()));
+            e.printStackTrace();
         }
     }
 

@@ -1,3 +1,9 @@
+to test:
+no break blocks in other's land
+use plot command
 
--- updates --
-can now use enchantment table, minecart, and ender chest
+Todo:
+add reserved name to language files
+add here to language file
+toplot in 1.8
+teleport perm to wiki

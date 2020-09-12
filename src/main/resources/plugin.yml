@@ -9,22 +9,27 @@ load: POSTWORLD
 softdepend: [dynmap]
 
 commands:
+  pplot:
+    description: edit plots
   plot:
     description: edit plots
-  rplot:
-    description: edit remote plots
+  toplot:
+    description: teleport to plot
   playerplot:
     description: show plugin commands
   plotdeed:
     description: summon plot deed(s)
-    permission: playerplot.loot
 
 permissions:
   playerplot.*:
     description: grants all player plot user
+    default: op
   playerplot.loot:
     description: grants access to the /plotdeed command
     default: op
   playerplot.access:
     description: grants access to all player's plots
+    default: op
+  playerplot.teleport:
+    description: grants access to /toplot command
     default: op

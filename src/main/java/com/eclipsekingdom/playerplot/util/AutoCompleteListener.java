@@ -3,6 +3,7 @@ package com.eclipsekingdom.playerplot.util;
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,7 +17,10 @@ import java.util.List;
 
 public class AutoCompleteListener implements Listener {
 
+    private String rootCommand;
+
     public AutoCompleteListener() {
+        this.rootCommand = PluginConfig.getRootCommand();
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -26,17 +30,39 @@ public class AutoCompleteListener implements Listener {
         if (e.getSender() instanceof Player) {
             String buffer = e.getBuffer();
             Player player = (Player) e.getSender();
-            if (buffer.contains("/plot trust ")) {
-                e.setCompletions(getRefinedCompletions("/plot trust", buffer, onlineCompletions(player)));
-            } else if (buffer.contains("/plot untrust ")) {
-                e.setCompletions(getRefinedCompletions("/plot untrust", buffer, onlineCompletions(player)));
-            } else if (buffer.contains("/plot ")) {
-                e.setCompletions(getRefinedCompletions("/plot", buffer, plotCompletions));
-            } else if (buffer.contains("/rplot ") && numberOfFullArgs(buffer) > 0) {
-                String root = "/rplot " + getArg(buffer, 0);
-                e.setCompletions(getRefinedCompletions(root, buffer, rPlotCompletions));
-            } else if (buffer.contains("/rplot ")) {
-                e.setCompletions(getRefinedCompletions("/rplot", buffer, getPlotNames(player)));
+            if (buffer.startsWith("/" + rootCommand + " @")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/" + rootCommand;
+                    e.setCompletions(getRefinedCompletions(root, buffer, getPlotNames(player)));
+                } else if (args == 1) {
+                    String root = "/" + rootCommand + " " + getArg(buffer, 0);
+                    e.setCompletions(getRefinedCompletions(root, buffer, plotActionCompletions));
+                } else if (args == 2) {
+                    String base = "/" + rootCommand + " " + getArg(buffer, 0);
+                    if (buffer.startsWith(base + " trust ")) {
+                        String root = base + " trust";
+                        e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " untrust ")) {
+                        String root = base + " untrust";
+                        e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    }
+                }
+            } else if (buffer.startsWith("/" + rootCommand + " ")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/" + rootCommand;
+                    e.setCompletions(getRefinedCompletions(root, buffer, plotCompletions));
+                } else if (args == 1) {
+                    String base = "/" + rootCommand;
+                    if (buffer.startsWith(base + " trust ")) {
+                        String root = base + " trust";
+                        e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " untrust ")) {
+                        String root = base + " untrust";
+                        e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    }
+                }
             }
         }
     }
@@ -75,11 +101,11 @@ public class AutoCompleteListener implements Listener {
             .add("help")
             .add("scan")
             .add("claim")
+            .add("list")
+            .add("flist")
             .add("rename")
             .add("free")
             .add("info")
-            .add("list")
-            .add("flist")
             .add("trust")
             .add("untrust")
             .add("upgrade")
@@ -87,18 +113,24 @@ public class AutoCompleteListener implements Listener {
             .add("setcenter")
             .build();
 
-    private static final List<String> rPlotCompletions = ImmutableList.<String>builder()
+
+    private static final List<String> plotActionCompletions = ImmutableList.<String>builder()
             .add("rename")
             .add("free")
             .add("info")
+            .add("trust")
+            .add("untrust")
+            .add("upgrade")
+            .add("downgrade")
             .add("setcenter")
             .build();
 
     private List<String> getPlotNames(Player player) {
         List<String> plotNames = new ArrayList<>();
         for (Plot plot : PlotCache.getPlayerPlots(player.getUniqueId())) {
-            plotNames.add(plot.getName());
+            plotNames.add("@" + plot.getName());
         }
+        plotNames.add("@here");
         return plotNames;
     }
 

@@ -8,7 +8,7 @@ import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class Border_V1_16 implements IBorder {
+public class Border_v1_16_R2 implements IBorder {
 
     @Override
     public void show(Player player, Plot plot) {

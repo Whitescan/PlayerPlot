@@ -1,11 +1,10 @@
 package com.eclipsekingdom.playerplot.util;
 
+import com.eclipsekingdom.playerplot.sys.Language;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
-
-import static com.eclipsekingdom.playerplot.sys.lang.Message.LABEL_PAGE;
 
 public class InfoList {
 
@@ -20,7 +19,7 @@ public class InfoList {
             page = 1;
         }
         sender.sendMessage(title);
-        sender.sendMessage(ChatColor.DARK_GRAY + "> " + LABEL_PAGE + " " + page);
+        sender.sendMessage(ChatColor.DARK_GRAY + "> " + Language.LABEL_PAGE.toString().toLowerCase() + " " + page);
 
         int startIndex = (page - 1) * pageItemCount;
         for (int i = startIndex; i < startIndex + pageItemCount; i++) {

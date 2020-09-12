@@ -5,7 +5,7 @@ import com.eclipsekingdom.playerplot.util.Dynmap;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.CONSOLE_DETECT;
+import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_DETECT;
 
 public class PluginBase {
 
@@ -29,7 +29,7 @@ public class PluginBase {
         if (plugin != null && plugin.isEnabled()) {
             dynmap = new Dynmap(plugin);
             dynmapDetected = true;
-            ConsoleSender.sendMessage(CONSOLE_DETECT.fromPlugin(dynmapNameSpace));
+            SendConsole.info(CONSOLE_DETECT.fromPlugin(dynmapNameSpace));
         }
     }
 

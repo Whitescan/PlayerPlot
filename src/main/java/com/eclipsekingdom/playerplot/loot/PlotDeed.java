@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.loot;
 
-import com.eclipsekingdom.playerplot.util.ItemUtil;
 import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.util.ItemUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.*;
+import static com.eclipsekingdom.playerplot.sys.Language.*;
 
 public class PlotDeed {
 
@@ -29,7 +29,7 @@ public class PlotDeed {
         lore.add(ChatColor.RED + MISC_ONE_USE.toString());
         lore.add(ChatColor.GRAY + "+1 plot");
         meta.setLore(lore);
-        if (Version.current.isModelDataSupported()) meta.setCustomModelData(11);
+        if (Version.hasModelData()) meta.setCustomModelData(11);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addEnchant(Enchantment.DURABILITY, 1, true);
         plotDeed.setItemMeta(meta);

@@ -13,7 +13,7 @@ import org.bukkit.event.Event;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.*;
+import static com.eclipsekingdom.playerplot.sys.Language.*;
 
 public class PlotUtil {
 
