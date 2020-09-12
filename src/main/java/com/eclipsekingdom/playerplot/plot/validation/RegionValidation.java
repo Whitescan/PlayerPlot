@@ -8,7 +8,7 @@ import org.bukkit.World;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.STATUS_REGION_OCCUPIED;
+import static com.eclipsekingdom.playerplot.sys.Language.STATUS_REGION_OCCUPIED;
 
 public class RegionValidation {
 

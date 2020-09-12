@@ -12,6 +12,7 @@ public class Permissions {
 
     private static String LOOT_PERM = "playerplot.loot";
     private static String BUILD_PERM = "playerplot.access";
+    private static String TP_PERM = "playerplot.teleport";
 
     public static boolean canSummonPlotDeed(CommandSender sender) {
         return hasPermission(sender, LOOT_PERM);
@@ -19,6 +20,10 @@ public class Permissions {
 
     public static boolean canBuildEverywhere(CommandSender sender) {
         return hasPermission(sender, BUILD_PERM);
+    }
+
+    public static boolean canTeleport(CommandSender sender) {
+        return hasPermission(sender, TP_PERM);
     }
 
     private static boolean hasPermission(CommandSender sender, String permString) {

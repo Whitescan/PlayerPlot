@@ -39,6 +39,8 @@ Warn - player not found: Player %player% not found
 Warn - plot max: You already have the maximum number of plots.
 Warn - protected: This region is protected.
 Warn - plot not found: Plot %plot% not found.
+Warn - not standing in plot: You are not standing in a plot.
+Warn - not owner of plot: You are not the owner of this plot.
 Success - plot upgrade: '%plot% was upgraded.'
 Success - plot downgrade: Plot %plot% was downgraded.
 Success - plot rename: Plot successfully renamed to %plot%.
@@ -50,17 +52,16 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% has invited you to their plot, %plot%.'
 Success - plot delete: Plot deleted.
 Success - items sent: items sent to %player%
+Misc - here: here
 Misc - format: Format is %format%
 Misc - one use: 1 use only - click to activate
 Misc - plot deed lore: a serious looking piece of paper
-Status - not standing in plot: You are not standing in a plot.
-Status - not owner of plot: You are not the owner of this plot.
 Status - region occupied: Another region is too close. Your plot would overlap.
-Status - success: Success.
 Status - load error: Unable to load data.
 Status - unloaded data: Your user data is unloaded. Fetching data . . .
-Status - name special characters: Plot names must consist of only a-z, A-Z, 0-9, _, and -
-Status - name too long: Plot names must be 20 characters or less
-Status - name taken: You already have a plot with that name
+Status - name special characters: Plot names must consist of only a-z, A-Z, 0-9, _, and -.
+Status - name too long: Plot names must be 20 characters or less.
+Status - name taken: You already have a plot with that name.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: No plots detected.

@@ -7,13 +7,13 @@ import com.eclipsekingdom.playerplot.data.event.DataLoadListener;
 import com.eclipsekingdom.playerplot.loot.CommandPlotDeed;
 import com.eclipsekingdom.playerplot.loot.PlotDeedListener;
 import com.eclipsekingdom.playerplot.plot.CommandPlot;
-import com.eclipsekingdom.playerplot.plot.CommandRPlot;
-import com.eclipsekingdom.playerplot.plot.protection.PlotProtection;
+import com.eclipsekingdom.playerplot.plot.CommandToPlot;
+import com.eclipsekingdom.playerplot.plot.PlotProtection;
+import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.ConfigLoader;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
-import com.eclipsekingdom.playerplot.sys.lang.Language;
 import com.eclipsekingdom.playerplot.util.AutoCompleteListener;
 import com.eclipsekingdom.playerplot.util.scanner.PlotScanner;
 import org.bukkit.plugin.Plugin;
@@ -23,6 +23,7 @@ public final class PlayerPlot extends JavaPlugin {
 
     private static Plugin plugin;
     private static Database database;
+    private PlayerPlotAPI playerPlotAPI = PlayerPlotAPI.getInstance();
 
     @Override
     public void onEnable() {
@@ -31,7 +32,7 @@ public final class PlayerPlot extends JavaPlugin {
         ConfigLoader.load();
 
         new PluginConfig();
-        new Language();
+        Language.load();
         new PluginBase();
 
         if (PluginConfig.isUsingDatabase()) {
@@ -42,11 +43,11 @@ public final class PlayerPlot extends JavaPlugin {
         new UserCache();
 
         getCommand("playerplot").setExecutor(new CommandPlayerPlot());
-        getCommand("plot").setExecutor(new CommandPlot());
-        getCommand("rplot").setExecutor(new CommandRPlot());
+        getCommand(PluginConfig.getRootCommand()).setExecutor(new CommandPlot());
         getCommand("plotdeed").setExecutor(new CommandPlotDeed());
+        getCommand("toplot").setExecutor(new CommandToPlot());
 
-        if (Version.current.isAutoCompleteSupported()) {
+        if (Version.hasAutoComplete()) {
             new AutoCompleteListener();
         }
 
@@ -69,6 +70,10 @@ public final class PlayerPlot extends JavaPlugin {
 
     public static Plugin getPlugin() {
         return plugin;
+    }
+
+    public PlayerPlotAPI getPlayerPlotAPI() {
+        return playerPlotAPI;
     }
 
     public static boolean isUsingDatabase() {

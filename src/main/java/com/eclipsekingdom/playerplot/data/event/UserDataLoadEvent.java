@@ -6,8 +6,7 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.STATUS_LOAD_ERROR;
-import static com.eclipsekingdom.playerplot.sys.lang.Message.STATUS_SUCCESS;
+import static com.eclipsekingdom.playerplot.sys.Language.STATUS_LOAD_ERROR;
 
 public class UserDataLoadEvent extends Event {
 
@@ -49,7 +48,7 @@ public class UserDataLoadEvent extends Event {
     }
 
     public enum Result {
-        SUCCESS(STATUS_SUCCESS.toString()),
+        SUCCESS("Success"),
         ERROR(STATUS_LOAD_ERROR.toString()),
         ;
 

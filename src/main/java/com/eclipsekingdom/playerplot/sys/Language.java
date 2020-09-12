@@ -1,8 +1,13 @@
-package com.eclipsekingdom.playerplot.sys.lang;
+package com.eclipsekingdom.playerplot.sys;
 
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
-public enum Message {
+import java.io.File;
+
+public enum Language {
 
     LABEL_COMMANDS("Label - commands", "Commands"),
     LABEL_PLOTS("Label - plots", "Plots"),
@@ -49,6 +54,8 @@ public enum Message {
     WARN_PLOT_MAX("Warn - plot max", "You already have the maximum number of plots."),
     WARN_PROTECTED("Warn - protected", "This region is protected."),
     WARN_PLOT_NOT_FOUND("Warn - plot not found", "Plot %plot% not found."),
+    WARN_NOT_STANDING_IN_PLOT("Warn - not standing in plot", "You are not standing in a plot."),
+    WARN_NOT_OWNER("Warn - not owner of plot", "You are not the owner of this plot."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),
@@ -62,28 +69,73 @@ public enum Message {
     SUCCESS_PLOT_DELETE("Success - plot delete", "Plot deleted."),
     SUCCESS_ITEMS_SENT("Success - items sent", "items sent to %player%"),
 
+    MISC_HERE("Misc - here", "here"),
     MISC_FORMAT("Misc - format", "Format is %format%"),
     MISC_ONE_USE("Misc - one use", "1 use only - click to activate"),
     MISC_PLOT_DEED_LORE("Misc - plot deed lore", "a serious looking piece of paper"),
 
-    STATUS_NOT_STANDING_IN_PLOT("Status - not standing in plot", "You are not standing in a plot."),
-    STATUS_NOT_OWNER("Status - not owner of plot", "You are not the owner of this plot."),
     STATUS_REGION_OCCUPIED("Status - region occupied", "Another region is too close. Your plot would overlap."),
-    STATUS_SUCCESS("Status - success", "Success."),
     STATUS_LOAD_ERROR("Status - load error", "Unable to load data."),
     STATUS_UNLOADED_DATA("Status - unloaded data", "Your user data is unloaded. Fetching data . . ."),
     STATUS_SPECIAL_CHARACTERS("Status - name special characters", "Plot names must consist of only a-z, A-Z, 0-9, _, and -"),
     STATUS_TOO_LONG("Status - name too long", "Plot names must be 20 characters or less"),
     STATUS_NAME_TAKEN("Status - name taken", "You already have a plot with that name"),
+    STATUS_RESERVED_NAME("Status - reserved name", "That name is reserved by Player Plot"),
 
     SCANNER_PLOT_OVERVIEW("Scanner - plot overview", "%plot% ~ %player% ~"),
     SCANNER_NO_PLOTS("Scanner - no plots", "No plots detected."),
 
     ;
 
+
+    private static File file = new File("plugins/PlayerPlot/Locale", PluginConfig.getLanguageFile() + ".yml");
+    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+    public static void load() {
+        if (file.exists()) {
+            try {
+                for (Language message : Language.values()) {
+                    MessageSetting setting = message.getMessageSetting();
+                    if (config.contains(setting.getLabel())) {
+                        setting.setMessage(config.getString(setting.getLabel(), setting.getMessage()));
+                    } else {
+                        config.set(setting.getLabel(), setting.getMessage());
+                    }
+                }
+                config.save(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public class MessageSetting {
+
+        private String label;
+        private String message;
+
+        public MessageSetting(String label, String message) {
+            this.label = label;
+            this.message = message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+    }
+
     private MessageSetting messageSetting;
 
-    Message(String messageSetting, String messageDefault) {
+    Language(String messageSetting, String messageDefault) {
         this.messageSetting = new MessageSetting(messageSetting, messageDefault);
     }
 

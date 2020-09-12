@@ -1,8 +1,7 @@
-package com.eclipsekingdom.playerplot.plot.protection;
+package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.util.XMaterial;
 import org.bukkit.ChatColor;
@@ -27,7 +26,7 @@ import org.bukkit.util.Vector;
 
 import java.util.List;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.WARN_PROTECTED;
+import static com.eclipsekingdom.playerplot.sys.Language.WARN_PROTECTED;
 
 public class PlotProtection implements Listener {
 
@@ -51,7 +50,7 @@ public class PlotProtection implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPiston(BlockPistonExtendEvent e) {
         Block piston = e.getBlock();
-        Vector direction = Version.current.isLegacy() ? getDirection(piston) : e.getDirection().getDirection();
+        Vector direction = Version.isLegacy() ? getDirection(piston) : e.getDirection().getDirection();
         Plot pistonPlot = PlotCache.getPlot(piston.getLocation());
         for (Block block : e.getBlocks()) {
             Plot blockPlot = PlotCache.getPlot(block.getLocation().add(direction.getX(), 0, direction.getZ()));
@@ -67,7 +66,7 @@ public class PlotProtection implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPistonRetract(BlockPistonRetractEvent e) {
         Block piston = e.getBlock();
-        Vector direction = Version.current.isLegacy() ? getDirection(piston) : e.getDirection().getDirection();
+        Vector direction = Version.isLegacy() ? getDirection(piston) : e.getDirection().getDirection();
         direction.multiply(-1);
         Plot pistonPlot = PlotCache.getPlot(piston.getLocation());
         for (Block block : e.getBlocks()) {

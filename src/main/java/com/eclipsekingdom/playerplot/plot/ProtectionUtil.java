@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.plot.protection;
+package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.util.XMaterial;
@@ -8,7 +8,6 @@ import org.bukkit.entity.EntityType;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 public class ProtectionUtil {
 
@@ -181,7 +180,7 @@ public class ProtectionUtil {
 
 
     private static boolean isStripLogAttempt(Material handMaterial, Material blockMaterial) {
-        return (Version.current.value >= 114 && axeItems.contains(handMaterial) && logMaterials.contains(blockMaterial));
+        return (Version.getValue() >= 114 && axeItems.contains(handMaterial) && logMaterials.contains(blockMaterial));
     }
 
 

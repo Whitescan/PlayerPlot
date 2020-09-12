@@ -5,37 +5,27 @@ import com.eclipsekingdom.playerplot.data.UserCache;
 import com.eclipsekingdom.playerplot.data.UserData;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
-import com.google.common.collect.ImmutableMap;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Map;
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.lang.Message.*;
+import static com.eclipsekingdom.playerplot.sys.Language.*;
 
 public class PluginHelp {
 
+    private static String rootCommand = PluginConfig.getRootCommand();
+
     public static void showTo(CommandSender sender) {
 
-        sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Player Plot");
+        sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "__Player Plot_______");
         sender.sendMessage(ChatColor.YELLOW + "-------" + ChatColor.GOLD + " " + LABEL_COMMANDS + " " + ChatColor.YELLOW + "-------");
-        for (Map.Entry<String, String> entry : plotCommandToDescription.entrySet()) {
-            sender.sendMessage(getFormatted(entry));
-        }
-
+        sendPlotCommands(sender);
         sender.sendMessage(ChatColor.GOLD + "- - - - - - -");
-        for (Map.Entry<String, String> entry : remotePlotCommandToDescription.entrySet()) {
-            sender.sendMessage(getFormatted(entry));
-        }
-
+        sendPlotActionCommands(sender);
         sender.sendMessage(ChatColor.GOLD + "- - - - - - -");
-        if (Permissions.canSummonPlotDeed(sender)) {
-            for (Map.Entry<String, String> entry : plotdeedCommandToDescription.entrySet()) {
-                sender.sendMessage(getFormatted(entry));
-            }
-        }
+        sendPlotDeedCommand(sender);
     }
 
     public static void showPlots(Player player) {
@@ -46,52 +36,38 @@ public class PluginHelp {
         int capacity = PluginConfig.getStartingPlotNum() + permInfo.getPlotBonus() + userData.getUnlockedPlots();
         player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + LABEL_PLOTS + ChatColor.ITALIC + "" + ChatColor.DARK_PURPLE + " -  (" + used + "/" + capacity + ")");
         player.sendMessage(ChatColor.YELLOW + "-------" + ChatColor.GOLD + " " + LABEL_COMMANDS + " " + ChatColor.YELLOW + "-------");
-        for (Map.Entry<String, String> entry : plotCommandToDescription.entrySet()) {
-            player.sendMessage(getFormatted(entry));
-        }
+        sendPlotCommands(player);
         player.sendMessage(ChatColor.GOLD + "- - - - - - -");
-        for (Map.Entry<String, String> entry : remotePlotCommandToDescription.entrySet()) {
-            player.sendMessage(getFormatted(entry));
-        }
+        sendPlotActionCommands(player);
     }
 
-    private static String getFormatted(Map.Entry<String, String> commandToDescription) {
-        String commandComponent = ChatColor.GOLD + "/" + commandToDescription.getKey();
-        commandComponent = commandComponent.replace("[", ChatColor.RED + "[");
-        commandComponent = commandComponent.replace("]", "]" + ChatColor.GOLD);
 
-        String descriptionComponent = ChatColor.RESET + commandToDescription.getValue();
-        descriptionComponent = descriptionComponent.replace("[", ChatColor.RED + "[");
-        descriptionComponent = descriptionComponent.replace("]", "]" + ChatColor.RESET);
-
-        return commandComponent + ": " + descriptionComponent;
+    private static void sendCommand(CommandSender sender, String message) {
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 
-    private static ImmutableMap<String, String> plotCommandToDescription = new ImmutableMap.Builder<String, String>()
-            .put("plot scan", HELP_PLOT_SCAN.toString())
-            .put("plot claim [plot]", HELP_PLOT_CLAIM.toString())
-            .put("plot rename [plot]", HELP_PLOT_RENAME.toString())
-            .put("plot free", HELP_PLOT_FREE.toString())
-            .put("plot info", HELP_PLOT_INFO.toString())
-            .put("plot list", HELP_PLOT_LIST.toString())
-            .put("plot flist", HELP_PLOT_FLIST.toString())
-            .put("plot trust [" + ARG_PLAYER + "]", HELP_PLOT_TRUST.toString())
-            .put("plot untrust [" + ARG_PLAYER + "]", HELP_PLOT_UNTRUST.toString())
-            .put("plot upgrade", HELP_PLOT_UPGRADE.toString())
-            .put("plot downgrade", HELP_PLOT_DOWNGRADE.toString())
-            .put("plot setcenter", HELP_PLOT_CENTER.toString())
-            .build();
+    private static void sendPlotCommands(CommandSender sender) {
+        sendCommand(sender, "&6/" + rootCommand + " scan: &f" + HELP_PLOT_SCAN.toString());
+        sendCommand(sender, "&6/" + rootCommand + " claim &7([plot])&6: &f" + HELP_PLOT_CLAIM.toString());
+        sendCommand(sender, "&6/" + rootCommand + " list: &f" + HELP_PLOT_LIST.toString());
+        sendCommand(sender, "&6/" + rootCommand + " flist: &f" + HELP_PLOT_FLIST.toString());
+    }
 
-    private static ImmutableMap<String, String> remotePlotCommandToDescription = new ImmutableMap.Builder<String, String>()
-            .put("rplot [plot] rename  [" + ARG_NAME + "]", HELP_PLOT_RENAME.toString())
-            .put("rplot [plot] free ", HELP_PLOT_FREE.toString())
-            .put("rplot [plot] info", HELP_PLOT_INFO.toString())
-            .put("rplot [plot] setcenter", HELP_PLOT_CENTER.toString())
-            .build();
 
-    private static ImmutableMap<String, String> plotdeedCommandToDescription = new ImmutableMap.Builder<String, String>()
-            .put("plotdeed [" + ARG_PLAYER + "] [" + ARG_AMOUNT + "]", HELP_PLOT_DEED.toString())
-            .build();
+    private static void sendPlotActionCommands(CommandSender sender) {
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 rename &c[" + ARG_NAME + "]&6: &f" + HELP_PLOT_RENAME.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 free: &f" + HELP_PLOT_FREE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 info: &f" + HELP_PLOT_INFO.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 trust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_TRUST.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 untrust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_UNTRUST.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 upgrade: &f" + HELP_PLOT_UPGRADE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 downgrade: &f" + HELP_PLOT_DOWNGRADE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 setcenter: &f" + HELP_PLOT_CENTER.toString());
+    }
 
+
+    private static void sendPlotDeedCommand(CommandSender sender) {
+        sendCommand(sender, "&6/plotdeed &c[" + ARG_PLAYER + "] [" + ARG_AMOUNT + "]&6: &f" + HELP_PLOT_DEED.toString());
+    }
 
 }

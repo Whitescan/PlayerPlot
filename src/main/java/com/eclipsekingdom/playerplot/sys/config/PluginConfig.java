@@ -10,43 +10,46 @@ public class PluginConfig {
     private static File file = new File("plugins/PlayerPlot", "config.yml");
     private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
-    private static String languageFileString = "Language file";
+    private static String languageFileField = "Language file";
     private static String languageFile = "en";
 
-    private static String startingPlotNumString = "Starting Plot Amount";
+    private static String useAliasField = "Use /pplot root";
+    private static boolean useAlias = false;
+
+    private static String startingPlotNumField = "Starting Plot Amount";
     private static int startingPlotNum = 1;
 
-    private static String maxPlotNumString = "Maximum Plot Amount";
+    private static String maxPlotNumField = "Maximum Plot Amount";
     private static int maxPlotNum = 50;
 
-    private static String unitSizeString = "Plot Unit Size";
+    private static String unitSizeField = "Plot Unit Size";
     private static int unitSize = 25;
 
-    private static String useDatabaseString = "Use database";
+    private static String useDatabaseField = "Use database";
     private static boolean useDatabase = false;
 
-    private static String hostString = "host";
+    private static String hostField = "host";
     private static String host = "00.00.000.00";
 
-    private static String portString = "port";
+    private static String portField = "port";
     private static String port = "3306";
 
-    private static String databaseString = "database";
+    private static String databaseField = "database";
     private static String database = "myDatabase";
 
-    private static String userString = "username";
+    private static String userField = "username";
     private static String user = "myUsername";
 
-    private static String passString = "password";
+    private static String passField = "password";
     private static String pass = "myPassword";
 
-    private static String sslString = "ssl";
+    private static String sslField = "ssl";
     private static boolean ssl = false;
 
-    private static String useDynmapString = "Use dynmap";
+    private static String useDynmapField = "Use dynmap";
     private static boolean useDynmap = true;
 
-    private static String showPlotsMarkersByDefaultString = "Show Plot Markers by Default";
+    private static String showPlotsMarkersByDefaultField = "Show Plot Markers by Default";
     private static boolean showPlotMarkersByDefault = true;
 
     public PluginConfig() {
@@ -57,23 +60,36 @@ public class PluginConfig {
     private void load() {
         if (file.exists()) {
             try {
-                languageFile = config.getString(languageFileString, languageFile);
-                startingPlotNum = config.getInt(startingPlotNumString, startingPlotNum);
-                maxPlotNum = config.getInt(maxPlotNumString, maxPlotNum);
-                unitSize = config.getInt(unitSizeString, unitSize);
-                useDatabase = config.getBoolean(useDatabaseString, useDatabase);
-                host = config.getString(hostString, host);
-                port = config.getString(portString, port);
-                database = config.getString(databaseString, database);
-                user = config.getString(userString, user);
-                pass = config.getString(passString, pass);
-                ssl = config.getBoolean(sslString, ssl);
-                useDynmap = config.getBoolean(useDynmapString, useDynmap);
-                showPlotMarkersByDefault = config.getBoolean(showPlotsMarkersByDefaultString, showPlotMarkersByDefault);
+                languageFile = config.getString(languageFileField, languageFile);
+                useAlias = config.getBoolean(useAliasField, useAlias);
+                startingPlotNum = config.getInt(startingPlotNumField, startingPlotNum);
+                maxPlotNum = config.getInt(maxPlotNumField, maxPlotNum);
+                unitSize = config.getInt(unitSizeField, unitSize);
+                useDatabase = config.getBoolean(useDatabaseField, useDatabase);
+                host = config.getString(hostField, host);
+                port = config.getString(portField, port);
+                database = config.getString(databaseField, database);
+                user = config.getString(userField, user);
+                pass = config.getString(passField, pass);
+                ssl = config.getBoolean(sslField, ssl);
+                useDynmap = config.getBoolean(useDynmapField, useDynmap);
+                showPlotMarkersByDefault = config.getBoolean(showPlotsMarkersByDefaultField, showPlotMarkersByDefault);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static String getLanguageFile() {
+        return languageFile;
+    }
+
+    public static boolean isUseAlias() {
+        return useAlias;
+    }
+
+    public static String getRootCommand() {
+        return useAlias ? "pplot" : "plot";
     }
 
     public static int getStartingPlotNum() {
@@ -114,10 +130,6 @@ public class PluginConfig {
 
     public static boolean isSsl() {
         return ssl;
-    }
-
-    public static String getLanguageFile() {
-        return languageFile;
     }
 
     public static boolean isUseDynmap() {

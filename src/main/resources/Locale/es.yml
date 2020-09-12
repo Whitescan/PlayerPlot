@@ -39,6 +39,8 @@ Warn - player not found: Player %player% not found
 Warn - plot max: Ya tienes el máximo número de parcelas.
 Warn - protected: Esta región está protegida.
 Warn - plot not found: No se ha encontrado la parcela %plot%.
+Warn - not standing in plot: No estás en ninguna parcela.
+Warn - not owner of plot: No eres el dueño de esta parcela.
 Success - plot upgrade: '%plot% ha sido mejorado.'
 Success - plot downgrade: La parcela %plot% ha sido degradada.
 Success - plot rename: La parcela se ha renombrado a %plot%.
@@ -50,18 +52,16 @@ Success - plot center: '%plot% center updated.'
 Success - invited: '%player% te ha invitado a su parcela, %plot%.'
 Success - plot delete: La parcela ha sido eliminado.
 Success - items sent: items sent to %player%
+Misc - here: here
 Misc - format: El formato es %format%
 Misc - one use: solo 1 uso - clic para activar
 Misc - plot deed lore: una pieza de papel seria
-Status - not standing in plot: No estás en ninguna parcela.
-Status - not owner of plot: No eres el dueño de esta parcela.
 Status - region occupied: Otra región está cerca. Tu parcela se sobrepondría.
-Status - success: Éxito.
 Status - load error: No se puede cargar datos.
 Status - unloaded data: Los datos de los usuarios han sido descargados. Recuperando datos. . .
-Status - name special characters: Los nombres de las parcelas deben contener solo a-z, A-Z, 0-9, _,
-  y -
-Status - name too long: Los nombres de las parcelas deben tener 20 caracteres o menos
-Status - name taken: Ya tienes una parcela con este nombre
+Status - name special characters: Los nombres de las parcelas deben contener solo a-z, A-Z, 0-9, _, y -.
+Status - name too long: Los nombres de las parcelas deben tener 20 caracteres o menos.
+Status - name taken: Ya tienes una parcela con este nombre.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: No se ha detectado parcela.
