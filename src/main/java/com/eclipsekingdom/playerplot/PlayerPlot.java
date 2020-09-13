@@ -15,7 +15,8 @@ import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.ConfigLoader;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.AutoCompleteListener;
-import com.eclipsekingdom.playerplot.util.scanner.PlotScanner;
+import com.eclipsekingdom.playerplot.util.border.Border;
+import com.eclipsekingdom.playerplot.plot.PlotScanner;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -65,7 +66,7 @@ public final class PlayerPlot extends JavaPlugin {
         }
         UserCache.save();
         PlotCache.save();
-        PlotScanner.shutdown();
+        Border.shutdown();
     }
 
     public static Plugin getPlugin() {

@@ -27,7 +27,7 @@ Console - plugin detected: '%plugin% detectado'
 Console - file error: Error guardando %file%
 Arg - amount: contador
 Arg - player: jugador
-Arg - name: name
+Arg - name: nombre
 Warn - no permission: No tienes permisos para este comando.
 Warn - plot limit: Has alcanzado el limite de tu parcela.
 Warn - not friend: '%player% no está confiado en tu %plot%.'
@@ -41,7 +41,7 @@ Warn - protected: Esta región está protegida.
 Warn - plot not found: No se ha encontrado la parcela %plot%.
 Warn - not standing in plot: No estás en ninguna parcela.
 Warn - not owner of plot: No eres el dueño de esta parcela.
-Warn - outside plot bounds: Spawn must be within plot bounds.
+Warn - outside plot bounds: El engendro debe estar dentro de los límites de la parcela.
 Success - plot upgrade: '%plot% ha sido mejorado.'
 Success - plot downgrade: La parcela %plot% ha sido degradada.
 Success - plot rename: La parcela se ha renombrado a %plot%.
@@ -52,9 +52,9 @@ Success - plot free: La parcela %plot% ha sido eliminada.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% te ha invitado a su parcela, %plot%.'
 Success - plot delete: La parcela ha sido eliminado.
-Success - items sent: items sent to %player%
-Success - spawn set: Spawn point set.
-Misc - here: here
+Success - items sent: Artículos enviados a %player%.
+Success - spawn set: Punto colocado.
+Misc - here: aquí
 Misc - format: El formato es %format%
 Misc - one use: solo 1 uso - clic para activar
 Misc - plot deed lore: una pieza de papel seria
@@ -64,6 +64,6 @@ Status - unloaded data: Los datos de los usuarios han sido descargados. Recupera
 Status - name special characters: Los nombres de las parcelas deben contener solo a-z, A-Z, 0-9, _, y -.
 Status - name too long: Los nombres de las parcelas deben tener 20 caracteres o menos.
 Status - name taken: Ya tienes una parcela con este nombre.
-Status - reserved name: That name is reserved by Player Plot.
+Status - reserved name: Ese nombre está reservado por Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: No se ha detectado parcela.

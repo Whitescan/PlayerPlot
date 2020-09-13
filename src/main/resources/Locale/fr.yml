@@ -27,7 +27,7 @@ Console - plugin detected: '%plugin% détecté'
 Console - file error: Erreur de sauvegarde du fichier  %file%
 Arg - amount: compteur
 Arg - player: joueur
-Arg - name: name
+Arg - name: Nom
 Warn - no permission: Vous n'avez pas la permission d'effectuer cette commande.
 Warn - plot limit: Vous avez atteint votre limite de parcelles.
 Warn - not friend: "%player% n'est pas approuvé par %plot%."
@@ -41,7 +41,7 @@ Warn - protected: Cette région est protégée.
 Warn - plot not found: La parcelle %plot% n'existe pas.
 Warn - not standing in plot: Vous ne vous situez pas sur une parcelle.
 Warn - not owner of plot: Vous n'êtes pas le propriétaire de cette parcelle.
-Warn - outside plot bounds: Spawn must be within plot bounds.
+Warn - outside plot bounds: Le point doit être dans les limites de l'intrigue.
 Success - plot upgrade: 'La parcelle %plot% a été améliorée .'
 Success - plot downgrade: La parcelle %plot% a été rétrogradée.
 Success - plot rename: Parcelle renommée en %plot%.
@@ -52,9 +52,9 @@ Success - plot free: La parcelle %plot% a été supprimée.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% vous à invité sur ça parcelle: %plot%.'
 Success - plot delete: Parcelle supprimée.
-Success - items sent: items sent to %player%
+Success - items sent: Articles envoyés à  %player%.
 Success - spawn set: Spawn point set.
-Misc - here: here
+Misc - here: ici
 Misc - format: Le format est %format%
 Misc - plot deed lore: un morceau de papier qui semble sérieux
 Misc - one use: 1 utilisation seulement - cliquez pour activer
@@ -64,6 +64,6 @@ Status - unloaded data: Vos données d'utilisateur ne sont pas chargées. Récup
 Status - name special characters: Les noms de parcelles doivent être constitués uniquement de a-z, A-Z, 0-9, _, et -.
 Status - name too long: Les noms de parcelle doivent faire au max 20 caractères.
 Status - name taken: Vous avez déjà une parcelle avec ce nom.
-Status - reserved name: That name is reserved by Player Plot.
+Status - reserved name: Ce nom est réservé par Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Aucune parcelle détectée.

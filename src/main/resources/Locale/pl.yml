@@ -27,7 +27,7 @@ Console - plugin detected: '%plugin% znaleziony'
 Console - file error: Błąd przy zapisywaniu %file%
 Arg - amount: liczba
 Arg - player: gracz
-Arg - name: name
+Arg - name: imię
 Warn - no permission: Nie masz permisji, żeby użyc tej komendy.
 Warn - plot limit: Osiągnąłeś limit ilości działek.
 Warn - not friend: '%player% nie jest dodany do %plot%, jako zaufana osoba.'
@@ -41,7 +41,7 @@ Warn - protected: Ten teren jest chroniony.
 Warn - plot not found: Działka %plot% nie została znaleziona.
 Warn - not standing in plot: Nie stoisz na terenie działki.
 Warn - not owner of plot: Nie jesteś właścicielem tej działki.
-Warn - outside plot bounds: Spawn must be within plot bounds.
+Warn - outside plot bounds: Punkt musi znajdować się w granicach działki.
 Success - plot upgrade: '%plot% została powiększona.'
 Success - plot downgrade: '%plot% została zmniejszona.'
 Success - plot rename: Nazwa działki zostala zmieniona na %plot%.
@@ -52,9 +52,9 @@ Success - plot free: Działka %plot% została usunięta.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% zaprosił Cię do jego działki - %plot%.'
 Success - plot delete: Działka usunięta.
-Success - items sent: items sent to %player%
+Success - items sent: Elementy wysłane do %player%
 Success - spawn set: Spawn point set.
-Misc - here: here
+Misc - here: tutaj
 Misc - format: Format to %format%
 Misc - plot deed lore: poważnie wyglądający kawałek papieru
 Misc - one use: Tylko 1 użycie - kliknij aby aktywować
@@ -64,6 +64,6 @@ Status - unloaded data: Twoje dane użytkownika nie są załadowane. Ładowanie 
 Status - name special characters: Nazwy działek mogą zawierać tylko a-z, A-Z, 0-9, _, oraz -.
 Status - name too long: Nazwa działki może zawierać maksymalnie 20 znaków.
 Status - name taken: Już posiadasz działkę o takiej nazwie.
-Status - reserved name: That name is reserved by Player Plot.
+Status - reserved name: To imię jest zastrzeżone przez Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Żadne działki nie zostały wykryte.

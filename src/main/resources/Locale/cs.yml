@@ -27,7 +27,7 @@ Console - plugin detected: '%plugin% detekován'
 Console - file error: Error ukládání %file%
 Arg - amount: počet
 Arg - player: hráč
-Arg - name: name
+Arg - name: název
 Warn - no permission: Na tento příkaz nemáš dostatečná práva.
 Warn - plot limit: Dosáhl si limitu parcel.
 Warn - not friend: '%player% není důvěryhodný %plot%.'
@@ -41,7 +41,7 @@ Warn - protected: Tento region je chráněn.
 Warn - plot not found: Parcela %plot% nebyla nalezena.
 Warn - not standing in plot: Nestojíš v parcele.
 Warn - not owner of plot: Nejsi vlastník této parcely.
-Warn - outside plot bounds: Spawn must be within plot bounds.
+Warn - outside plot bounds: Umístit musí být v mezích Parcely.
 Success - plot upgrade: '%plot% byl vylepšen.'
 Success - plot downgrade: Parcela %plot% byla downgradována.
 Success - plot rename: Parcela úspěšně přejmenována na %plot%.
@@ -52,9 +52,9 @@ Success - plot free: Parcela %plot% byla smazána.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% tě přizval na svoji parcelu, %plot%.'
 Success - plot delete: Parcela Smazána.
-Success - items sent: items sent to %player%
+Success - items sent: Položky zaslané %player%.
 Success - spawn set: Spawn point set.
-Misc - here: here
+Misc - here: zde
 Misc - format: Formát je %format%
 Misc - one use: Pouze 1 použití - klikni pro aktivaci
 Misc - plot deed lore: seriózně vypadající kousek listiny
@@ -64,6 +64,6 @@ Status - unloaded data: Tvá uživatelská data jsou nenačtena. Načítám data
 Status - name special characters: Názvy parcely mohou pouze obsahovat a-z, A-Z, 0-9, _, a -.
 Status - name too long: Názvy parcely můžou obsahovat 20 znaků nabo méně.
 Status - name taken: Již máš parcelu s takovým jménem.
-Status - reserved name: That name is reserved by Player Plot.
+Status - reserved name: Toto název si vyhrazuje Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots:  Žádné parcely nebyly detekovány.

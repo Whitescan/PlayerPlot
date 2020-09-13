@@ -4,7 +4,6 @@ import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.util.X.XSound;
-import com.eclipsekingdom.playerplot.util.scanner.PlotScanner;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;

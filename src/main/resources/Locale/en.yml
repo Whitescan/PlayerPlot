@@ -52,7 +52,7 @@ Success - plot free: Plot %plot% was deleted.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% has invited you to their plot, %plot%.'
 Success - plot delete: Plot deleted.
-Success - items sent: items sent to %player%
+Success - items sent: Items sent to %player%.
 Success - spawn set: Spawn point set.
 Misc - here: here
 Misc - format: Format is %format%

@@ -13,7 +13,6 @@ import com.eclipsekingdom.playerplot.sys.PluginHelp;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.*;
 import com.eclipsekingdom.playerplot.util.X.XSound;
-import com.eclipsekingdom.playerplot.util.scanner.PlotScanner;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -59,7 +58,7 @@ public class CommandPlot implements CommandExecutor {
                 } else {
                     String sub = args[0].toLowerCase();
                     if (sub.equals("scan")) {
-                        processScan(player);
+                        processScan(player, args);
                     } else if (sub.equals("claim")) {
                         processClaim(player, args);
                     } else if (sub.equals("list")) {
@@ -151,14 +150,16 @@ public class CommandPlot implements CommandExecutor {
         }
     }
 
-    private void processScan(Player player) {
+    private void processScan(Player player, String[] args) {
+        int duration = args.length > 1 && (args[1].equalsIgnoreCase("-long") || args[1].equalsIgnoreCase("-l")) ? 30 : 6;
+
         Plot plot = PlotCache.getPlot(player.getLocation());
         if (plot != null) {
             if (XSound.BLOCK_BEACON_POWER_SELECT.isSupported()) {
                 player.playSound(player.getLocation(), XSound.BLOCK_BEACON_POWER_SELECT.parseSound(), 1f, 0.77f);
             }
             player.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.DARK_PURPLE + SCANNER_PLOT_OVERVIEW.fromPlayerAndPlot(plot.getOwnerName(), plot.getName()));
-            PlotScanner.showPlot(player, plot, 5);
+            PlotScanner.showPlot(player, plot, duration);
         } else {
             player.sendMessage(ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + SCANNER_NO_PLOTS);
         }
@@ -370,7 +371,7 @@ public class CommandPlot implements CommandExecutor {
         }
     }
 
-    private void processSetSpawn(Player player, Plot plot) { //TODO downgrade, setcenter remove if out of bounds,
+    private void processSetSpawn(Player player, Plot plot) {
         if (Permissions.canTeleport(player)) {
             Location location = player.getLocation();
             if (plot.contains(location)) {
