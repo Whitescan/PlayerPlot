@@ -1,5 +1,5 @@
 name: PlayerPlot
-version: 1.17.3
+version: 1.18.0
 main: com.eclipsekingdom.playerplot.PlayerPlot
 api-version: 1.13
 authors: [sword]
@@ -31,5 +31,5 @@ permissions:
     description: grants access to all player's plots
     default: op
   playerplot.teleport:
-    description: grants access to /toplot command
+    description: grants access to teleportation commands
     default: op

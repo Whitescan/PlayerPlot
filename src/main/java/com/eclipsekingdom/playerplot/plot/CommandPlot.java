@@ -359,7 +359,9 @@ public class CommandPlot implements CommandExecutor {
         Location location = player.getLocation();
         RegionValidation.Status regionStatus = RegionValidation.canPlotBeRegisteredAt(location, plot.getSideLength(), plot.getID());
         if (regionStatus == RegionValidation.Status.VALID) {
+            PlotCache.unassignFromZones(plot);
             plot.setCenter(location);
+            PlotCache.assignToZones(plot);
             if (!plot.contains(plot.getSpawn())) plot.removeSpawn();
             PlotCache.touch(plot);
             player.sendMessage(SUCCESS_PLOT_CENTER.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));

@@ -18,6 +18,7 @@ public class PlayerPusher extends BukkitRunnable {
     private double bz1;
     private double bx2;
     private double bz2;
+    private boolean cancelled = false;
 
     public PlayerPusher(Player player, double x, double z, double size) {
         double rad = size / 2.0;
@@ -47,6 +48,16 @@ public class PlayerPusher extends BukkitRunnable {
         } else {
             cancel();
         }
+    }
+
+    @Override
+    public void cancel() {
+        super.cancel();
+        this.cancelled = true;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
     }
 
 }

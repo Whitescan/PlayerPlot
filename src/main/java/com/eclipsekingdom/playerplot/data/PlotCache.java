@@ -43,7 +43,7 @@ public class PlotCache {
         }
     }
 
-    private static void assignToZones(Plot plot) {
+    public static void assignToZones(Plot plot) {
         Set<GridZone> zones = new HashSet<>();
         for (PlotPoint corner : plot.getCorners()) {
             zones.add(GridZone.fromPlotPoint(corner));
@@ -131,7 +131,7 @@ public class PlotCache {
         unassignFromZones(plot);
     }
 
-    private static void unassignFromZones(Plot plot) {
+    public static void unassignFromZones(Plot plot) {
         Set<GridZone> zones = new HashSet<>();
         for (PlotPoint corner : plot.getCorners()) {
             zones.add(GridZone.fromPlotPoint(corner));

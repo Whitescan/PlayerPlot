@@ -6,9 +6,7 @@ import com.eclipsekingdom.playerplot.data.UserCache;
 import com.eclipsekingdom.playerplot.data.event.DataLoadListener;
 import com.eclipsekingdom.playerplot.loot.CommandPlotDeed;
 import com.eclipsekingdom.playerplot.loot.PlotDeedListener;
-import com.eclipsekingdom.playerplot.plot.CommandPlot;
-import com.eclipsekingdom.playerplot.plot.CommandToPlot;
-import com.eclipsekingdom.playerplot.plot.PlotProtection;
+import com.eclipsekingdom.playerplot.plot.*;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
 import com.eclipsekingdom.playerplot.sys.Version;
@@ -16,7 +14,6 @@ import com.eclipsekingdom.playerplot.sys.config.ConfigLoader;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.AutoCompleteListener;
 import com.eclipsekingdom.playerplot.util.border.Border;
-import com.eclipsekingdom.playerplot.plot.PlotScanner;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -53,6 +50,7 @@ public final class PlayerPlot extends JavaPlugin {
         }
 
         new PlotProtection();
+        new PlotListener();
         new PlotDeedListener();
         new PlotScanner();
         new DataLoadListener();
@@ -67,6 +65,7 @@ public final class PlayerPlot extends JavaPlugin {
         UserCache.save();
         PlotCache.save();
         Border.shutdown();
+        PlotBeam.shutdown();
     }
 
     public static Plugin getPlugin() {

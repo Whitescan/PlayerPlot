@@ -3,7 +3,6 @@ package com.eclipsekingdom.playerplot.plot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -24,12 +23,7 @@ public class CommandToPlot implements CommandExecutor {
                     Plot targetPlot = PlotCache.getPlayerPlot(player.getUniqueId(), args[0]);
                     if (targetPlot != null) {
                         Location targetLoc = targetPlot.getSpawn();
-                        XSound tpSound = XSound.BLOCK_BEACON_POWER_SELECT;
-                        if (tpSound.isSupported())
-                            player.playSound(player.getLocation(), tpSound.parseSound(), 0.5f, 1.9f);
-                        player.teleport(targetLoc);
-                        PlotScanner.showPlot(player, new Plot(player, targetLoc, "portal", 3), 1);
-                        if (tpSound.isSupported()) player.playSound(targetLoc, tpSound.parseSound(), 0.5f, 1.9f);
+                        new PlotBeam(player, targetLoc);
                         return true;
                     } else {
                         player.sendMessage(Language.WARN_PLOT_NOT_FOUND.coloredFromPlot(args[0], ChatColor.RED, ChatColor.DARK_RED));

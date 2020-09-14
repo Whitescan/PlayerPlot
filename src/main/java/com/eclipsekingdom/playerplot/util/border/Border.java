@@ -79,7 +79,7 @@ public class Border {
     public static UUID showBeam(Player player) {
         Location loc = player.getLocation();
         World world = loc.getWorld();
-        return showBorder(player, world, loc.getX(), loc.getZ(), 3);
+        return showBorder(player, world, loc.getX(), loc.getZ(), 2);
     }
 
     private static UUID showBorder(Player player, World world, double x, double z, double size) {
