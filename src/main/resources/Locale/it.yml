@@ -1,3 +1,4 @@
+---
 Label - commands: "Comandi"
 Label - plots: "Lotti"
 Label - friend plots: "Lotti Degli Amici"
@@ -26,7 +27,6 @@ Help - plot setspawn: "set plot spawn point"
 Help - toplot: "teleport to plot"
 Help - plot deed: "give plot deeds to player"
 Console - plugin detected: "%plugin% rilevato"
-Console - file error: "Errore durante il salvataggio del file %file%"
 Arg - amount: "quantità"
 Arg - player: "giocatori"
 Arg - name: "nome"
