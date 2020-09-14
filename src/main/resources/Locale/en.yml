@@ -21,7 +21,9 @@ Help - plot trust: add player to plot
 Help - plot untrust: remove player from plot
 Help - plot upgrade: increase plot size
 Help - plot downgrade: decrease plot size
-Help - plot center: set plot center
+Help - plot setcenter: set plot center
+Help - plot setspawn: set plot spawn point
+Help - toplot: teleport to plot
 Help - plot deed: give plot deeds to player
 Console - plugin detected: '%plugin% detected'
 Console - file error: Error saving %file%

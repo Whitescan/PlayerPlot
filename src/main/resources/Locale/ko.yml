@@ -21,7 +21,9 @@ Help - plot trust: �÷��̾ ���� �߰�
 Help - plot untrust: �÷��̾ ������ ����
 Help - plot upgrade: �� ũ�� �ø���
 Help - plot downgrade: �� ũ�� ���̱�
-Help - plot center: set plot center
+Help - plot setcenter: set plot center
+Help - plot setspawn: set plot spawn point
+Help - toplot: teleport to plot
 Help - plot deed: give plot deeds to player
 Console - plugin detected: '%plugin%��(��) �����Ǿ����ϴ�'
 Console - file error: '%file% ������ ���� ����Ǿ����ϴ�.'

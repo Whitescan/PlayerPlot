@@ -3,7 +3,7 @@ package com.eclipsekingdom.playerplot.data;
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.plot.Plot;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.sys.storage.DatabaseConnection;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
@@ -12,21 +12,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.Executors;
 
 public class Database {
 
-    private String host;
-    private int port;
-    private String database;
-    private String username;
-    private String password;
-
-    private Connection connection;
+    private static DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
 
     private boolean initialized = false;
 
@@ -35,18 +30,13 @@ public class Database {
     }
 
     public Database() {
-        this.host = PluginConfig.getHost();
-        this.port = Integer.parseInt(PluginConfig.getPort());
-        this.database = PluginConfig.getDatabase();
-        this.username = PluginConfig.getUsername();
-        this.password = PluginConfig.getPassword();
         initialize();
     }
 
     public void initialize() {
         try {
-            openConnection();
-            Statement statement = connection.createStatement();
+            databaseConnection.openConnection();
+            Statement statement = databaseConnection.getConnection().createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS PUser (" +
                     "uuid CHAR(36)," +
                     "unlockedPlots INT(4) DEFAULT 0," +
@@ -89,14 +79,6 @@ public class Database {
         }
     }
 
-    public void openConnection() throws SQLException, ClassNotFoundException {
-        synchronized (this) {
-            if (connection != null && !connection.isClosed()) return;
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + "?autoReconnect=true&useSSL=" + PluginConfig.isSsl(), this.username, this.password);
-        }
-    }
-
     public void fetchUserDataSync(UUID playerID) {
         fetchUserData(playerID);
     }
@@ -114,8 +96,8 @@ public class Database {
 
     public void fetchUserData(UUID playerID) {
         try {
-            openConnection();
-            ResultSet userResult = connection.createStatement().executeQuery("SELECT * FROM PUser WHERE uuid = '" + playerID + "';");
+            databaseConnection.openConnection();
+            ResultSet userResult = databaseConnection.getConnection().createStatement().executeQuery("SELECT * FROM PUser WHERE uuid = '" + playerID + "';");
             UserData userData;
             if (!userResult.next()) {
                 userData = new UserData();
@@ -156,8 +138,8 @@ public class Database {
 
         int unlockedPlots = userData.getUnlockedPlots();
         try {
-            openConnection();
-            connection.createStatement().executeUpdate("REPLACE INTO PUser (uuid, unlockedPlots)" +
+            databaseConnection.openConnection();
+            databaseConnection.getConnection().createStatement().executeUpdate("REPLACE INTO PUser (uuid, unlockedPlots)" +
                     "VALUES ('" + playerID + "', " + unlockedPlots + ");");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -169,8 +151,8 @@ public class Database {
     public List<Plot> fetchPlots() {
         List<Plot> plots = new ArrayList<>();
         try {
-            openConnection();
-            ResultSet plotResults = connection.createStatement().executeQuery("SELECT * FROM PPlot;");
+            databaseConnection.openConnection();
+            ResultSet plotResults = databaseConnection.getConnection().createStatement().executeQuery("SELECT * FROM PPlot;");
             while (plotResults.next()) {
                 Plot plot = extractPlot(plotResults);
                 plots.add(plot);
@@ -196,7 +178,8 @@ public class Database {
         PlotPoint max = new PlotPoint(maxX, maxZ);
         World world = Bukkit.getWorld(plotResults.getString("world"));
         int components = plotResults.getInt("components");
-        ResultSet friendsResult = connection.createStatement().executeQuery("SELECT * FROM PTrusts WHERE plotID = '" + plotID + "';");
+        Statement statement = databaseConnection.getConnection().createStatement();
+        ResultSet friendsResult = statement.executeQuery("SELECT * FROM PTrusts WHERE plotID = '" + plotID + "';");
         List<Friend> friends = new ArrayList<>();
         while (friendsResult.next()) {
             UUID friendID = UUID.fromString(friendsResult.getString("friendID"));
@@ -204,7 +187,7 @@ public class Database {
             friends.add(new Friend(friendID, friendName));
         }
 
-        ResultSet spawnResult = connection.createStatement().executeQuery("SELECT * FROM PSpawn WHERE plotID = '" + plotID + "';");
+        ResultSet spawnResult = statement.executeQuery("SELECT * FROM PSpawn WHERE plotID = '" + plotID + "';");
         LocationParts locationParts = null;
         if (spawnResult.next()) {
             String worldName = spawnResult.getString("worldName");
@@ -221,8 +204,8 @@ public class Database {
 
     public void storePlot(UUID plotID, Plot plot) {
         try {
-            openConnection();
-            Statement statement = connection.createStatement();
+            databaseConnection.openConnection();
+            Statement statement = databaseConnection.getConnection().createStatement();
             if (plot != null) {
                 String name = plot.getName();
                 UUID ownerID = plot.getOwnerID();
@@ -243,7 +226,7 @@ public class Database {
                     statement.executeUpdate("INSERT INTO PTrusts (plotID, friendID, friendName) " +
                             "VALUES ('" + plotID + "','" + friend.getUuid() + "', '" + friend.getName() + "');");
                 }
-                LocationParts spawn = plot.getSpawn();
+                LocationParts spawn = plot.getSpawnParts();
                 if (spawn != null) {
                     statement.executeUpdate("REPLACE INTO PSpawn (plotId, worldName, x, y, z, yaw, pitch) " +
                             "VALUES ('" + plotID + "', '" + spawn.getWorldName() + "', '" + spawn.getX() + "', '" +
@@ -264,14 +247,7 @@ public class Database {
     }
 
     public void shutdown() {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-        }
-
+        databaseConnection.shutdown();
     }
-
 
 }

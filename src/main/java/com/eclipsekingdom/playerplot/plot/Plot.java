@@ -23,7 +23,7 @@ public class Plot {
     private PlotPoint minCorner;
     private PlotPoint maxCorner;
     private int components = 1;
-    private LocationParts spawn;
+    private LocationParts spawnParts;
 
     //initialized
     private int sideLength;
@@ -42,7 +42,7 @@ public class Plot {
         initialize();
     }
 
-    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, World world, int components, List<Friend> friends, LocationParts spawn) {
+    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, World world, int components, List<Friend> friends, LocationParts spawnParts) {
         this.ID = plotID;
         this.name = name;
         this.ownerID = ownerID;
@@ -52,7 +52,7 @@ public class Plot {
         this.components = components;
         this.world = world;
         this.friends = friends;
-        this.spawn = spawn;
+        this.spawnParts = spawnParts;
 
         initialize();
     }
@@ -81,7 +81,6 @@ public class Plot {
         this.corners = calculateCorners();
     }
 
-
     private int calculateSideLength() {
         return maxCorner.getX() - minCorner.getX() + 1;
     }
@@ -103,12 +102,24 @@ public class Plot {
         return corners;
     }
 
-    public void setSpawn(LocationParts spawn) {
-        this.spawn = spawn;
+    public void setSpawn(Location spawn) {
+        this.spawnParts = new LocationParts(spawn);
     }
 
-    public LocationParts getSpawn() {
-        return spawn;
+    public void removeSpawn() {
+        this.spawnParts = null;
+    }
+
+    public LocationParts getSpawnParts() {
+        return spawnParts;
+    }
+
+    public Location getSpawn() {
+        if (spawnParts != null) {
+            return spawnParts.getLocation();
+        } else {
+            return world.getHighestBlockAt(center.asLocation(world)).getLocation().add(0.5, 1, 0.5);
+        }
     }
 
     public UUID getID() {

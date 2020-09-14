@@ -48,21 +48,23 @@ public class PluginHelp {
 
     private static void sendPlotCommands(CommandSender sender) {
         sendCommand(sender, "&6/" + rootCommand + " scan: &f" + HELP_PLOT_SCAN.toString());
-        sendCommand(sender, "&6/" + rootCommand + " claim &7([plot])&6: &f" + HELP_PLOT_CLAIM.toString());
+        sendCommand(sender, "&6/" + rootCommand + " claim &7([" + ARG_PLOT + "])&6: &f" + HELP_PLOT_CLAIM.toString());
         sendCommand(sender, "&6/" + rootCommand + " list: &f" + HELP_PLOT_LIST.toString());
         sendCommand(sender, "&6/" + rootCommand + " flist: &f" + HELP_PLOT_FLIST.toString());
+        sendCommand(sender, "&6/toplot &c[plot]&6: &f" + HELP_TOPLOT.toString());
     }
 
 
     private static void sendPlotActionCommands(CommandSender sender) {
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 rename &c[" + ARG_NAME + "]&6: &f" + HELP_PLOT_RENAME.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 free: &f" + HELP_PLOT_FREE.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 info: &f" + HELP_PLOT_INFO.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 trust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_TRUST.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 untrust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_UNTRUST.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 upgrade: &f" + HELP_PLOT_UPGRADE.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 downgrade: &f" + HELP_PLOT_DOWNGRADE.toString());
-        sendCommand(sender, "&6/" + rootCommand + " &7(@[plot])&6 setcenter: &f" + HELP_PLOT_CENTER.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 rename &c[" + ARG_NAME + "]&6: &f" + HELP_PLOT_RENAME.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 free: &f" + HELP_PLOT_FREE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 info: &f" + HELP_PLOT_INFO.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 trust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_TRUST.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 untrust &c[" + ARG_PLAYER + "]&6: &f" + HELP_PLOT_UNTRUST.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 upgrade: &f" + HELP_PLOT_UPGRADE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 downgrade: &f" + HELP_PLOT_DOWNGRADE.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 setcenter: &f" + HELP_PLOT_SET_CENTER.toString());
+        sendCommand(sender, "&6/" + rootCommand + " &7(@[" + ARG_PLOT + "])&6 setspawn: &f" + HELP_PLOT_SET_SPAWN.toString());
     }
 
 

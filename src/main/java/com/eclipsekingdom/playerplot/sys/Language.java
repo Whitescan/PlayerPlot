@@ -33,7 +33,9 @@ public enum Language {
     HELP_PLOT_UNTRUST("Help - plot untrust", "remove player from plot"),
     HELP_PLOT_UPGRADE("Help - plot upgrade", "increase plot size"),
     HELP_PLOT_DOWNGRADE("Help - plot downgrade", "decrease plot size"),
-    HELP_PLOT_CENTER("Help - plot center", "set plot center"),
+    HELP_PLOT_SET_CENTER("Help - plot setcenter", "set plot center"),
+    HELP_PLOT_SET_SPAWN("Help - plot setspawn", "set plot spawn point"),
+    HELP_TOPLOT("Help - toplot", "teleport to plot"),
     HELP_PLOT_DEED("Help - plot deed", "give plot deeds to player"),
 
     CONSOLE_DETECT("Console - plugin detected", "%plugin% detected"),
@@ -42,6 +44,7 @@ public enum Language {
     ARG_AMOUNT("Arg - amount", "amount"),
     ARG_PLAYER("Arg - player", "player"),
     ARG_NAME("Arg - name", "name"),
+    ARG_PLOT("Arg - plot", "plot"),
 
     WARN_NOT_PERMITTED("Warn - no permission", "You do not have permission for this command."),
     WARN_PLOT_LIMIT("Warn - plot limit", "You have reached your plot limit."),

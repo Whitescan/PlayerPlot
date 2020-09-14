@@ -13,7 +13,7 @@ import org.bukkit.event.Event;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.Language.*;
+import static com.eclipsekingdom.playerplot.sys.Language.STATUS_UNLOADED_DATA;
 
 public class PlotUtil {
 
@@ -50,10 +50,9 @@ public class PlotUtil {
     public static String getListString(Plot plot) {
         int length = plot.getSideLength();
         PlotPoint center = plot.getCenter();
-        String displayString = ChatColor.DARK_PURPLE + plot.getName() + " (" + length + "x" + length + ") ";
-        displayString += ChatColor.GRAY + LABEL_CENTER.toString().toLowerCase() + ": (" + center.getX() + "," + center.getZ() + ")";
-        displayString += " " + LABEL_WORLD.toString().toLowerCase() + ": " + plot.getWorld().getName();
-        displayString += " " + LABEL_COMPONENTS.toString().toLowerCase() + ": " + plot.getComponents();
+        String displayString = ChatColor.DARK_PURPLE + plot.getName();
+        displayString += ChatColor.LIGHT_PURPLE + " (" + length + "x" + length + ")[" + ChatColor.AQUA + plot.getComponents() + ChatColor.LIGHT_PURPLE + "] ";
+        displayString += ChatColor.GRAY + "(" + plot.getWorld().getName() + ", " + center.getX() + ", " + center.getZ() + ")";
         return displayString;
     }
 

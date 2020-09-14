@@ -21,8 +21,10 @@ Help - plot trust: pridėsite žaidėją prie ploto
 Help - plot untrust: išmesite žaidėją iš ploto
 Help - plot upgrade: padidinsite ploto ribas
 Help - plot downgrade: sumažinsite ploto ribas
-Help - plot center: set plot center
-Help - plot deed: iškviesti sklypo aktą (-us)
+Help - plot setcenter: set plot center
+Help - plot setspawn: set plot spawn point
+Help - toplot: teleport to plot
+Help - plot deed: give plot deeds to player
 Console - plugin detected: '%plugin% rastas'
 Console - file error: Klaida įsaugoma %file%
 Arg - amount: suskaičiuoti
@@ -41,7 +43,7 @@ Warn - protected: Šis regionas yra apsaugotas.
 Warn - plot not found: Plotas %plot% nebuvo rastas.
 Warn - not standing in plot: Jūs ne stovite plote.
 Warn - not owner of plot: Jūs ne esate šio ploto savininkas.
-Warn - outside plot bounds: Taškas turi būti plotai ribose.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% buvo padidintas.'
 Success - plot downgrade: Plotas %plot% buvo pamažinas.
 Success - plot rename: Sklypas sėkmingai pervadintas į%plot%.
@@ -52,9 +54,9 @@ Success - plot free: Plotas %plot% buvo atlaisvintas.
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% buvo pakviestas į plotą, %plot%.'
 Success - plot delete: Plotas ištrintas.
-Success - items sent: '%player% išsiųsti daiktai.'
+Success - items sent: Items sent to %player%.
 Success - spawn set: Spawn point set.
-Misc - here: čia
+Misc - here: here
 Misc - format: Formatas yra %format%
 Misc - plot deed lore: rimtai atrodantis popieriaus lapas
 Misc - one use: 1 naudoti tik - spustelėkite norėdami aktyvuoti
@@ -64,6 +66,6 @@ Status - unloaded data: Jūsų vartotojo duomenys iškrauti. Duomenų gavimas . 
 Status - name special characters: Sklypų pavadinimus turi sudaryti tik a-z, A-Z, 0-9, _, arba -.
 Status - name too long: Sklypo pavadinimai turi būti ne ilgesni nei 20 simbolių.
 Status - name taken: Jūs jau turite sklypą tokiu pavadinimu.
-Status - reserved name: Šį vardą rezerva Player Plot.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Neaptikta jokių plotų.

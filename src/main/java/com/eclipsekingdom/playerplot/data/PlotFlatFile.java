@@ -41,9 +41,9 @@ public class PlotFlatFile {
                 config.set(friendKey, null);
             }
 
-            LocationParts spawn = plot.getSpawn();
-            if (spawn != null) {
-                config.set(key + ".spawn", plot.getSpawn().toString());
+            LocationParts spawnParts = plot.getSpawnParts();
+            if (spawnParts != null) {
+                config.set(key + ".spawn", spawnParts.toString());
             }
         } else {
             config.set(key, null);

@@ -1,6 +1,5 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.data.UserCache;
 import com.eclipsekingdom.playerplot.data.UserData;
@@ -231,9 +230,9 @@ public class CommandPlot implements CommandExecutor {
         PermInfo permInfo = UserCache.getPerms(playerID);
         int used = PlotCache.getPlayerPlotsUsed(playerID);
         int capacity = PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus();
-        String title = ChatColor.LIGHT_PURPLE + LABEL_PLOTS.toString() + " (" + used + "/" + capacity + ")";
+        String title = ChatColor.LIGHT_PURPLE + LABEL_PLOTS.toString() + " (" + ChatColor.AQUA + used + ChatColor.LIGHT_PURPLE + "/" + capacity + "): ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 0 ? Amount.parse(args[0]) : 1;
+        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 
@@ -242,9 +241,9 @@ public class CommandPlot implements CommandExecutor {
         for (Plot plot : PlotCache.getFriendPlots(player)) {
             items.add(PlotUtil.getFListString(plot));
         }
-        String title = ChatColor.LIGHT_PURPLE + LABEL_FRIEND_PLOTS.toString();
+        String title = ChatColor.LIGHT_PURPLE + LABEL_FRIEND_PLOTS.toString() + ": ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 0 ? Amount.parse(args[0]) : 1;
+        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 
@@ -313,7 +312,7 @@ public class CommandPlot implements CommandExecutor {
 
                 if (usingDynmap) dynmap.updateMarker(plot);
 
-                Bukkit.getScheduler().runTaskLater(PlayerPlot.getPlugin(), () -> {
+                Scheduler.runLater(() -> {
                     PlotScanner.showPlot(player, plot, 7);
                     player.sendMessage(SUCCESS_PLOT_UPGRADE.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
                 }, 23);
@@ -341,11 +340,12 @@ public class CommandPlot implements CommandExecutor {
             PlotPoint newMax = center.getMaxCorner(newSideLength);
             plot.setRegion(newMin, newMax);
             plot.decrementComponents();
+            if (!plot.contains(plot.getSpawn())) plot.removeSpawn();
             PlotCache.touch(plot);
 
             if (usingDynmap) dynmap.updateMarker(plot);
 
-            Bukkit.getScheduler().scheduleSyncDelayedTask(PlayerPlot.getPlugin(), () -> {
+            Scheduler.runLater(() -> {
                 PlotScanner.showPlot(player, plot, 7);
                 player.sendMessage(SUCCESS_PLOT_DOWNGRADE.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
             }, 23);
@@ -360,6 +360,7 @@ public class CommandPlot implements CommandExecutor {
         RegionValidation.Status regionStatus = RegionValidation.canPlotBeRegisteredAt(location, plot.getSideLength(), plot.getID());
         if (regionStatus == RegionValidation.Status.VALID) {
             plot.setCenter(location);
+            if (!plot.contains(plot.getSpawn())) plot.removeSpawn();
             PlotCache.touch(plot);
             player.sendMessage(SUCCESS_PLOT_CENTER.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
             PlotScanner.showPlot(player, plot, 7);
@@ -375,7 +376,7 @@ public class CommandPlot implements CommandExecutor {
         if (Permissions.canTeleport(player)) {
             Location location = player.getLocation();
             if (plot.contains(location)) {
-                plot.setSpawn(new LocationParts(location));
+                plot.setSpawn(location);
                 PlotCache.touch(plot);
                 player.sendMessage(ChatColor.LIGHT_PURPLE + SUCCESS_SPAWN_SET.toString());
             } else {

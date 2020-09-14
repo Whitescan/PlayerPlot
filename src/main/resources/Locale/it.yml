@@ -21,7 +21,9 @@ Help - plot trust: aggiungi un giocatore ad un lotto
 Help - plot untrust: rimuovi un giocatore ad un lotto
 Help - plot upgrade: aumenta le dimensioni del tuo lotto
 Help - plot downgrade: riduci le dimensioni del tuo lotto
-Help - plot center: set plot center
+Help - plot setcenter: set plot center
+Help - plot setspawn: set plot spawn point
+Help - toplot: teleport to plot
 Help - plot deed: give plot deeds to player
 Console - plugin detected: '%plugin% rilevato'
 Console - file error: Errore durante il salvataggio del file %file%
@@ -41,7 +43,7 @@ Warn - protected: Questa regione è protetta.
 Warn - plot not found: Lotto %plot% non trovato.
 Warn - not standing in plot: Non sei in un lotto.
 Warn - not owner of plot: Non sei il proprietario di questo lotto.
-Warn - outside plot bounds: Il punto deve essere all'interno dei limiti della lotto.
+Warn - outside plot bounds: Spawn must be within plot bounds.
 Success - plot upgrade: '%plot% è stato migliorato.'
 Success - plot downgrade: '%plot% è stato degratato.'
 Success - plot rename: Lotto rinominato con successo in %plot%.
@@ -52,9 +54,9 @@ Success - plot free: '%plot% eliminato.'
 Success - plot center: '%plot% center updated.'
 Success - invited: '%player% ti ha invitato nel suo lotto, %plot%.'
 Success - plot delete: Lotto eliminato.
-Success - items sent: Articoli inviati a %player%.
+Success - items sent: Items sent to %player%.
 Success - spawn set: Spawn point set.
-Misc - here: qui
+Misc - here: here
 Misc - format: Il formato è %format%
 Misc - one use: Solo un utilizzo - clicca per attivare
 Misc - plot deed lore: un documento dall'aspetto serio
@@ -64,6 +66,6 @@ Status - unloaded data: I dati utenti non sono caricati. Recupero data . . .
 Status - name special characters: Il nome del lotto può contenere solo i seguenti caratteri a-z, A-Z, 0-9, _, e -.
 Status - name too long: Il nome del lotto deve contenere al massimo 20 caratteri.
 Status - name taken: Hai già un lotto con questo nome.
-Status - reserved name: Quel nome è riservato da Player Plot.
+Status - reserved name: That name is reserved by Player Plot.
 Scanner - plot overview: '%plot% ~ %player% ~'
 Scanner - no plots: Nessun lotto rilevato.

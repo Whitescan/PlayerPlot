@@ -6,11 +6,12 @@ import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import static com.eclipsekingdom.playerplot.sys.Language.ARG_PLOT;
 
 public class CommandToPlot implements CommandExecutor {
 
@@ -22,10 +23,7 @@ public class CommandToPlot implements CommandExecutor {
                 if (args.length > 0) {
                     Plot targetPlot = PlotCache.getPlayerPlot(player.getUniqueId(), args[0]);
                     if (targetPlot != null) {
-                        World w = targetPlot.getWorld();
-                        Location targetLoc = targetPlot.getSpawn() != null ? targetPlot.getSpawn().getLocation() : null;
-                        if (targetLoc == null)
-                            targetLoc = w.getHighestBlockAt(targetPlot.getCenter().asLocation(w)).getLocation().add(0.5, 1, 0.5);
+                        Location targetLoc = targetPlot.getSpawn();
                         XSound tpSound = XSound.BLOCK_BEACON_POWER_SELECT;
                         if (tpSound.isSupported())
                             player.playSound(player.getLocation(), tpSound.parseSound(), 0.5f, 1.9f);
@@ -38,7 +36,7 @@ public class CommandToPlot implements CommandExecutor {
                         return false;
                     }
                 } else {
-                    player.sendMessage(ChatColor.RED + Language.MISC_FORMAT.fromFormat("/toplot [plot]"));
+                    player.sendMessage(ChatColor.RED + Language.MISC_FORMAT.fromFormat("/toplot [" + ARG_PLOT + "]"));
                     return false;
                 }
             } else {
