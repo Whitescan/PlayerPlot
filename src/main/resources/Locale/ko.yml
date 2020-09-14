@@ -1,71 +1,71 @@
-Label - commands: ��ɾ�
-Label - plots: Plots
-Label - friend plots: ģ�� ��
-Label - page: ������
-Label - area: ����
-Label - center: ����
-Label - min corner: �ּ� �𼭸�
-Label - max corner: �ִ� �𼭸�
-Label - world: ����
-Label - components: ���� ���
-Label - friends: ģ��
-Label - plot deed: Plot Deed
-Help - plot scan: �� ��� ǥ��
-Help - plot claim: ���� �޽��ϴ�
-Help - plot rename: ���� �̸��� �ٽ� �����մϴ�
-Help - plot free: ���� �����մϴ�
-Help - plot info: ���� ���� ����
-Help - plot list: ����� �� ���
-Help - plot flist: ģ�� �� ���
-Help - plot trust: �÷��̾ ���� �߰�
-Help - plot untrust: �÷��̾ ������ ����
-Help - plot upgrade: �� ũ�� �ø���
-Help - plot downgrade: �� ũ�� ���̱�
-Help - plot setcenter: set plot center
-Help - plot setspawn: set plot spawn point
-Help - toplot: teleport to plot
-Help - plot deed: give plot deeds to player
-Console - plugin detected: '%plugin%��(��) �����Ǿ����ϴ�'
-Console - file error: '%file% ������ ���� ����Ǿ����ϴ�.'
-Arg - amount: ī��Ʈ
-Arg - player: �÷��̾�
-Arg - name: name
-Warn - no permission: ����� �� ��ɾ ����� ������ �����ϴ�.
-Warn - plot limit: ����� �� �Ѱ迡 �����߽��ϴ�.
-Warn - not friend: '%player%��(��) %plot% ���� ���� �ŷ����� �ʽ��ϴ�.'
-Warn - not downgradeable: '%plot% ���� �� �̻� �ٿ� �׷��̵� �� �� �����ϴ�.'
-Warn - already friend: '%plot%���� %player%��(��) �̹� �߰��߽��ϴ�.'
-Warn - add self: ����� �̹� ����� ���� ģ�� ģ���Դϴ�!
-Warn - player offline: �÷��̾� %player%��(��) �¶����� �ƴմϴ�.
-Warn - player not found: Player %player% not found
-Warn - plot max: ����� �̹� �ִ� ������ ���� ������ �ֽ��ϴ�.
-Warn - protected: �� ������ ��ȣ�Ǿ� �ֽ��ϴ�.
-Warn - plot not found: �� %plot%��(��) ã���� �����ϴ�.
-Warn - not standing in plot: ����� ���� ������ �ʽ��ϴ�.
-Warn - not owner of plot: �� �� �� �����ڰ� �ƴմϴ�.
-Warn - outside plot bounds: Spawn must be within plot bounds.
-Success - plot upgrade: '%plot% ���� ���׷��̵� �Ǿ����ϴ�.'
-Success - plot downgrade: �� %plot%�� �ٿ�׷��̵� �Ǿ����ϴ�.
-Success - plot rename: �ø� �̸��� %plot%���� ����Ǿ����ϴ�.
-Success - plot trust: '%plot% ���� %player%��(��) �߰��߽��ϴ�.'
-Success - plot untrust: '%plot% ���� %player%��(��) �����߽��ϴ�.'
-Success - plot claim: ���� %plot%��(��) �޾ҽ��ϴ�.
-Success - plot free: �� %plot%��(��) �����Ǿ����ϴ�.
-Success - plot center: '%plot% center updated.'
-Success - invited: '%player%��(��) �׵鿡 ���� �ʴ�Ǿ����ϴ�, %plot%.'
-Success - plot delete: ���� �����Ǿ����ϴ�.
-Success - items sent: Items sent to %player%.
-Success - spawn set: Spawn point set.
-Misc - here: here
-Misc - format: �ùٸ� ���� %format%.
-Misc - plot deed lore: �����ϰ� ���̴� ����
-Misc - one use: 1���� ��� - Ȱ��ȭ �Ϸ��� Ŭ���ϼ���!
-Status - region occupied: �ٸ� ������ �ʹ� �������ϴ�. ����� ���̶� ��ĥ ���Դϴ�.
-Status - load error: �����͸� �ε� �Ҽ� �����ϴ�.
-Status - unloaded data: ����� �����Ͱ� ��ε� �Ǿ����ϴ�. �����͸� �������� �� . . .
-Status - name special characters: �� �̸��� �������θ� �����Ǿ�� �մϴ� a-z, A-Z, 0-9, _, and -.
-Status - name too long: �� �̸��� 20�� ���� �����մϴ�.
-Status - name taken: �̹� �� �̸��� ���� ���� �ֽ��ϴ�.
-Status - reserved name: That name is reserved by Player Plot.
-Scanner - plot overview: '%plot% ~ %player% ~'
-Scanner - no plots: ���� �������� �ʾҽ��ϴ�.
+Label - commands: "��ɾ�"
+Label - plots: "Plots"
+Label - friend plots: "ģ�� ��"
+Label - page: "������"
+Label - area: "����"
+Label - center: "����"
+Label - min corner: "�ּ� �𼭸�"
+Label - max corner: "�ִ� �𼭸�"
+Label - world: "����"
+Label - components: "���� ���"
+Label - friends: "ģ��"
+Label - plot deed: "Plot Deed"
+Help - plot scan: "�� ��� ǥ��"
+Help - plot claim: "���� �޽��ϴ�"
+Help - plot rename: "���� �̸��� �ٽ� �����մϴ�"
+Help - plot free: "���� �����մϴ�"
+Help - plot info: "���� ���� ����"
+Help - plot list: "����� �� ���"
+Help - plot flist: "ģ�� �� ���"
+Help - plot trust: "�÷��̾ ���� �߰�"
+Help - plot untrust: "�÷��̾ ������ ����"
+Help - plot upgrade: "�� ũ�� �ø���"
+Help - plot downgrade: "�� ũ�� ���̱�"
+Help - plot setcenter: "set plot center"
+Help - plot setspawn: set plot spawn point"
+Help - toplot: "teleport to plot"
+Help - plot deed: "give plot deeds to player"
+Console - plugin detected: "%plugin%��(��) �����Ǿ����ϴ�"
+Console - file error: "%file% ������ ���� ����Ǿ����ϴ�."
+Arg - amount: "ī��Ʈ"
+Arg - player: "�÷��̾�"
+Arg - name: "name"
+Warn - no permission: "����� �� ��ɾ ����� ������ �����ϴ�."
+Warn - plot limit: "����� �� �Ѱ迡 �����߽��ϴ�."
+Warn - not friend: "%player%��(��) %plot% ���� ���� �ŷ����� �ʽ��ϴ�."
+Warn - not downgradeable: "%plot% ���� �� �̻� �ٿ� �׷��̵� �� �� �����ϴ�."
+Warn - already friend: "%plot%���� %player%��(��) �̹� �߰��߽��ϴ�."
+Warn - add self: "����� �̹� ����� ���� ģ�� ģ���Դϴ�!"
+Warn - player offline: "�÷��̾� %player%��(��) �¶����� �ƴմϴ�."
+Warn - player not found: "Player %player% not found"
+Warn - plot max: "����� �̹� �ִ� ������ ���� ������ �ֽ��ϴ�."
+Warn - protected: "�� ������ ��ȣ�Ǿ� �ֽ��ϴ�."
+Warn - plot not found: "�� %plot%��(��) ã���� �����ϴ�."
+Warn - not standing in plot: "����� ���� ������ �ʽ��ϴ�."
+Warn - not owner of plot: "�� �� �� �����ڰ� �ƴմϴ�."
+Warn - outside plot bounds: "Spawn must be within plot bounds."
+Success - plot upgrade: "%plot% ���� ���׷��̵� �Ǿ����ϴ�."
+Success - plot downgrade: "�� %plot%�� �ٿ�׷��̵� �Ǿ����ϴ�."
+Success - plot rename: "�ø� �̸��� %plot%���� ����Ǿ����ϴ�."
+Success - plot trust: "%plot% ���� %player%��(��) �߰��߽��ϴ�."
+Success - plot untrust: "%plot% ���� %player%��(��) �����߽��ϴ�."
+Success - plot claim: "���� %plot%��(��) �޾ҽ��ϴ�."
+Success - plot free: "�� %plot%��(��) �����Ǿ����ϴ�."
+Success - plot center: "%plot% center updated."
+Success - invited: "%player%��(��) �׵鿡 ���� �ʴ�Ǿ����ϴ�, %plot%."
+Success - plot delete: "���� �����Ǿ����ϴ�."
+Success - items sent: "Items sent to %player%."
+Success - spawn set: "Spawn point set."
+Misc - here: "here"
+Misc - format: "�ùٸ� ���� %format%."
+Misc - plot deed lore: "�����ϰ� ���̴� ����"
+Misc - one use: "1���� ��� - Ȱ��ȭ �Ϸ��� Ŭ���ϼ���!"
+Status - region occupied: "�ٸ� ������ �ʹ� �������ϴ�. ����� ���̶� ��ĥ ���Դϴ�."
+Status - load error: "�����͸� �ε� �Ҽ� �����ϴ�."
+Status - unloaded data: "����� �����Ͱ� ��ε� �Ǿ����ϴ�. �����͸� �������� �� . . ."
+Status - name special characters: "�� �̸��� �������θ� �����Ǿ�� �մϴ� a-z, A-Z, 0-9, _, and -."
+Status - name too long: "�� �̸��� 20�� ���� �����մϴ�."
+Status - name taken: "�̹� �� �̸��� ���� ���� �ֽ��ϴ�."
+Status - reserved name: "That name is reserved by Player Plot."
+Scanner - plot overview: "%plot% ~ %player% ~"
+Scanner - no plots: "���� �������� �ʾҽ��ϴ�."

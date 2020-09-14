@@ -1,71 +1,71 @@
-Label - commands: Comandi
-Label - plots: Lotti
-Label - friend plots: Lotti Degli Amici
-Label - page: Pagina
-Label - area: Zona
-Label - center: Centro
-Label - min corner: Angolo Minimo
-Label - max corner: Angolo Massimo
-Label - world: Mondo
-Label - components: Componenti
-Label - friends: Amici
-Label - plot deed: Atto di un Lotto
-Help - plot scan: mostra il confine di un lotto
-Help - plot claim: crea un lotto
-Help - plot rename: rinomina un lotto
-Help - plot free: rimuovi un lotto
-Help - plot info: ricevi i dettagli di un lotto
-Help - plot list: elenca i tui lotti
-Help - plot flist: elenca i lotti dei tuoi amici
-Help - plot trust: aggiungi un giocatore ad un lotto
-Help - plot untrust: rimuovi un giocatore ad un lotto
-Help - plot upgrade: aumenta le dimensioni del tuo lotto
-Help - plot downgrade: riduci le dimensioni del tuo lotto
-Help - plot setcenter: set plot center
-Help - plot setspawn: set plot spawn point
-Help - toplot: teleport to plot
-Help - plot deed: give plot deeds to player
-Console - plugin detected: '%plugin% rilevato'
-Console - file error: Errore durante il salvataggio del file %file%
-Arg - amount: quantità
-Arg - player: giocatori
-Arg - name: nome
-Warn - no permission: Non hai il permesso di fare questo comando.
-Warn - plot limit: Hai raggiunto il numero massimo di lotti.
-Warn - not friend: '%player% non è aggiunto al tuo lotto %plot%.'
-Warn - not downgradeable: 'Il lotto %plot% non può essere ulteriormente declassato.'
-Warn - already friend: '%player% è già aggiunto al lotto %plot%.'
-Warn - add self: Sei già il tuo migliore amico!
-Warn - player offline: '%player% non è online.'
-Warn - player not found: Player %player% not found
-Warn - plot max: Hai già il numero massimo di lotti.
-Warn - protected: Questa regione è protetta.
-Warn - plot not found: Lotto %plot% non trovato.
-Warn - not standing in plot: Non sei in un lotto.
-Warn - not owner of plot: Non sei il proprietario di questo lotto.
-Warn - outside plot bounds: Spawn must be within plot bounds.
-Success - plot upgrade: '%plot% è stato migliorato.'
-Success - plot downgrade: '%plot% è stato degratato.'
-Success - plot rename: Lotto rinominato con successo in %plot%.
-Success - plot trust: '%player% è stato aggiunto al lotto %plot%.'
-Success - plot untrust: '%player% è stato rimosso al lotto %plot%.'
-Success - plot claim: '%plot% rivendicato.'
-Success - plot free: '%plot% eliminato.'
-Success - plot center: '%plot% center updated.'
-Success - invited: '%player% ti ha invitato nel suo lotto, %plot%.'
-Success - plot delete: Lotto eliminato.
-Success - items sent: Items sent to %player%.
-Success - spawn set: Spawn point set.
-Misc - here: here
-Misc - format: Il formato è %format%
-Misc - one use: Solo un utilizzo - clicca per attivare
-Misc - plot deed lore: un documento dall'aspetto serio
-Status - region occupied: C'è un'altra regione vicina. Il tuo lotto si sovrapporrà.
-Status - load error: Impossibile caricare i dati.
-Status - unloaded data: I dati utenti non sono caricati. Recupero data . . .
-Status - name special characters: Il nome del lotto può contenere solo i seguenti caratteri a-z, A-Z, 0-9, _, e -.
-Status - name too long: Il nome del lotto deve contenere al massimo 20 caratteri.
-Status - name taken: Hai già un lotto con questo nome.
-Status - reserved name: That name is reserved by Player Plot.
-Scanner - plot overview: '%plot% ~ %player% ~'
-Scanner - no plots: Nessun lotto rilevato.
+Label - commands: "Comandi"
+Label - plots: "Lotti"
+Label - friend plots: "Lotti Degli Amici"
+Label - page: "Pagina"
+Label - area: "Zona"
+Label - center: "Centro"
+Label - min corner: "Angolo Minimo"
+Label - max corner: "Angolo Massimo"
+Label - world: "Mondo"
+Label - components: "Componenti"
+Label - friends: "Amici"
+Label - plot deed: "Atto di un Lotto"
+Help - plot scan: "mostra il confine di un lotto"
+Help - plot claim: "crea un lotto"
+Help - plot rename: "rinomina un lotto"
+Help - plot free: "rimuovi un lotto"
+Help - plot info: "ricevi i dettagli di un lotto"
+Help - plot list: "elenca i tui lotti"
+Help - plot flist: "elenca i lotti dei tuoi amici"
+Help - plot trust: "aggiungi un giocatore ad un lotto"
+Help - plot untrust: "rimuovi un giocatore ad un lotto"
+Help - plot upgrade: "aumenta le dimensioni del tuo lotto"
+Help - plot downgrade: "riduci le dimensioni del tuo lotto"
+Help - plot setcenter: "set plot center"
+Help - plot setspawn: "set plot spawn point"
+Help - toplot: "teleport to plot"
+Help - plot deed: "give plot deeds to player"
+Console - plugin detected: "%plugin% rilevato"
+Console - file error: "Errore durante il salvataggio del file %file%"
+Arg - amount: "quantità"
+Arg - player: "giocatori"
+Arg - name: "nome"
+Warn - no permission: "Non hai il permesso di fare questo comando."
+Warn - plot limit: "Hai raggiunto il numero massimo di lotti."
+Warn - not friend: "%player% non è aggiunto al tuo lotto %plot%."
+Warn - not downgradeable: "Il lotto %plot% non può essere ulteriormente declassato."
+Warn - already friend: "%player% è già aggiunto al lotto %plot%."
+Warn - add self: "Sei già il tuo migliore amico!"
+Warn - player offline: "%player% non è online."
+Warn - player not found: "Player %player% not found"
+Warn - plot max: "Hai già il numero massimo di lotti."
+Warn - protected: "Questa regione è protetta."
+Warn - plot not found: "Lotto %plot% non trovato."
+Warn - not standing in plot: "Non sei in un lotto."
+Warn - not owner of plot: "Non sei il proprietario di questo lotto."
+Warn - outside plot bounds: "Spawn must be within plot bounds."
+Success - plot upgrade: "%plot% è stato migliorato."
+Success - plot downgrade: "%plot% è stato degratato."
+Success - plot rename: "Lotto rinominato con successo in %plot%."
+Success - plot trust: "%player% è stato aggiunto al lotto %plot%."
+Success - plot untrust: "%player% è stato rimosso al lotto %plot%."
+Success - plot claim: "%plot% rivendicato."
+Success - plot free: "%plot% eliminato."
+Success - plot center: "%plot% center updated."
+Success - invited: "%player% ti ha invitato nel suo lotto, %plot%."
+Success - plot delete: "Lotto eliminato."
+Success - items sent: "Items sent to %player%."
+Success - spawn set: "Spawn point set."
+Misc - here: "here"
+Misc - format: "Il formato è %format%"
+Misc - one use: "Solo un utilizzo - clicca per attivare"
+Misc - plot deed lore: "un documento dall'aspetto serio"
+Status - region occupied: "C'è un'altra regione vicina. Il tuo lotto si sovrapporrà."
+Status - load error: "Impossibile caricare i dati."
+Status - unloaded data: "I dati utenti non sono caricati. Recupero data . . ."
+Status - name special characters: "Il nome del lotto può contenere solo i seguenti caratteri a-z, A-Z, 0-9, _, e -."
+Status - name too long: "Il nome del lotto deve contenere al massimo 20 caratteri."
+Status - name taken: "Hai già un lotto con questo nome."
+Status - reserved name: "That name is reserved by Player Plot."
+Scanner - plot overview: "%plot% ~ %player% ~"
+Scanner - no plots: "Nessun lotto rilevato."

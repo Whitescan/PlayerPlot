@@ -2,7 +2,6 @@ package com.eclipsekingdom.playerplot.data;
 
 import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.util.PlotUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -10,8 +9,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_FILE_ERROR;
 
 public class UserFlatFile {
 
@@ -82,7 +79,7 @@ public class UserFlatFile {
         try {
             fileConfiguration.save(file);
         } catch (Exception e) {
-            Bukkit.getConsoleSender().sendMessage(CONSOLE_FILE_ERROR.fromFile(file.getName()));
+            e.printStackTrace();
         }
     }
 

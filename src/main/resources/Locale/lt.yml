@@ -1,71 +1,71 @@
-Label - commands: Komandos
-Label - plots: plotai
-Label - friend plots: Draugo plotai
-Label - page: Puslapis
-Label - area: Zona
-Label - center: Centras
-Label - min corner: Mažiausias Kampas
-Label - max corner: Didžiausias Kampas
-Label - world: Pasaulis
-Label - components: Komponentai
-Label - friends: Draugai
-Label - plot deed: Ploto Aktas
-Help - plot scan: parodo ploto ribą
-Help - plot claim: užima plotą
-Help - plot rename: pervadina plotą
-Help - plot free: panaikina plotą
-Help - plot info: parodo ploto informaciją
-Help - plot list: parodo jūsų plotų sąrašą
-Help - plot flist: parodo draugo turimus plotus
-Help - plot trust: pridėsite žaidėją prie ploto
-Help - plot untrust: išmesite žaidėją iš ploto
-Help - plot upgrade: padidinsite ploto ribas
-Help - plot downgrade: sumažinsite ploto ribas
-Help - plot setcenter: set plot center
-Help - plot setspawn: set plot spawn point
-Help - toplot: teleport to plot
-Help - plot deed: give plot deeds to player
-Console - plugin detected: '%plugin% rastas'
-Console - file error: Klaida įsaugoma %file%
-Arg - amount: suskaičiuoti
-Arg - player: žaidėjas
-Arg - name: vardas
-Warn - no permission: Jūs neturite leidimo šiai komandai.
-Warn - plot limit: Jūs pasiekėte plotų limitą.
-Warn - not friend: '%player% nėra draugas %plot%.'
-Warn - not downgradeable: '%plot% nebegalima pažeminti daugiau.'
-Warn - already friend: '%player% jau yra draugas %plot%.'
-Warn - add self: Jūs jau esate, savęs paties geriausias draugas!
-Warn - player offline: Žaidėjas %player% šiuo metu nėra prisijungęs.
-Warn - player not found: Player %player% not found
-Warn - plot max: Jūs jau turite maksimalų sklypų skaičių.
-Warn - protected: Šis regionas yra apsaugotas.
-Warn - plot not found: Plotas %plot% nebuvo rastas.
-Warn - not standing in plot: Jūs ne stovite plote.
-Warn - not owner of plot: Jūs ne esate šio ploto savininkas.
-Warn - outside plot bounds: Spawn must be within plot bounds.
-Success - plot upgrade: '%plot% buvo padidintas.'
-Success - plot downgrade: Plotas %plot% buvo pamažinas.
-Success - plot rename: Sklypas sėkmingai pervadintas į%plot%.
-Success - plot trust: '%player% buvo pridėtas prie %plot%.'
-Success - plot untrust: '%player% buvo pašalintas iš %plot%.'
-Success - plot claim: Plotas %plot% buvo užimtas.
-Success - plot free: Plotas %plot% buvo atlaisvintas.
-Success - plot center: '%plot% center updated.'
-Success - invited: '%player% buvo pakviestas į plotą, %plot%.'
-Success - plot delete: Plotas ištrintas.
-Success - items sent: Items sent to %player%.
-Success - spawn set: Spawn point set.
-Misc - here: here
-Misc - format: Formatas yra %format%
-Misc - plot deed lore: rimtai atrodantis popieriaus lapas
-Misc - one use: 1 naudoti tik - spustelėkite norėdami aktyvuoti
-Status - region occupied: Kitas regionas yra per arti. Jūsų plotas netilpų, remtūsi į kitą.
-Status - load error: Nepavyko įkelti duomenų.
-Status - unloaded data: Jūsų vartotojo duomenys iškrauti. Duomenų gavimas . . .
-Status - name special characters: Sklypų pavadinimus turi sudaryti tik a-z, A-Z, 0-9, _, arba -.
-Status - name too long: Sklypo pavadinimai turi būti ne ilgesni nei 20 simbolių.
-Status - name taken: Jūs jau turite sklypą tokiu pavadinimu.
-Status - reserved name: That name is reserved by Player Plot.
-Scanner - plot overview: '%plot% ~ %player% ~'
-Scanner - no plots: Neaptikta jokių plotų.
+Label - commands: "Komandos"
+Label - plots: "plotai"
+Label - friend plots: "Draugo plotai"
+Label - page: "Puslapis"
+Label - area: "Zona"
+Label - center: "Centras"
+Label - min corner: "Mažiausias Kampas"
+Label - max corner: "Didžiausias Kampas"
+Label - world: "Pasaulis"
+Label - components: "Komponentai"
+Label - friends: "Draugai"
+Label - plot deed: "Ploto Aktas"
+Help - plot scan: "parodo ploto ribą"
+Help - plot claim: "užima plotą"
+Help - plot rename: "pervadina plotą"
+Help - plot free: "panaikina plotą"
+Help - plot info: "parodo ploto informaciją"
+Help - plot list: "parodo jūsų plotų sąrašą"
+Help - plot flist: "parodo draugo turimus plotus"
+Help - plot trust: "pridėsite žaidėją prie ploto"
+Help - plot untrust: "išmesite žaidėją iš ploto"
+Help - plot upgrade: "padidinsite ploto ribas"
+Help - plot downgrade: "sumažinsite ploto ribas"
+Help - plot setcenter: "set plot center"
+Help - plot setspawn: "set plot spawn point"
+Help - toplot: "teleport to plot"
+Help - plot deed: "give plot deeds to player"
+Console - plugin detected: "%plugin% rastas"
+Console - file error: "Klaida įsaugoma %file%"
+Arg - amount: "suskaičiuoti"
+Arg - player: "žaidėjas"
+Arg - name: "vardas"
+Warn - no permission: "Jūs neturite leidimo šiai komandai."
+Warn - plot limit: "Jūs pasiekėte plotų limitą."
+Warn - not friend: "%player% nėra draugas %plot%."
+Warn - not downgradeable: "%plot% nebegalima pažeminti daugiau."
+Warn - already friend: "%player% jau yra draugas %plot%."
+Warn - add self: "Jūs jau esate, savęs paties geriausias draugas!"
+Warn - player offline: "Žaidėjas %player% šiuo metu nėra prisijungęs."
+Warn - player not found: "Player %player% not found"
+Warn - plot max: "Jūs jau turite maksimalų sklypų skaičių."
+Warn - protected: "Šis regionas yra apsaugotas."
+Warn - plot not found: "Plotas %plot% nebuvo rastas."
+Warn - not standing in plot: "Jūs ne stovite plote."
+Warn - not owner of plot: "Jūs ne esate šio ploto savininkas."
+Warn - outside plot bounds: "Spawn must be within plot bounds."
+Success - plot upgrade: "%plot% buvo padidintas."
+Success - plot downgrade: "Plotas %plot% buvo pamažinas."
+Success - plot rename: "Sklypas sėkmingai pervadintas į%plot%."
+Success - plot trust: "%player% buvo pridėtas prie %plot%."
+Success - plot untrust: "%player% buvo pašalintas iš %plot%."
+Success - plot claim: "Plotas %plot% buvo užimtas."
+Success - plot free: "Plotas %plot% buvo atlaisvintas."
+Success - plot center: "%plot% center updated."
+Success - invited: "%player% buvo pakviestas į plotą, %plot%."
+Success - plot delete: "Plotas ištrintas."
+Success - items sent: "Items sent to %player%."
+Success - spawn set: "Spawn point set."
+Misc - here: "here"
+Misc - format: "Formatas yra %format%"
+Misc - plot deed lore: "rimtai atrodantis popieriaus lapas"
+Misc - one use: "1 naudoti tik - spustelėkite norėdami aktyvuoti"
+Status - region occupied: "Kitas regionas yra per arti. Jūsų plotas netilpų, remtūsi į kitą."
+Status - load error: "Nepavyko įkelti duomenų."
+Status - unloaded data: "Jūsų vartotojo duomenys iškrauti. Duomenų gavimas . . ."
+Status - name special characters: "Sklypų pavadinimus turi sudaryti tik a-z, A-Z, 0-9, _, arba -."
+Status - name too long: "Sklypo pavadinimai turi būti ne ilgesni nei 20 simbolių."
+Status - name taken: "Jūs jau turite sklypą tokiu pavadinimu."
+Status - reserved name: "That name is reserved by Player Plot."
+Scanner - plot overview: "%plot% ~ %player% ~"
+Scanner - no plots: "Neaptikta jokių plotų."

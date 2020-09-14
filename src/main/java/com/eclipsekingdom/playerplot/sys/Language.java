@@ -39,7 +39,6 @@ public enum Language {
     HELP_PLOT_DEED("Help - plot deed", "give plot deeds to player"),
 
     CONSOLE_DETECT("Console - plugin detected", "%plugin% detected"),
-    CONSOLE_FILE_ERROR("Console - file error", "Error saving %file%"),
 
     ARG_AMOUNT("Arg - amount", "amount"),
     ARG_PLAYER("Arg - player", "player"),

@@ -1,71 +1,71 @@
-Label - commands: Comandos
-Label - plots: parcelas
-Label - friend plots: Parcelas de amigos
-Label - page: Página
-Label - area: Área
-Label - center: Centro
-Label - min corner: Esquina mínima
-Label - max corner: Esquina máxima
-Label - world: Mundo
-Label - components: Componentes
-Label - friends: Amigos
-Label - plot deed: Plot Deed
-Help - plot scan: mostrar límite de la parcela
-Help - plot claim: reclama una parcela
-Help - plot rename: renombrar una parcela
-Help - plot free: elimina una parcela
-Help - plot info: muestra los detalles de una parcela
-Help - plot list: lista de tus parcelas
-Help - plot flist: lista de las parcelas de tus amigos
-Help - plot trust: añadir jugador a tu parcela
-Help - plot untrust: eliminar jugador de tu parcela
-Help - plot upgrade: aumenta el tamaño de la parcela
-Help - plot downgrade: disminuir el tamaño de la parcela
-Help - plot center: set plot center
-Help - plot setspawn: set plot spawn point
-Help - toplot: teleport to plot
-Help - plot deed: give plot deeds to player
-Console - plugin detected: '%plugin% detectado'
-Console - file error: Error guardando %file%
-Arg - amount: contador
-Arg - player: jugador
-Arg - name: nombre
-Warn - no permission: No tienes permisos para este comando.
-Warn - plot limit: Has alcanzado el limite de tu parcela.
-Warn - not friend: '%player% no está confiado en tu %plot%.'
-Warn - not downgradeable: '%plot% no se puede degradar.'
-Warn - already friend: '%player% ya está añadido a tu plot %plot%.'
-Warn - add self: ¡Ya eres tu mejor amigo!
-Warn - player offline: El jugador %player% no está en línea.
-Warn - player not found: Player %player% not found
-Warn - plot max: Ya tienes el máximo número de parcelas.
-Warn - protected: Esta región está protegida.
-Warn - plot not found: No se ha encontrado la parcela %plot%.
-Warn - not standing in plot: No estás en ninguna parcela.
-Warn - not owner of plot: No eres el dueño de esta parcela.
-Warn - outside plot bounds: Spawn must be within plot bounds.
-Success - plot upgrade: '%plot% ha sido mejorado.'
-Success - plot downgrade: La parcela %plot% ha sido degradada.
-Success - plot rename: La parcela se ha renombrado a %plot%.
-Success - plot trust: '%player% ha sido añadido a %plot%.'
-Success - plot untrust: '%player% ha sido eliminado de %plot%.'
-Success - plot claim: La parcela %plot% ha sido reclamada.
-Success - plot free: La parcela %plot% ha sido eliminada.
-Success - plot setcenter: '%plot% center updated.'
-Success - invited: '%player% te ha invitado a su parcela, %plot%.'
-Success - plot delete: La parcela ha sido eliminado.
-Success - items sent: Items sent to %player%.
-Success - spawn set: Spawn point set.
-Misc - here: here
-Misc - format: El formato es %format%
-Misc - one use: solo 1 uso - clic para activar
-Misc - plot deed lore: una pieza de papel seria
-Status - region occupied: Otra región está cerca. Tu parcela se sobrepondría.
-Status - load error: No se puede cargar datos.
-Status - unloaded data: Los datos de los usuarios han sido descargados. Recuperando datos. . .
-Status - name special characters: Los nombres de las parcelas deben contener solo a-z, A-Z, 0-9, _, y -.
-Status - name too long: Los nombres de las parcelas deben tener 20 caracteres o menos.
-Status - name taken: Ya tienes una parcela con este nombre.
-Status - reserved name: That name is reserved by Player Plot.
-Scanner - plot overview: '%plot% ~ %player% ~'
-Scanner - no plots: No se ha detectado parcela.
+Label - commands: "Comandos"
+Label - plots: "parcelas"
+Label - friend plots: "Parcelas de amigos"
+Label - page: "Página"
+Label - area: "Área"
+Label - center: "Centro"
+Label - min corner: "Esquina mínima"
+Label - max corner: "Esquina máxima"
+Label - world: "Mundo"
+Label - components: "Componentes"
+Label - friends: "Amigos"
+Label - plot deed: "Plot Deed"
+Help - plot scan: "mostrar límite de la parcela"
+Help - plot claim: "reclama una parcela"
+Help - plot rename: "renombrar una parcela"
+Help - plot free: "elimina una parcela"
+Help - plot info: "muestra los detalles de una parcela"
+Help - plot list: "lista de tus parcelas"
+Help - plot flist: "lista de las parcelas de tus amigos"
+Help - plot trust: "añadir jugador a tu parcela"
+Help - plot untrust: "eliminar jugador de tu parcela"
+Help - plot upgrade: "aumenta el tamaño de la parcela"
+Help - plot downgrade: "disminuir el tamaño de la parcela"
+Help - plot center: "set plot center"
+Help - plot setspawn: "set plot spawn point"
+Help - toplot: "teleport to plot"
+Help - plot deed: "give plot deeds to player"
+Console - plugin detected: "%plugin% detectado"
+Console - file error: "Error guardando %file%"
+Arg - amount: "contador"
+Arg - player: "jugador"
+Arg - name: "nombre"
+Warn - no permission: "No tienes permisos para este comando."
+Warn - plot limit: "Has alcanzado el limite de tu parcela."
+Warn - not friend: "%player% no está confiado en tu %plot%."
+Warn - not downgradeable: "%plot% no se puede degradar."
+Warn - already friend: "%player% ya está añadido a tu plot %plot%."
+Warn - add self: "¡Ya eres tu mejor amigo!"
+Warn - player offline: "El jugador %player% no está en línea."
+Warn - player not found: "Player %player% not found"
+Warn - plot max: "Ya tienes el máximo número de parcelas."
+Warn - protected: "Esta región está protegida."
+Warn - plot not found: "No se ha encontrado la parcela %plot%."
+Warn - not standing in plot: "No estás en ninguna parcela."
+Warn - not owner of plot: "No eres el dueño de esta parcela."
+Warn - outside plot bounds: "Spawn must be within plot bounds."
+Success - plot upgrade: "%plot% ha sido mejorado."
+Success - plot downgrade: "La parcela %plot% ha sido degradada."
+Success - plot rename: "La parcela se ha renombrado a %plot%."
+Success - plot trust: "%player% ha sido añadido a %plot%."
+Success - plot untrust: "%player% ha sido eliminado de %plot%."
+Success - plot claim: "La parcela %plot% ha sido reclamada."
+Success - plot free: "La parcela %plot% ha sido eliminada."
+Success - plot setcenter: "%plot% center updated."
+Success - invited: "%player% te ha invitado a su parcela, %plot%."
+Success - plot delete: "La parcela ha sido eliminado."
+Success - items sent: "Items sent to %player%."
+Success - spawn set: "Spawn point set."
+Misc - here: "here"
+Misc - format: "El formato es %format%"
+Misc - one use: "solo 1 uso - clic para activar"
+Misc - plot deed lore: "una pieza de papel seria"
+Status - region occupied: "Otra región está cerca. Tu parcela se sobrepondría."
+Status - load error: "No se puede cargar datos."
+Status - unloaded data: "Los datos de los usuarios han sido descargados. Recuperando datos. . ."
+Status - name special characters: "Los nombres de las parcelas deben contener solo a-z, A-Z, 0-9, _, y -."
+Status - name too long: "Los nombres de las parcelas deben tener 20 caracteres o menos."
+Status - name taken: "Ya tienes una parcela con este nombre."
+Status - reserved name: "That name is reserved by Player Plot."
+Scanner - plot overview: "%plot% ~ %player% ~"
+Scanner - no plots: "No se ha detectado parcela."
