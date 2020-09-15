@@ -46,7 +46,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Player Plot Screen Shot](https://eclipsekingdom.com/gallery/albums/Player_Plot/small-cover.png)
+![Player Plot Screen Shot](https://eclipsekingdom.com/gallery/albums/Player_Plot/big/cover.png)
 
 Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. The plugin is extremely scalable thanks to plots beings stored in grid zones. The plugin is also very user friendly because any plot's border can be made visible using the /plot scan command.
 
@@ -80,43 +80,29 @@ git clone https://github.com/github_username/repo_name.git
 npm install
 ```
 
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+_For more information, please refer to the [Documentation](https://gitlab.com/sword7/playerplot/-/wikis/home)._
 
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
 
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
+See 'CONTRIBUTING.md' for more information.
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -125,17 +111,19 @@ sword7 - sword#5439 - devsword7@gmail.com
 
 Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/playerplot)
 
-
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
-
-
-
+* [All Spigot NMS](https://github.com/Jacxk/all-spigot-nms)
+* [Crowdin](https://crowdin.com/)
+* [Discord](https://discord.com/)
+* [Dynmap](https://github.com/webbukkit/dynmap)
+* [Gimp](https://www.gimp.org/)
+* [GitLab](https://gitlab.com)
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+* [Shields IO](https://shields.io/)
+* [Trello](https://www.jetbrains.com/idea/)
+* [XSeries](https://github.com/CryptoMorin/XSeries)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
