@@ -40,6 +40,7 @@
   * [Dynmap](#dynmap)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
+  * [Translation](#translations)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -59,7 +60,7 @@ Player Plot is a self-serve protection plugin for Minecraft. It allows users to 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The lastest version of Player Plot is available on [SpigotMC](https://www.spigotmc.org/resources/player-plot.68033/).
+The latest version of Player Plot is available on [SpigotMC](https://www.spigotmc.org/resources/player-plot.68033/).
 
 #### Prerequisites
 
@@ -69,7 +70,7 @@ Player Plot requires a Minecraft server running version 1.8 to 1.6.
 
 #### Installation
 
-Player Plot is installed like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://gitlab.com/sword7/playerplot/-/wikis/setup/installation).
+Install Player Plot like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://gitlab.com/sword7/playerplot/-/wikis/setup/installation).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -78,7 +79,7 @@ A plot is a protected zone that belongs to an owning player. Plots can be manage
 
 #### Protection
 
-Plots offer robust protection from both players and the elements. Plots are protected from the following
+Plots offer robust protection from both players and the elements. Plots protect from the following:
 
 - Unauthorized building
 - Unauthorized breaking
@@ -94,9 +95,9 @@ Plots offer robust protection from both players and the elements. Plots are prot
 
 #### Upgrading
 
-When a plot is upgraded, its new side length is calculated so that the total plot size increases by the area of a single plot. For example, upgrading a plot once will result in a plot that is twice the size of the original. Upgrading a plot twice will result in a plot that is three times the size of the original. A plot is consumed every time a plot is upgraded.
+When upgrading a plot, it is assigned a new side length so that the total plot size increases by the area of a single plot. For example, upgrading a plot once will result in a plot that is twice the size of the original. Upgrading a plot twice will result in a plot that is three times the size of the original. Upgrading an existing plot will consume a plot slot.
 
-Downgrading a plot will reduce the size back by the area of a single plot. When a plot is fully downgraded, it will be the same size and in the exact same position as the original plot. The plots that were consumed during the upgrade process will be returned back to the player.
+Downgrading a plot will reduce the size back by the area of a single plot. After fully downgrading a plot, it will be the same size and in the exact same position as the original plot. The plots that were consumed during the upgrade process will be returned to the player.
 
 #### Plot Deeds
 
@@ -125,6 +126,10 @@ See the Player Plot [Trello board](https://trello.com/b/SBzUNtZC/player-plot) fo
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 See `CONTRIBUTING` for more information.
+
+#### Translations
+
+We are always looking to expand and improve Player Plot's localization. If you want to help us translate Player Plot into your native language, join the Player Plot [Crowdin project](https://crowdin.com/project/player-plot).
 
 <!-- LICENSE -->
 ## License

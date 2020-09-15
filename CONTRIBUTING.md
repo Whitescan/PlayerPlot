@@ -1,7 +1,7 @@
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 * [Repository](#repository)
-* [Translation](#translation)
+* [Translations](#translations)
 
 ## Repository
 
@@ -19,6 +19,6 @@ Contributions are what make the open source community such an amazing place to b
 * Do not attempt to support older versions than 1.8 even if it can be fixed with a single line.
 * Do not use one liner if statements if it doesn't fit the screen.
 
-## Translation
+## Translations
 
 We are always looking to expand and improve Player Plot's locilization. If you want to help us translate Player Plot into your native language, join the Player Plot [Crowdin project](https://crowdin.com/project/player-plot).
