@@ -21,11 +21,9 @@
   ### Player Plot <br><sub>*Build without fear!*</sub>
   **[Explore the docs »](https://gitlab.com/sword7/playerplot)**
   <br/>
-  [View Demo](https://github.com/github_username/repo_name)
+  [Report Bug](https://discord.com/invite/hKTXQBH)
   ·
-  [Report Bug](https://github.com/github_username/repo_name/issues)
-  ·
-  [Request Feature](https://github.com/github_username/repo_name/issues)
+  [Request Feature](https://discord.com/invite/hKTXQBH)
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -50,6 +48,7 @@
 
 Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. The plugin is extremely scalable thanks to plots beings stored in grid zones. The plugin is also very user friendly because any plot's border can be made visible using the /plot scan command.
 
+[![download](https://gitlab.com/sword7/playerplot/-/wikis/uploads/f84e488f41d6e7c164d13b5d7afe14d5/download.png)](https://www.spigotmc.org/resources/player-plot.68033/)
 
 ### Built With
 
