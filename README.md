@@ -48,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Player Plot Screen Shot](https://gitlab.com/sword7/playerplot/-/blob/master/images/cover.png)
+![Player Plot Screen Shot](images/cover.jpg)
 
 Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. The plugin is extremely scalable thanks to plots beings stored in grid zones. The plugin is also very user friendly because any plot's border can be made visible using the /plot scan command.
 
@@ -103,7 +103,7 @@ Downgrading a plot will reduce the size back by the area of a single plot. When 
 
 Players unlock new plots by obtaining and right clicking on a plot deed. The plugin comes with an optional resource pack that adds custom textures to plot deeds.
 
-![Plot Deed](https://gitlab.com/sword7/playerplot/-/blob/master/images/plot-deed.png)
+![Plot Deed](images/plot-deed.png)
 
 You can download the resource pack [here](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack).
 
@@ -111,7 +111,7 @@ You can download the resource pack [here](https://gitlab.com/sword7/playerplot/-
 
 Player Plot is compatible with dynmap. Configure the dynmap with the options in the config.yml file.
 
-![Plot Deed](https://gitlab.com/sword7/playerplot/-/blob/master/images/dynmap.png)
+![Plot Deed](images/dynmap.png)
 
 _For more information, please refer to the [Documentation](https://gitlab.com/sword7/playerplot/-/wikis/home)._
 
