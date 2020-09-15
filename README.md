@@ -11,8 +11,6 @@
 [![MIT License][license-shield]][license-url]
 [![Discord][discord-shield]][discord-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -20,23 +18,15 @@
     <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/11067249/playerplot.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h1 align="center">Player Plot</h1>
-
-  <p align="center">
-    Build Without Fear!
-    <br />
-    <a href="https://gitlab.com/sword7/playerplot"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
+  ### Player Plot <br><sub>*Build without fear!*</sub>
+  **[Explore the docs »](https://gitlab.com/sword7/playerplot)**
+  <br/>
+  [View Demo](https://github.com/github_username/repo_name)
+  ·
+  [Report Bug](https://github.com/github_username/repo_name/issues)
+  ·
+  [Request Feature](https://github.com/github_username/repo_name/issues)
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -53,24 +43,17 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Player Plot Screen Shot](https://eclipsekingdom.com/gallery/albums/Player_Plot/small-cover.png)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
+Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. The plugin is extremely scalable thanks to plots beings stored in grid zones. The plugin is also very user friendly because any plot's border can be made visible using the /plot scan command.
 
 
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [Spigot](https://www.spigotmc.org/)
 
 
 <!-- GETTING STARTED -->
@@ -138,9 +121,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+sword7 - sword#5439 - devsword7@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/playerplot)
 
 
 
