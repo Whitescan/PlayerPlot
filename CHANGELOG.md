@@ -13,15 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - /pplot as an alternative root command
   - root command option to config.yml
 - extended remote commands
-- -l argument to extend duration of scan `/plot scan -l`
+- -l argument to extend duration of scan<br> 
+  `/plot scan -l`
 - database keep alive query
 - 1.16 texture pack 
-- plot teleportation
-  - commands:
-    > /toplot [plot] -  teleport to plot
-    > /plot setspawn - set spawn point
-  - permission:
-    > playerplot.teleport
+- plot teleportation<br>
+- commands
+  >/toplot [plot] -  teleport to plot<br> 
+  >/plot setspawn - set spawn point
+- permission
+  >playerplot.teleport
 
 ### Changed
 
