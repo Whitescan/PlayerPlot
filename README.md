@@ -20,7 +20,7 @@
     <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/11067249/playerplot.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Player Plot</h3>
+  <h1 align="center">Player Plot</h1>
 
   <p align="center">
     Build Without Fear!
