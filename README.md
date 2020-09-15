@@ -6,7 +6,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Version][versions-shield]][version-url]
+[!(https://img.shields.io/spiget/version/68033?label=&labelColor=EE22EE&color=FF55FF)](https://www.spigotmc.org/resources/player-plot.68033/)
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -159,8 +159,6 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[versions-shield]: https://img.shields.io/spiget/version/68033?label=&labelColor=EE22EE&color=FF55FF
-[versions-url]: https://www.spigotmc.org/resources/player-plot.68033
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
 [forks-url]: https://github.com/github_username/repo/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
