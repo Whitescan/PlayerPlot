@@ -36,6 +36,8 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+  * [Protection](#protection)
+  * [Upgrading](#upgrading)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -72,7 +74,35 @@ Player Plot is installed like any other Spigot plugin. If you need a refresher y
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+A plot is a protected zone that belongs to an owning player. Plots can be managed by using /plot commands while standing in the target plot. Plots can also be edited remotely by using the /plot @[plot] format.
+
+#### Protection
+
+Plots offer robust protection from both players and the elements. Plots are protected from the following
+
+- Unauthorized building
+- Unauthorized breaking
+- Unauthorized use (ie chests/doors)
+- Unauthorized harming of animals
+- Explosions
+- Fire-spread
+- Outside pistons
+- Outside dragon egg teleportion
+- Outside water/lava flow
+- Farmland Trampling
+- And More!
+
+#### Upgrading
+
+When a plot is upgraded, its new side length is calculated so that the total plot size increases by the area of a single plot. For example, upgrading a plot once will result in a plot that is twice the size of the original. Upgrading a plot twice will result in a plot that is three times the size of the original. A plot is consumed every time a plot is upgraded.
+
+Downgrading a plot will reduce the size back by the area of a single plot. When a plot is fully downgraded, it will be the same size and in the exact same position as the original plot. The plots that were consumed during the upgrade process will be returned back to the player.
+
+#### Plot Deeds
+
+Players unlock new plots by obtaining and right clicking on a plot deed. The plugin comes with an optional resource pack that adds custom textures to plot deeds.
+
+You can download the resource pack [here](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack).
 
 _For more information, please refer to the [Documentation](https://gitlab.com/sword7/playerplot/-/wikis/home)._
 
