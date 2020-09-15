@@ -15,9 +15,9 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
+<div align="center">
   <a href="https://gitlab.com/sword7/playerplot">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/11067249/playerplot.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Player Plot</h3>
@@ -34,7 +34,7 @@
     ·
     <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
-</p>
+</div>
 
 
 
