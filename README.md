@@ -13,7 +13,7 @@
 [![Discord][discord-shield]][discord-url]
 
 <!-- PROJECT LOGO -->
-<br />
+<br/>
 <div align="center">
   <a href="https://gitlab.com/sword7/playerplot">
     <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/11067249/playerplot.png" alt="Logo" width="80" height="80">
@@ -116,7 +116,7 @@ See the Player Plot [Trello board](https://trello.com/b/SBzUNtZC/player-plot) fo
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-See `CONTRIBUTING.md` for more information.
+See `CONTRIBUTING` for more information.
 
 <!-- LICENSE -->
 ## License
