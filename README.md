@@ -15,9 +15,8 @@
 <!-- PROJECT LOGO -->
 <br/>
 <div align="center">
-  <a href="https://gitlab.com/sword7/playerplot">
-    <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/11067249/playerplot.png" alt="Logo" width="80" height="80">
-  </a>
+
+  [![Player Plot](images/logo.png)](https://gitlab.com/sword7/playerplot)
 
   ### Player Plot <br><sub>*Build without fear!*</sub>
   **[Explore the docs »](https://gitlab.com/sword7/playerplot)**
