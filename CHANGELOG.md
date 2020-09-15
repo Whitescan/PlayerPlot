@@ -28,10 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - versioning to semantic versioning
 - remote plot format
-  - /plot @[plot] free
-  - /plot @[plot] upgrade
-  - /plot @[plot] rename [name]
-  - . . .
+  >/plot @[plot] free<br>
+  >/plot @[plot] upgrade<br>
+  >/plot @[plot] rename [name]<br>
+  >. . .
 - world border not shown when not inside radius
 - border will push player inside if used on edge of plot
 - en.yml language file
