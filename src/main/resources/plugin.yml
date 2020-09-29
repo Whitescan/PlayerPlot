@@ -2,11 +2,11 @@ name: PlayerPlot
 version: 1.18.0
 main: com.eclipsekingdom.playerplot.PlayerPlot
 api-version: 1.13
-authors: [sword]
-description: A plugin that adds protected areas for player use
-website: eclipsekingdom.com
+authors: [ sword7 ]
+description: A plugin that adds protected areas for player use.
+website: https://eclipsekingdom.com
 load: POSTWORLD
-softdepend: [dynmap]
+softdepend: [ dynmap ]
 
 commands:
   pplot:

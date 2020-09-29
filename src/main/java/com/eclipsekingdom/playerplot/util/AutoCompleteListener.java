@@ -31,7 +31,15 @@ public class AutoCompleteListener implements Listener {
         if (e.getSender() instanceof Player) {
             String buffer = e.getBuffer();
             Player player = (Player) e.getSender();
-            if (buffer.startsWith("/" + rootCommand + " @")) {
+            if (buffer.startsWith("/playerplot ")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/playerplot";
+                    e.setCompletions(getRefinedCompletions(root, buffer, PLUGIN_COMPLETIONS));
+                } else {
+                    e.setCompletions(Collections.EMPTY_LIST);
+                }
+            } else if (buffer.startsWith("/" + rootCommand + " @")) {
                 int args = numberOfFullArgs(buffer);
                 if (args == 0) {
                     String root = "/" + rootCommand;
@@ -123,6 +131,11 @@ public class AutoCompleteListener implements Listener {
             .add("setspawn")
             .build();
 
+
+    private static final List<String> PLUGIN_COMPLETIONS = ImmutableList.<String>builder()
+            .add("help")
+            .add("info")
+            .build();
 
     private static final List<String> PLOT_ACTION_COMPLETIONS = ImmutableList.<String>builder()
             .add("rename")

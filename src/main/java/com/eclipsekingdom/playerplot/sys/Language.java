@@ -1,6 +1,9 @@
 package com.eclipsekingdom.playerplot.sys;
 
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -8,6 +11,15 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 
 public enum Language {
+
+    PLUGIN_DESCRIPTION("Plugin - description", "Player Plot is a self-serve protection plugin. It allows users to unlock and claim protected regions."),
+    PLUGIN_READ_MORE("Plugin - read more", "Read more on the [link]."),
+    PLUGIN_WIKI("Plugin - wiki", "Player Plot wiki"),
+    PLUGIN_OPTIONS("Plugin - options", "Options"),
+    PLUGIN_HELP("Plugin - help", "show plugin commands"),
+    PLUGIN_INFO("Plugin - info", "get plugin information"),
+    PLUGIN_AUTHOR("Plugin - author", "Author"),
+    PLUGIN_VERSION("Plugin - version", "Version"),
 
     LABEL_COMMANDS("Label - commands", "Commands"),
     LABEL_PLOTS("Label - plots", "Plots"),
@@ -77,6 +89,8 @@ public enum Language {
     MISC_FORMAT("Misc - format", "Format is %format%"),
     MISC_ONE_USE("Misc - one use", "1 use only - click to activate"),
     MISC_PLOT_DEED_LORE("Misc - plot deed lore", "a serious looking piece of paper"),
+    MISC_OPTIONAL("Misc - optional", "optional"),
+    MISC_VARIABLE("Misc - variable", "variable"),
 
     STATUS_REGION_OCCUPIED("Status - region occupied", "Another region is too close. Your plot would overlap."),
     STATUS_LOAD_ERROR("Status - load error", "Unable to load data."),
@@ -186,6 +200,25 @@ public enum Language {
 
     public String fromPlayer(String player) {
         return get().replaceAll("%player%", player);
+    }
+
+    public TextComponent getWithLink(ChatColor baseColor, ChatColor linkColor, String name, String link) {
+        String string = get();
+        TextComponent linkComponent = new TextComponent(name);
+        linkComponent.setColor(linkColor.asBungee());
+        linkComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
+        TextComponent base = new TextComponent("");
+        base.setColor(baseColor.asBungee());
+        String[] subs = string.split("\\[link\\]");
+        for (int i = 0; i < subs.length; i++) {
+            TextComponent textComponent = new TextComponent(subs[i]);
+            textComponent.setColor(baseColor.asBungee());
+            base.addExtra(textComponent);
+            if (i < subs.length - 1) {
+                base.addExtra(linkComponent);
+            }
+        }
+        return base;
     }
 
 }

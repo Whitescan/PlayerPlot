@@ -24,6 +24,7 @@
   [Report Bug](https://discord.com/invite/hKTXQBH)
   ·
   [Request Feature](https://discord.com/invite/hKTXQBH)
+  
 </div>
 
 <!-- TABLE OF CONTENTS -->

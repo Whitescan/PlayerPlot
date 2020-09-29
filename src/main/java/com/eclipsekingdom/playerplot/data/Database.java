@@ -3,7 +3,7 @@ package com.eclipsekingdom.playerplot.data;
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.plot.Plot;
-import com.eclipsekingdom.playerplot.sys.storage.DatabaseConnection;
+import com.eclipsekingdom.playerplot.util.storage.DatabaseConnection;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;

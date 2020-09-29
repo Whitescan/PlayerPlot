@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.sys.storage;
+package com.eclipsekingdom.playerplot.util.storage;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
