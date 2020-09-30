@@ -25,7 +25,6 @@ public class PluginHelp {
         sendPlotActionCommands(sender);
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotDeedCommand(sender);
-        sender.sendMessage("");
     }
 
     public static void showPlots(Player player) {
@@ -41,7 +40,6 @@ public class PluginHelp {
         sendPlotCommands(player);
         player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotActionCommands(player);
-        player.sendMessage("");
     }
 
 

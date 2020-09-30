@@ -68,6 +68,14 @@ public final class PlayerPlot extends JavaPlugin {
         PlotBeam.shutdown();
     }
 
+    public static void reload() {
+        ConfigLoader.load();
+        //PluginConfig.reload();
+        //Language.reload();
+        //TODO add plot file/database reload once new storage system is implemented
+    }
+
+
     public static Plugin getPlugin() {
         return plugin;
     }

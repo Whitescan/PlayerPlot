@@ -3,7 +3,6 @@ package com.eclipsekingdom.playerplot.sys;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -20,6 +19,11 @@ public enum Language {
     PLUGIN_INFO("Plugin - info", "get plugin information"),
     PLUGIN_AUTHOR("Plugin - author", "Author"),
     PLUGIN_VERSION("Plugin - version", "Version"),
+    PLUGIN_NEW_UPDATE("Plugin - new update", "A new version of Player Plot is available."),
+    PLUGIN_VIEW_UPDATE_NOTES("Plugin - view update notes", "View on [link]."),
+    PLUGIN_UPDATE_ERROR("Plugin - update error", "Unable to fetch update."),
+    PLUGIN_UP_TO_DATE("Plugin - up to date", "Plugin is up to date."),
+    PLUGIN_RELOAD("Plugin - reload", "Reload complete."),
 
     LABEL_COMMANDS("Label - commands", "Commands"),
     LABEL_PLOTS("Label - plots", "Plots"),
@@ -202,10 +206,10 @@ public enum Language {
         return get().replaceAll("%player%", player);
     }
 
-    public TextComponent getWithLink(ChatColor baseColor, ChatColor linkColor, String name, String link) {
+    public TextComponent getWithLink(ChatColor baseColor, String name, String link) {
         String string = get();
         TextComponent linkComponent = new TextComponent(name);
-        linkComponent.setColor(linkColor.asBungee());
+        linkComponent.setColor(ChatColor.AQUA.asBungee());
         linkComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
         TextComponent base = new TextComponent("");
         base.setColor(baseColor.asBungee());

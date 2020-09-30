@@ -10,12 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added introductory message to /playerplot command
-- Added /playerplot info command
+- Added Commands:
+  - /playerplot info - get plugin info
+  - /playerplot  update - check for updates
+- Added permission nodes:
+  - playerplot.reload - grants access to /playerplot reload
+  - playerplot.update - grants access to /playerplot update
 
 ### Changed
 
 - Improved help command formatting
 - Changed help command styling to match plugin theme
+- Updated language file
+- Improved autocomplete
 
 ## [1.18.0] - 2020-09-14
 

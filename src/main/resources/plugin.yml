@@ -33,3 +33,9 @@ permissions:
   playerplot.teleport:
     description: grants access to teleportation commands
     default: op
+  playerplot.update:
+    description: grants access to /playerplot update
+    default: op
+  playerplot.reload:
+    description: grants access to /playerplot reload
+    default: op

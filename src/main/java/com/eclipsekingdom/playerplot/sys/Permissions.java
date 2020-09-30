@@ -10,9 +10,11 @@ import java.util.Set;
 
 public class Permissions {
 
-    private static String LOOT_PERM = "playerplot.loot";
-    private static String BUILD_PERM = "playerplot.access";
-    private static String TP_PERM = "playerplot.teleport";
+    private static final String LOOT_PERM = "playerplot.loot";
+    private static final String BUILD_PERM = "playerplot.access";
+    private static final String TP_PERM = "playerplot.teleport";
+    private static final String RELOAD_PERM = "playerplot.reload";
+    private static final String UPDATE_PERM = "playerplot.update";
 
     public static boolean canSummonPlotDeed(CommandSender sender) {
         return hasPermission(sender, LOOT_PERM);
@@ -24,6 +26,14 @@ public class Permissions {
 
     public static boolean canTeleport(CommandSender sender) {
         return hasPermission(sender, TP_PERM);
+    }
+
+    public static boolean canReload(CommandSender sender) {
+        return hasPermission(sender, RELOAD_PERM);
+    }
+
+    public static boolean canUpdate(CommandSender sender) {
+        return hasPermission(sender, UPDATE_PERM);
     }
 
     private static boolean hasPermission(CommandSender sender, String permString) {

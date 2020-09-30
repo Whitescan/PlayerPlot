@@ -55,6 +55,8 @@ public class AutoCompleteListener implements Listener {
                     } else if (buffer.startsWith(base + " untrust ")) {
                         String root = base + " untrust";
                         e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " rename ")) {
+                        e.setCompletions(Collections.EMPTY_LIST);
                     }
                 }
             } else if (buffer.startsWith("/" + rootCommand + " ")) {
@@ -70,6 +72,8 @@ public class AutoCompleteListener implements Listener {
                     } else if (buffer.startsWith(base + " untrust ")) {
                         String root = base + " untrust";
                         e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " rename ") || buffer.startsWith(base + " claim ")) {
+                        e.setCompletions(Collections.EMPTY_LIST);
                     } else if (buffer.startsWith(base + " scan ")) {
                         String root = base + " scan";
                         e.setCompletions(getRefinedCompletions(root, buffer, SCAN_COMPLETIONS));
@@ -135,6 +139,8 @@ public class AutoCompleteListener implements Listener {
     private static final List<String> PLUGIN_COMPLETIONS = ImmutableList.<String>builder()
             .add("help")
             .add("info")
+            .add("update")
+            .add("reload")
             .build();
 
     private static final List<String> PLOT_ACTION_COMPLETIONS = ImmutableList.<String>builder()
