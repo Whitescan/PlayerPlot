@@ -18,10 +18,7 @@ import java.util.List;
 
 public class AutoCompleteListener implements Listener {
 
-    private String rootCommand;
-
     public AutoCompleteListener() {
-        this.rootCommand = PluginConfig.getRootCommand();
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -29,6 +26,7 @@ public class AutoCompleteListener implements Listener {
     @EventHandler
     public void onComplete(TabCompleteEvent e) {
         if (e.getSender() instanceof Player) {
+            String rootCommand = PluginConfig.getRootCommand();
             String buffer = e.getBuffer();
             Player player = (Player) e.getSender();
             if (buffer.startsWith("/playerplot ")) {

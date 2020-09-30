@@ -109,12 +109,10 @@ public enum Language {
 
     ;
 
-
-    private static File file = new File("plugins/PlayerPlot/Locale", PluginConfig.getLanguageFile() + ".yml");
-    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-
     public static void load() {
+        File file = new File("plugins/PlayerPlot/Locale", PluginConfig.getLanguageFile() + ".yml");
         if (file.exists()) {
+            FileConfiguration config = YamlConfiguration.loadConfiguration(file);
             try {
                 for (Language message : Language.values()) {
                     MessageSetting setting = message.getMessageSetting();
@@ -129,6 +127,10 @@ public enum Language {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void reload() {
+        load();
     }
 
     public class MessageSetting {

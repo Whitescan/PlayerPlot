@@ -13,8 +13,6 @@ import java.util.UUID;
 
 public class PluginHelp {
 
-    private static String rootCommand = PluginConfig.getRootCommand();
-
     public static void showTo(CommandSender sender) {
         sender.sendMessage("");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "__Player Plot_______");
@@ -48,31 +46,33 @@ public class PluginHelp {
     }
 
     private static void sendPlotCommands(CommandSender sender) {
+        String rootCommand = PluginConfig.getRootCommand();
         sendCommand(sender, "&d/" + rootCommand);
-        sendCommand(sender, "&d  > scan: &f&o" + Language.HELP_PLOT_SCAN.toString());
-        sendCommand(sender, "&d  > claim &7([" + Language.ARG_PLOT + "])&d: &f&o" + Language.HELP_PLOT_CLAIM.toString());
-        sendCommand(sender, "&d  > list: &f&o" + Language.HELP_PLOT_LIST.toString());
-        sendCommand(sender, "&d  > flist: &f&o" + Language.HELP_PLOT_FLIST.toString());
-        sendCommand(sender, "&d/toplot &5[plot]&d: &f&o" + Language.HELP_TOPLOT.toString());
+        sendCommand(sender, "&d  > scan: &f" + Language.HELP_PLOT_SCAN.toString());
+        sendCommand(sender, "&d  > claim &7([" + Language.ARG_PLOT + "])&d: &f" + Language.HELP_PLOT_CLAIM.toString());
+        sendCommand(sender, "&d  > list: &f" + Language.HELP_PLOT_LIST.toString());
+        sendCommand(sender, "&d  > flist: &f" + Language.HELP_PLOT_FLIST.toString());
+        sendCommand(sender, "&d/toplot &5[plot]&d: &f" + Language.HELP_TOPLOT.toString());
     }
 
 
     private static void sendPlotActionCommands(CommandSender sender) {
+        String rootCommand = PluginConfig.getRootCommand();
         sendCommand(sender, "&d/" + rootCommand + " &7(@[" + Language.ARG_PLOT + "])");
-        sendCommand(sender, "&d  > rename &5[" + Language.ARG_NAME + "]&d: &f&o" + Language.HELP_PLOT_RENAME.toString());
-        sendCommand(sender, "&d  > free: &f&o" + Language.HELP_PLOT_FREE.toString());
-        sendCommand(sender, "&d  > info: &f&o" + Language.HELP_PLOT_INFO.toString());
-        sendCommand(sender, "&d  > trust &5[" + Language.ARG_PLAYER + "]&d: &f&o" + Language.HELP_PLOT_TRUST.toString());
-        sendCommand(sender, "&d  > untrust &5[" + Language.ARG_PLAYER + "]&d: &f&o" + Language.HELP_PLOT_UNTRUST.toString());
-        sendCommand(sender, "&d  > upgrade: &f&o" + Language.HELP_PLOT_UPGRADE.toString());
-        sendCommand(sender, "&d  > downgrade: &f&o" + Language.HELP_PLOT_DOWNGRADE.toString());
-        sendCommand(sender, "&d  > setcenter: &f&o" + Language.HELP_PLOT_SET_CENTER.toString());
-        sendCommand(sender, "&d  > setspawn: &f&o" + Language.HELP_PLOT_SET_SPAWN.toString());
+        sendCommand(sender, "&d  > rename &5[" + Language.ARG_NAME + "]&d: &f" + Language.HELP_PLOT_RENAME.toString());
+        sendCommand(sender, "&d  > free: &f" + Language.HELP_PLOT_FREE.toString());
+        sendCommand(sender, "&d  > info: &f" + Language.HELP_PLOT_INFO.toString());
+        sendCommand(sender, "&d  > trust &5[" + Language.ARG_PLAYER + "]&d: &f" + Language.HELP_PLOT_TRUST.toString());
+        sendCommand(sender, "&d  > untrust &5[" + Language.ARG_PLAYER + "]&d: &f" + Language.HELP_PLOT_UNTRUST.toString());
+        sendCommand(sender, "&d  > upgrade: &f" + Language.HELP_PLOT_UPGRADE.toString());
+        sendCommand(sender, "&d  > downgrade: &f" + Language.HELP_PLOT_DOWNGRADE.toString());
+        sendCommand(sender, "&d  > setcenter: &f" + Language.HELP_PLOT_SET_CENTER.toString());
+        sendCommand(sender, "&d  > setspawn: &f" + Language.HELP_PLOT_SET_SPAWN.toString());
     }
 
 
     private static void sendPlotDeedCommand(CommandSender sender) {
-        sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f&o" + Language.HELP_PLOT_DEED.toString());
+        sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
     }
 
 }

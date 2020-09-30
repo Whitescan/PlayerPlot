@@ -7,9 +7,6 @@ import java.io.File;
 
 public class PluginConfig {
 
-    private static File file = new File("plugins/PlayerPlot", "config.yml");
-    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-
     private static String languageFileField = "Language file";
     private static String languageFile = "en";
 
@@ -57,9 +54,11 @@ public class PluginConfig {
     }
 
 
-    private void load() {
+    private static void load() {
+        File file = new File("plugins/PlayerPlot", "config.yml");
         if (file.exists()) {
             try {
+                FileConfiguration config = YamlConfiguration.loadConfiguration(file);
                 languageFile = config.getString(languageFileField, languageFile);
                 useAlias = config.getBoolean(useAliasField, useAlias);
                 startingPlotNum = config.getInt(startingPlotNumField, startingPlotNum);
@@ -78,6 +77,10 @@ public class PluginConfig {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void reload() {
+        load();
     }
 
     public static String getLanguageFile() {

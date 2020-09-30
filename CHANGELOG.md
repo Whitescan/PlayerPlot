@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added introductory message to /playerplot command
 - Added Commands:
   - /playerplot info - get plugin info
+  - /playerplot reload - reload player plot config (plot/user data will not reload yet)
   - /playerplot  update - check for updates
 - Added permission nodes:
   - playerplot.reload - grants access to /playerplot reload

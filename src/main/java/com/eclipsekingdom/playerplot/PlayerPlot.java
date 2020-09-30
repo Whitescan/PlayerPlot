@@ -70,9 +70,10 @@ public final class PlayerPlot extends JavaPlugin {
 
     public static void reload() {
         ConfigLoader.load();
-        //PluginConfig.reload();
-        //Language.reload();
-        //TODO add plot file/database reload once new storage system is implemented
+        PluginConfig.reload();
+        Language.reload();
+        //TODO - update perm info with new maxPlots from reload (or only load in if has override and compare greater on unlock)
+        //TODO - add plot file/database reload once new storage system is implemented
     }
 
 
