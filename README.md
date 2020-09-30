@@ -41,7 +41,7 @@
   * [Dynmap](#dynmap)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
-  * [Translation](#translations)
+  * [Translations](#translations)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
