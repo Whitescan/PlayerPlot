@@ -116,6 +116,9 @@ public class CommandPlot implements CommandExecutor {
         return false;
     }
 
+    private interface IPlotAction {
+        void run(Plot plot, String[] args);
+    }
 
     private void processPlotAction(Player player, String[] args, IPlotAction action) {
         if (args[0].startsWith("@")) {
@@ -232,7 +235,7 @@ public class CommandPlot implements CommandExecutor {
         int capacity = PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus();
         String title = ChatColor.LIGHT_PURPLE + LABEL_PLOTS.toString() + " (" + ChatColor.AQUA + used + ChatColor.LIGHT_PURPLE + "/" + capacity + "): ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
+        int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 
@@ -243,7 +246,7 @@ public class CommandPlot implements CommandExecutor {
         }
         String title = ChatColor.LIGHT_PURPLE + LABEL_FRIEND_PLOTS.toString() + ": ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
+        int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 

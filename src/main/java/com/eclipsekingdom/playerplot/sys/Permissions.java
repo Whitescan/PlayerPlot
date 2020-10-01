@@ -15,6 +15,11 @@ public class Permissions {
     private static final String TP_PERM = "playerplot.teleport";
     private static final String RELOAD_PERM = "playerplot.reload";
     private static final String UPDATE_PERM = "playerplot.update";
+    private static final String WRITE_PERM = "playerplot.write";
+
+    public static boolean canWriteDeeds(CommandSender sender) {
+        return hasPermission(sender, WRITE_PERM);
+    }
 
     public static boolean canSummon(CommandSender sender) {
         return hasPermission(sender, LOOT_PERM);

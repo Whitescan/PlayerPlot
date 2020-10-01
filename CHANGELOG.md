@@ -15,12 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added introductory message to /playerplot command
 - Added Commands:
-  - /playerplot info - get plugin info
-  - /playerplot reload - reload player plot config (plot/user data will not reload yet)
-  - /playerplot  update - check for updates
+  >/playerplot info - get plugin info
+  >/playerplot reload - reload player plot config (plot/user data will not reload yet)
+  >/playerplot  update - check for updates
+  >/writedeed - write plot deeds
 - Added permission nodes:
-  - playerplot.reload - grants access to /playerplot reload
-  - playerplot.update - grants access to /playerplot update
+  >playerplot.reload - grants access to /playerplot reload
+  >playerplot.update - grants access to /playerplot update
+  >playerplot.write - grants access to /writedeed
 - Added swamp, mountain, and ocean plot deeds
 
 ### Changed
@@ -38,46 +40,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- support for all subversions v1.8_R1 to v1.16_R2
+- Support for all sub-versions v1.8_R1 to v1.16_R2
 - /pplot as an alternative root command
   - root command option to config.yml
-- extended remote commands
+- Extended remote commands
 - -l argument to extend duration of scan<br> 
   `/plot scan -l`
-- database keep alive query
+- Database keep-alive query
 - 1.16 texture pack 
-- plot teleportation<br>
-- commands
+- Plot teleportation<br>
+- Commands
   >/toplot [plot] -  teleport to plot<br> 
   >/plot setspawn - set spawn point
-- permission
+- Permission
   >playerplot.teleport
 
 ### Changed
 
-- versioning to semantic versioning
-- remote plot format
+- Versioning to semantic versioning
+- Remote plot format
   >/plot @[plot] free<br>
   >/plot @[plot] upgrade<br>
   >/plot @[plot] rename [name]<br>
   >. . .
-- world border not shown when not inside radius
-- border will push player inside if used on edge of plot
+- World border not shown when not inside radius
+- Border will push player inside if used on edge of plot
 - en.yml language file
-- format of plots when listed with /plot list
+- Format of plots when listed with /plot list
   - now more clear how used plots are calculated
 
 
 ### Removed
 
-- protection for enchanting table, minecarts, and ender chests
+- Protection for enchanting table, minecarts, and ender chests
 
 ### Fixed
 
-- players can get outside of scanner bounds and cross real world border
-- old scan ends newly started scans early
-- database timeout issue preventing reads/writes
-- zoning bug that prevented plots from being properly read from cache after using the /plot setcenter command in a far away location
+- Players can get outside of scanner bounds and cross real world border
+- Old scan ends newly started scans early
+- Database timeout issue preventing reads/writes
+- Zoning bug that prevented plots from being properly read from cache after using the /plot setcenter command in a far away location
 
   
 <!--

@@ -2,7 +2,7 @@ package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.loot.PlotDeedType;
+import com.eclipsekingdom.playerplot.plotdeed.PlotDeedType;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
@@ -95,6 +95,8 @@ public class AutoCompleteListener implements Listener {
                 } else {
                     e.setCompletions(Collections.EMPTY_LIST);
                 }
+            } else if (buffer.startsWith("/writedeed")){
+                e.setCompletions(Collections.EMPTY_LIST);
             }
         }
     }

@@ -11,7 +11,6 @@ import java.util.UUID;
 
 public class PlotListener implements Listener {
 
-
     public PlotListener() {
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);

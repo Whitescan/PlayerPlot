@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.loot;
+package com.eclipsekingdom.playerplot.plotdeed;
 
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Version;
@@ -40,6 +40,12 @@ public class PlotDeed {
 
     public ItemStack getItemStack() {
         return itemStack.clone();
+    }
+
+    public ItemStack getItemStack(int amount) {
+        ItemStack itemStack = this.itemStack.clone();
+        itemStack.setAmount(amount);
+        return itemStack;
     }
 
     public static boolean isPlotDeed(ItemStack itemStack) {

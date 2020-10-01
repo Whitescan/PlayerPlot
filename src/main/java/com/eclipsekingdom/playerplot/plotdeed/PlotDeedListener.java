@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.loot;
+package com.eclipsekingdom.playerplot.plotdeed;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.UserCache;
@@ -10,7 +10,6 @@ import com.eclipsekingdom.playerplot.util.PlotUtil;
 import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

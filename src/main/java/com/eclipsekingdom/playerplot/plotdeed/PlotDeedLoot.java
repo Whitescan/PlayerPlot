@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.loot;
+package com.eclipsekingdom.playerplot.plotdeed;
 
 import com.eclipsekingdom.playerplot.sys.Language;
 import org.bukkit.inventory.ItemStack;

@@ -4,10 +4,7 @@ import com.eclipsekingdom.playerplot.data.Database;
 import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.data.UserCache;
 import com.eclipsekingdom.playerplot.data.event.DataLoadListener;
-import com.eclipsekingdom.playerplot.loot.CommandLoot;
-import com.eclipsekingdom.playerplot.loot.PlotDeedListener;
-import com.eclipsekingdom.playerplot.loot.PlotDeedLoot;
-import com.eclipsekingdom.playerplot.loot.PlotDeedType;
+import com.eclipsekingdom.playerplot.plotdeed.*;
 import com.eclipsekingdom.playerplot.plot.*;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
@@ -52,10 +49,11 @@ public final class PlayerPlot extends JavaPlugin {
         getCommand(PluginConfig.getRootCommand()).setExecutor(new CommandPlot());
         getCommand("plotdeed").setExecutor(new CommandLoot(new PlotDeedLoot()));
         getCommand("toplot").setExecutor(new CommandToPlot());
+        getCommand("writedeed").setExecutor(new CommandWriteDeed());
 
         //register listeners
         if (Version.hasAutoComplete()) new AutoCompleteListener();
-        new PlotProtection();
+        new ProtectionListener();
         new PlotListener();
         new PlotDeedListener();
         new PlotScanner();

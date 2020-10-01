@@ -18,14 +18,16 @@ commands:
   playerplot:
     description: show plugin commands
   plotdeed:
-    description: summon plot deed(s)
+    description: summon plot deeds
+  writedeed:
+    description: write plot deeds
 
 permissions:
   playerplot.*:
     description: grants all player plot user
     default: op
   playerplot.loot:
-    description: grants access to the /plotdeed command
+    description: grants access to the /plotdeed
     default: op
   playerplot.access:
     description: grants access to all player's plots
@@ -39,3 +41,5 @@ permissions:
   playerplot.reload:
     description: grants access to /playerplot reload
     default: op
+  playerplot.write:
+    description: grants access to /writedeed

@@ -57,6 +57,7 @@ public enum Language {
     HELP_PLOT_SET_SPAWN("Help - plot setspawn", "set plot spawn point"),
     HELP_TOPLOT("Help - toplot", "teleport to plot"),
     HELP_PLOT_DEED("Help - plot deed", "give plot deeds to player"),
+    HELP_WRITE_DEED("Help - write deed", "write plot deeds"),
 
     CONSOLE_DETECT("Console - plugin detected", "%plugin% detected"),
 
@@ -81,6 +82,8 @@ public enum Language {
     WARN_NOT_OWNER("Warn - not owner of plot", "You are not the owner of this plot."),
     WARN_OUTSIDE_PLOT_BOUNDS("Warn - outside plot bounds", "Spawn must be within plot bounds."),
     WARN_UNKNOWN_TYPE("Warn - unknown type", "Unknown type."),
+    WARN_INSUFFICIENT_UNCLAIMED_PLOTS("Warn - insufficient unclaimed plots", "You do not have enough unclaimed plots."),
+    WARN_NO_UNLOCKED_PLOTS("Warn - no unlocked plots", "You can only write deeds for unlocked plots."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),
@@ -94,6 +97,7 @@ public enum Language {
     SUCCESS_PLOT_DELETE("Success - plot delete", "Plot deleted."),
     SUCCESS_ITEMS_SENT("Success - items sent", "%amount% items sent to %player%"),
     SUCCESS_SPAWN_SET("Success - spawn set", "Spawn point set."),
+    SUCCESS_WRITE_DEED("Success - write deed", "You wrote %amount% plot deeds."),
 
     MISC_HERE("Misc - here", "here"),
     MISC_FORMAT("Misc - format", "Format is %format%"),
@@ -188,6 +192,10 @@ public enum Language {
 
     public String fromPlayerAndAmount(String playerName, int amount) {
         return get().replaceAll("%player%", playerName).replaceAll("%amount%", String.valueOf(amount));
+    }
+
+    public String fromAmount(int amount) {
+        return get().replaceAll("%amount%", String.valueOf(amount));
     }
 
     public String coloredFromPlayerAndPlot(String playerName, String plotName, ChatColor base, ChatColor highlight) {

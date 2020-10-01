@@ -20,4 +20,8 @@ public class UserData {
         unlockedPlots++;
     }
 
+    public void lockPlots(int amount) {
+        unlockedPlots -= amount;
+    }
+
 }

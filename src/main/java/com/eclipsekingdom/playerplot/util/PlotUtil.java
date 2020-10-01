@@ -17,6 +17,19 @@ import static com.eclipsekingdom.playerplot.sys.Language.STATUS_UNLOADED_DATA;
 
 public class PlotUtil {
 
+    public static int parseAmount(String string){
+        int amt;
+        try{
+            amt = Integer.parseInt(string);
+            if(amt < 0){
+                amt = 0;
+            }
+            return amt;
+        }catch (Exception e){
+            return 1;
+        }
+    }
+
     public static void callEvent(Event event) {
         Bukkit.getScheduler().runTask(PlayerPlot.getPlugin(), () -> {
             Bukkit.getServer().getPluginManager().callEvent(event);

@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.util;
+package com.eclipsekingdom.playerplot.util.X;
 
 /*
  * The MIT License (MIT)

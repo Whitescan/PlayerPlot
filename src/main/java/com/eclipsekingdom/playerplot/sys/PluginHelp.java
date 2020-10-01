@@ -16,8 +16,8 @@ public class PluginHelp {
     public static void showTo(CommandSender sender) {
         sender.sendMessage("");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "__Player Plot_______");
-        sender.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.LABEL_COMMANDS + " -------");
+        sender.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
         sendPlotCommands(sender);
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotActionCommands(sender);
@@ -32,11 +32,20 @@ public class PluginHelp {
         UserData userData = UserCache.getData(playerID);
         PermInfo permInfo = UserCache.getPerms(playerID);
         int used = PlotCache.getPlayerPlotsUsed(playerID);
-        int capacity = PluginConfig.getStartingPlotNum() + permInfo.getPlotBonus() + userData.getUnlockedPlots();
+        int startingNum = PluginConfig.getStartingPlotNum();
+        int permNum = permInfo.getPlotBonus();
+        int unlockedNum = userData.getUnlockedPlots();
+        int capacity = startingNum + permNum + unlockedNum;
         player.sendMessage("");
-        player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + Language.LABEL_PLOTS + ChatColor.ITALIC + "" + ChatColor.DARK_PURPLE + " -  (" + used + "/" + capacity + ")");
-        player.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
+        player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + Language.LABEL_PLOTS + ChatColor.ITALIC + "" +
+                ChatColor.DARK_PURPLE + " -  (" + used + "/" + ChatColor.AQUA + capacity + ChatColor.DARK_PURPLE + ")");
+        String capacityComponents = "";
+        if (startingNum > 0) capacityComponents += ChatColor.GRAY + "starting: " + ChatColor.AQUA + startingNum + " ";
+        if (unlockedNum > 0) capacityComponents += ChatColor.GRAY + "unlocked: " + ChatColor.AQUA + unlockedNum + " ";
+        if (permNum > 0) capacityComponents += ChatColor.GRAY + "permission: " + ChatColor.AQUA + permNum + " ";
+        player.sendMessage(capacityComponents);
         player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.LABEL_COMMANDS + " -------");
+        player.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
         sendPlotCommands(player);
         player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotActionCommands(player);
@@ -55,8 +64,8 @@ public class PluginHelp {
         sendCommand(sender, "&d  > list: &f" + Language.HELP_PLOT_LIST.toString());
         sendCommand(sender, "&d  > flist: &f" + Language.HELP_PLOT_FLIST.toString());
         sendCommand(sender, "&d/toplot &5[plot]&d: &f" + Language.HELP_TOPLOT.toString());
+        sendCommand(sender, "&d/writedeed &5[" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_WRITE_DEED.toString());
     }
-
 
     private static void sendPlotActionCommands(CommandSender sender) {
         String rootCommand = PluginConfig.getRootCommand();
@@ -71,7 +80,6 @@ public class PluginHelp {
         sendCommand(sender, "&d  > setcenter: &f" + Language.HELP_PLOT_SET_CENTER.toString());
         sendCommand(sender, "&d  > setspawn: &f" + Language.HELP_PLOT_SET_SPAWN.toString());
     }
-
 
     private static void sendPlotDeedCommand(CommandSender sender) {
         sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLOT_DEED + "] [" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
