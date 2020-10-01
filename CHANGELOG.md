@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.19.0] - ???
 
+**[Warning] 1.19.0 requires the new texture pack.**
+**[Warning] The /plotdeed command has changed.**
+**[Warning] The language file has changed, delete to allow it to reload.**
+
 ### Added
 
 - Added introductory message to /playerplot command
@@ -28,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PlayerPlot texture pack
 - Plot deeds now uses translation file for "+1 plot"
 - Changed /plotdeed command structure
+- Changed CustomModelData values in [resource pack](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack)
  
 ## [1.18.0] - 2020-09-14
 
