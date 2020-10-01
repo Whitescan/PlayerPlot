@@ -37,6 +37,10 @@ public enum Language {
     LABEL_COMPONENTS("Label - components", "Components"),
     LABEL_FRIENDS("Label - friends", "Friends"),
     LABEL_PLOT_DEED("Label - plot deed", "Plot Deed"),
+    LABEL_SWAMP_PLOT_DEED("Label - swamp plot deed", "Swamp Plot Deed"),
+    LABEL_MOUNTAIN_PLOT_DEED("Label - mountain plot deed", "Mountain Plot Deed"),
+    LABEL_OCEAN_PLOT_DEED("Label - ocean plot deed", "Ocean Plot Deed"),
+    LABEL_PLOT_DEEDS("Label - plot deeds", "Plot Deeds"),
 
     HELP_PLOT_SCAN("Help - plot scan", "display plot boundary"),
     HELP_PLOT_CLAIM("Help - plot claim", "claim a plot"),
@@ -60,6 +64,7 @@ public enum Language {
     ARG_PLAYER("Arg - player", "player"),
     ARG_NAME("Arg - name", "name"),
     ARG_PLOT("Arg - plot", "plot"),
+    ARG_PLOT_DEED("Arg - plot deed", "plot deed"),
 
     WARN_NOT_PERMITTED("Warn - no permission", "You do not have permission for this command."),
     WARN_PLOT_LIMIT("Warn - plot limit", "You have reached your plot limit."),
@@ -75,6 +80,7 @@ public enum Language {
     WARN_NOT_STANDING_IN_PLOT("Warn - not standing in plot", "You are not standing in a plot."),
     WARN_NOT_OWNER("Warn - not owner of plot", "You are not the owner of this plot."),
     WARN_OUTSIDE_PLOT_BOUNDS("Warn - outside plot bounds", "Spawn must be within plot bounds."),
+    WARN_UNKNOWN_TYPE("Warn - unknown type", "Unknown type."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),
@@ -86,7 +92,7 @@ public enum Language {
     SUCCESS_PLOT_CENTER("Success - plot center", "%plot% center updated."),
     SUCCESS_INVITED("Success - invited", "%player% has invited you to their plot, %plot%."),
     SUCCESS_PLOT_DELETE("Success - plot delete", "Plot deleted."),
-    SUCCESS_ITEMS_SENT("Success - items sent", "items sent to %player%"),
+    SUCCESS_ITEMS_SENT("Success - items sent", "%amount% items sent to %player%"),
     SUCCESS_SPAWN_SET("Success - spawn set", "Spawn point set."),
 
     MISC_HERE("Misc - here", "here"),
@@ -176,12 +182,12 @@ public enum Language {
         return ChatColor.translateAlternateColorCodes('&', messageSetting.getMessage());
     }
 
-    public String fromFile(String fileName) {
-        return get().replaceAll("%file%", fileName);
-    }
-
     public String fromPlayerAndPlot(String playerName, String plotName) {
         return get().replaceAll("%player%", playerName).replaceAll("%plot%", plotName);
+    }
+
+    public String fromPlayerAndAmount(String playerName, int amount) {
+        return get().replaceAll("%player%", playerName).replaceAll("%amount%", String.valueOf(amount));
     }
 
     public String coloredFromPlayerAndPlot(String playerName, String plotName, ChatColor base, ChatColor highlight) {

@@ -49,7 +49,7 @@ public class PlotDeedListener implements Listener {
                         userData.unlockPlot();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "+1 plot");
                         if (XSound.ITEM_BOOK_PAGE_TURN.isSupported()) {
-                            player.playSound(player.getLocation(), XSound.ITEM_BOOK_PAGE_TURN.parseSound(), 1f, 1f);
+                            player.playSound(player.getLocation(), XSound.ITEM_BOOK_PAGE_TURN.parseSound(), 2f, 1f);
                         }
                         consumeItem(player, itemStack);
                     } else {

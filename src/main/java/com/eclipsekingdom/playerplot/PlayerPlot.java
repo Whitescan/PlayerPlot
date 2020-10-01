@@ -4,8 +4,10 @@ import com.eclipsekingdom.playerplot.data.Database;
 import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.data.UserCache;
 import com.eclipsekingdom.playerplot.data.event.DataLoadListener;
-import com.eclipsekingdom.playerplot.loot.CommandPlotDeed;
+import com.eclipsekingdom.playerplot.loot.CommandLoot;
 import com.eclipsekingdom.playerplot.loot.PlotDeedListener;
+import com.eclipsekingdom.playerplot.loot.PlotDeedLoot;
+import com.eclipsekingdom.playerplot.loot.PlotDeedType;
 import com.eclipsekingdom.playerplot.plot.*;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
@@ -27,28 +29,32 @@ public final class PlayerPlot extends JavaPlugin {
     public void onEnable() {
         this.plugin = this;
 
+        //configs
         ConfigLoader.load();
-
         new PluginConfig();
-        Language.load();
-        new PluginBase();
 
+        //language and enums that use language
+        Language.load();
+        PlotDeedType.init();
+
+        //load integrations
+        new PluginBase();
         if (PluginConfig.isUsingDatabase()) {
             this.database = new Database();
         }
 
+        //initialize caches
         new PlotCache();
         new UserCache();
 
+        //register commands
         getCommand("playerplot").setExecutor(new CommandPlayerPlot());
         getCommand(PluginConfig.getRootCommand()).setExecutor(new CommandPlot());
-        getCommand("plotdeed").setExecutor(new CommandPlotDeed());
+        getCommand("plotdeed").setExecutor(new CommandLoot(new PlotDeedLoot()));
         getCommand("toplot").setExecutor(new CommandToPlot());
 
-        if (Version.hasAutoComplete()) {
-            new AutoCompleteListener();
-        }
-
+        //register listeners
+        if (Version.hasAutoComplete()) new AutoCompleteListener();
         new PlotProtection();
         new PlotListener();
         new PlotDeedListener();

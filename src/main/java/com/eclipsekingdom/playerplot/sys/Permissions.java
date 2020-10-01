@@ -16,7 +16,7 @@ public class Permissions {
     private static final String RELOAD_PERM = "playerplot.reload";
     private static final String UPDATE_PERM = "playerplot.update";
 
-    public static boolean canSummonPlotDeed(CommandSender sender) {
+    public static boolean canSummon(CommandSender sender) {
         return hasPermission(sender, LOOT_PERM);
     }
 

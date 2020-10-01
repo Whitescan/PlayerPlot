@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added permission nodes:
   - playerplot.reload - grants access to /playerplot reload
   - playerplot.update - grants access to /playerplot update
+- Added swamp, mountain, and ocean plot deeds
 
 ### Changed
 
@@ -24,7 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed help command styling to match plugin theme
 - Updated language file
 - Improved autocomplete
-
+- PlayerPlot texture pack
+- Plot deeds now uses translation file for "+1 plot"
+- Changed /plotdeed command structure
+ 
 ## [1.18.0] - 2020-09-14
 
 ### Added

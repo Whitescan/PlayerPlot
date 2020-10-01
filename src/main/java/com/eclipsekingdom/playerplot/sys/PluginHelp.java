@@ -21,8 +21,10 @@ public class PluginHelp {
         sendPlotCommands(sender);
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotActionCommands(sender);
-        sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
-        sendPlotDeedCommand(sender);
+        if (Permissions.canSummon(sender)) {
+            sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
+            sendPlotDeedCommand(sender);
+        }
     }
 
     public static void showPlots(Player player) {
@@ -72,7 +74,7 @@ public class PluginHelp {
 
 
     private static void sendPlotDeedCommand(CommandSender sender) {
-        sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
+        sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLOT_DEED + "] [" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
     }
 
 }

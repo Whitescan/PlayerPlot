@@ -2,6 +2,7 @@ package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.data.PlotCache;
+import com.eclipsekingdom.playerplot.loot.PlotDeedType;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
@@ -80,6 +81,20 @@ public class AutoCompleteListener implements Listener {
             } else if (buffer.startsWith("/toplot ")) {
                 String root = "/toplot";
                 e.setCompletions(getRefinedCompletions(root, buffer, getPlotNames(player)));
+            } else if (buffer.startsWith("/plotdeed")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/plotdeed";
+                    List<String> completions = new ArrayList<>();
+                    completions.addAll(PLOT_DEED_COMPLETIONS);
+                    completions.add("list");
+                    e.setCompletions(getRefinedCompletions(root, buffer, completions));
+                } else if (args == 1) {
+                    String root = "/plotdeed " + getArg(buffer, 0);
+                    e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions()));
+                } else {
+                    e.setCompletions(Collections.EMPTY_LIST);
+                }
             }
         }
     }
@@ -178,4 +193,23 @@ public class AutoCompleteListener implements Listener {
         }
         return onlinePlayerName;
     }
+
+    private static List<String> onlineCompletions() {
+        List<String> onlinePlayerName = new ArrayList<>();
+        for (Player oPlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayerName.add(oPlayer.getName());
+        }
+        return onlinePlayerName;
+    }
+
+    public static final List<String> PLOT_DEED_COMPLETIONS = buildPlotDeedTypes();
+
+    public static List<String> buildPlotDeedTypes() {
+        List<String> plotDeedTypes = new ArrayList<>();
+        for (PlotDeedType plotDeedType : PlotDeedType.values()) {
+            plotDeedTypes.add(plotDeedType.toString());
+        }
+        return plotDeedTypes;
+    }
+
 }
