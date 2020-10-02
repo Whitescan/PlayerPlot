@@ -1,9 +1,9 @@
 package com.eclipsekingdom.playerplot.sys;
 
 import com.eclipsekingdom.playerplot.plot.PlotCache;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.user.UserCache;
 import com.eclipsekingdom.playerplot.user.UserData;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -21,10 +21,19 @@ public class PluginHelp {
         sendPlotCommands(sender);
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
         sendPlotActionCommands(sender);
-        if (Permissions.canSummon(sender)) {
+        if (Permissions.canSummon(sender) || Permissions.canDeletePlots(sender) || Permissions.canViewAllPlots(sender)) {
             sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
-            sendPlotDeedCommand(sender);
+            if (Permissions.canViewAllPlots(sender)) {
+                sendCommand(sender, "&d/allplots: &f" + Language.HELP_ALL_PLOTS.toString());
+            }
+            if (Permissions.canDeletePlots(sender)) {
+                sendCommand(sender, "&d/delplot: &f" + Language.HELP_DEL_PLOT.toString());
+            }
+            if (Permissions.canSummon(sender)) {
+                sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLOT_DEED + "] [" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
+            }
         }
+
     }
 
     public static void showPlots(Player player) {
@@ -79,10 +88,6 @@ public class PluginHelp {
         sendCommand(sender, "&d  > downgrade: &f" + Language.HELP_PLOT_DOWNGRADE.toString());
         sendCommand(sender, "&d  > setcenter: &f" + Language.HELP_PLOT_SET_CENTER.toString());
         sendCommand(sender, "&d  > setspawn: &f" + Language.HELP_PLOT_SET_SPAWN.toString());
-    }
-
-    private static void sendPlotDeedCommand(CommandSender sender) {
-        sendCommand(sender, "&d/plotdeed &5[" + Language.ARG_PLOT_DEED + "] [" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]&d: &f" + Language.HELP_PLOT_DEED.toString());
     }
 
 }

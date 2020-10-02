@@ -24,7 +24,7 @@ commands:
   allplots:
     description: view all plots
   delplot:
-    description: view all plots
+    description: delete plot
   delplotconfirm:
     description: confirm delete plot
   delplotcancel:

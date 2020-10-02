@@ -61,8 +61,10 @@ public enum Language {
     HELP_PLOT_SET_CENTER("Help - plot setcenter", "set plot center"),
     HELP_PLOT_SET_SPAWN("Help - plot setspawn", "set plot spawn point"),
     HELP_TOPLOT("Help - toplot", "teleport to plot"),
-    HELP_PLOT_DEED("Help - plot deed", "give plot deeds to player"),
-    HELP_WRITE_DEED("Help - write deed", "write plot deeds"),
+    HELP_PLOT_DEED("Help - plotdeed", "give plot deeds to player"),
+    HELP_WRITE_DEED("Help - writedeed", "write plot deeds"),
+    HELP_ALL_PLOTS("Help - allplots", "view all plots"),
+    HELP_DEL_PLOT("help - delplot", "delete plot"),
 
     CONSOLE_DETECT("Console - plugin detected", "%plugin% detected"),
 
