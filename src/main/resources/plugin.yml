@@ -23,6 +23,12 @@ commands:
     description: write plot deeds
   allplots:
     description: view all plots
+  delplot:
+    description: view all plots
+  delplotconfirm:
+    description: confirm delete plot
+  delplotcancel:
+    description: cancel delete plot
 
 permissions:
   playerplot.*:

@@ -95,7 +95,7 @@ public class AutoCompleteListener implements Listener {
                 } else {
                     e.setCompletions(Collections.EMPTY_LIST);
                 }
-            } else if (buffer.startsWith("/writedeed")){
+            } else if (buffer.startsWith("/writedeed") || buffer.startsWith("/delplot ")){
                 e.setCompletions(Collections.EMPTY_LIST);
             }
         }

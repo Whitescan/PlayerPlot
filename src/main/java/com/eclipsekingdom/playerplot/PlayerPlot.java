@@ -1,6 +1,7 @@
 package com.eclipsekingdom.playerplot;
 
 import com.eclipsekingdom.playerplot.admin.CommandAllPlots;
+import com.eclipsekingdom.playerplot.admin.CommandDelPlot;
 import com.eclipsekingdom.playerplot.plot.*;
 import com.eclipsekingdom.playerplot.plotdeed.*;
 import com.eclipsekingdom.playerplot.sys.Language;
@@ -46,6 +47,7 @@ public final class PlayerPlot extends JavaPlugin {
         getCommand("toplot").setExecutor(new CommandToPlot());
         getCommand("writedeed").setExecutor(new CommandWriteDeed());
         getCommand("allplots").setExecutor(new CommandAllPlots());
+        getCommand("delplot").setExecutor(new CommandDelPlot());
 
         //register listeners
         if (Version.hasAutoComplete()) new AutoCompleteListener();

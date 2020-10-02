@@ -2,7 +2,9 @@ package com.eclipsekingdom.playerplot.sys;
 
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -42,6 +44,8 @@ public enum Language {
     LABEL_OCEAN_PLOT_DEED("Label - ocean plot deed", "Ocean Plot Deed"),
     LABEL_PLOT_DEEDS("Label - plot deeds", "Plot Deeds"),
     LABEL_ALL_PLOTS("Label - all plots", "All Plots"),
+    LABEL_CONFIRM("Label - confirm", "Confirm"),
+    LABEL_CANCEL("Label - cancel", "Cancel"),
 
     HELP_PLOT_SCAN("Help - plot scan", "display plot boundary"),
     HELP_PLOT_CLAIM("Help - plot claim", "claim a plot"),
@@ -112,6 +116,11 @@ public enum Language {
     STATUS_TOO_LONG("Status - name too long", "Plot names must be 20 characters or less"),
     STATUS_NAME_TAKEN("Status - name taken", "You already have a plot with that name"),
     STATUS_RESERVED_NAME("Status - reserved name", "That name is reserved by Player Plot"),
+
+    INFO_CONFIRM_DELETE("Info - confirm delete", "Delete %player%'s plot? [confirm] [cancel]"),
+    INFO_CONFIRM_HOVER("Info - hover confirm", "» Click to confirm"),
+    INFO_CANCEL_HOVER("Info - hover cancel", "» Click to cancel"),
+    INFO_REQUEST_DURATION("Info - request duration", "The request is valid for %seconds% seconds."),
 
     SCANNER_PLOT_OVERVIEW("Scanner - plot overview", "%plot% ~ %player% ~"),
     SCANNER_NO_PLOTS("Scanner - no plots", "No plots detected."),
@@ -209,6 +218,10 @@ public enum Language {
         return base + get().replaceAll("%plot%", highlight + plotName + base);
     }
 
+    public String fromSeconds(int seconds) {
+        return get().replaceAll("%seconds%", String.valueOf(seconds));
+    }
+
     public String fromPlugin(String pluginName) {
         return get().replaceAll("%plugin%", pluginName);
     }
@@ -237,6 +250,62 @@ public enum Language {
                 base.addExtra(linkComponent);
             }
         }
+        return base;
+    }
+
+    public TextComponent getWithPlayerConfirmDeny(ChatColor baseColor, ChatColor playerColor, String playerName, String confirmCommand, String cancelCommand) {
+        String string = get();
+
+        TextComponent confirmComponent = new TextComponent("[" + Language.LABEL_CONFIRM.toString() + "]");
+        confirmComponent.setColor(ChatColor.GREEN.asBungee());
+        confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GREEN + Language.INFO_CONFIRM_HOVER.toString())));
+        confirmComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, confirmCommand));
+
+        TextComponent cancelComponent = new TextComponent("[" + Language.LABEL_CANCEL.toString() + "]");
+        cancelComponent.setColor(ChatColor.RED.asBungee());
+        cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.RED + Language.INFO_CANCEL_HOVER.toString())));
+        cancelComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, cancelCommand));
+
+        TextComponent playerComponent = new TextComponent(playerName);
+        playerComponent.setColor(playerColor.asBungee());
+
+        TextComponent base = new TextComponent();
+        base.setColor(baseColor.asBungee());
+
+        String[] confirmSubs = string.split("\\[confirm\\]");
+        for (int i = 0; i < confirmSubs.length; i++) {
+
+            TextComponent confirmSub = new TextComponent();
+            confirmSub.setColor(baseColor.asBungee());
+
+            String[] cancelSubs = confirmSubs[i].split("\\[cancel\\]");
+            for (int j = 0; j < cancelSubs.length; j++) {
+
+                TextComponent cancelSub = new TextComponent();
+                cancelSub.setColor(baseColor.asBungee());
+
+                String[] playerSubs = cancelSubs[j].split("%player%");
+                for (int k = 0; k < playerSubs.length; k++) {
+
+                    TextComponent playerSub = new TextComponent(playerSubs[k]);
+                    playerSub.setColor(baseColor.asBungee());
+
+                    cancelSub.addExtra(playerSub);
+                    if (k < playerSubs.length - 1 || cancelSubs[j].endsWith("%player%")) cancelSub.addExtra(playerComponent);
+
+                }
+
+                confirmSub.addExtra(cancelSub);
+                if (j < cancelSubs.length - 1 || confirmSubs[i].endsWith("[cancel]")) confirmSub.addExtra(cancelComponent);
+
+            }
+
+            base.addExtra(confirmSub);
+            if (i < confirmSubs.length - 1 || string.endsWith("[confirm]")) base.addExtra(confirmComponent);
+
+        }
+
+
         return base;
     }
 
