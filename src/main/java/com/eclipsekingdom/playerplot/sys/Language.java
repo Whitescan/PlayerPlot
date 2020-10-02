@@ -117,6 +117,7 @@ public enum Language {
     MISC_VARIABLE("Misc - variable", "variable"),
 
     STATUS_REGION_OCCUPIED("Status - region occupied", "Another region is too close. Your plot would overlap."),
+    STATUS_INVALID_WORLD("Status - invalid world", "You cannot claim a plot in this world"),
     STATUS_SPECIAL_CHARACTERS("Status - name special characters", "Plot names must consist of only a-z, A-Z, 0-9, _, and -"),
     STATUS_TOO_LONG("Status - name too long", "Plot names must be 20 characters or less"),
     STATUS_NAME_TAKEN("Status - name taken", "You already have a plot with that name"),

@@ -8,7 +8,6 @@ import com.eclipsekingdom.playerplot.plot.*;
 import com.eclipsekingdom.playerplot.plotdeed.*;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
-import com.eclipsekingdom.playerplot.sys.SendConsole;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.ConfigLoader;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;

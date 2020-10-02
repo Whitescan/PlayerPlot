@@ -1,13 +1,12 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.sys.Language;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Location;
 import org.bukkit.World;
 
 import java.util.UUID;
-
-import static com.eclipsekingdom.playerplot.sys.Language.STATUS_REGION_OCCUPIED;
 
 public class Validation {
 
@@ -48,10 +47,11 @@ public class Validation {
 
     }
 
-
     public static RegionStatus canPlotBeRegisteredAt(Location center, int sideLength, UUID selfID) {
 
-        if (overlapsPlayerPlot(center, sideLength, selfID)) {
+        if (!PluginConfig.isAllowedPlotWorld(center.getWorld())) {
+            return RegionStatus.INVALID_WORLD;
+        } else if (overlapsPlayerPlot(center, sideLength, selfID)) {
             return RegionStatus.REGION_OCCUPIED;
         } else if (overlapsTownisPlot(center, sideLength)) {
             return RegionStatus.REGION_OCCUPIED;
@@ -63,7 +63,9 @@ public class Validation {
 
     public static RegionStatus canPlotBeUpgradedAt(World world, PlotPoint center, int sideLength, UUID selfID) {
         Location centerLoc = center.asLocation(world);
-        if (overlapsPlayerPlot(center.asLocation(world), sideLength, selfID)) {
+        if (!PluginConfig.isAllowedPlotWorld(centerLoc.getWorld())) {
+            return RegionStatus.INVALID_WORLD;
+        } else if (overlapsPlayerPlot(center.asLocation(world), sideLength, selfID)) {
             return RegionStatus.REGION_OCCUPIED;
         } else if (overlapsTownisPlot(centerLoc, sideLength)) {
             return RegionStatus.REGION_OCCUPIED;
@@ -115,7 +117,8 @@ public class Validation {
     public enum RegionStatus {
 
         VALID(""),
-        REGION_OCCUPIED(STATUS_REGION_OCCUPIED.toString());
+        INVALID_WORLD(Language.STATUS_INVALID_WORLD.toString()),
+        REGION_OCCUPIED(Language.STATUS_REGION_OCCUPIED.toString());
 
         RegionStatus(String message) {
             this.message = message;

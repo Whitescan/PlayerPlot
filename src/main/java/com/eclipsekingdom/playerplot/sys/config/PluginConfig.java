@@ -1,9 +1,12 @@
 package com.eclipsekingdom.playerplot.sys.config;
 
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PluginConfig {
 
@@ -24,6 +27,15 @@ public class PluginConfig {
 
     private static String plotPvpField = "Plot pvp";
     private static boolean plotPvp = true;
+
+    private static String blacklistWorldsString = "Plot world blacklist";
+    private static List<String> blacklistWorlds = buildBlacklistWorld();
+
+    private static List<String> buildBlacklistWorld() {
+        List<String> blacklistWorlds = new ArrayList<>();
+        blacklistWorlds.add("example-world");
+        return blacklistWorlds;
+    }
 
     private static String useDatabaseField = "Use database";
     private static boolean useDatabase = false;
@@ -68,6 +80,7 @@ public class PluginConfig {
                 maxPlotNum = config.getInt(maxPlotNumField, maxPlotNum);
                 unitSize = config.getInt(unitSizeField, unitSize);
                 plotPvp = config.getBoolean(plotPvpField, plotPvp);
+                blacklistWorlds = config.getStringList(blacklistWorldsString);
                 useDatabase = config.getBoolean(useDatabaseField, useDatabase);
                 host = config.getString(hostField, host);
                 port = config.getString(portField, port);
@@ -113,6 +126,10 @@ public class PluginConfig {
 
     public static boolean isPlotPvp() {
         return plotPvp;
+    }
+
+    public static boolean isAllowedPlotWorld(World world) {
+        return !blacklistWorlds.contains(world.getName());
     }
 
     public static boolean isUsingDatabase() {
