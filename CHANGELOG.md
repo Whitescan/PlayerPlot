@@ -14,15 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added introductory message to /playerplot command
-- Added Commands:
-  >/playerplot info - get plugin info
-  >/playerplot reload - reload player plot config (plot/user data will not reload yet)
-  >/playerplot  update - check for updates
-  >/writedeed - write plot deeds
+- Added back some admin commands (/plot activity command will return in the data storage update)
+- Added commands:
+  >/playerplot info *- get plugin info*<br> 
+  /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br> 
+  /playerplot  update *- check for updates*<br> 
+  /writedeed *- write plot deeds*
 - Added permission nodes:
-  >playerplot.reload - grants access to /playerplot reload
-  >playerplot.update - grants access to /playerplot update
-  >playerplot.write - grants access to /writedeed
+  >playerplot.reload *- grants access to /playerplot reload*<br> 
+  playerplot.update *- grants access to /playerplot update*<br> 
+  playerplot.write *- grants access to /writedeed*<br> 
+  playerplot.admin.* *- grants all Player Plot admin permissions*<br> 
+  playerplot.admin.view *- grants access to /allplots*<br>
+  playerplot.admin.delete *- grants access to plot deletion commands*                          
 - Added swamp, mountain, and ocean plot deeds
 
 ### Changed
@@ -50,20 +54,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Database keep-alive query
 - 1.16 texture pack 
 - Plot teleportation<br>
-- Commands
-  >/toplot [plot] -  teleport to plot<br> 
-  >/plot setspawn - set spawn point
-- Permission
-  >playerplot.teleport
+- Added commands:
+  >/toplot [plot] *- teleport to plot*<br> 
+  /plot setspawn *- set spawn point*
+- Added permission nodes:
+  >playerplot.teleport *- grants access to teleportation commands*
 
 ### Changed
 
 - Versioning to semantic versioning
 - Remote plot format
   >/plot @[plot] free<br>
-  >/plot @[plot] upgrade<br>
-  >/plot @[plot] rename [name]<br>
-  >. . .
+  /plot @[plot] upgrade<br>
+  /plot @[plot] rename [name]<br>
+  . . .
 - World border not shown when not inside radius
 - Border will push player inside if used on edge of plot
 - en.yml language file

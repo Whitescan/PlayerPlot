@@ -21,10 +21,12 @@ commands:
     description: summon plot deeds
   writedeed:
     description: write plot deeds
+  allplots:
+    description: view all plots
 
 permissions:
   playerplot.*:
-    description: grants all player plot user
+    description: grants all Player Plot permissions
     default: op
   playerplot.loot:
     description: grants access to the /plotdeed
@@ -43,3 +45,12 @@ permissions:
     default: op
   playerplot.write:
     description: grants access to /writedeed
+  playerplot.admin.*:
+    description: grants all Player Plot admin permissions
+    default: op
+  playerplot.admin.view:
+    descriotion: grants access to /allplots
+    default: op
+  playerplot.admin.delete:
+    description: grants access to plot deletion commands
+    default: op

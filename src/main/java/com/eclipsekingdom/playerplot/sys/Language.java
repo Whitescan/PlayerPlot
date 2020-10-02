@@ -41,6 +41,7 @@ public enum Language {
     LABEL_MOUNTAIN_PLOT_DEED("Label - mountain plot deed", "Mountain Plot Deed"),
     LABEL_OCEAN_PLOT_DEED("Label - ocean plot deed", "Ocean Plot Deed"),
     LABEL_PLOT_DEEDS("Label - plot deeds", "Plot Deeds"),
+    LABEL_ALL_PLOTS("Label - all plots", "All Plots"),
 
     HELP_PLOT_SCAN("Help - plot scan", "display plot boundary"),
     HELP_PLOT_CLAIM("Help - plot claim", "claim a plot"),

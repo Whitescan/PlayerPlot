@@ -228,7 +228,8 @@ public class CommandPlot implements CommandExecutor {
         PermInfo permInfo = UserCache.getPerms(playerID);
         int used = PlotCache.getPlayerPlotsUsed(playerID);
         int capacity = PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus();
-        String title = ChatColor.LIGHT_PURPLE + LABEL_PLOTS.toString() + " (" + ChatColor.AQUA + used + ChatColor.LIGHT_PURPLE + "/" + capacity + "): ";
+        String title = ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + LABEL_PLOTS.toString() +
+                " (" + ChatColor.AQUA + ChatColor.BOLD + used + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "/" + capacity + "): ";
         InfoList infoList = new InfoList(title, items, 7);
         int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);
@@ -239,7 +240,7 @@ public class CommandPlot implements CommandExecutor {
         for (Plot plot : PlotCache.getFriendPlots(player)) {
             items.add(PlotUtil.getFListString(plot));
         }
-        String title = ChatColor.LIGHT_PURPLE + LABEL_FRIEND_PLOTS.toString() + ": ";
+        String title = ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + LABEL_FRIEND_PLOTS.toString() + ": ";
         InfoList infoList = new InfoList(title, items, 7);
         int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);

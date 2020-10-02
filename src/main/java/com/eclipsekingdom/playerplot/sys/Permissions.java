@@ -17,6 +17,10 @@ public class Permissions {
     private static final String UPDATE_PERM = "playerplot.update";
     private static final String WRITE_PERM = "playerplot.write";
 
+    private static String DELETE_PERM = "playerplot.admin.delete";
+    private static String VIEW_PERM = "playerplot.admin.view";
+
+
     public static boolean canWriteDeeds(CommandSender sender) {
         return hasPermission(sender, WRITE_PERM);
     }
@@ -42,7 +46,21 @@ public class Permissions {
     }
 
     private static boolean hasPermission(CommandSender sender, String permString) {
-        return (sender.hasPermission("playerplot.*") || sender.hasPermission(permString));
+        return sender.hasPermission("playerplot.*") || sender.hasPermission(permString);
+    }
+
+    public static boolean canViewAllPlots(CommandSender sender) {
+        return hasAdminPermission(sender, VIEW_PERM);
+    }
+
+    public static boolean canDeletePlots(CommandSender sender) {
+        return hasAdminPermission(sender, DELETE_PERM);
+    }
+
+    private static boolean hasAdminPermission(CommandSender sender, String permString) {
+        return sender.hasPermission("playerplot.*") ||
+                sender.hasPermission("playerplot.admin.*") ||
+                sender.hasPermission(permString);
     }
 
     public static PermInfo getPermInfo(Player player) {
