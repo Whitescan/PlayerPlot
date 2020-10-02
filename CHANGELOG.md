@@ -20,16 +20,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   >/playerplot info *- get plugin info*<br> 
   /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br> 
   /playerplot  update *- check for updates*<br> 
-  /writedeed *- write plot deeds*
+  /writedeed *- write plot deeds*<br> 
 - Added permission nodes:
   >playerplot.reload *- grants access to /playerplot reload*<br> 
   playerplot.update *- grants access to /playerplot update*<br> 
-  playerplot.write *- grants access to /writedeed*<br> 
+  playerplot.write *- grants access to /writedeed* (default true)<br> 
   playerplot.admin.* *- grants all Player Plot admin permissions*<br> 
   playerplot.admin.view *- grants access to /allplots*<br>
-  playerplot.admin.delete *- grants access to plot deletion commands*                          
+  playerplot.admin.delete *- grants access to plot deletion commands*<br>
+  playerplot.plot.*: *-grants access to all plot commands* (default true)<br>
+  playerplot.plot.scan: *- grants access to /plot scan*<br>
+  playerplot.plot.claim: *- grants access to /plot claim*<br>
+  playerplot.plot.list: *- grants access to /plot list*<br>
+  playerplot.plot.flist: *- grants access to /plot flist*<br>
+  playerplot.plot.info: *- grants access to /plot info*<br>
+  playerplot.plot.trust: *- grants access to /plot trust*<br>
+  playerplot.plot.untrust: *- grants access to /plot untrust*<br>
+  playerplot.plot.upgrade: *- grants access to /plot upgrade*<br>
+  playerplot.plot.downgrade: *- grants access to /plot downgrade*<br>
+  playerplot.plot.setcenter: *- grants access to /plot setcenter*<br>
+  playerplot.plot.setspawn: *- grants access to /plot setspawn*<br>                  
 - Added swamp, mountain, and ocean plot deeds
 - Added plot pvp option to config
+- Added permission node for all plot actions
 
 ### Changed
 
@@ -62,9 +75,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plot teleportation<br>
 - Added commands:
   >/toplot [plot] *- teleport to plot*<br> 
-  /plot setspawn *- set spawn point*
+  /plot setspawn *- set spawn point*<br> 
 - Added permission nodes:
-  >playerplot.teleport *- grants access to teleportation commands*
+  >playerplot.teleport *- grants access to teleportation commands*<br> 
 
 ### Changed
 

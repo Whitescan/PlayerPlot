@@ -1,24 +1,26 @@
 package com.eclipsekingdom.playerplot.sys;
 
-import org.bukkit.Bukkit;
+import com.eclipsekingdom.playerplot.PlayerPlot;
+
+import java.util.logging.Logger;
 
 public class SendConsole {
 
-    private static final String namespace = "PlayerPlot";
+    private static Logger logger = PlayerPlot.getPlugin().getLogger();
     private static boolean debug = false;
 
     public static void info(String message) {
-        Bukkit.getConsoleSender().sendMessage("[" + namespace + "] " + message);
+        logger.info(message);
     }
 
     public static void debug(String message) {
         if (debug) {
-            Bukkit.getConsoleSender().sendMessage("[" + namespace + "] [DEBUG] " + message);
+            logger.info("[DEBUG] " + message);
         }
     }
 
     public static void warn(String message) {
-        Bukkit.getConsoleSender().sendMessage("[" + namespace + "] [WARN] " + message);
+        logger.warning("[WARN] " + message);
     }
 
 }

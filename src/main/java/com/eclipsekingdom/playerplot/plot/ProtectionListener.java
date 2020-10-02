@@ -244,7 +244,7 @@ public class ProtectionListener implements Listener {
                         damager.sendMessage(PVP_WARNING);
                     }
                 }
-            } else if (!(victim instanceof Monster)) {
+            } else if (!(ProtectionUtil.isMonster(victim) || ProtectionUtil.isFighting(victim))) {
                 if (!isAllowed(damager, victim.getLocation())) {
                     e.setCancelled(true);
                     damager.sendMessage(PROTECTED_WARNING);

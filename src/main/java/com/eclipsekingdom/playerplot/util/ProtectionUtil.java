@@ -1,10 +1,14 @@
 package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.util.X.XEntityType;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Material;
+import org.bukkit.entity.Creature;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,26 +16,26 @@ import java.util.Set;
 public class ProtectionUtil {
 
     public static boolean isProtectedInteraction(Material handMaterial, Material blockMaterial) {
-        return interactableMaterials.contains(blockMaterial) ||
+        return INTERACTABLE_MATERIALS.contains(blockMaterial) ||
                 isStripLogAttempt(handMaterial, blockMaterial) ||
                 isPlaceableItem(handMaterial) ||
                 isUsableItem(handMaterial);
     }
 
     public static boolean isInteractableAtEntity(EntityType entityType) {
-        return interactableAtEntities.contains(entityType);
+        return INTERACTABLE_AT_ENTITIES.contains(entityType);
     }
 
-    private static ImmutableSet<EntityType> interactableAtEntities = ImmutableSet.<EntityType>builder()
+    private static ImmutableSet<EntityType> INTERACTABLE_AT_ENTITIES = ImmutableSet.<EntityType>builder()
             .add(EntityType.ARMOR_STAND)
             .build();
 
 
     public static boolean isInteractableEntity(EntityType entityType) {
-        return interactableEntities.contains(entityType);
+        return INTERACTABLE_ENTITIES.contains(entityType);
     }
 
-    private static ImmutableSet<EntityType> interactableEntities = ImmutableSet.<EntityType>builder()
+    private static final ImmutableSet<EntityType> INTERACTABLE_ENTITIES = ImmutableSet.<EntityType>builder()
             .add(EntityType.ITEM_FRAME)
             .add(EntityType.VILLAGER)
             .add(EntityType.LEASH_HITCH)
@@ -44,26 +48,26 @@ public class ProtectionUtil {
 
 
     private static boolean isPlaceableItem(Material handItem) {
-        return placeableItems.contains(handItem);
+        return PLACEABLE_ITEMS.contains(handItem);
     }
 
-    private static ImmutableSet<Material> placeableItems = ImmutableSet.<Material>builder()
+    private static final ImmutableSet<Material> PLACEABLE_ITEMS = ImmutableSet.<Material>builder()
             .add(Material.ITEM_FRAME)
             .add(Material.PAINTING)
             .build();
 
     private static boolean isUsableItem(Material handItem) {
-        return usableItems.contains(handItem);
+        return USABLE_ITEMS.contains(handItem);
     }
 
-    private static ImmutableSet<Material> usableItems = ImmutableSet.<Material>builder()
+    private static ImmutableSet<Material> USABLE_ITEMS = ImmutableSet.<Material>builder()
             .add(Material.WATER_BUCKET)
             .add(Material.LAVA_BUCKET)
             .add(Material.FLINT_AND_STEEL)
             .add(XMaterial.BONE_MEAL.parseMaterial())
             .build();
 
-    private static Set<Material> interactableMaterials = buildInteractableMaterials();
+    private static final Set<Material> INTERACTABLE_MATERIALS = buildInteractableMaterials();
 
     private static Set<Material> buildInteractableMaterials() {
         Set<XMaterial> xMaterials = new HashSet<>();
@@ -180,11 +184,10 @@ public class ProtectionUtil {
 
 
     private static boolean isStripLogAttempt(Material handMaterial, Material blockMaterial) {
-        return (Version.getValue() >= 114 && axeItems.contains(handMaterial) && logMaterials.contains(blockMaterial));
+        return (Version.getValue() >= 114 && AXE_ITEMS.contains(handMaterial) && LOG_MATERIALS.contains(blockMaterial));
     }
 
-
-    private static Set<Material> logMaterials = buildLogMaterials();
+    private static final Set<Material> LOG_MATERIALS = buildLogMaterials();
 
     private static Set<Material> buildLogMaterials() {
         Set<XMaterial> xMaterials = new HashSet<>();
@@ -217,7 +220,7 @@ public class ProtectionUtil {
         return logMaterials;
     }
 
-    private static Set<Material> axeItems = buildAxeItems();
+    private static final Set<Material> AXE_ITEMS = buildAxeItems();
 
     private static Set<Material> buildAxeItems() {
         Set<XMaterial> xMaterials = new HashSet<>();
@@ -236,6 +239,101 @@ public class ProtectionUtil {
             }
         }
         return axeItems;
+    }
+
+    public static boolean isMonster(Entity entity) {
+        return MONSTER_MOBS.contains(entity.getType());
+    }
+
+    private static final Set<EntityType> MONSTER_MOBS = buildMonstersMobs();
+
+    private static Set<EntityType> buildMonstersMobs() {
+        Set<XEntityType> xEntityTypes = new HashSet<>();
+        xEntityTypes.add(XEntityType.BLAZE);
+        xEntityTypes.add(XEntityType.CAVE_SPIDER);
+        xEntityTypes.add(XEntityType.CREEPER);
+        xEntityTypes.add(XEntityType.DRAGON_FIREBALL);
+        xEntityTypes.add(XEntityType.DROWNED);
+        xEntityTypes.add(XEntityType.EGG);
+        xEntityTypes.add(XEntityType.ELDER_GUARDIAN);
+        xEntityTypes.add(XEntityType.ENDER_DRAGON);
+        xEntityTypes.add(XEntityType.ENDERMAN);
+        xEntityTypes.add(XEntityType.ENDERMITE);
+        xEntityTypes.add(XEntityType.EVOKER);
+        xEntityTypes.add(XEntityType.EVOKER_FANGS);
+        xEntityTypes.add(XEntityType.FIREBALL);
+        xEntityTypes.add(XEntityType.GHAST);
+        xEntityTypes.add(XEntityType.GIANT);
+        xEntityTypes.add(XEntityType.GUARDIAN);
+        xEntityTypes.add(XEntityType.HOGLIN);
+        xEntityTypes.add(XEntityType.HUSK);
+        xEntityTypes.add(XEntityType.ILLUSIONER);
+        xEntityTypes.add(XEntityType.LLAMA_SPIT);
+        xEntityTypes.add(XEntityType.MAGMA_CUBE);
+        xEntityTypes.add(XEntityType.PHANTOM);
+        xEntityTypes.add(XEntityType.PIGLIN);
+        xEntityTypes.add(XEntityType.PIGLIN_BRUTE);
+        xEntityTypes.add(XEntityType.PILLAGER);
+        xEntityTypes.add(XEntityType.RAVAGER);
+        xEntityTypes.add(XEntityType.SHULKER);
+        xEntityTypes.add(XEntityType.SHULKER_BULLET);
+        xEntityTypes.add(XEntityType.SILVERFISH);
+        xEntityTypes.add(XEntityType.SKELETON);
+        xEntityTypes.add(XEntityType.SLIME);
+        xEntityTypes.add(XEntityType.SMALL_FIREBALL);
+        xEntityTypes.add(XEntityType.SNOWBALL);
+        xEntityTypes.add(XEntityType.SLIME);
+        xEntityTypes.add(XEntityType.SPIDER);
+        xEntityTypes.add(XEntityType.STRAY);
+        xEntityTypes.add(XEntityType.UNKNOWN);
+        xEntityTypes.add(XEntityType.VEX);
+        xEntityTypes.add(XEntityType.VINDICATOR);
+        xEntityTypes.add(XEntityType.WITCH);
+        xEntityTypes.add(XEntityType.WITHER);
+        xEntityTypes.add(XEntityType.WITHER_SKELETON);
+        xEntityTypes.add(XEntityType.WITHER_SKULL);
+        xEntityTypes.add(XEntityType.ZOGLIN);
+        xEntityTypes.add(XEntityType.ZOMBIE);
+        xEntityTypes.add(XEntityType.ZOMBIE_VILLAGER);
+        xEntityTypes.add(XEntityType.ZOMBIFIED_PIGLIN);
+
+        Set<EntityType> monsters = new HashSet<>();
+        for (XEntityType entityType : xEntityTypes) {
+            if (entityType.isSupported()) monsters.add(entityType.parseEntityType());
+        }
+
+        return monsters;
+    }
+
+    public static boolean isFighting(Entity entity) {
+        return entity instanceof Creature &&
+                AGGROABLE_MOBS.contains(entity.getType()) &&
+                ((Creature) entity).getTarget() instanceof Player;
+    }
+
+    private static final Set<EntityType> AGGROABLE_MOBS = buildAggroableMobs();
+
+    private static Set<EntityType> buildAggroableMobs() {
+        Set<XEntityType> xEntityTypes = new HashSet<>();
+        xEntityTypes.add(XEntityType.BEE);
+        xEntityTypes.add(XEntityType.CAT);
+        xEntityTypes.add(XEntityType.DOLPHIN);
+        xEntityTypes.add(XEntityType.FOX);
+        xEntityTypes.add(XEntityType.IRON_GOLEM);
+        xEntityTypes.add(XEntityType.LLAMA);
+        xEntityTypes.add(XEntityType.OCELOT);
+        xEntityTypes.add(XEntityType.PANDA);
+        xEntityTypes.add(XEntityType.POLAR_BEAR);
+        xEntityTypes.add(XEntityType.PUFFERFISH);
+        xEntityTypes.add(XEntityType.SNOWMAN);
+        xEntityTypes.add(XEntityType.WOLF);
+
+        Set<EntityType> monsters = new HashSet<>();
+        for (XEntityType entityType : xEntityTypes) {
+            if (entityType.isSupported()) monsters.add(entityType.parseEntityType());
+        }
+
+        return monsters;
     }
 
 }
