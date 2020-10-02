@@ -91,6 +91,7 @@ public enum Language {
     WARN_UNKNOWN_TYPE("Warn - unknown type", "Unknown type."),
     WARN_INSUFFICIENT_UNCLAIMED_PLOTS("Warn - insufficient unclaimed plots", "You do not have enough unclaimed plots."),
     WARN_NO_UNLOCKED_PLOTS("Warn - no unlocked plots", "You can only write deeds for unlocked plots."),
+    WARN_NO_DELETE_REQUESTS("Warn - no delete requests", "You do not have any pending plot deletion requests."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),
@@ -102,6 +103,7 @@ public enum Language {
     SUCCESS_PLOT_CENTER("Success - plot center", "%plot% center updated."),
     SUCCESS_INVITED("Success - invited", "%player% has invited you to their plot, %plot%."),
     SUCCESS_PLOT_DELETE("Success - plot delete", "Plot deleted."),
+    SUCCESS_REQUEST_CANCEL("Success - request cancel", "Request cancelled."),
     SUCCESS_ITEMS_SENT("Success - items sent", "%amount% items sent to %player%"),
     SUCCESS_SPAWN_SET("Success - spawn set", "Spawn point set."),
     SUCCESS_WRITE_DEED("Success - write deed", "You wrote %amount% plot deeds."),

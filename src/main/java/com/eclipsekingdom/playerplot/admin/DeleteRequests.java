@@ -11,11 +11,13 @@ public class DeleteRequests {
 
     private static Map<UUID, Request> playerToRequest = new HashMap<>();
 
-    public static void add(Player player, Plot plot) {
-        playerToRequest.put(player.getUniqueId(), new Request(plot));
+    public static Request add(Player player, Plot plot) {
+        Request request = new Request(plot);
+        playerToRequest.put(player.getUniqueId(), request);
+        return request;
     }
 
-    public static void cancel(Player player) {
+    public static void remove(Player player) {
         playerToRequest.remove(player.getUniqueId());
     }
 
