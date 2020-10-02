@@ -10,11 +10,22 @@ import java.util.Set;
 
 public class Permissions {
 
-    private static String LOOT_PERM = "playerplot.loot";
-    private static String BUILD_PERM = "playerplot.access";
-    private static String TP_PERM = "playerplot.teleport";
+    private static final String LOOT_PERM = "playerplot.loot";
+    private static final String BUILD_PERM = "playerplot.access";
+    private static final String TP_PERM = "playerplot.teleport";
+    private static final String RELOAD_PERM = "playerplot.reload";
+    private static final String UPDATE_PERM = "playerplot.update";
+    private static final String WRITE_PERM = "playerplot.write";
 
-    public static boolean canSummonPlotDeed(CommandSender sender) {
+    private static String DELETE_PERM = "playerplot.admin.delete";
+    private static String VIEW_PERM = "playerplot.admin.view";
+
+
+    public static boolean canWriteDeeds(CommandSender sender) {
+        return hasPermission(sender, WRITE_PERM);
+    }
+
+    public static boolean canSummon(CommandSender sender) {
         return hasPermission(sender, LOOT_PERM);
     }
 
@@ -26,8 +37,30 @@ public class Permissions {
         return hasPermission(sender, TP_PERM);
     }
 
+    public static boolean canReload(CommandSender sender) {
+        return hasPermission(sender, RELOAD_PERM);
+    }
+
+    public static boolean canUpdate(CommandSender sender) {
+        return hasPermission(sender, UPDATE_PERM);
+    }
+
     private static boolean hasPermission(CommandSender sender, String permString) {
-        return (sender.hasPermission("playerplot.*") || sender.hasPermission(permString));
+        return sender.hasPermission("playerplot.*") || sender.hasPermission(permString);
+    }
+
+    public static boolean canViewAllPlots(CommandSender sender) {
+        return hasAdminPermission(sender, VIEW_PERM);
+    }
+
+    public static boolean canDeletePlots(CommandSender sender) {
+        return hasAdminPermission(sender, DELETE_PERM);
+    }
+
+    private static boolean hasAdminPermission(CommandSender sender, String permString) {
+        return sender.hasPermission("playerplot.*") ||
+                sender.hasPermission("playerplot.admin.*") ||
+                sender.hasPermission(permString);
     }
 
     public static PermInfo getPermInfo(Player player) {

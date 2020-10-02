@@ -1,0 +1,1 @@
+* database thread error? - change save in plotcache and usercache to shutdown. Call database connection.shutdown on own

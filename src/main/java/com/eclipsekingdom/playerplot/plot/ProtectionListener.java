@@ -1,9 +1,9 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.sys.Version;
-import com.eclipsekingdom.playerplot.util.XMaterial;
+import com.eclipsekingdom.playerplot.util.ProtectionUtil;
+import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -28,11 +28,11 @@ import java.util.List;
 
 import static com.eclipsekingdom.playerplot.sys.Language.WARN_PROTECTED;
 
-public class PlotProtection implements Listener {
+public class ProtectionListener implements Listener {
 
     private String PROTECTED_WARNING = ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + WARN_PROTECTED;
 
-    public PlotProtection() {
+    public ProtectionListener() {
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

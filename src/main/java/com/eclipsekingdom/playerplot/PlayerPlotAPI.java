@@ -1,8 +1,8 @@
 package com.eclipsekingdom.playerplot;
 
-import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.UserData;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
+import com.eclipsekingdom.playerplot.user.UserCache;
+import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import org.bukkit.entity.Player;
 

@@ -1,8 +1,8 @@
-package com.eclipsekingdom.playerplot.loot;
+package com.eclipsekingdom.playerplot.plotdeed;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.UserData;
+import com.eclipsekingdom.playerplot.user.UserCache;
+import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
@@ -10,7 +10,6 @@ import com.eclipsekingdom.playerplot.util.PlotUtil;
 import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -49,16 +48,13 @@ public class PlotDeedListener implements Listener {
                         userData.unlockPlot();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "+1 plot");
                         if (XSound.ITEM_BOOK_PAGE_TURN.isSupported()) {
-                            player.playSound(player.getLocation(), XSound.ITEM_BOOK_PAGE_TURN.parseSound(), 1f, 1f);
+                            player.playSound(player.getLocation(), XSound.ITEM_BOOK_PAGE_TURN.parseSound(), 2f, 1f);
                         }
                         consumeItem(player, itemStack);
                     } else {
                         player.sendMessage(ChatColor.RED + WARN_PLOT_MAX.toString());
                     }
-                } else {
-                    PlotUtil.fetchUnloadedData(player);
                 }
-
             }
         }
     }

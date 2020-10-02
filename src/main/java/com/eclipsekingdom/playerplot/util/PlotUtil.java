@@ -1,32 +1,25 @@
 package com.eclipsekingdom.playerplot.util;
 
-import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.event.DataLoadListener;
 import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.Language.STATUS_UNLOADED_DATA;
-
 public class PlotUtil {
 
-    public static void callEvent(Event event) {
-        Bukkit.getScheduler().runTask(PlayerPlot.getPlugin(), () -> {
-            Bukkit.getServer().getPluginManager().callEvent(event);
-        });
-    }
-
-    public static void fetchUnloadedData(Player player) {
-        player.sendMessage(ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + STATUS_UNLOADED_DATA);
-        DataLoadListener.registerWaitingPlayer(player);
-        UserCache.cache(player.getUniqueId());
+    public static int parseAmount(String string) {
+        int amt;
+        try {
+            amt = Integer.parseInt(string);
+            if (amt < 0) {
+                amt = 0;
+            }
+            return amt;
+        } catch (Exception e) {
+            return 1;
+        }
     }
 
     public static int getUpgradeLength(int relSize) {

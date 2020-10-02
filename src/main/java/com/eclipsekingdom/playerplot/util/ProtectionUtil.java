@@ -1,7 +1,7 @@
-package com.eclipsekingdom.playerplot.plot;
+package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.sys.Version;
-import com.eclipsekingdom.playerplot.util.XMaterial;
+import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

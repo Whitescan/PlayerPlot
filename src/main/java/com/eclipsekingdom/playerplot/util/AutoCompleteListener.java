@@ -1,7 +1,8 @@
 package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.PlotCache;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
+import com.eclipsekingdom.playerplot.plotdeed.PlotDeedType;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
@@ -18,10 +19,7 @@ import java.util.List;
 
 public class AutoCompleteListener implements Listener {
 
-    private String rootCommand;
-
     public AutoCompleteListener() {
-        this.rootCommand = PluginConfig.getRootCommand();
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -29,9 +27,18 @@ public class AutoCompleteListener implements Listener {
     @EventHandler
     public void onComplete(TabCompleteEvent e) {
         if (e.getSender() instanceof Player) {
+            String rootCommand = PluginConfig.getRootCommand();
             String buffer = e.getBuffer();
             Player player = (Player) e.getSender();
-            if (buffer.startsWith("/" + rootCommand + " @")) {
+            if (buffer.startsWith("/playerplot ")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/playerplot";
+                    e.setCompletions(getRefinedCompletions(root, buffer, PLUGIN_COMPLETIONS));
+                } else {
+                    e.setCompletions(Collections.EMPTY_LIST);
+                }
+            } else if (buffer.startsWith("/" + rootCommand + " @")) {
                 int args = numberOfFullArgs(buffer);
                 if (args == 0) {
                     String root = "/" + rootCommand;
@@ -47,6 +54,8 @@ public class AutoCompleteListener implements Listener {
                     } else if (buffer.startsWith(base + " untrust ")) {
                         String root = base + " untrust";
                         e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " rename ")) {
+                        e.setCompletions(Collections.EMPTY_LIST);
                     }
                 }
             } else if (buffer.startsWith("/" + rootCommand + " ")) {
@@ -62,6 +71,8 @@ public class AutoCompleteListener implements Listener {
                     } else if (buffer.startsWith(base + " untrust ")) {
                         String root = base + " untrust";
                         e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions(player)));
+                    } else if (buffer.startsWith(base + " rename ") || buffer.startsWith(base + " claim ")) {
+                        e.setCompletions(Collections.EMPTY_LIST);
                     } else if (buffer.startsWith(base + " scan ")) {
                         String root = base + " scan";
                         e.setCompletions(getRefinedCompletions(root, buffer, SCAN_COMPLETIONS));
@@ -70,6 +81,22 @@ public class AutoCompleteListener implements Listener {
             } else if (buffer.startsWith("/toplot ")) {
                 String root = "/toplot";
                 e.setCompletions(getRefinedCompletions(root, buffer, getPlotNames(player)));
+            } else if (buffer.startsWith("/plotdeed")) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 0) {
+                    String root = "/plotdeed";
+                    List<String> completions = new ArrayList<>();
+                    completions.addAll(PLOT_DEED_COMPLETIONS);
+                    completions.add("list");
+                    e.setCompletions(getRefinedCompletions(root, buffer, completions));
+                } else if (args == 1) {
+                    String root = "/plotdeed " + getArg(buffer, 0);
+                    e.setCompletions(getRefinedCompletions(root, buffer, onlineCompletions()));
+                } else {
+                    e.setCompletions(Collections.EMPTY_LIST);
+                }
+            } else if (buffer.startsWith("/writedeed") || buffer.startsWith("/delplot ") || buffer.startsWith("/allplots ")){
+                e.setCompletions(Collections.EMPTY_LIST);
             }
         }
     }
@@ -124,6 +151,13 @@ public class AutoCompleteListener implements Listener {
             .build();
 
 
+    private static final List<String> PLUGIN_COMPLETIONS = ImmutableList.<String>builder()
+            .add("help")
+            .add("info")
+            .add("update")
+            .add("reload")
+            .build();
+
     private static final List<String> PLOT_ACTION_COMPLETIONS = ImmutableList.<String>builder()
             .add("rename")
             .add("free")
@@ -161,4 +195,23 @@ public class AutoCompleteListener implements Listener {
         }
         return onlinePlayerName;
     }
+
+    private static List<String> onlineCompletions() {
+        List<String> onlinePlayerName = new ArrayList<>();
+        for (Player oPlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayerName.add(oPlayer.getName());
+        }
+        return onlinePlayerName;
+    }
+
+    public static final List<String> PLOT_DEED_COMPLETIONS = buildPlotDeedTypes();
+
+    public static List<String> buildPlotDeedTypes() {
+        List<String> plotDeedTypes = new ArrayList<>();
+        for (PlotDeedType plotDeedType : PlotDeedType.values()) {
+            plotDeedTypes.add(plotDeedType.toString());
+        }
+        return plotDeedTypes;
+    }
+
 }

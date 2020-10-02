@@ -2,11 +2,11 @@ name: PlayerPlot
 version: 1.18.0
 main: com.eclipsekingdom.playerplot.PlayerPlot
 api-version: 1.13
-authors: [sword]
-description: A plugin that adds protected areas for player use
-website: eclipsekingdom.com
+authors: [ sword7 ]
+description: A plugin that adds protected areas for player use.
+website: https://eclipsekingdom.com
 load: POSTWORLD
-softdepend: [dynmap]
+softdepend: [ dynmap ]
 
 commands:
   pplot:
@@ -18,18 +18,45 @@ commands:
   playerplot:
     description: show plugin commands
   plotdeed:
-    description: summon plot deed(s)
+    description: summon plot deeds
+  writedeed:
+    description: write plot deeds
+  allplots:
+    description: view all plots
+  delplot:
+    description: delete plot
+  delplotconfirm:
+    description: confirm delete plot
+  delplotcancel:
+    description: cancel delete plot
 
 permissions:
   playerplot.*:
-    description: grants all player plot user
+    description: grants all Player Plot permissions
     default: op
   playerplot.loot:
-    description: grants access to the /plotdeed command
+    description: grants access to the /plotdeed
     default: op
   playerplot.access:
     description: grants access to all player's plots
     default: op
   playerplot.teleport:
     description: grants access to teleportation commands
+    default: op
+  playerplot.update:
+    description: grants access to /playerplot update
+    default: op
+  playerplot.reload:
+    description: grants access to /playerplot reload
+    default: op
+  playerplot.write:
+    description: grants access to /writedeed
+  playerplot.admin.*:
+    description: grants all Player Plot admin permissions
+    default: op
+  playerplot.admin.view:
+    descriotion: grants access to /allplots
+    default: op
+  playerplot.admin.delete:
+    description: grants access to plot deletion commands
     default: op

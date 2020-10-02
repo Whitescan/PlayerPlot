@@ -1,16 +1,12 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.plot.Plot;
-import com.eclipsekingdom.playerplot.sys.storage.DatabaseConnection;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
-import com.eclipsekingdom.playerplot.util.PlotUtil;
+import com.eclipsekingdom.playerplot.util.storage.DatabaseConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,17 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Database {
+public class PlotDatabase {
 
     private static DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
 
-    private boolean initialized = false;
-
-    public boolean isInitialized() {
-        return initialized;
-    }
-
-    public Database() {
+    public PlotDatabase() {
         initialize();
     }
 
@@ -37,11 +27,6 @@ public class Database {
         try {
             databaseConnection.openConnection();
             Statement statement = databaseConnection.getConnection().createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS PUser (" +
-                    "uuid CHAR(36)," +
-                    "unlockedPlots INT(4) DEFAULT 0," +
-                    "PRIMARY KEY (uuid)" +
-                    ");");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS PPlot (" +
                     "uuid CHAR(36)," +
                     "name VARCHAR(20)," +
@@ -71,79 +56,7 @@ public class Database {
                     "friendName VARCHAR(16)," +
                     "PRIMARY KEY (plotID, friendID) " +
                     ");");
-            initialized = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void fetchUserDataSync(UUID playerID) {
-        fetchUserData(playerID);
-    }
-
-    public void fetchUserDataAsync(UUID playerID) {
-        BukkitRunnable r = new BukkitRunnable() {
-            @Override
-            public void run() {
-                fetchUserData(playerID);
-            }
-        };
-
-        r.runTaskAsynchronously(PlayerPlot.getPlugin());
-    }
-
-    public void fetchUserData(UUID playerID) {
-        try {
-            databaseConnection.openConnection();
-            ResultSet userResult = databaseConnection.getConnection().createStatement().executeQuery("SELECT * FROM PUser WHERE uuid = '" + playerID + "';");
-            UserData userData;
-            if (!userResult.next()) {
-                userData = new UserData();
-            } else {
-                int unlockedPlots = userResult.getInt("unlockedPlots");
-                userData = new UserData(unlockedPlots);
-            }
-            if (userData != null) {
-                UserCache.put(playerID, userData);
-                PlotUtil.callEvent(new UserDataLoadEvent(UserDataLoadEvent.Result.SUCCESS, playerID, userData));
-            } else {
-                PlotUtil.callEvent(new UserDataLoadEvent(UserDataLoadEvent.Result.ERROR, playerID, null));
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            PlotUtil.callEvent(new UserDataLoadEvent(UserDataLoadEvent.Result.ERROR, playerID, null));
-        } catch (SQLException e) {
-            e.printStackTrace();
-            PlotUtil.callEvent(new UserDataLoadEvent(UserDataLoadEvent.Result.ERROR, playerID, null));
-        }
-    }
-
-    public void storeUserAsync(UUID playerID, UserData userData) {
-        BukkitRunnable r = new BukkitRunnable() {
-            @Override
-            public void run() {
-                storeUser(playerID, userData);
-            }
-        };
-        r.runTaskAsynchronously(PlayerPlot.getPlugin());
-    }
-
-    public void storeUserSync(UUID playerID, UserData userData) {
-        storeUser(playerID, userData);
-    }
-
-    private void storeUser(UUID playerID, UserData userData) {
-
-        int unlockedPlots = userData.getUnlockedPlots();
-        try {
-            databaseConnection.openConnection();
-            databaseConnection.getConnection().createStatement().executeUpdate("REPLACE INTO PUser (uuid, unlockedPlots)" +
-                    "VALUES ('" + playerID + "', " + unlockedPlots + ");");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -157,9 +70,7 @@ public class Database {
                 Plot plot = extractPlot(plotResults);
                 plots.add(plot);
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return plots;
@@ -238,16 +149,11 @@ public class Database {
                 statement.executeUpdate("DELETE FROM PTrusts WHERE plotID = '" + plotID + "'");
                 statement.executeUpdate("DELETE FROM PPlot WHERE uuid = '" + plotID + "'");
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public void shutdown() {
-        databaseConnection.shutdown();
-    }
 
 }

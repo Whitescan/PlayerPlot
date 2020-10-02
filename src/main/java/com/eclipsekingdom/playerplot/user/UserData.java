@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.user;
 
 public class UserData {
 
@@ -18,6 +18,10 @@ public class UserData {
 
     public void unlockPlot() {
         unlockedPlots++;
+    }
+
+    public void lockPlots(int amount) {
+        unlockedPlots -= amount;
     }
 
 }

@@ -1,12 +1,11 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.util.GridZone;
-import com.eclipsekingdom.playerplot.plot.Plot;
-import com.eclipsekingdom.playerplot.util.Friend;
-import com.eclipsekingdom.playerplot.util.PlotPoint;
-import com.eclipsekingdom.playerplot.util.MapUtil;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.util.Friend;
+import com.eclipsekingdom.playerplot.util.GridZone;
+import com.eclipsekingdom.playerplot.util.MapUtil;
+import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -21,8 +20,8 @@ public class PlotCache {
     private static HashMap<UUID, List<Plot>> playerToFPlots = new HashMap<>();
     private static Set<UUID> unsavedPlots = new HashSet<>();
 
-    private static boolean usingDatabase = PlayerPlot.isUsingDatabase();
-    private static Database database = PlayerPlot.getPlotDatabase();
+    private static boolean usingDatabase = PluginConfig.isUsingDatabase();
+    private static PlotDatabase database = usingDatabase ? new PlotDatabase() : null;
 
     public PlotCache() {
         load();
@@ -54,6 +53,14 @@ public class PlotCache {
         }
     }
 
+    public static void shutdown() {
+        save();
+        IDToPlot.clear();
+        zoneToPlots.clear();
+        playerToPlots.clear();
+        playerToFPlots.clear();
+    }
+
     public static void save() {
         if (usingDatabase) {
             for (UUID plotID : unsavedPlots) {
@@ -65,10 +72,7 @@ public class PlotCache {
             }
             plotFlatFile.save();
         }
-
         unsavedPlots.clear();
-
-        if (usingDatabase) database.shutdown();
     }
 
     public static Plot getPlot(Location location) {

@@ -1,15 +1,12 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.UserData;
-import com.eclipsekingdom.playerplot.plot.validation.NameValidation;
-import com.eclipsekingdom.playerplot.plot.validation.RegionValidation;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
 import com.eclipsekingdom.playerplot.sys.PluginHelp;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.user.UserCache;
+import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.util.*;
 import com.eclipsekingdom.playerplot.util.X.XSound;
 import com.google.common.collect.ImmutableSet;
@@ -108,14 +105,15 @@ public class CommandPlot implements CommandExecutor {
                         PluginHelp.showPlots(player);
                     }
                 }
-            } else {
-                PlotUtil.fetchUnloadedData(player);
             }
         }
 
         return false;
     }
 
+    private interface IPlotAction {
+        void run(Plot plot, String[] args);
+    }
 
     private void processPlotAction(Player player, String[] args, IPlotAction action) {
         if (args[0].startsWith("@")) {
@@ -186,11 +184,11 @@ public class CommandPlot implements CommandExecutor {
         PermInfo permInfo = UserCache.getPerms(playerID);
         if (PlotCache.getPlayerPlotsUsed(playerID) < PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus()) {
             int unitSideLength = PluginConfig.getPlotUnitSideLength();
-            RegionValidation.Status regionStatus = RegionValidation.canPlotBeRegisteredAt(player.getLocation(), unitSideLength, null);
-            if (regionStatus == RegionValidation.Status.VALID) {
+            Validation.RegionStatus regionStatus = Validation.canPlotBeRegisteredAt(player.getLocation(), unitSideLength, null);
+            if (regionStatus == Validation.RegionStatus.VALID) {
                 String plotName = args.length > 1 ? args[1] : PlotUtil.getDefaultName(playerID);
-                NameValidation.Status nameStatus = NameValidation.clean(plotName, playerID);
-                if (nameStatus == NameValidation.Status.VALID) {
+                Validation.NameStatus nameStatus = Validation.cleanName(plotName, playerID);
+                if (nameStatus == Validation.NameStatus.VALID) {
                     Plot plot = new Plot(player, player.getLocation(), plotName, unitSideLength);
                     PlotCache.registerPlot(plot);
                     player.sendMessage(SUCCESS_PLOT_CLAIM.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
@@ -230,9 +228,10 @@ public class CommandPlot implements CommandExecutor {
         PermInfo permInfo = UserCache.getPerms(playerID);
         int used = PlotCache.getPlayerPlotsUsed(playerID);
         int capacity = PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus();
-        String title = ChatColor.LIGHT_PURPLE + LABEL_PLOTS.toString() + " (" + ChatColor.AQUA + used + ChatColor.LIGHT_PURPLE + "/" + capacity + "): ";
+        String title = ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + LABEL_PLOTS.toString() +
+                " (" + ChatColor.AQUA + ChatColor.BOLD + used + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "/" + capacity + "): ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
+        int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 
@@ -241,9 +240,9 @@ public class CommandPlot implements CommandExecutor {
         for (Plot plot : PlotCache.getFriendPlots(player)) {
             items.add(PlotUtil.getFListString(plot));
         }
-        String title = ChatColor.LIGHT_PURPLE + LABEL_FRIEND_PLOTS.toString() + ": ";
+        String title = ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + LABEL_FRIEND_PLOTS.toString() + ": ";
         InfoList infoList = new InfoList(title, items, 7);
-        int page = args.length > 1 ? Amount.parse(args[1]) : 1;
+        int page = args.length > 1 ? PlotUtil.parseAmount(args[1]) : 1;
         infoList.displayTo(player, page);
     }
 
@@ -298,8 +297,8 @@ public class CommandPlot implements CommandExecutor {
         if (PlotCache.getPlayerPlotsUsed(playerID) < PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots() + permInfo.getPlotBonus()) {
             int newSideLength = PlotUtil.getUpgradeLength(plot.getComponents());
             PlotPoint center = plot.getCenter();
-            RegionValidation.Status regionStatus = RegionValidation.canPlotBeUpgradedAt(plot.getWorld(), center, newSideLength, plot.getID());
-            if (regionStatus == RegionValidation.Status.VALID) {
+            Validation.RegionStatus regionStatus = Validation.canPlotBeUpgradedAt(plot.getWorld(), center, newSideLength, plot.getID());
+            if (regionStatus == Validation.RegionStatus.VALID) {
                 PlotScanner.showPlot(player, plot, 1);
                 if (XSound.BLOCK_BEACON_ACTIVATE.isSupported()) {
                     player.playSound(player.getLocation(), XSound.BLOCK_BEACON_ACTIVATE.parseSound(), 1, 1);
@@ -357,8 +356,8 @@ public class CommandPlot implements CommandExecutor {
 
     private void processSetCenter(Player player, Plot plot) {
         Location location = player.getLocation();
-        RegionValidation.Status regionStatus = RegionValidation.canPlotBeRegisteredAt(location, plot.getSideLength(), plot.getID());
-        if (regionStatus == RegionValidation.Status.VALID) {
+        Validation.RegionStatus regionStatus = Validation.canPlotBeRegisteredAt(location, plot.getSideLength(), plot.getID());
+        if (regionStatus == Validation.RegionStatus.VALID) {
             PlotCache.unassignFromZones(plot);
             plot.setCenter(location);
             PlotCache.assignToZones(plot);
@@ -392,8 +391,8 @@ public class CommandPlot implements CommandExecutor {
     private void processRename(Player player, Plot plot, String[] args) {
         if (args.length > 1) {
             String newName = args[1];
-            NameValidation.Status nameStatus = NameValidation.clean(newName, player.getUniqueId());
-            if (nameStatus == NameValidation.Status.VALID) {
+            Validation.NameStatus nameStatus = Validation.cleanName(newName, player.getUniqueId());
+            if (nameStatus == Validation.NameStatus.VALID) {
                 plot.setName(newName);
                 PlotCache.touch(plot);
                 if (usingDynmap) dynmap.updatePlot(plot);

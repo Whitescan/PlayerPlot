@@ -1,9 +1,10 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.user;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.event.UserDataLoadEvent;
 import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
 import com.eclipsekingdom.playerplot.sys.Permissions;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,21 +22,17 @@ import java.util.UUID;
 
 public class UserCache implements Listener {
 
-    private static UserFlatFile userFlatFile = new UserFlatFile();
     private static Map<UUID, UserData> userToData = new HashMap<>();
     private static HashMap<UUID, PermInfo> userToPerms = new HashMap<>();
 
-    private static boolean usingDatabase = PlayerPlot.isUsingDatabase();
-    private static Database database = PlayerPlot.getPlotDatabase();
+    private static UserFlatFile userFlatFile = new UserFlatFile();
+    private static boolean usingDatabase = PluginConfig.isUsingDatabase();
+    private static UserDatabase database = usingDatabase ? new UserDatabase() : null;
 
     public UserCache() {
         Plugin plugin = PlayerPlot.getPlugin();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         load();
-    }
-
-    public static void put(UUID playerID, UserData userData) {
-        userToData.put(playerID, userData);
     }
 
     public static boolean hasData(UUID playerID) {
@@ -87,6 +84,12 @@ public class UserCache implements Listener {
         }
     }
 
+    public static void shutdown() {
+        save();
+        userToPerms.clear();
+        userToData.clear();
+    }
+
     public static void save() {
         for (UUID playerID : userToData.keySet()) {
             UserData userData = userToData.get(playerID);
@@ -100,15 +103,17 @@ public class UserCache implements Listener {
 
     public static void cache(UUID playerID) {
         if (usingDatabase) {
-            database.fetchUserDataAsync(playerID);
+            database.fetchUserDataAsync(playerID, (userData) -> {
+                if (userData != null) {
+                    userToData.put(playerID, userData);
+                }
+            });
         } else {
-            userFlatFile.fetch(playerID);
+            UserData userData = userFlatFile.fetch(playerID);
+            if (userData != null) {
+                userToData.put(playerID, userData);
+            }
         }
-    }
-
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onUserDataLoad(UserDataLoadEvent e) {
-        userToData.put(e.getPlayerID(), e.getUserData());
     }
 
     public static void forget(UUID playerID) {

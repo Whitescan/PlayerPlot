@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.sys.storage;
+package com.eclipsekingdom.playerplot.util.storage;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
@@ -36,12 +36,12 @@ public class DatabaseConnection {
     }
 
     public static void shutdown() {
+        keepAlive.cancel();
         try {
             if (connection != null && !connection.isClosed()) connection.close();
         } catch (SQLException e) {
             //do nothing
         }
-        keepAlive.cancel();
     }
 
     public void openConnection() throws SQLException, ClassNotFoundException {
@@ -56,7 +56,6 @@ public class DatabaseConnection {
     public Connection getConnection() {
         return connection;
     }
-
 
     private class KeepAlive extends BukkitRunnable {
 
