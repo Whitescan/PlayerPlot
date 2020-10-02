@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added swamp, mountain, and ocean plot deeds
 - Added plot pvp option to config
 - Added permission node for all plot actions
+- Added plot world blacklist to config
 
 ### Changed
 
