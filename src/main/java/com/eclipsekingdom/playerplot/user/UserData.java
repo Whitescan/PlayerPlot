@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.user;
 
 public class UserData {
 

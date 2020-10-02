@@ -36,12 +36,12 @@ public class DatabaseConnection {
     }
 
     public static void shutdown() {
+        keepAlive.cancel();
         try {
             if (connection != null && !connection.isClosed()) connection.close();
         } catch (SQLException e) {
             //do nothing
         }
-        keepAlive.cancel();
     }
 
     public void openConnection() throws SQLException, ClassNotFoundException {
@@ -56,7 +56,6 @@ public class DatabaseConnection {
     public Connection getConnection() {
         return connection;
     }
-
 
     private class KeepAlive extends BukkitRunnable {
 

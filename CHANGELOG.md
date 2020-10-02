@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plot deeds now uses translation file for "+1 plot"
 - Changed /plotdeed command structure
 - Changed CustomModelData values in [resource pack](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack)
+- Refactored code (preparing for data storage update)
  
 ## [1.18.0] - 2020-09-14
 

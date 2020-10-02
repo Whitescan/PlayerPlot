@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.PlotCache;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
 import com.eclipsekingdom.playerplot.plotdeed.PlotDeedType;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;

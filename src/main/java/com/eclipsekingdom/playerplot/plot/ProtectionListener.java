@@ -1,7 +1,6 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.PlotCache;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.util.ProtectionUtil;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;

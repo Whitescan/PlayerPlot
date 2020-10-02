@@ -1,8 +1,8 @@
 package com.eclipsekingdom.playerplot.plotdeed;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.UserData;
+import com.eclipsekingdom.playerplot.user.UserCache;
+import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
@@ -54,10 +54,7 @@ public class PlotDeedListener implements Listener {
                     } else {
                         player.sendMessage(ChatColor.RED + WARN_PLOT_MAX.toString());
                     }
-                } else {
-                    PlotUtil.fetchUnloadedData(player);
                 }
-
             }
         }
     }

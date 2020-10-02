@@ -1,7 +1,6 @@
-package com.eclipsekingdom.playerplot.plot.validation;
+package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -10,28 +9,66 @@ import java.util.UUID;
 
 import static com.eclipsekingdom.playerplot.sys.Language.STATUS_REGION_OCCUPIED;
 
-public class RegionValidation {
+public class Validation {
 
-    public static Status canPlotBeRegisteredAt(Location center, int sideLength, UUID selfID) {
+    public static NameStatus cleanName(String name, UUID playerID) {
+        if (!name.matches("^[a-zA-Z0-9\\_\\-]+$")) {
+            return NameStatus.SPECIAL_CHARACTERS;
+        } else if (name.length() > 20) {
+            return NameStatus.TOO_LONG;
+        } else if (name.toLowerCase().equals(Language.MISC_HERE.toString())) {
+            return NameStatus.RESERVED_NAME;
+        } else {
+            if (PlotCache.getPlayerPlot(playerID, name) != null) {
+                return NameStatus.NAME_TAKEN;
+            } else {
+                return NameStatus.VALID;
+            }
+        }
+    }
+
+    public enum NameStatus {
+
+        VALID(""),
+        SPECIAL_CHARACTERS(Language.STATUS_SPECIAL_CHARACTERS.toString()),
+        TOO_LONG(Language.STATUS_TOO_LONG.toString()),
+        NAME_TAKEN(Language.STATUS_NAME_TAKEN.toString()),
+        RESERVED_NAME(Language.STATUS_RESERVED_NAME.toString()),
+        ;
+
+        NameStatus(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        private final String message;
+
+    }
+
+
+    public static RegionStatus canPlotBeRegisteredAt(Location center, int sideLength, UUID selfID) {
 
         if (overlapsPlayerPlot(center, sideLength, selfID)) {
-            return Status.REGION_OCCUPIED;
+            return RegionStatus.REGION_OCCUPIED;
         } else if (overlapsTownisPlot(center, sideLength)) {
-            return Status.REGION_OCCUPIED;
+            return RegionStatus.REGION_OCCUPIED;
         } else {
-            return Status.VALID;
+            return RegionStatus.VALID;
         }
 
     }
 
-    public static Status canPlotBeUpgradedAt(World world, PlotPoint center, int sideLength, UUID selfID) {
+    public static RegionStatus canPlotBeUpgradedAt(World world, PlotPoint center, int sideLength, UUID selfID) {
         Location centerLoc = center.asLocation(world);
         if (overlapsPlayerPlot(center.asLocation(world), sideLength, selfID)) {
-            return Status.REGION_OCCUPIED;
+            return RegionStatus.REGION_OCCUPIED;
         } else if (overlapsTownisPlot(centerLoc, sideLength)) {
-            return Status.REGION_OCCUPIED;
+            return RegionStatus.REGION_OCCUPIED;
         } else {
-            return Status.VALID;
+            return RegionStatus.VALID;
         }
     }
 
@@ -75,12 +112,12 @@ public class RegionValidation {
     }
 
 
-    public enum Status {
+    public enum RegionStatus {
 
         VALID(""),
         REGION_OCCUPIED(STATUS_REGION_OCCUPIED.toString());
 
-        Status(String message) {
+        RegionStatus(String message) {
             this.message = message;
         }
 

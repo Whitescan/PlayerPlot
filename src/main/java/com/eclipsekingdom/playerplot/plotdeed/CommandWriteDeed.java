@@ -1,8 +1,8 @@
 package com.eclipsekingdom.playerplot.plotdeed;
 
-import com.eclipsekingdom.playerplot.data.PlotCache;
-import com.eclipsekingdom.playerplot.data.UserCache;
-import com.eclipsekingdom.playerplot.data.UserData;
+import com.eclipsekingdom.playerplot.plot.PlotCache;
+import com.eclipsekingdom.playerplot.user.UserCache;
+import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;

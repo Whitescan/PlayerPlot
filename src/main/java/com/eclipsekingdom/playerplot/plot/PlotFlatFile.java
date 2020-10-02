@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.data;
+package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.Friend;
