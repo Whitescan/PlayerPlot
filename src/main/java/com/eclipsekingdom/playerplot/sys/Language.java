@@ -92,6 +92,7 @@ public enum Language {
     WARN_INSUFFICIENT_UNCLAIMED_PLOTS("Warn - insufficient unclaimed plots", "You do not have enough unclaimed plots."),
     WARN_NO_UNLOCKED_PLOTS("Warn - no unlocked plots", "You can only write deeds for unlocked plots."),
     WARN_NO_DELETE_REQUESTS("Warn - no delete requests", "You do not have any pending plot deletion requests."),
+    WARN_NO_PVP_ZONE("Warn - no pvp zone", "Combat is not allowed in this region."),
 
     SUCCESS_PLOT_UPGRADE("Success - plot upgrade", "%plot% was upgraded."),
     SUCCESS_PLOT_DOWNGRADE("Success - plot downgrade", "Plot %plot% was downgraded."),

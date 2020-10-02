@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.19.0] - ???
 
-**[Warning] 1.19.0 requires the new texture pack.**
-**[Warning] The /plotdeed command has changed.**
-**[Warning] The language file has changed, delete to allow it to reload.**
+**[Warning] 1.19.0 requires the new texture pack.**<br>
+**[Warning] The /plotdeed command has changed.**<br>
+**[Warning] The language file has changed, delete to allow it to reload.**<br>
+**[Warning] The config file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
@@ -28,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   playerplot.admin.view *- grants access to /allplots*<br>
   playerplot.admin.delete *- grants access to plot deletion commands*                          
 - Added swamp, mountain, and ocean plot deeds
+- Added plot pvp option to config
 
 ### Changed
 
@@ -40,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed /plotdeed command structure
 - Changed CustomModelData values in [resource pack](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack)
 - Refactored code (preparing for data storage update)
+ 
+### Fixed
+
+- Fixed issue where plots would protect some hostile mobs from outsiders
  
 ## [1.18.0] - 2020-09-14
 

@@ -22,6 +22,9 @@ public class PluginConfig {
     private static String unitSizeField = "Plot Unit Size";
     private static int unitSize = 25;
 
+    private static String plotPvpField = "Plot pvp";
+    private static boolean plotPvp = true;
+
     private static String useDatabaseField = "Use database";
     private static boolean useDatabase = false;
 
@@ -64,6 +67,7 @@ public class PluginConfig {
                 startingPlotNum = config.getInt(startingPlotNumField, startingPlotNum);
                 maxPlotNum = config.getInt(maxPlotNumField, maxPlotNum);
                 unitSize = config.getInt(unitSizeField, unitSize);
+                plotPvp = config.getBoolean(plotPvpField, plotPvp);
                 useDatabase = config.getBoolean(useDatabaseField, useDatabase);
                 host = config.getString(hostField, host);
                 port = config.getString(portField, port);
@@ -105,6 +109,10 @@ public class PluginConfig {
 
     public static int getPlotUnitSideLength() {
         return unitSize;
+    }
+
+    public static boolean isPlotPvp() {
+        return plotPvp;
     }
 
     public static boolean isUsingDatabase() {

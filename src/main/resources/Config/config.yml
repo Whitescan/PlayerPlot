@@ -4,6 +4,7 @@ Use /pplot root: false
 Starting Plot Amount: 1
 Maximum Plot Amount: 50
 Plot Unit Size: 25
+Plot pvp: true
 # Database
 Use database: false
 host: 00.00.000.00

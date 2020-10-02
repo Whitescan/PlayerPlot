@@ -1,7 +1,9 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
+import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.ProtectionUtil;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import org.bukkit.ChatColor;
@@ -26,11 +28,10 @@ import org.bukkit.util.Vector;
 
 import java.util.List;
 
-import static com.eclipsekingdom.playerplot.sys.Language.WARN_PROTECTED;
-
 public class ProtectionListener implements Listener {
 
-    private String PROTECTED_WARNING = ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + WARN_PROTECTED;
+    private String PROTECTED_WARNING = ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + Language.WARN_PROTECTED;
+    private String PVP_WARNING = ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + Language.WARN_NO_PVP_ZONE;
 
     public ProtectionListener() {
         Plugin plugin = PlayerPlot.getPlugin();
@@ -234,9 +235,16 @@ public class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onHurt(EntityDamageByEntityEvent e) {
         Entity victim = e.getEntity();
-        if (!(victim instanceof Player || victim instanceof Monster)) {
-            Player damager = getPlayer(e.getDamager());
-            if (damager != null) {
+        Player damager = getPlayer(e.getDamager());
+        if (damager != null) {
+            if (victim instanceof Player) {
+                if (!PluginConfig.isPlotPvp()) {
+                    if (PlotCache.hasPlot(victim.getLocation()) || PlotCache.hasPlot(damager.getLocation())) {
+                        e.setCancelled(true);
+                        damager.sendMessage(PVP_WARNING);
+                    }
+                }
+            } else if (!(victim instanceof Monster)) {
                 if (!isAllowed(damager, victim.getLocation())) {
                     e.setCancelled(true);
                     damager.sendMessage(PROTECTED_WARNING);
