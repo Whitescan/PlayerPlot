@@ -1,6 +1,6 @@
 ---
 Plugin - description: "Player Plot is a self-serve protection plugin. It allows users to unlock and claim protected regions."
-Plugin - read more: "Read more on the [link]"
+Plugin - read more: "Read more on the [link]."
 Plugin - wiki: "Player Plot wiki"
 Plugin - options: "Options"
 Plugin - help: "show plugin commands"
@@ -101,6 +101,8 @@ Status - name too long: "�� �̸��� 20�� ���� ����
 Status - name taken: "�̹� �� �̸��� ���� ���� �ֽ��ϴ�."
 Status - reserved name: "That name is reserved by Player Plot."
 Info - confirm delete: "Delete %player%'s plot? [confirm] [cancel]"
+Info - confirm delete legacy: "Delete %player%'s plot?"
+Info - confirm delete legacy tip: "Use [confirm] or [cancel]."
 Info - hover confirm: "» Click to confirm"
 Info - hover cancel: "» Click to cancel"
 Info - request duration: "The request is valid for %seconds% seconds."
