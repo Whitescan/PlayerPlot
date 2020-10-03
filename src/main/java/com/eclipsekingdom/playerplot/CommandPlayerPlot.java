@@ -51,7 +51,7 @@ public class CommandPlayerPlot implements CommandExecutor {
     private void fetchUpdate(final CommandSender sender) {
         Scheduler.runAsync(() -> {
             try {
-                if (!Spiget.isNewVersion()) {
+                if (Spiget.isNewVersion()) {
                     final Update update = Spiget.getLatestUpdate();
                     Scheduler.run(() -> {
                         sender.sendMessage("");
