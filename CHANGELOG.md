@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.19.0] - ???
+## [1.19.0] - 2020-10-03
 
 **[Warning] 1.19.0 requires the new texture pack.**<br>
 **[Warning] The /plotdeed command has changed.**<br>
@@ -55,11 +55,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed help command styling to match plugin theme
 - Updated language file
 - Improved autocomplete
-- PlayerPlot texture pack
+- Updated Player Plot texture pack
 - Plot deeds now uses translation file for "+1 plot"
 - Changed /plotdeed command structure
 - Changed CustomModelData values in [resource pack](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack)
 - Refactored code (preparing for data storage update)
+- Improved styling for plot usage indicator to make the calculation more clear
  
 ### Fixed
 
