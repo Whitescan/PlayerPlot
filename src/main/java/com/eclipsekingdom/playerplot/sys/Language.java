@@ -2,6 +2,7 @@ package com.eclipsekingdom.playerplot.sys;
 
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
@@ -124,6 +125,8 @@ public enum Language {
     STATUS_RESERVED_NAME("Status - reserved name", "That name is reserved by Player Plot"),
 
     INFO_CONFIRM_DELETE("Info - confirm delete", "Delete %player%'s plot? [confirm] [cancel]"),
+    INFO_CONFIRM_DELETE_LEGACY("Info - confirm delete legacy", "Delete %player%'s plot?"),
+    INFO_CONFIRM_DELETE_LEGACY_TIP("Info - confirm delete legacy tip", "Use [confirm] or [cancel]."),
     INFO_CONFIRM_HOVER("Info - hover confirm", "» Click to confirm"),
     INFO_CANCEL_HOVER("Info - hover cancel", "» Click to cancel"),
     INFO_REQUEST_DURATION("Info - request duration", "The request is valid for %seconds% seconds."),
@@ -252,7 +255,7 @@ public enum Language {
             TextComponent textComponent = new TextComponent(subs[i]);
             textComponent.setColor(baseColor.asBungee());
             base.addExtra(textComponent);
-            if (i < subs.length - 1) {
+            if (i < subs.length - 1 || string.endsWith("[link]")) {
                 base.addExtra(linkComponent);
             }
         }
@@ -264,12 +267,20 @@ public enum Language {
 
         TextComponent confirmComponent = new TextComponent("[" + Language.LABEL_CONFIRM.toString() + "]");
         confirmComponent.setColor(ChatColor.GREEN.asBungee());
-        confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GREEN + Language.INFO_CONFIRM_HOVER.toString())));
+        if (Version.getValue() >= 116) {
+            confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GREEN + Language.INFO_CONFIRM_HOVER.toString())));
+        } else {
+            confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(Language.INFO_CONFIRM_HOVER.toString()).color(ChatColor.GREEN.asBungee()).create()));
+        }
         confirmComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, confirmCommand));
 
         TextComponent cancelComponent = new TextComponent("[" + Language.LABEL_CANCEL.toString() + "]");
         cancelComponent.setColor(ChatColor.RED.asBungee());
-        cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.RED + Language.INFO_CANCEL_HOVER.toString())));
+        if (Version.getValue() >= 116) {
+            cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.RED + Language.INFO_CANCEL_HOVER.toString())));
+        } else {
+            cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(Language.INFO_CANCEL_HOVER.toString()).color(ChatColor.RED.asBungee()).create()));
+        }
         cancelComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, cancelCommand));
 
         TextComponent playerComponent = new TextComponent(playerName);
@@ -297,12 +308,14 @@ public enum Language {
                     playerSub.setColor(baseColor.asBungee());
 
                     cancelSub.addExtra(playerSub);
-                    if (k < playerSubs.length - 1 || cancelSubs[j].endsWith("%player%")) cancelSub.addExtra(playerComponent);
+                    if (k < playerSubs.length - 1 || cancelSubs[j].endsWith("%player%"))
+                        cancelSub.addExtra(playerComponent);
 
                 }
 
                 confirmSub.addExtra(cancelSub);
-                if (j < cancelSubs.length - 1 || confirmSubs[i].endsWith("[cancel]")) confirmSub.addExtra(cancelComponent);
+                if (j < cancelSubs.length - 1 || confirmSubs[i].endsWith("[cancel]"))
+                    confirmSub.addExtra(cancelComponent);
 
             }
 

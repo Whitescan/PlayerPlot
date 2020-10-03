@@ -3,6 +3,7 @@ package com.eclipsekingdom.playerplot;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.PluginHelp;
+import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.util.Scheduler;
 import com.eclipsekingdom.playerplot.util.update.Spiget;
 import com.eclipsekingdom.playerplot.util.update.Update;
@@ -11,6 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginDescriptionFile;
+
 
 public class CommandPlayerPlot implements CommandExecutor {
 
@@ -49,14 +51,19 @@ public class CommandPlayerPlot implements CommandExecutor {
     private void fetchUpdate(final CommandSender sender) {
         Scheduler.runAsync(() -> {
             try {
-                if (Spiget.isNewVersion()) {
+                if (!Spiget.isNewVersion()) {
                     final Update update = Spiget.getLatestUpdate();
                     Scheduler.run(() -> {
                         sender.sendMessage("");
                         sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "__Player Plot_______");
                         sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + update.getVersionName() + " " + ChatColor.DARK_PURPLE + ChatColor.ITALIC + "- " + update.getTitle());
                         sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_NEW_UPDATE.toString());
-                        sender.spigot().sendMessage(Language.PLUGIN_VIEW_UPDATE_NOTES.getWithLink(ChatColor.GRAY, "SpigotMC", update.getUpdateNotesUrl()));
+                        if (Version.hasBungeeChat()) {
+                            sender.spigot().sendMessage(Language.PLUGIN_VIEW_UPDATE_NOTES.getWithLink(ChatColor.GRAY, "SpigotMC", update.getUpdateNotesUrl()));
+                        } else {
+                            sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_VIEW_UPDATE_NOTES.toString().replaceAll("\\[link\\]", "SpigotMC") +
+                                    " " + ChatColor.AQUA + update.getUpdateNotesUrl());
+                        }
                     });
                 } else {
                     Scheduler.run(() -> {
@@ -72,7 +79,7 @@ public class CommandPlayerPlot implements CommandExecutor {
         });
     }
 
-    private void processReload(CommandSender sender){
+    private void processReload(CommandSender sender) {
         PlayerPlot.reload();
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.GRAY + Language.PLUGIN_RELOAD.toString());
     }
@@ -82,7 +89,13 @@ public class CommandPlayerPlot implements CommandExecutor {
         sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "__Player Plot_______");
         sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_DESCRIPTION.toString());
         sender.sendMessage("");
-        sender.spigot().sendMessage(Language.PLUGIN_READ_MORE.getWithLink(ChatColor.GRAY, Language.PLUGIN_WIKI.toString(), "https://gitlab.com/sword7/playerplot/-/wikis/home"));
+
+        if (Version.hasBungeeChat()) {
+            sender.spigot().sendMessage(Language.PLUGIN_READ_MORE.getWithLink(ChatColor.GRAY, Language.PLUGIN_WIKI.toString(), "https://gitlab.com/sword7/playerplot/-/wikis/home"));
+        } else {
+            sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_READ_MORE.toString().replaceAll("\\[link\\]", Language.PLUGIN_WIKI.toString()) +
+                    " " + ChatColor.AQUA + "https://gitlab.com/sword7/playerplot/-/wikis/home");
+        }
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.PLUGIN_OPTIONS + " -------");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot help: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_HELP);
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot info: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_INFO);
