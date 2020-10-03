@@ -1,6 +1,7 @@
 package com.eclipsekingdom.playerplot.admin;
 
 import com.eclipsekingdom.playerplot.sys.Language;
+import com.eclipsekingdom.playerplot.sys.Permissions;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,11 +15,15 @@ public class CommandDelPlotCancel implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (DeleteRequests.hasPending(player)) {
-                DeleteRequests.remove(player);
-                player.sendMessage(ChatColor.LIGHT_PURPLE + Language.SUCCESS_REQUEST_CANCEL.toString());
+            if (Permissions.canDeletePlots(player)) {
+                if (DeleteRequests.hasPending(player)) {
+                    DeleteRequests.remove(player);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + Language.SUCCESS_REQUEST_CANCEL.toString());
+                } else {
+                    player.sendMessage(ChatColor.RED + Language.WARN_NO_DELETE_REQUESTS.toString());
+                }
             } else {
-                player.sendMessage(ChatColor.RED + Language.WARN_NO_DELETE_REQUESTS.toString());
+                player.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
             }
         }
 

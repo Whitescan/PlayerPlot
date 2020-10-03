@@ -17,10 +17,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added introductory message to /playerplot command
 - Added back some admin commands (/plot activity command will return in the data storage update)
 - Added commands:
-  >/playerplot info *- get plugin info*<br> 
-  /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br> 
-  /playerplot  update *- check for updates*<br> 
-  /writedeed *- write plot deeds*<br> 
+  >/playerplot info *- get plugin info*<br>
+  /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br>
+  /playerplot  update *- check for updates*<br>
+  /writedeed *- write plot deeds*<br>
+  /allplots *- view all plots*<br>
+  /delplot *- delete any plot*<br>
+  /delplotconfirm *- confirm deletion*<br>
+  /delplotcancel *- confirm deletion*<br>
 - Added permission nodes:
   >playerplot.reload *- grants access to /playerplot reload*<br> 
   playerplot.update *- grants access to /playerplot update*<br> 

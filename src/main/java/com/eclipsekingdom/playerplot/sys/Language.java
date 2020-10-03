@@ -65,7 +65,7 @@ public enum Language {
     HELP_PLOT_DEED("Help - plotdeed", "give plot deeds to player"),
     HELP_WRITE_DEED("Help - writedeed", "write plot deeds"),
     HELP_ALL_PLOTS("Help - allplots", "view all plots"),
-    HELP_DEL_PLOT("help - delplot", "delete plot"),
+    HELP_DEL_PLOT("help - delplot", "delete any plot"),
 
     CONSOLE_DETECT("Console - plugin detected", "%plugin% detected"),
 
