@@ -1,6 +1,6 @@
 ---
 Plugin - description: "Player Plot est un plugin possédant son propre système de protection. Il permet aux utilisateurs de débloquer et de revendiquer des régions protégées."
-Plugin - read more: "En apprendre plus sur [link]"
+Plugin - read more: "Read more on the [link]."
 Plugin - wiki: "Wiki Player Plot"
 Plugin - options: "Paramètres"
 Plugin - help: "afficher les commandes du plugin"
@@ -101,6 +101,8 @@ Status - name too long: "Les noms de parcelle doivent faire 20 caractères au ma
 Status - name taken: "Vous avez déjà une parcelle avec ce nom."
 Status - reserved name: "Ce nom est reversé pour la parcelle d'un joueur."
 Info - confirm delete: "Supprimer la parcelle de %player% ? [confirmer] [annuler]"
+Info - confirm delete legacy: "Delete %player%'s plot?"
+Info - confirm delete legacy tip: "Use [confirm] or [cancel]."
 Info - hover confirm: "» Cliquez pour confirmer"
 Info - hover cancel: "» Cliquez pour annuler"
 Info - request duration: "La requête est valable pendant %seconds% secondes."
