@@ -1,6 +1,6 @@
 ---
 Plugin - description: "Player Plot es un plugin de protección de autoservicio. Permite a los usuarios desbloquear y reclamar regiones protegidas."
-Plugin - read more: "Leer más sobre [link]"
+Plugin - read more: "Read more on the [link]."
 Plugin - wiki: "Wiki del Player Plot"
 Plugin - options: "Opciones"
 Plugin - help: "mostrar comandos de plugin"
@@ -101,6 +101,8 @@ Status - name too long: "Los nombres de las parcelas deben tener 20 caracteres o
 Status - name taken: "Ya tienes una parcela con este nombre."
 Status - reserved name: "Ese nombre está reservado por Player Plot."
 Info - confirm delete: "¿Eliminar la parcela de %player%? [confirm] [cancel]"
+Info - confirm delete legacy: "Delete %player%'s plot?"
+Info - confirm delete legacy tip: "Use [confirm] or [cancel]."
 Info - hover confirm: "» Haga clic para confirmar"
 Info - hover cancel: "» Haga clic para cancelar"
 Info - request duration: "La solicitud es válida durante %seconds% segundos."
