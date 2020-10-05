@@ -1,5 +1,5 @@
 name: PlayerPlot
-version: 1.19.0
+version: 1.19.1
 main: com.eclipsekingdom.playerplot.PlayerPlot
 api-version: 1.13
 authors: [ sword7 ]

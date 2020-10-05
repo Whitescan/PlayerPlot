@@ -388,6 +388,8 @@ public class ProtectionUtil {
         xMaterials.add(XMaterial.GREEN_CARPET);
         xMaterials.add(XMaterial.RED_CARPET);
         xMaterials.add(XMaterial.BLACK_CARPET);
+        xMaterials.add(XMaterial.NETHER_SPROUTS);
+        xMaterials.add(XMaterial.STRING);
 
         Set<Material> smallMaterials = new HashSet<>();
         for (XMaterial xMaterial : xMaterials) {
@@ -442,6 +444,84 @@ public class ProtectionUtil {
         xMaterials.add(XMaterial.RED_NETHER_BRICK_SLAB);
         xMaterials.add(XMaterial.POLISHED_ANDESITE_SLAB);
         xMaterials.add(XMaterial.DIORITE_SLAB);
+        xMaterials.add(XMaterial.POLISHED_BLACKSTONE_BRICK_SLAB);
+        xMaterials.add(XMaterial.POLISHED_BLACKSTONE_SLAB);
+
+        xMaterials.add(XMaterial.SEA_PICKLE);
+        xMaterials.add(XMaterial.DANDELION);
+        xMaterials.add(XMaterial.POPPY);
+        xMaterials.add(XMaterial.BLUE_ORCHID);
+        xMaterials.add(XMaterial.ALLIUM);
+        xMaterials.add(XMaterial.AZURE_BLUET);
+        xMaterials.add(XMaterial.RED_TULIP);
+        xMaterials.add(XMaterial.ORANGE_TULIP);
+        xMaterials.add(XMaterial.WHITE_TULIP);
+        xMaterials.add(XMaterial.PINK_TULIP);
+        xMaterials.add(XMaterial.OXEYE_DAISY);
+        xMaterials.add(XMaterial.CORNFLOWER);
+        xMaterials.add(XMaterial.LILY_OF_THE_VALLEY);
+        xMaterials.add(XMaterial.WITHER_ROSE);
+        xMaterials.add(XMaterial.BROWN_MUSHROOM);
+        xMaterials.add(XMaterial.RED_MUSHROOM);
+        xMaterials.add(XMaterial.CRIMSON_FUNGUS);
+        xMaterials.add(XMaterial.WARPED_FUNGUS);
+
+        xMaterials.add(XMaterial.LEVER);
+        xMaterials.add(XMaterial.CAMPFIRE);
+        xMaterials.add(XMaterial.SOUL_CAMPFIRE);
+
+        xMaterials.add(XMaterial.STONE_BUTTON);
+        xMaterials.add(XMaterial.OAK_BUTTON);
+        xMaterials.add(XMaterial.SPRUCE_BUTTON);
+        xMaterials.add(XMaterial.BIRCH_BUTTON);
+        xMaterials.add(XMaterial.JUNGLE_BUTTON);
+        xMaterials.add(XMaterial.ACACIA_BUTTON);
+        xMaterials.add(XMaterial.DARK_OAK_BUTTON);
+        xMaterials.add(XMaterial.CRIMSON_BUTTON);
+        xMaterials.add(XMaterial.WARPED_BUTTON);
+        xMaterials.add(XMaterial.POLISHED_BLACKSTONE_BUTTON);
+        xMaterials.add(XMaterial.DAYLIGHT_DETECTOR);
+        xMaterials.add(XMaterial.CONDUIT);
+        xMaterials.add(XMaterial.PLAYER_HEAD);
+        xMaterials.add(XMaterial.PLAYER_WALL_HEAD);
+        xMaterials.add(XMaterial.CREEPER_HEAD);
+        xMaterials.add(XMaterial.CREEPER_WALL_HEAD);
+        xMaterials.add(XMaterial.ZOMBIE_HEAD);
+        xMaterials.add(XMaterial.ZOMBIE_WALL_HEAD);
+        xMaterials.add(XMaterial.SKELETON_SKULL);
+        xMaterials.add(XMaterial.SKELETON_WALL_SKULL);
+        xMaterials.add(XMaterial.WITHER_SKELETON_SKULL);
+        xMaterials.add(XMaterial.WITHER_SKELETON_WALL_SKULL);
+
+        xMaterials.add(XMaterial.WHITE_BED);
+        xMaterials.add(XMaterial.ORANGE_BED);
+        xMaterials.add(XMaterial.MAGENTA_BED);
+        xMaterials.add(XMaterial.LIGHT_BLUE_BED);
+        xMaterials.add(XMaterial.YELLOW_BED);
+        xMaterials.add(XMaterial.LIME_BED);
+        xMaterials.add(XMaterial.PINK_BED);
+        xMaterials.add(XMaterial.GRAY_BED);
+        xMaterials.add(XMaterial.LIGHT_GRAY_BED);
+        xMaterials.add(XMaterial.CYAN_BED);
+        xMaterials.add(XMaterial.PURPLE_BED);
+        xMaterials.add(XMaterial.BLUE_BED);
+        xMaterials.add(XMaterial.BROWN_BED);
+        xMaterials.add(XMaterial.GREEN_BED);
+        xMaterials.add(XMaterial.RED_BED);
+        xMaterials.add(XMaterial.BLACK_BED);
+        xMaterials.add(XMaterial.FLOWER_POT);
+
+        xMaterials.add(XMaterial.CARROTS);
+        xMaterials.add(XMaterial.POTATOES);
+        xMaterials.add(XMaterial.WHEAT);
+        xMaterials.add(XMaterial.WHEAT_SEEDS);
+        xMaterials.add(XMaterial.BEETROOTS);
+        xMaterials.add(XMaterial.MELON_STEM);
+        xMaterials.add(XMaterial.ATTACHED_MELON_STEM);
+        xMaterials.add(XMaterial.PUMPKIN_STEM);
+        xMaterials.add(XMaterial.ATTACHED_PUMPKIN_STEM);
+
+        xMaterials.add(XMaterial.CAKE);
 
         Set<Material> smallMaterials = new HashSet<>();
         for (XMaterial xMaterial : xMaterials) {
