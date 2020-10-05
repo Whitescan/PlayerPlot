@@ -131,7 +131,7 @@ public enum Language {
     INFO_CANCEL_HOVER("Info - hover cancel", "» Click to cancel"),
     INFO_REQUEST_DURATION("Info - request duration", "The request is valid for %seconds% seconds."),
 
-    SCANNER_PLOT_OVERVIEW("Scanner - plot overview", "%plot% ~ %player% ~"),
+    SCANNER_PLOT_OVERVIEW("Scanner - plot overview", "&5&l%plot% &d~ %player% ~"),
     SCANNER_NO_PLOTS("Scanner - no plots", "No plots detected."),
 
     ;

@@ -1,9 +1,10 @@
 package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
+import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.plot.PlotCache;
 import com.eclipsekingdom.playerplot.plotdeed.PlotDeedType;
-import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Bukkit;
@@ -34,7 +35,11 @@ public class AutoCompleteListener implements Listener {
                 int args = numberOfFullArgs(buffer);
                 if (args == 0) {
                     String root = "/playerplot";
-                    e.setCompletions(getRefinedCompletions(root, buffer, PLUGIN_COMPLETIONS));
+                    List<String> completions = new ArrayList<>();
+                    completions.addAll(PLUGIN_COMPLETIONS);
+                    if (Permissions.canUpdate(player)) completions.add("update");
+                    if (Permissions.canReload(player)) completions.add("reload");
+                    e.setCompletions(getRefinedCompletions(root, buffer, completions));
                 } else {
                     e.setCompletions(Collections.EMPTY_LIST);
                 }
@@ -95,7 +100,7 @@ public class AutoCompleteListener implements Listener {
                 } else {
                     e.setCompletions(Collections.EMPTY_LIST);
                 }
-            } else if (buffer.startsWith("/writedeed") || buffer.startsWith("/delplot ") || buffer.startsWith("/allplots ")){
+            } else if (buffer.startsWith("/writedeed") || buffer.startsWith("/delplot ") || buffer.startsWith("/allplots ")) {
                 e.setCompletions(Collections.EMPTY_LIST);
             }
         }
@@ -154,8 +159,6 @@ public class AutoCompleteListener implements Listener {
     private static final List<String> PLUGIN_COMPLETIONS = ImmutableList.<String>builder()
             .add("help")
             .add("info")
-            .add("update")
-            .add("reload")
             .build();
 
     private static final List<String> PLOT_ACTION_COMPLETIONS = ImmutableList.<String>builder()

@@ -49,39 +49,47 @@ public class CommandPlayerPlot implements CommandExecutor {
 
 
     private void fetchUpdate(final CommandSender sender) {
-        Scheduler.runAsync(() -> {
-            try {
-                if (Spiget.isNewVersion()) {
-                    final Update update = Spiget.getLatestUpdate();
+        if (Permissions.canUpdate(sender)) {
+            Scheduler.runAsync(() -> {
+                try {
+                    if (Spiget.isNewVersion()) {
+                        final Update update = Spiget.getLatestUpdate();
+                        Scheduler.run(() -> {
+                            sender.sendMessage("");
+                            sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "__Player Plot_______");
+                            sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + update.getVersionName() + " " + ChatColor.DARK_PURPLE + ChatColor.ITALIC + "- " + update.getTitle());
+                            sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_NEW_UPDATE.toString());
+                            if (Version.hasBungeeChat()) {
+                                sender.spigot().sendMessage(Language.PLUGIN_VIEW_UPDATE_NOTES.getWithLink(ChatColor.GRAY, "SpigotMC", update.getUpdateNotesUrl()));
+                            } else {
+                                sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_VIEW_UPDATE_NOTES.toString().replaceAll("\\[link\\]", "SpigotMC") +
+                                        " " + ChatColor.AQUA + update.getUpdateNotesUrl());
+                            }
+                        });
+                    } else {
+                        Scheduler.run(() -> {
+                            sender.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.GRAY + Language.PLUGIN_UP_TO_DATE.fromPlugin("Player Plot"));
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                     Scheduler.run(() -> {
-                        sender.sendMessage("");
-                        sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "__Player Plot_______");
-                        sender.sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + update.getVersionName() + " " + ChatColor.DARK_PURPLE + ChatColor.ITALIC + "- " + update.getTitle());
-                        sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_NEW_UPDATE.toString());
-                        if (Version.hasBungeeChat()) {
-                            sender.spigot().sendMessage(Language.PLUGIN_VIEW_UPDATE_NOTES.getWithLink(ChatColor.GRAY, "SpigotMC", update.getUpdateNotesUrl()));
-                        } else {
-                            sender.sendMessage(ChatColor.GRAY + Language.PLUGIN_VIEW_UPDATE_NOTES.toString().replaceAll("\\[link\\]", "SpigotMC") +
-                                    " " + ChatColor.AQUA + update.getUpdateNotesUrl());
-                        }
-                    });
-                } else {
-                    Scheduler.run(() -> {
-                        sender.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.GRAY + Language.PLUGIN_UP_TO_DATE.fromPlugin("Player Plot"));
+                        sender.sendMessage(ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + Language.PLUGIN_UPDATE_ERROR.toString());
                     });
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Scheduler.run(() -> {
-                    sender.sendMessage(ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + Language.PLUGIN_UPDATE_ERROR.toString());
-                });
-            }
-        });
+            });
+        } else {
+            sender.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
+        }
     }
 
     private void processReload(CommandSender sender) {
-        PlayerPlot.reload();
-        sender.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.GRAY + Language.PLUGIN_RELOAD.toString());
+        if (Permissions.canReload(sender)) {
+            PlayerPlot.reload();
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.GRAY + Language.PLUGIN_RELOAD.toString());
+        } else {
+            sender.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
+        }
     }
 
     private void showOverview(CommandSender sender) {

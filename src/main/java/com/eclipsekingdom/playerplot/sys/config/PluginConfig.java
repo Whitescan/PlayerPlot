@@ -37,6 +37,14 @@ public class PluginConfig {
         return blacklistWorlds;
     }
 
+    private static String protectionWarningSection = "Protection warning";
+    private static String warnParticleField = "particle";
+    private static boolean warnParticle = true;
+    private static String warnSoundField = "sound";
+    private static boolean warnSound = true;
+    private static String warnMessageField = "message";
+    private static boolean warnMessage = true;
+
     private static String useDatabaseField = "Use database";
     private static boolean useDatabase = false;
 
@@ -81,6 +89,9 @@ public class PluginConfig {
                 unitSize = config.getInt(unitSizeField, unitSize);
                 plotPvp = config.getBoolean(plotPvpField, plotPvp);
                 blacklistWorlds = config.getStringList(blacklistWorldsString);
+                warnParticle = config.getBoolean(protectionWarningSection + "." + warnParticleField, warnParticle);
+                warnSound = config.getBoolean(protectionWarningSection + "." + warnSoundField, warnSound);
+                warnMessage = config.getBoolean(protectionWarningSection + "." + warnMessageField, warnMessage);
                 useDatabase = config.getBoolean(useDatabaseField, useDatabase);
                 host = config.getString(hostField, host);
                 port = config.getString(portField, port);
@@ -130,6 +141,18 @@ public class PluginConfig {
 
     public static boolean isAllowedPlotWorld(World world) {
         return !blacklistWorlds.contains(world.getName());
+    }
+
+    public static boolean isWarnParticle() {
+        return warnParticle;
+    }
+
+    public static boolean isWarnSound() {
+        return warnSound;
+    }
+
+    public static boolean isWarnMessage() {
+        return warnMessage;
     }
 
     public static boolean isUsingDatabase() {

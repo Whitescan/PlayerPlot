@@ -7,6 +7,10 @@ Plot Unit Size: 25
 Plot pvp: true
 Plot world blacklist:
   - example-world
+Protection warning:
+  particle: true
+  sound: true
+  message: true
 # Database
 Use database: false
 host: 00.00.000.00

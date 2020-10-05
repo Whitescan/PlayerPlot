@@ -2,8 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [1.19.1] - 2020-10-05
+
+### Changed
+
+- Removed PlayerPlot prefix from /plot scan and plot protection message.
+- Added dialog-less option for plot protection.
+
+### Fixed
+
+- Bug where anyone could use /playerplot reload and update
 
 ## [1.19.0] - 2020-10-03
 

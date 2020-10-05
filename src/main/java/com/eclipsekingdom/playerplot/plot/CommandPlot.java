@@ -152,10 +152,10 @@ public class CommandPlot implements CommandExecutor {
                 if (XSound.BLOCK_BEACON_POWER_SELECT.isSupported()) {
                     player.playSound(player.getLocation(), XSound.BLOCK_BEACON_POWER_SELECT.parseSound(), 1f, 0.77f);
                 }
-                player.sendMessage(ChatColor.LIGHT_PURPLE + "[PlayerPlot] " + ChatColor.DARK_PURPLE + Language.SCANNER_PLOT_OVERVIEW.fromPlayerAndPlot(plot.getOwnerName(), plot.getName()));
+                player.sendMessage(Language.SCANNER_PLOT_OVERVIEW.fromPlayerAndPlot(plot.getOwnerName(), plot.getName()));
                 PlotScanner.showPlot(player, plot, duration);
             } else {
-                player.sendMessage(ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + Language.SCANNER_NO_PLOTS);
+                player.sendMessage(ChatColor.RED + Language.SCANNER_NO_PLOTS.toString());
             }
         } else {
             player.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());

@@ -336,4 +336,120 @@ public class ProtectionUtil {
         return monsters;
     }
 
+
+    public static boolean isSmallBlock(Material material) {
+        return SMALL_MATERIALS.contains(material);
+    }
+
+    private static final Set<Material> SMALL_MATERIALS = buildSmallMaterials();
+
+    private static Set<Material> buildSmallMaterials() {
+        Set<XMaterial> xMaterials = new HashSet<>();
+        xMaterials.add(XMaterial.RAIL);
+        xMaterials.add(XMaterial.ACTIVATOR_RAIL);
+        xMaterials.add(XMaterial.DETECTOR_RAIL);
+        xMaterials.add(XMaterial.POWERED_RAIL);
+        xMaterials.add(XMaterial.STONE_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.OAK_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.SPRUCE_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.BIRCH_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.JUNGLE_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.ACACIA_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.DARK_OAK_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.CRIMSON_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.WARPED_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.SNOW);
+        xMaterials.add(XMaterial.OAK_TRAPDOOR);
+        xMaterials.add(XMaterial.SPRUCE_TRAPDOOR);
+        xMaterials.add(XMaterial.BIRCH_TRAPDOOR);
+        xMaterials.add(XMaterial.JUNGLE_TRAPDOOR);
+        xMaterials.add(XMaterial.ACACIA_TRAPDOOR);
+        xMaterials.add(XMaterial.DARK_OAK_TRAPDOOR);
+        xMaterials.add(XMaterial.CRIMSON_TRAPDOOR);
+        xMaterials.add(XMaterial.WARPED_TRAPDOOR);
+        xMaterials.add(XMaterial.LILY_PAD);
+        xMaterials.add(XMaterial.LIGHT_WEIGHTED_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.HEAVY_WEIGHTED_PRESSURE_PLATE);
+        xMaterials.add(XMaterial.IRON_TRAPDOOR);
+        xMaterials.add(XMaterial.WHITE_CARPET);
+        xMaterials.add(XMaterial.ORANGE_CARPET);
+        xMaterials.add(XMaterial.MAGENTA_CARPET);
+        xMaterials.add(XMaterial.LIGHT_BLUE_CARPET);
+        xMaterials.add(XMaterial.YELLOW_CARPET);
+        xMaterials.add(XMaterial.LIME_CARPET);
+        xMaterials.add(XMaterial.PINK_CARPET);
+        xMaterials.add(XMaterial.GRAY_CARPET);
+        xMaterials.add(XMaterial.LIGHT_GRAY_CARPET);
+        xMaterials.add(XMaterial.CYAN_CARPET);
+        xMaterials.add(XMaterial.PURPLE_CARPET);
+        xMaterials.add(XMaterial.BLUE_CARPET);
+        xMaterials.add(XMaterial.BROWN_CARPET);
+        xMaterials.add(XMaterial.GREEN_CARPET);
+        xMaterials.add(XMaterial.RED_CARPET);
+        xMaterials.add(XMaterial.BLACK_CARPET);
+
+        Set<Material> smallMaterials = new HashSet<>();
+        for (XMaterial xMaterial : xMaterials) {
+            if (xMaterial.isSupported()) smallMaterials.add(xMaterial.parseMaterial());
+        }
+
+        return smallMaterials;
+    }
+
+    public static boolean isMediumBlock(Material material) {
+        return MEDIUM_MATERIALS.contains(material);
+    }
+
+    private static final Set<Material> MEDIUM_MATERIALS = buildMediumMaterials();
+
+    private static Set<Material> buildMediumMaterials() {
+        Set<XMaterial> xMaterials = new HashSet<>();
+        xMaterials.add(XMaterial.OAK_SLAB);
+        xMaterials.add(XMaterial.SPRUCE_SLAB);
+        xMaterials.add(XMaterial.BIRCH_SLAB);
+        xMaterials.add(XMaterial.JUNGLE_SLAB);
+        xMaterials.add(XMaterial.ACACIA_SLAB);
+        xMaterials.add(XMaterial.DARK_OAK_SLAB);
+        xMaterials.add(XMaterial.CRIMSON_SLAB);
+        xMaterials.add(XMaterial.WARPED_SLAB);
+        xMaterials.add(XMaterial.STONE_SLAB);
+        xMaterials.add(XMaterial.SMOOTH_STONE_SLAB);
+        xMaterials.add(XMaterial.SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.CUT_SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.PETRIFIED_OAK_SLAB);
+        xMaterials.add(XMaterial.COBBLESTONE_SLAB);
+        xMaterials.add(XMaterial.BRICK_SLAB);
+        xMaterials.add(XMaterial.STONE_BRICK_SLAB);
+        xMaterials.add(XMaterial.NETHER_BRICK_SLAB);
+        xMaterials.add(XMaterial.QUARTZ_SLAB);
+        xMaterials.add(XMaterial.RED_SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.CUT_RED_SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.PURPUR_SLAB);
+        xMaterials.add(XMaterial.PRISMARINE_SLAB);
+        xMaterials.add(XMaterial.PRISMARINE_BRICK_SLAB);
+        xMaterials.add(XMaterial.DARK_PRISMARINE_SLAB);
+        xMaterials.add(XMaterial.POLISHED_GRANITE_SLAB);
+        xMaterials.add(XMaterial.SMOOTH_RED_SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.MOSSY_STONE_BRICK_SLAB);
+        xMaterials.add(XMaterial.POLISHED_DIORITE_SLAB);
+        xMaterials.add(XMaterial.MOSSY_COBBLESTONE_SLAB);
+        xMaterials.add(XMaterial.END_STONE_BRICK_SLAB);
+        xMaterials.add(XMaterial.SMOOTH_SANDSTONE_SLAB);
+        xMaterials.add(XMaterial.SMOOTH_QUARTZ_SLAB);
+        xMaterials.add(XMaterial.GRANITE_SLAB);
+        xMaterials.add(XMaterial.ANDESITE_SLAB);
+        xMaterials.add(XMaterial.RED_NETHER_BRICK_SLAB);
+        xMaterials.add(XMaterial.POLISHED_ANDESITE_SLAB);
+        xMaterials.add(XMaterial.DIORITE_SLAB);
+
+        Set<Material> smallMaterials = new HashSet<>();
+        for (XMaterial xMaterial : xMaterials) {
+            if (xMaterial.isSupported()) smallMaterials.add(xMaterial.parseMaterial());
+        }
+
+        return smallMaterials;
+    }
+
+
 }
