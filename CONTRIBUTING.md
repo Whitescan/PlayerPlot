@@ -17,7 +17,6 @@ Contributions are what make the open source community such an amazing place to b
 * Make sure the utility works on different versions.
 * Use method and variable names that make sense and are related to the context.
 * Do not attempt to support older versions than 1.8 even if it can be fixed with a single line.
-* Do not use one liner if statements if it doesn't fit the screen.
 
 ## Translations
 
