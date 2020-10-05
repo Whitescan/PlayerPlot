@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [1.19.1] - 2020-10-05
 
 **[Warning] The config file has changed. delete to allow it to reload.**<br>
+**[Warning] The language file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
@@ -16,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Removed PlayerPlot prefix from /plot scan and plot protection message.
 - Added dialog-less option for plot protection warning.
+- Updated language file
 
 ### Fixed
 
