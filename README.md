@@ -1,11 +1,5 @@
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+
 [![Version][version-shield]][version-url]
 [![Download][download-shield]][download-url]
 [![Tested Versions][tested-shield]][tested-url]
@@ -51,7 +45,9 @@
 
 ![Player Plot Screen Shot](images/cover.jpg)
 
-Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. The plugin is extremely scalable thanks to plots beings stored in grid zones. The plugin is also very user friendly because any plot's border can be made visible using the /plot scan command.
+Player Plot is a self-serve protection plugin for Minecraft. It allows users to unlock and claim protected regions. 
+The plugin is extremely scalable thanks to plots beings stored in grid zones. 
+The plugin is also very user-friendly because any plot's border can be made visible using the /plot scan command.
 
 #### Built With
 
@@ -76,7 +72,8 @@ Install Player Plot like any other Spigot plugin. If you need a refresher you ca
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-A plot is a protected zone that belongs to an owning player. Plots can be managed by using /plot commands while standing in the target plot. Plots can also be edited remotely by using the /plot @[plot] format.
+A plot is a protected zone that belongs to an owning player. Plots can be managed by using /plot commands while standing in the target plot. 
+Plots can also be edited remotely by using the /plot @[plot] format.
 
 #### Protection
 
@@ -96,13 +93,19 @@ Plots offer robust protection from both players and the elements. Plots protect 
 
 #### Upgrading
 
-When upgrading a plot, it is assigned a new side length so that the total plot size increases by the area of a single plot. For example, upgrading a plot once will result in a plot that is twice the size of the original. Upgrading a plot twice will result in a plot that is three times the size of the original. Upgrading an existing plot will consume a plot slot.
+When upgrading a plot, it is assigned a new side length so that the total plot size increases by the area of a single plot. 
+For example, upgrading a plot once will result in a plot that is twice the size of the original. 
+Upgrading a plot twice will result in a plot that is three times the size of the original. 
+Upgrading an existing plot will consume a plot slot.
 
-Downgrading a plot will reduce the size back by the area of a single plot. After fully downgrading a plot, it will be the same size and in the exact same position as the original plot. The plots that were consumed during the upgrade process will be returned to the player.
+Downgrading a plot will reduce the size back by the area of a single plot. 
+After fully downgrading a plot, it will be the same size and in the exact same position as the original plot. 
+The plots that were consumed during the upgrade process will be returned to the player.
 
 #### Plot Deeds
 
-Players unlock new plots by obtaining and right clicking on a plot deed. The plugin comes with an optional resource pack that adds custom textures to plot deeds.
+Players unlock new plots by obtaining and right clicking on a plot deed. 
+The plugin comes with an optional resource pack that adds custom textures to plot deeds.
 
 ![Plot Deed](images/plot-deed.png)
 
@@ -130,7 +133,8 @@ See `CONTRIBUTING` for more information.
 
 #### Translations
 
-We are always looking to expand and improve Player Plot's localization. If you want to help us translate Player Plot into your native language, join the Player Plot [Crowdin project](https://crowdin.com/project/player-plot).
+We are always looking to expand and improve localization. 
+If you want to help us translate Player Plot into your native language, join the [Player Plot Crowdin](https://crowdin.com/project/player-plot).
 
 <!-- LICENSE -->
 ## License
