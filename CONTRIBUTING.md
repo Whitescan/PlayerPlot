@@ -20,4 +20,4 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Translations
 
-We are always looking to expand and improve Player Plot's locilization. If you want to help us translate Player Plot into your native language, join the Player Plot [Crowdin project](https://crowdin.com/project/player-plot).
+We are always looking to expand and improve localization. If you want to help us translate Player Plot into your native language, join the Player Plot [Crowdin project](https://crowdin.com/project/player-plot).
