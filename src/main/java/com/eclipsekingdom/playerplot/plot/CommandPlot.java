@@ -3,7 +3,7 @@ package com.eclipsekingdom.playerplot.plot;
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
 import com.eclipsekingdom.playerplot.sys.PluginBase;
-import com.eclipsekingdom.playerplot.sys.PluginHelp;
+import com.eclipsekingdom.playerplot.sys.Help;
 import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.user.UserCache;
 import com.eclipsekingdom.playerplot.user.UserData;
@@ -47,7 +47,7 @@ public class CommandPlot implements CommandExecutor {
             UUID playerID = player.getUniqueId();
             if (UserCache.hasData(playerID)) {
                 if (args.length == 0) {
-                    PluginHelp.showPlots(player);
+                    Help.sendPlots(player);
                 } else {
                     String sub = args[0].toLowerCase();
                     if (sub.equals("scan")) {
@@ -91,15 +91,15 @@ public class CommandPlot implements CommandExecutor {
                                         processRename(player, plot, effectiveArgs);
                                         break;
                                     default:
-                                        PluginHelp.showPlots(player);
+                                        Help.sendPlots(player);
                                         break;
                                 }
                             } else {
-                                PluginHelp.showPlots(player);
+                                Help.sendPlots(player);
                             }
                         });
                     } else {
-                        PluginHelp.showPlots(player);
+                        Help.sendPlots(player);
                     }
                 }
             }

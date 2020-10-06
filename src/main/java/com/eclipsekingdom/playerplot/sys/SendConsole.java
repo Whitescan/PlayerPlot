@@ -23,4 +23,8 @@ public class SendConsole {
         logger.warning("[WARN] " + message);
     }
 
+    public static void error(String message) {
+        logger.warning("[ERROR] " + message);
+    }
+
 }

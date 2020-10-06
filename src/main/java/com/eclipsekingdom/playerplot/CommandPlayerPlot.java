@@ -2,7 +2,7 @@ package com.eclipsekingdom.playerplot;
 
 import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.sys.PluginHelp;
+import com.eclipsekingdom.playerplot.sys.Help;
 import com.eclipsekingdom.playerplot.sys.Version;
 import com.eclipsekingdom.playerplot.util.Scheduler;
 import com.eclipsekingdom.playerplot.util.update.Spiget;
@@ -22,7 +22,7 @@ public class CommandPlayerPlot implements CommandExecutor {
         if (args.length > 0) {
             String sub = args[0].toLowerCase();
             if (sub.equals("help")) {
-                PluginHelp.showTo(sender);
+                Help.sendTo(sender);
             } else if (sub.equals("info")) {
                 showInfo(sender);
             } else if (sub.equals("update")) {
@@ -105,13 +105,13 @@ public class CommandPlayerPlot implements CommandExecutor {
                     " " + ChatColor.AQUA + "https://gitlab.com/sword7/playerplot/-/wikis/home");
         }
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.PLUGIN_OPTIONS + " -------");
-        sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot help: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_HELP);
-        sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot info: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_INFO);
+        sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot help: " + ChatColor.WHITE + ChatColor.ITALIC + Language.HELP_PLAYERPLOT_HELP);
+        sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot info: " + ChatColor.WHITE + ChatColor.ITALIC + Language.HELP_PLAYERPLOT_INFO);
         if (Permissions.canUpdate(sender)) {
-            sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot update: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_HELP);
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot update: " + ChatColor.WHITE + ChatColor.ITALIC + Language.HELP_PLAYERPLOT_UPDATE);
         }
         if (Permissions.canReload(sender)) {
-            sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot reload: " + ChatColor.WHITE + ChatColor.ITALIC + Language.PLUGIN_INFO);
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "/playerplot reload: " + ChatColor.WHITE + ChatColor.ITALIC + Language.HELP_PLAYERPLOT_RELOAD);
         }
     }
 
