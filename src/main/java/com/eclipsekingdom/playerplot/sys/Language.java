@@ -18,8 +18,6 @@ public enum Language {
     PLUGIN_READ_MORE("Plugin - read more", "Read more on the [link]."),
     PLUGIN_WIKI("Plugin - wiki", "Player Plot wiki"),
     PLUGIN_OPTIONS("Plugin - options", "Options"),
-    PLUGIN_HELP("Plugin - help", "show plugin commands"),
-    PLUGIN_INFO("Plugin - info", "get plugin information"),
     PLUGIN_AUTHOR("Plugin - author", "Author"),
     PLUGIN_VERSION("Plugin - version", "Version"),
     PLUGIN_NEW_UPDATE("Plugin - new update", "A new version of Player Plot is available."),
@@ -48,6 +46,10 @@ public enum Language {
     LABEL_CONFIRM("Label - confirm", "Confirm"),
     LABEL_CANCEL("Label - cancel", "Cancel"),
 
+    HELP_PLAYERPLOT_HELP("Help - playerplot help", "show plugin commands"),
+    HELP_PLAYERPLOT_INFO("Help - playerplot info", "get plugin information"),
+    HELP_PLAYERPLOT_UPDATE("Help - playerplot update", "check for updates"),
+    HELP_PLAYERPLOT_RELOAD("Help - playerplot reload", "reload config"),
     HELP_PLOT_SCAN("Help - plot scan", "display plot boundary"),
     HELP_PLOT_CLAIM("Help - plot claim", "claim a plot"),
     HELP_PLOT_RENAME("Help - plot rename", "rename a plot"),
@@ -267,7 +269,7 @@ public enum Language {
 
         TextComponent confirmComponent = new TextComponent("[" + Language.LABEL_CONFIRM.toString() + "]");
         confirmComponent.setColor(ChatColor.GREEN.asBungee());
-        if (Version.getValue() >= 116) {
+        if (Version.getValue() >= 116.2) {
             confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.GREEN + Language.INFO_CONFIRM_HOVER.toString())));
         } else {
             confirmComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(Language.INFO_CONFIRM_HOVER.toString()).color(ChatColor.GREEN.asBungee()).create()));
@@ -276,7 +278,7 @@ public enum Language {
 
         TextComponent cancelComponent = new TextComponent("[" + Language.LABEL_CANCEL.toString() + "]");
         cancelComponent.setColor(ChatColor.RED.asBungee());
-        if (Version.getValue() >= 116) {
+        if (Version.getValue() >= 116.2) {
             cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.RED + Language.INFO_CANCEL_HOVER.toString())));
         } else {
             cancelComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(Language.INFO_CANCEL_HOVER.toString()).color(ChatColor.RED.asBungee()).create()));
