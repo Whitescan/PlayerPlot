@@ -155,6 +155,7 @@ Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/p
 * [Crowdin](https://crowdin.com/)
 * [Dynmap](https://github.com/webbukkit/dynmap)
 * [GitLab](https://gitlab.com)
+* [JetBrains](https://www.jetbrains.com/?from=EclipseKingdom)
 * [Shields IO](https://shields.io/)
 * [XSeries](https://github.com/CryptoMorin/XSeries)
 
