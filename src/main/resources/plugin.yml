@@ -1,5 +1,5 @@
 name: PlayerPlot
-version: 1.18.0
+version: 1.19.1
 main: com.eclipsekingdom.playerplot.PlayerPlot
 api-version: 1.13
 authors: [ sword7 ]
@@ -51,6 +51,7 @@ permissions:
     default: op
   playerplot.write:
     description: grants access to /writedeed
+    default: true
   playerplot.admin.*:
     description: grants all Player Plot admin permissions
     default: op
@@ -59,4 +60,46 @@ permissions:
     default: op
   playerplot.admin.delete:
     description: grants access to plot deletion commands
+    default: op
+  playerplot.plot.*:
+    description: grants access to all plot commands
+    default: true
+  playerplot.plot.scan:
+    description: grants access to /plot scan
+    default: op
+  playerplot.plot.claim:
+    description: grants access to /plot claim
+    default: op
+  playerplot.plot.list:
+    description: grants access to /plot list
+    default: op
+  playerplot.plot.flist:
+    description: grants access to /plot flist
+    default: op
+  playerplot.plot.rename:
+    description: grants access to /plot rename
+    default: op
+  playerplot.plot.free:
+    description: grants access to /plot free
+    default: op
+  playerplot.plot.info:
+    description: grants access to /plot info
+    default: op
+  playerplot.plot.trust:
+    description: grants access to /plot trust
+    default: op
+  playerplot.plot.untrust:
+    description: grants access to /plot untrust
+    default: op
+  playerplot.plot.upgrade:
+    description: grants access to /plot upgrade
+    default: op
+  playerplot.plot.downgrade:
+    description: grants access to /plot downgrade
+    default: op
+  playerplot.plot.setcenter:
+    description: grants access to /plot setcenter
+    default: op
+  playerplot.plot.setspawn:
+    description: grants access to /plot setspawn
     default: op

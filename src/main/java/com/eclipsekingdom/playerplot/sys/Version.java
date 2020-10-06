@@ -113,4 +113,8 @@ public enum Version {
         return value <= 112;
     }
 
+    public static boolean hasBungeeChat() {
+        return value >= 112;
+    }
+
 }

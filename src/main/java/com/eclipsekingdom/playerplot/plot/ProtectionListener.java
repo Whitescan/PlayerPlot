@@ -1,12 +1,16 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
+import com.eclipsekingdom.playerplot.sys.Language;
 import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.ProtectionUtil;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;
+import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -26,11 +30,10 @@ import org.bukkit.util.Vector;
 
 import java.util.List;
 
-import static com.eclipsekingdom.playerplot.sys.Language.WARN_PROTECTED;
-
 public class ProtectionListener implements Listener {
 
-    private String PROTECTED_WARNING = ChatColor.DARK_PURPLE + "[PlayerPlot] " + ChatColor.RED + WARN_PROTECTED;
+    private String PROTECTED_WARNING = ChatColor.RED + Language.WARN_PROTECTED.toString();
+    private String PVP_WARNING = ChatColor.RED + Language.WARN_NO_PVP_ZONE.toString();
 
     public ProtectionListener() {
         Plugin plugin = PlayerPlot.getPlugin();
@@ -40,9 +43,46 @@ public class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onBuild(BlockPlaceEvent e) {
         Player builder = e.getPlayer();
-        if (!isAllowed(builder, e.getBlock().getLocation())) {
+        Block block = e.getBlock();
+        if (!isAllowed(builder, block.getLocation())) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(PROTECTED_WARNING);
+            sendWarning(e.getPlayer(), PROTECTED_WARNING, block);
+        }
+    }
+
+    private static void sendWarning(Player player, String message) {
+        sendErrorEffect(player, player.getLocation());
+        if (PluginConfig.isWarnMessage()) player.sendMessage(message);
+    }
+
+
+    private static void sendWarning(Player player, String message, Entity entity) {
+        Location location = entity.getLocation().add(0, entity.getHeight() / 2.0, 0);
+        sendErrorEffect(player, location);
+        if (PluginConfig.isWarnMessage()) player.sendMessage(message);
+    }
+
+    private static void sendWarning(Player player, String message, Block block) {
+        Location location = block.getLocation();
+        location.add(0.5, 0, 0.5);
+        Material material = block.getType();
+        if (ProtectionUtil.isSmallBlock(material)) {
+            location.add(0, 0.3, 0);
+        } else if (ProtectionUtil.isMediumBlock(material)) {
+            location.add(0, 0.8, 0);
+        } else {
+            location.add(0, 1.3, 0);
+        }
+        sendErrorEffect(player, location);
+        if (PluginConfig.isWarnMessage()) player.sendMessage(message);
+    }
+
+    private static void sendErrorEffect(Player player, Location location) {
+        if (PluginConfig.isWarnSound()) {
+            player.playSound(location, XSound.ENTITY_BLAZE_HURT.parseSound(), 1f, 0.7f);
+        }
+        if (PluginConfig.isWarnParticle()) {
+            location.getWorld().spawnParticle(Particle.SMOKE_NORMAL, location, 2, 0, 0, 0, 0.05);
         }
     }
 
@@ -119,18 +159,20 @@ public class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onBreak(BlockBreakEvent e) {
         Player breaker = e.getPlayer();
-        if (!isAllowed(breaker, e.getBlock().getLocation())) {
+        Block block = e.getBlock();
+        if (!isAllowed(breaker, block.getLocation())) {
             e.setCancelled(true);
-            breaker.sendMessage(PROTECTED_WARNING);
+            sendWarning(breaker, PROTECTED_WARNING, block);
         }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInteractAt(PlayerInteractAtEntityEvent e) {
         if (ProtectionUtil.isInteractableAtEntity(e.getRightClicked().getType())) {
-            if (!isAllowed(e.getPlayer(), e.getRightClicked().getLocation())) {
+            Entity entity = e.getRightClicked();
+            if (!isAllowed(e.getPlayer(), entity.getLocation())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(PROTECTED_WARNING);
+                sendWarning(e.getPlayer(), PROTECTED_WARNING, entity);
             }
         }
     }
@@ -138,9 +180,10 @@ public class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInteractEntity(PlayerInteractEntityEvent e) {
         if (ProtectionUtil.isInteractableEntity(e.getRightClicked().getType())) {
-            if (!isAllowed(e.getPlayer(), e.getRightClicked().getLocation())) {
+            Entity entity = e.getRightClicked();
+            if (!isAllowed(e.getPlayer(), entity.getLocation())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(PROTECTED_WARNING);
+                sendWarning(e.getPlayer(), PROTECTED_WARNING, entity);
             }
         }
     }
@@ -156,14 +199,14 @@ public class ProtectionListener implements Listener {
             if (ProtectionUtil.isProtectedInteraction(handMaterial, blockMaterial)) {
                 if (!isAllowed(player, block.getLocation())) {
                     e.setCancelled(true);
-                    player.sendMessage(PROTECTED_WARNING);
+                    sendWarning(player, PROTECTED_WARNING, block);
                 }
             }
         } else if (action == Action.PHYSICAL) {
             if (blockMaterial == farmMaterial) {
                 if (!isAllowed(e.getPlayer(), block.getLocation())) {
                     e.setCancelled(true);
-                    player.sendMessage(PROTECTED_WARNING);
+                    sendWarning(player, PROTECTED_WARNING, block);
                 }
             }
         }
@@ -173,9 +216,10 @@ public class ProtectionListener implements Listener {
     public void onDestroy(HangingBreakByEntityEvent e) {
         if (e.getRemover() instanceof Player) {
             Player player = (Player) e.getRemover();
-            if (!isAllowed(player, e.getEntity().getLocation())) {
+            Entity entity = e.getEntity();
+            if (!isAllowed(player, entity.getLocation())) {
                 e.setCancelled(true);
-                player.sendMessage(PROTECTED_WARNING);
+                sendWarning(player, PROTECTED_WARNING, entity);
             }
         }
     }
@@ -234,12 +278,22 @@ public class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onHurt(EntityDamageByEntityEvent e) {
         Entity victim = e.getEntity();
-        if (!(victim instanceof Player || victim instanceof Monster)) {
-            Player damager = getPlayer(e.getDamager());
-            if (damager != null) {
+        Player damager = getPlayer(e.getDamager());
+        if (damager != null) {
+            if (victim instanceof Player) {
+                if (!PluginConfig.isPlotPvp()) {
+                    if (PlotCache.hasPlot(victim.getLocation())) {
+                        e.setCancelled(true);
+                        sendWarning(damager, PVP_WARNING, victim);
+                    } else if (PlotCache.hasPlot(damager.getLocation())) {
+                        e.setCancelled(true);
+                        sendWarning(damager, PVP_WARNING);
+                    }
+                }
+            } else if (!(ProtectionUtil.isMonster(victim) || ProtectionUtil.isFighting(victim))) {
                 if (!isAllowed(damager, victim.getLocation())) {
                     e.setCancelled(true);
-                    damager.sendMessage(PROTECTED_WARNING);
+                    sendWarning(damager, PROTECTED_WARNING, victim);
                 }
             }
         }

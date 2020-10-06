@@ -2,32 +2,82 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [1.19.0] - ???
+## [2.0.0] - ???
 
-**[Warning] 1.19.0 requires the new texture pack.**
-**[Warning] The /plotdeed command has changed.**
-**[Warning] The language file has changed, delete to allow it to reload.**
+**[Warning] The language file has changed. delete to allow it to reload.**<br>
+
+### Changed
+
+- Updated Spanish translation file (thanks to Mosquito for translating)
+
+### Fixed
+
+- fixed help message for /playerplot reload and /playerplot update
+
+## [1.19.1] - 2020-10-05
+
+**[Warning] The config file has changed. delete to allow it to reload.**<br>
+**[Warning] The language file has changed. delete to allow it to reload.**<br>
+
+### Added
+
+- Optional plot protection warning sound and particle
+
+### Changed
+
+- Removed PlayerPlot prefix from /plot scan and plot protection message.
+- Added dialog-less option for plot protection warning.
+- Updated language file
+
+### Fixed
+
+- Bug where anyone could use /playerplot reload and update
+
+## [1.19.0] - 2020-10-03
+
+**[Warning] 1.19.0 requires the new texture pack.**<br>
+**[Warning] The /plotdeed command has changed.**<br>
+**[Warning] The language file has changed, delete to allow it to reload.**<br>
+**[Warning] The config file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
 - Added introductory message to /playerplot command
 - Added back some admin commands (/plot activity command will return in the data storage update)
 - Added commands:
-  >/playerplot info *- get plugin info*<br> 
-  /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br> 
-  /playerplot  update *- check for updates*<br> 
-  /writedeed *- write plot deeds*
+  >/playerplot info *- get plugin info*<br>
+  /playerplot reload *- reload player plot config (plot/user data will not reload yet)*<br>
+  /playerplot  update *- check for updates*<br>
+  /writedeed *- write plot deeds*<br>
+  /allplots *- view all plots*<br>
+  /delplot *- delete any plot*<br>
+  /delplotconfirm *- confirm deletion*<br>
+  /delplotcancel *- confirm deletion*<br>
 - Added permission nodes:
   >playerplot.reload *- grants access to /playerplot reload*<br> 
   playerplot.update *- grants access to /playerplot update*<br> 
-  playerplot.write *- grants access to /writedeed*<br> 
+  playerplot.write *- grants access to /writedeed* (default true)<br> 
   playerplot.admin.* *- grants all Player Plot admin permissions*<br> 
   playerplot.admin.view *- grants access to /allplots*<br>
-  playerplot.admin.delete *- grants access to plot deletion commands*                          
+  playerplot.admin.delete *- grants access to plot deletion commands*<br>
+  playerplot.plot.*: *-grants access to all plot commands* (default true)<br>
+  playerplot.plot.scan: *- grants access to /plot scan*<br>
+  playerplot.plot.claim: *- grants access to /plot claim*<br>
+  playerplot.plot.list: *- grants access to /plot list*<br>
+  playerplot.plot.flist: *- grants access to /plot flist*<br>
+  playerplot.plot.info: *- grants access to /plot info*<br>
+  playerplot.plot.trust: *- grants access to /plot trust*<br>
+  playerplot.plot.untrust: *- grants access to /plot untrust*<br>
+  playerplot.plot.upgrade: *- grants access to /plot upgrade*<br>
+  playerplot.plot.downgrade: *- grants access to /plot downgrade*<br>
+  playerplot.plot.setcenter: *- grants access to /plot setcenter*<br>
+  playerplot.plot.setspawn: *- grants access to /plot setspawn*<br>                  
 - Added swamp, mountain, and ocean plot deeds
+- Added plot pvp option to config
+- Added permission node for all plot actions
+- Added plot world blacklist to config
 
 ### Changed
 
@@ -35,11 +85,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed help command styling to match plugin theme
 - Updated language file
 - Improved autocomplete
-- PlayerPlot texture pack
+- Updated Player Plot texture pack
 - Plot deeds now uses translation file for "+1 plot"
 - Changed /plotdeed command structure
 - Changed CustomModelData values in [resource pack](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack)
 - Refactored code (preparing for data storage update)
+- Improved styling for plot usage indicator to make the calculation more clear
+ 
+### Fixed
+
+- Fixed issue where plots would protect some hostile mobs from outsiders
  
 ## [1.18.0] - 2020-09-14
 
@@ -56,9 +111,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plot teleportation<br>
 - Added commands:
   >/toplot [plot] *- teleport to plot*<br> 
-  /plot setspawn *- set spawn point*
+  /plot setspawn *- set spawn point*<br> 
 - Added permission nodes:
-  >playerplot.teleport *- grants access to teleportation commands*
+  >playerplot.teleport *- grants access to teleportation commands*<br> 
 
 ### Changed
 

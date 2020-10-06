@@ -11,18 +11,18 @@ import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-public class PluginHelp {
+public class Help {
 
-    public static void showTo(CommandSender sender) {
+    public static void sendTo(CommandSender sender) {
         sender.sendMessage("");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "__Player Plot_______");
         sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.LABEL_COMMANDS + " -------");
-        sender.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
+        sender.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + "  " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
         sendPlotCommands(sender);
-        sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
+        sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------------");
         sendPlotActionCommands(sender);
         if (Permissions.canSummon(sender) || Permissions.canDeletePlots(sender) || Permissions.canViewAllPlots(sender)) {
-            sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
+            sender.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------------");
             if (Permissions.canViewAllPlots(sender)) {
                 sendCommand(sender, "&d/allplots: &f" + Language.HELP_ALL_PLOTS.toString());
             }
@@ -36,7 +36,7 @@ public class PluginHelp {
 
     }
 
-    public static void showPlots(Player player) {
+    public static void sendPlots(Player player) {
         UUID playerID = player.getUniqueId();
         UserData userData = UserCache.getData(playerID);
         PermInfo permInfo = UserCache.getPerms(playerID);
@@ -54,9 +54,9 @@ public class PluginHelp {
         if (permNum > 0) capacityComponents += ChatColor.GRAY + "permission: " + ChatColor.AQUA + permNum + " ";
         player.sendMessage(capacityComponents);
         player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------- " + Language.LABEL_COMMANDS + " -------");
-        player.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + " " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
+        player.sendMessage(ChatColor.GRAY.toString() + "() = " + Language.MISC_OPTIONAL + "  " + ChatColor.DARK_PURPLE + "[] = " + Language.MISC_VARIABLE);
         sendPlotCommands(player);
-        player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------");
+        player.sendMessage(ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "------------------------");
         sendPlotActionCommands(player);
     }
 
