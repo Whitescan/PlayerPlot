@@ -1,4 +1,6 @@
 # Player Plot Configuration
+# Read more on the wiki:
+# https://gitlab.com/sword7/playerplot/-/wikis/setup/configuration
 Language file: en
 Use /pplot root: false
 Starting Plot Amount: 1
