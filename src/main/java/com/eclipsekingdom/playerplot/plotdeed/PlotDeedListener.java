@@ -3,10 +3,9 @@ package com.eclipsekingdom.playerplot.plotdeed;
 import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.user.UserCache;
 import com.eclipsekingdom.playerplot.user.UserData;
-import com.eclipsekingdom.playerplot.sys.Version;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Version;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
-import com.eclipsekingdom.playerplot.util.PlotUtil;
 import com.eclipsekingdom.playerplot.util.X.XSound;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -23,7 +22,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.UUID;
 
-import static com.eclipsekingdom.playerplot.sys.Language.WARN_PLOT_MAX;
+import static com.eclipsekingdom.playerplot.config.Language.WARN_PLOT_MAX;
 
 public class PlotDeedListener implements Listener {
 

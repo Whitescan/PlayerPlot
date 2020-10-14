@@ -2,7 +2,7 @@ package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.plot.PlotCache;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import org.bukkit.ChatColor;
 
 import java.util.UUID;

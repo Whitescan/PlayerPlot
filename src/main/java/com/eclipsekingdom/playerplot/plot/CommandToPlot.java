@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Permissions;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.eclipsekingdom.playerplot.sys.Language.ARG_PLOT;
+import static com.eclipsekingdom.playerplot.config.Language.ARG_PLOT;
 
 public class CommandToPlot implements CommandExecutor {
 

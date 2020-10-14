@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.sys;
+package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
 

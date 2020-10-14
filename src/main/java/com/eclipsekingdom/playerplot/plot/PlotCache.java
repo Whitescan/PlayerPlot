@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.sys.PluginBase;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginBase;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.GridZone;
 import com.eclipsekingdom.playerplot.util.MapUtil;

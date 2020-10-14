@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.plotdeed;
 
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Version;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

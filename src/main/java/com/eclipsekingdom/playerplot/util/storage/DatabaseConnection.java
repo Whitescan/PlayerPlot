@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.util.storage;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;

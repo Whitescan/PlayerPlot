@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.util;
 
-import com.eclipsekingdom.playerplot.sys.Language;
+import com.eclipsekingdom.playerplot.config.Language;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 

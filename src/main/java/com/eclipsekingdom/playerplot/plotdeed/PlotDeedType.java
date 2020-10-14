@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.plotdeed;
 
-import com.eclipsekingdom.playerplot.sys.Language;
+import com.eclipsekingdom.playerplot.config.Language;
 import org.bukkit.ChatColor;
 
 public enum PlotDeedType {

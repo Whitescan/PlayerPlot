@@ -2,8 +2,8 @@ package com.eclipsekingdom.playerplot.admin;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.plot.PlotCache;
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Permissions;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
 import com.eclipsekingdom.playerplot.util.InfoList;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import com.eclipsekingdom.playerplot.util.PlotUtil;

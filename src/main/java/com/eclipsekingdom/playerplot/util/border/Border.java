@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.util.border;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Version;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

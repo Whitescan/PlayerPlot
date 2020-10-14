@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.util;
 
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
 

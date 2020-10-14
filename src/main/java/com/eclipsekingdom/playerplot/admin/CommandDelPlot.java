@@ -2,9 +2,9 @@ package com.eclipsekingdom.playerplot.admin;
 
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.plot.PlotCache;
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
+import com.eclipsekingdom.playerplot.config.Version;
 import com.eclipsekingdom.playerplot.util.Scheduler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

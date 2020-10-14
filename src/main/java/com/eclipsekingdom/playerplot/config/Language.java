@@ -1,6 +1,5 @@
-package com.eclipsekingdom.playerplot.sys;
+package com.eclipsekingdom.playerplot.config;
 
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;

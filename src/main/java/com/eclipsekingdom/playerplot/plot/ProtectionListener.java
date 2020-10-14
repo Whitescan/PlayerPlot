@@ -1,9 +1,9 @@
 package com.eclipsekingdom.playerplot.plot;
 
 import com.eclipsekingdom.playerplot.PlayerPlot;
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Version;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Version;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.ProtectionUtil;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import com.eclipsekingdom.playerplot.util.X.XSound;

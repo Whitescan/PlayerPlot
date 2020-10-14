@@ -4,8 +4,9 @@ import com.eclipsekingdom.playerplot.PlayerPlot;
 import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.plot.PlotCache;
 import com.eclipsekingdom.playerplot.plotdeed.PlotDeedType;
-import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -177,7 +178,7 @@ public class AutoCompleteListener implements Listener {
         for (Plot plot : PlotCache.getPlayerPlots(player.getUniqueId())) {
             plotNames.add("@" + plot.getName());
         }
-        plotNames.add("@here");
+        plotNames.add("@" + Language.MISC_HERE);
         return plotNames;
     }
 

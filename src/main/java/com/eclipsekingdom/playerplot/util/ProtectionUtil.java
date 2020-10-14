@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.util;
 
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Version;
 import com.eclipsekingdom.playerplot.util.X.XEntityType;
 import com.eclipsekingdom.playerplot.util.X.XMaterial;
 import com.google.common.collect.ImmutableSet;

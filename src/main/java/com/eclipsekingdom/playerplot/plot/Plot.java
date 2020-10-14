@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.sys.Permissions;
+import com.eclipsekingdom.playerplot.config.Permissions;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;

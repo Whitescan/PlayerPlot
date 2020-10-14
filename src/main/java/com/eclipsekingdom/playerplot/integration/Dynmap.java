@@ -1,7 +1,8 @@
-package com.eclipsekingdom.playerplot.util;
+package com.eclipsekingdom.playerplot.integration;
 
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.plot.Plot;
+import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.plugin.Plugin;
 import org.dynmap.DynmapAPI;
 import org.dynmap.markers.AreaMarker;

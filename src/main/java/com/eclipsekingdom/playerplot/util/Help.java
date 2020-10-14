@@ -1,10 +1,11 @@
-package com.eclipsekingdom.playerplot.sys;
+package com.eclipsekingdom.playerplot.util;
 
 import com.eclipsekingdom.playerplot.plot.PlotCache;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
 import com.eclipsekingdom.playerplot.user.UserCache;
 import com.eclipsekingdom.playerplot.user.UserData;
-import com.eclipsekingdom.playerplot.util.PermInfo;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

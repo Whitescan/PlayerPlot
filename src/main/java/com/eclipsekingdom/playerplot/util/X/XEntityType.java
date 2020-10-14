@@ -1,6 +1,6 @@
 package com.eclipsekingdom.playerplot.util.X;
 
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Version;
 import org.bukkit.entity.EntityType;
 
 import java.util.ArrayList;

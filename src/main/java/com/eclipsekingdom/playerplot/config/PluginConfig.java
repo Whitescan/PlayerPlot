@@ -1,4 +1,4 @@
-package com.eclipsekingdom.playerplot.sys.config;
+package com.eclipsekingdom.playerplot.config;
 
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;

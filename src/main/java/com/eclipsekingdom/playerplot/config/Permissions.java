@@ -1,6 +1,6 @@
-package com.eclipsekingdom.playerplot.sys;
+package com.eclipsekingdom.playerplot.config;
 
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PermInfo;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Location;
 import org.bukkit.World;

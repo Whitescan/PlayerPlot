@@ -1,18 +1,22 @@
-package com.eclipsekingdom.playerplot.sys;
+package com.eclipsekingdom.playerplot.config;
 
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
-import com.eclipsekingdom.playerplot.util.Dynmap;
+import com.eclipsekingdom.playerplot.integration.Dynmap;
+import com.eclipsekingdom.playerplot.integration.PlayerPlotHero;
+import com.eclipsekingdom.playerplot.util.SendConsole;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import static com.eclipsekingdom.playerplot.sys.Language.CONSOLE_DETECT;
+import static com.eclipsekingdom.playerplot.config.Language.CONSOLE_DETECT;
 
 public class PluginBase {
 
     private static String dynmapNameSpace = "dynmap";
+    private static String apiHeroNameSpace = "ApiHero";
 
     private static Dynmap dynmap;
     private static boolean dynmapDetected = false;
+
+    private static boolean apiheroDetected = false;
 
     public PluginBase() {
         loadDependencies();
@@ -21,6 +25,7 @@ public class PluginBase {
     public void loadDependencies() {
         if (PluginConfig.isUseDynmap()) {
             loadDynmap();
+            loadApiHero();
         }
     }
 
@@ -30,6 +35,15 @@ public class PluginBase {
             dynmap = new Dynmap(plugin);
             dynmapDetected = true;
             SendConsole.info(CONSOLE_DETECT.fromPlugin(dynmapNameSpace));
+        }
+    }
+
+    private void loadApiHero() {
+        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(dynmapNameSpace);
+        if (plugin != null && plugin.isEnabled()) {
+            new PlayerPlotHero();
+            apiheroDetected = true;
+            SendConsole.info(CONSOLE_DETECT.fromPlayer(apiHeroNameSpace));
         }
     }
 

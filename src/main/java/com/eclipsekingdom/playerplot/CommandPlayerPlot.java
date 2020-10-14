@@ -1,9 +1,9 @@
 package com.eclipsekingdom.playerplot;
 
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.sys.Help;
-import com.eclipsekingdom.playerplot.sys.Version;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
+import com.eclipsekingdom.playerplot.util.Help;
+import com.eclipsekingdom.playerplot.config.Version;
 import com.eclipsekingdom.playerplot.util.Scheduler;
 import com.eclipsekingdom.playerplot.util.update.Spiget;
 import com.eclipsekingdom.playerplot.util.update.Update;

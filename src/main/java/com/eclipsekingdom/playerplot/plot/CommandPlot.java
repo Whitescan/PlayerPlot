@@ -1,10 +1,11 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.sys.Language;
-import com.eclipsekingdom.playerplot.sys.Permissions;
-import com.eclipsekingdom.playerplot.sys.PluginBase;
-import com.eclipsekingdom.playerplot.sys.Help;
-import com.eclipsekingdom.playerplot.sys.config.PluginConfig;
+import com.eclipsekingdom.playerplot.config.Language;
+import com.eclipsekingdom.playerplot.config.Permissions;
+import com.eclipsekingdom.playerplot.config.PluginBase;
+import com.eclipsekingdom.playerplot.integration.Dynmap;
+import com.eclipsekingdom.playerplot.util.Help;
+import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.user.UserCache;
 import com.eclipsekingdom.playerplot.user.UserData;
 import com.eclipsekingdom.playerplot.util.*;
