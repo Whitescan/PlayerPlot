@@ -19,13 +19,15 @@ public class ConfigLoader {
 
     private static ImmutableList<String> languages = new ImmutableList.Builder<String>()
             .add("cs")
+            .add("de")
             .add("en")
             .add("es")
-            .add("it")
-            .add("pl")
-            .add("lt")
             .add("fr")
+            .add("it")
             .add("ko")
+            .add("lt")
+            .add("pl")
+            .add("ru")
             .build();
 
     public static void load() {
