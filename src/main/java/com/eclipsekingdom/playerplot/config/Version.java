@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 
 public enum Version {
 
+    v1_16_R3(116.3),
     v1_16_R2(116.2),
     v1_16_R1(116.1),
     v1_15_R1(115.1),
@@ -28,7 +29,9 @@ public enum Version {
     private static Version getVersion() {
         String v = Bukkit.getServer().getClass().getPackage().getName();
         v = v.substring(v.lastIndexOf('.') + 1);
-        if (v.contains("v1_16_R2")) {
+        if (v.contains("v1_16_R3")) {
+            return v1_16_R3;
+        } else if (v.contains("v1_16_R2")) {
             return v1_16_R2;
         } else if (v.contains("v1_16_R1")) {
             return v1_16_R1;

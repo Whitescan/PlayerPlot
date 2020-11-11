@@ -1,7 +1,7 @@
 package com.eclipsekingdom.playerplot.util.border;
 
-import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.config.Version;
+import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -35,6 +35,8 @@ public class Border {
 
     public static IBorder select() {
         switch (Version.getCurrent()) {
+            case v1_16_R3:
+                return new Border_V1_16_R3();
             case v1_16_R2:
                 return new Border_v1_16_R2();
             case v1_16_R1:

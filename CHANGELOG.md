@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.19.2] - 2020/11/11
 
-**[Warning] The language file has changed. delete to allow it to reload.**<br>
+**[Alter] The language file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - German (thanks vHypnoticYT)
   - Russian (thanks Rundik)
 - added ApiHero support
+- Support for 1.16.4
 
 ### Changed
 

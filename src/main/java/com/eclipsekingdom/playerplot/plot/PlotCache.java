@@ -109,7 +109,7 @@ public class PlotCache {
             GridZone zone = GridZone.fromPlotPoint(plotCorner);
             if (zoneToPlots.containsKey(zone)) {
                 for (Plot plot : zoneToPlots.get(zone)) {
-                    if (location.getWorld().equals(plot.getWorld())) {
+                    if (location.getWorld().getName().equals(plot.getWorld())) {
                         closePlots.add(plot);
                     }
                 }
