@@ -5,6 +5,7 @@ import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -17,7 +18,7 @@ public class Plot {
     private final UUID ownerID;
     private String ownerName;
     private String name;
-    private World world;
+    private String world;
     private List<Friend> friends = new ArrayList<>();
     private Set<UUID> trustedIDs = new HashSet<>();
     private PlotPoint minCorner;
@@ -35,14 +36,14 @@ public class Plot {
         this.ownerID = player.getUniqueId();
         this.ownerName = player.getName();
         this.name = name;
-        this.world = location.getWorld();
+        this.world = location.getWorld().getName();
         this.minCorner = PlotPoint.fromLocation(location).getMinCorner(sideLength);
         this.maxCorner = PlotPoint.fromLocation(location).getMaxCorner(sideLength);
 
         initialize();
     }
 
-    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, World world, int components, List<Friend> friends, LocationParts spawnParts) {
+    public Plot(UUID plotID, String name, UUID ownerID, String ownerName, PlotPoint minCorner, PlotPoint maxCorner, String world, int components, List<Friend> friends, LocationParts spawnParts) {
         this.ID = plotID;
         this.name = name;
         this.ownerID = ownerID;
@@ -74,7 +75,7 @@ public class Plot {
     }
 
     public void setCenter(Location location) {
-        this.world = location.getWorld();
+        this.world = location.getWorld().getName();
         this.minCorner = PlotPoint.fromLocation(location).getMinCorner(sideLength);
         this.maxCorner = PlotPoint.fromLocation(location).getMaxCorner(sideLength);
         this.center = calculatePlotCenter();
@@ -118,7 +119,12 @@ public class Plot {
         if (spawnParts != null) {
             return spawnParts.getLocation();
         } else {
-            return world.getHighestBlockAt(center.asLocation(world)).getLocation().add(0.5, 1, 0.5);
+            World world = Bukkit.getWorld(this.world);
+            if (world != null) {
+                return world.getHighestBlockAt(center.asLocation(world)).getLocation().add(0.5, 1, 0.5);
+            } else {
+                return null;
+            }
         }
     }
 
@@ -146,7 +152,7 @@ public class Plot {
         this.name = name;
     }
 
-    public World getWorld() {
+    public String getWorld() {
         return world;
     }
 
@@ -163,7 +169,7 @@ public class Plot {
     }
 
     public boolean contains(Location location) {
-        return (location.getWorld().equals(world) && withinXRange(location) && withinZRange(location));
+        return (location != null && location.getWorld().getName().equals(world) && withinXRange(location) && withinZRange(location));
     }
 
     private boolean withinXRange(Location location) {

@@ -16,8 +16,6 @@ public class PluginBase {
     private static Dynmap dynmap;
     private static boolean dynmapDetected = false;
 
-    private static boolean apiheroDetected = false;
-
     public PluginBase() {
         loadDependencies();
     }
@@ -39,11 +37,10 @@ public class PluginBase {
     }
 
     private void loadApiHero() {
-        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(dynmapNameSpace);
+        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(apiHeroNameSpace);
         if (plugin != null && plugin.isEnabled()) {
             new PlayerPlotHero();
-            apiheroDetected = true;
-            SendConsole.info(CONSOLE_DETECT.fromPlayer(apiHeroNameSpace));
+            SendConsole.info(CONSOLE_DETECT.fromPlugin(apiHeroNameSpace));
         }
     }
 

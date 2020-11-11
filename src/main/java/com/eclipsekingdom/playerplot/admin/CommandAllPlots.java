@@ -44,7 +44,7 @@ public class CommandAllPlots implements CommandExecutor {
         String ownerName = plot.getOwnerName();
         PlotPoint center = plot.getCenter();
         String displayString = ChatColor.DARK_PURPLE + name + " - " + ChatColor.LIGHT_PURPLE + ownerName;
-        displayString += " " + ChatColor.GRAY + "(" + plot.getWorld().getName() + ", " + center.getX() + ", " + center.getZ() + ")";
+        displayString += " " + ChatColor.GRAY + "(" + plot.getWorld() + ", " + center.getX() + ", " + center.getZ() + ")";
         return displayString;
 
     }

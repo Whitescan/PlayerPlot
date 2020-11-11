@@ -174,7 +174,7 @@ public class CommandPlot implements CommandExecutor {
             player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_CENTER.toString() + ": " + ChatColor.RESET + "x:" + center.getX() + " z:" + center.getZ());
             player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_MIN_CORNER.toString() + ": " + ChatColor.RESET + "x:" + minCorner.getX() + " z:" + minCorner.getZ());
             player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_MAX_CORNER.toString() + ": " + ChatColor.RESET + "x:" + maxCorner.getX() + " z:" + maxCorner.getZ());
-            player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_WORLD.toString() + ": " + ChatColor.RESET + plot.getWorld().getName());
+            player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_WORLD.toString() + ": " + ChatColor.RESET + plot.getWorld());
             player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_COMPONENTS.toString() + ": " + ChatColor.RESET + plot.getComponents());
             player.sendMessage(ChatColor.LIGHT_PURPLE + Language.LABEL_FRIENDS.toString() + ":");
             player.sendMessage(PlotUtil.getFriendsAsString(plot));

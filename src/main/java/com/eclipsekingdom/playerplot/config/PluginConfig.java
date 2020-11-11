@@ -139,9 +139,14 @@ public class PluginConfig {
         return plotPvp;
     }
 
-    public static boolean isAllowedPlotWorld(World world) {
-        return !blacklistWorlds.contains(world.getName());
+    public static boolean isAllowedPlotWorld(String world) {
+        return !blacklistWorlds.contains(world);
     }
+
+    public static boolean isAllowedPlotWorld(World world) {
+        return world != null && !blacklistWorlds.contains(world.getName());
+    }
+
 
     public static boolean isWarnParticle() {
         return warnParticle;

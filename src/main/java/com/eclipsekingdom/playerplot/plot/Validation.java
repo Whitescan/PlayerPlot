@@ -4,7 +4,6 @@ import com.eclipsekingdom.playerplot.config.Language;
 import com.eclipsekingdom.playerplot.config.PluginConfig;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
 import org.bukkit.Location;
-import org.bukkit.World;
 
 import java.util.UUID;
 
@@ -61,16 +60,20 @@ public class Validation {
 
     }
 
-    public static RegionStatus canPlotBeUpgradedAt(World world, PlotPoint center, int sideLength, UUID selfID) {
-        Location centerLoc = center.asLocation(world);
-        if (!PluginConfig.isAllowedPlotWorld(centerLoc.getWorld())) {
-            return RegionStatus.INVALID_WORLD;
-        } else if (overlapsPlayerPlot(center.asLocation(world), sideLength, selfID)) {
-            return RegionStatus.REGION_OCCUPIED;
-        } else if (overlapsTownisPlot(centerLoc, sideLength)) {
-            return RegionStatus.REGION_OCCUPIED;
+    public static RegionStatus canPlotBeUpgradedAt(String world, PlotPoint center, int sideLength, UUID selfID) {
+        Location centerLoc = center.asLocationParts(world).getLocation();
+        if(centerLoc != null){
+            if (!PluginConfig.isAllowedPlotWorld(centerLoc.getWorld())) {
+                return RegionStatus.INVALID_WORLD;
+            } else if (overlapsPlayerPlot(centerLoc, sideLength, selfID)) {
+                return RegionStatus.REGION_OCCUPIED;
+            } else if (overlapsTownisPlot(centerLoc, sideLength)) {
+                return RegionStatus.REGION_OCCUPIED;
+            } else {
+                return RegionStatus.VALID;
+            }
         } else {
-            return RegionStatus.VALID;
+            return RegionStatus.INVALID_WORLD;
         }
     }
 

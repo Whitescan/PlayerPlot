@@ -45,7 +45,7 @@ public class PlotUtil {
         PlotPoint center = plot.getCenter();
         String displayString = ChatColor.DARK_PURPLE + plot.getName();
         displayString += ChatColor.LIGHT_PURPLE + " (" + length + "x" + length + ")[" + ChatColor.AQUA + plot.getComponents() + ChatColor.LIGHT_PURPLE + "] ";
-        displayString += ChatColor.GRAY + "(" + plot.getWorld().getName() + ", " + center.getX() + ", " + center.getZ() + ")";
+        displayString += ChatColor.GRAY + "(" + plot.getWorld() + ", " + center.getX() + ", " + center.getZ() + ")";
         return displayString;
     }
 

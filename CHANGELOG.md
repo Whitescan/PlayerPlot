@@ -4,23 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [1.19.2] - ???
+## [1.19.2] - 2020/11/11
 
 **[Warning] The language file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
-- Added language files
+- added language files
   - German (thanks vHypnoticYT)
   - Russian (thanks Rundik)
-- Added ApiHero support
+- added ApiHero support
 
 ### Changed
 
-- Updated Spanish translation file (thanks Mosquito)
+- updated Spanish translation file (thanks Mosquito)
 
 ### Fixed
 
+- multi-world plot support
 - fixed help message for /playerplot reload and /playerplot update
 
 ## [1.19.1] - 2020-10-05

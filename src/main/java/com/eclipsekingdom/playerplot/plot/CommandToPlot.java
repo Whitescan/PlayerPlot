@@ -22,23 +22,22 @@ public class CommandToPlot implements CommandExecutor {
                     Plot targetPlot = PlotCache.getPlayerPlot(player.getUniqueId(), args[0]);
                     if (targetPlot != null) {
                         Location targetLoc = targetPlot.getSpawn();
-                        new PlotBeam(player, targetLoc);
-                        return true;
+                        if(targetLoc != null){
+                            new PlotBeam(player, targetLoc);
+                        } else{
+                            player.sendMessage(Language.WARN_PLOT_NOT_FOUND.coloredFromPlot(args[0], ChatColor.RED, ChatColor.DARK_RED));
+                        }
                     } else {
                         player.sendMessage(Language.WARN_PLOT_NOT_FOUND.coloredFromPlot(args[0], ChatColor.RED, ChatColor.DARK_RED));
-                        return false;
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + Language.MISC_FORMAT.fromFormat("/toplot [" + ARG_PLOT + "]"));
-                    return false;
                 }
             } else {
                 player.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
-                return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
 }

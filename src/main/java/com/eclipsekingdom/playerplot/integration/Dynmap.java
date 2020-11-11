@@ -77,7 +77,7 @@ public class Dynmap {
         PlotPoint max = plot.getMaxCorner();
         double[] x = new double[]{min.getX(), max.getX()};
         double[] z = new double[]{min.getZ(), max.getZ()};
-        AreaMarker areaMarker = playerPlotSet.createAreaMarker(plotID.toString(), plot.getName() + " ~ " + plot.getOwnerName() + " ~", true, plot.getWorld().getName(), x, z, false);
+        AreaMarker areaMarker = playerPlotSet.createAreaMarker(plotID.toString(), plot.getName() + " ~ " + plot.getOwnerName() + " ~", true, plot.getWorld(), x, z, false);
         try {
             areaMarker.setFillStyle(0.5, primaryColorInt);
             areaMarker.setLineStyle(2, 0.77, highlightColorInt);

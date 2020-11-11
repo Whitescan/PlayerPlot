@@ -87,7 +87,7 @@ public class PlotDatabase {
         int maxX = plotResults.getInt("maxX");
         int maxZ = plotResults.getInt("maxZ");
         PlotPoint max = new PlotPoint(maxX, maxZ);
-        World world = Bukkit.getWorld(plotResults.getString("world"));
+        String world = plotResults.getString("world");
         int components = plotResults.getInt("components");
         Statement statement = databaseConnection.getConnection().createStatement();
         ResultSet friendsResult = statement.executeQuery("SELECT * FROM PTrusts WHERE plotID = '" + plotID + "';");
@@ -127,7 +127,7 @@ public class PlotDatabase {
                 PlotPoint max = plot.getMaxCorner();
                 int maxX = max.getX();
                 int maxZ = max.getZ();
-                String world = plot.getWorld().getName();
+                String world = plot.getWorld();
                 int components = plot.getComponents();
                 statement.executeUpdate("REPLACE INTO PPlot (uuid, name, ownerID, ownerName, minX, minZ, maxX, maxZ, world, components) " +
                         "VALUES ('" + plotID + "', '" + name + "', '" + ownerID + "', '" + ownerName + "', " + minX + ", " + minZ + ", " + maxX + ", " + maxZ + ", '" + world + "', " + components + ");");

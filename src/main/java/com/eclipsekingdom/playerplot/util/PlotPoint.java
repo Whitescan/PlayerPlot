@@ -36,6 +36,10 @@ public class PlotPoint {
         return new Location(world, x, 64, z, 0,0);
     }
 
+    public LocationParts asLocationParts(String world){
+        return new LocationParts(world, x, 64, z, 0,0);
+    }
+
     public static PlotPoint fromLocation(Location location){
         return new PlotPoint(location.getBlockX(), location.getBlockZ());
     }

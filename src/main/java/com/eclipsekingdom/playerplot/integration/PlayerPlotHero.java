@@ -26,7 +26,8 @@ public class PlayerPlotHero extends RegionHero {
         if (plot != null) {
             return plot.isAllowed(player);
         } else {
-            return false;
+            return true;
         }
     }
+
 }

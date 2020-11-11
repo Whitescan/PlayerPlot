@@ -1,11 +1,8 @@
 package com.eclipsekingdom.playerplot.plot;
 
-import com.eclipsekingdom.playerplot.plot.Plot;
 import com.eclipsekingdom.playerplot.util.Friend;
 import com.eclipsekingdom.playerplot.util.LocationParts;
 import com.eclipsekingdom.playerplot.util.PlotPoint;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -26,7 +23,7 @@ public class PlotFlatFile {
             PlotPoint minCorner = plot.getMinCorner();
             PlotPoint maxCorner = plot.getMaxCorner();
             String baseString = plot.getName() + "=" + plot.getOwnerName() + "=" + plot.getOwnerID() + "=" +
-                    plot.getWorld().getName() + "=" + minCorner.getX() + "_" + minCorner.getZ() + "<" + maxCorner.getX() + "_" + maxCorner.getZ() + "=" + plot.getComponents();
+                    plot.getWorld() + "=" + minCorner.getX() + "_" + minCorner.getZ() + "<" + maxCorner.getX() + "_" + maxCorner.getZ() + "=" + plot.getComponents();
             config.set(key + ".baseData", baseString);
 
             List<String> friendsList = new ArrayList<>();
@@ -64,7 +61,7 @@ public class PlotFlatFile {
                 String plotName = baseParts[0];
                 String ownerName = baseParts[1];
                 UUID ownerID = UUID.fromString(baseParts[2]);
-                World world = Bukkit.getWorld(baseParts[3]);
+                String world = baseParts[3];
                 String coordString = baseParts[4];
                 String[] coordParts = coordString.split("<");
 
@@ -94,10 +91,7 @@ public class PlotFlatFile {
                 }
 
                 LocationParts spawn = config.contains(key + ".spawn") ? LocationParts.parseParts(config.getString(key + ".spawn")) : null;
-
-                if (world != null) {
-                    plots.add(new Plot(plotID, plotName, ownerID, ownerName, min, max, world, components, friends, spawn));
-                }
+                plots.add(new Plot(plotID, plotName, ownerID, ownerName, min, max, world, components, friends, spawn));
             } catch (Exception e) {
                 e.printStackTrace();
             }
