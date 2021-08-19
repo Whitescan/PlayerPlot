@@ -4,7 +4,6 @@
 [![Download][download-shield]][download-url]
 [![Tested Versions][tested-shield]][tested-url]
 [![MIT License][license-shield]][license-url]
-[![Discord][discord-shield]][discord-url]
 
 <!-- PROJECT LOGO -->
 <br/>
@@ -15,9 +14,9 @@
   ### Player Plot <br><sub>*Build without fear!*</sub>
   **[Explore the docs »](https://gitlab.com/sword7/playerplot)**
   <br/>
-  [Report Bug](https://discord.com/invite/hKTXQBH)
+  [Report Bug](https://gitlab.com/sword7/playerplot/-/issues)
   ·
-  [Request Feature](https://discord.com/invite/hKTXQBH)
+  [Request Feature](https://gitlab.com/sword7/playerplot/-/issues)
   
 </div>
 
@@ -33,9 +32,7 @@
   * [Protection](#protection)
   * [Upgrading](#upgrading)
   * [Dynmap](#dynmap)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
-  * [Translations](#translations)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -119,22 +116,12 @@ Player Plot is compatible with dynmap. Configure the dynmap with the options in 
 
 _For more information, please refer to the [Documentation](https://gitlab.com/sword7/playerplot/-/wikis/home)._
 
-<!-- ROADMAP -->
-## Roadmap
-
-See the Player Plot [Trello board](https://trello.com/b/SBzUNtZC/player-plot) for a list of proposed features and known issues.
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 See `CONTRIBUTING` for more information.
-
-#### Translations
-
-We are always looking to expand and improve localization. 
-If you want to help us translate Player Plot into your native language, join the [Player Plot Crowdin](https://crowdin.com/project/player-plot).
 
 <!-- LICENSE -->
 ## License
@@ -144,19 +131,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-sword7 - sword#5439 - devsword7@gmail.com
+sword7 - devsword7@gmail.com
 
 Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/playerplot)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [All Spigot NMS](https://github.com/Jacxk/all-spigot-nms)
-* [Crowdin](https://crowdin.com/)
-* [Dynmap](https://github.com/webbukkit/dynmap)
-* [GitLab](https://gitlab.com)
-* [JetBrains](https://www.jetbrains.com/?from=EclipseKingdom)
-* [Shields IO](https://shields.io/)
 * [XSeries](https://github.com/CryptoMorin/XSeries)
 
 
@@ -170,6 +151,4 @@ Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/p
 [tested-shield]: https://img.shields.io/spiget/tested-versions/68033?style=flat-square
 [tested-url]: https://www.spigotmc.org/resources/player-plot.68033/
 [license-url]: https://gitlab.com/sword7/playerplot/-/blob/master/LICENSE
-[discord-shield]: https://img.shields.io/discord/623658924079448074?label=&style=flat&labelColor=697ec4&color=8196de&logoColor=ffffff&logo=Discord&logoWidth=20
-[discord-url]: https://discord.com/invite/hKTXQBH
 [product-screenshot]: images/screenshot.png

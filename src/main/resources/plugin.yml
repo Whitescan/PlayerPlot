@@ -1,10 +1,10 @@
 name: PlayerPlot
-version: 1.19.2
-main: com.eclipsekingdom.playerplot.PlayerPlot
+version: 1.20.0
+main: me.sword7.playerplot.PlayerPlot
 api-version: 1.13
 authors: [ sword7 ]
 description: A plugin that adds protected areas for player use.
-website: https://eclipsekingdom.com
+website: https://linktr.ee/devsword7
 load: POSTWORLD
 softdepend: [ dynmap, ApiHero ]
 
@@ -42,9 +42,6 @@ permissions:
     default: op
   playerplot.teleport:
     description: grants access to teleportation commands
-    default: op
-  playerplot.update:
-    description: grants access to /playerplot update
     default: op
   playerplot.reload:
     description: grants access to /playerplot reload

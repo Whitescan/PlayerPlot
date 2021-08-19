@@ -4,9 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.20.0] - 2021/8/19
+
+**[Note] The language file has changed. delete to allow it to reload.**<br>
+**[Note] The package name has changed. Plugins using the API need to update**<br>
+
+### Added
+
+- Support for 1.17
+
+### Changed
+
+- package renamed to me.sword7
+
+#### Removed
+
+- /playerplot update command, permission, and messages
+
 ## [1.19.2] - 2020/11/11
 
-**[Alter] The language file has changed. delete to allow it to reload.**<br>
+**[Note] The language file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
@@ -27,8 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.19.1] - 2020-10-05
 
-**[Warning] The config file has changed. delete to allow it to reload.**<br>
-**[Warning] The language file has changed. delete to allow it to reload.**<br>
+**[Note] The config file has changed. delete to allow it to reload.**<br>
+**[Note] The language file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
@@ -46,10 +63,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.19.0] - 2020-10-03
 
-**[Warning] 1.19.0 requires the new texture pack.**<br>
-**[Warning] The /plotdeed command has changed.**<br>
-**[Warning] The language file has changed, delete to allow it to reload.**<br>
-**[Warning] The config file has changed. delete to allow it to reload.**<br>
+**[Note] 1.19.0 requires the new texture pack.**<br>
+**[Note] The /plotdeed command has changed.**<br>
+**[Note] The language file has changed, delete to allow it to reload.**<br>
+**[Note] The config file has changed. delete to allow it to reload.**<br>
 
 ### Added
 
