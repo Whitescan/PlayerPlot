@@ -6,7 +6,7 @@ authors: [ sword7 ]
 description: A plugin that adds protected areas for player use.
 website: https://linktr.ee/devsword7
 load: POSTWORLD
-softdepend: [ dynmap, ApiHero ]
+softdepend: [ dynmap ]
 
 commands:
   pplot:
