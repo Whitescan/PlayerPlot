@@ -1,12 +1,13 @@
 package de.whitescan.playerplot.util;
 
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 
 import de.whitescan.playerplot.config.PluginConfig;
+import de.whitescan.playerplot.logic.Friend;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
-
-import java.util.UUID;
 
 public class PlotUtil {
 
@@ -26,7 +27,7 @@ public class PlotUtil {
 	public static int getUpgradeLength(int relSize) {
 		relSize++;
 		int newLength;
-		int unitSideLength = PluginConfig.getPlotUnitSideLength();
+		int unitSideLength = PluginConfig.getUnitSize();
 		int unitSquared = unitSideLength * unitSideLength;
 		newLength = (int) Math.round(Math.sqrt(Math.round(unitSquared * relSize)));
 		return newLength;
@@ -35,7 +36,7 @@ public class PlotUtil {
 	public static int getDowngradeLength(int relSize) {
 		relSize--;
 		int newLength;
-		int unitSideLength = PluginConfig.getPlotUnitSideLength();
+		int unitSideLength = PluginConfig.getUnitSize();
 		int unitSquared = unitSideLength * unitSideLength;
 		newLength = (int) Math.round(Math.sqrt(Math.round(unitSquared * relSize)));
 		return newLength;

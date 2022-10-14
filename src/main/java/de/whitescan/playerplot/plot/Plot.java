@@ -1,5 +1,11 @@
 package de.whitescan.playerplot.plot;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -7,11 +13,9 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import de.whitescan.playerplot.config.Permissions;
-import de.whitescan.playerplot.util.Friend;
+import de.whitescan.playerplot.logic.Friend;
 import de.whitescan.playerplot.util.LocationParts;
 import de.whitescan.playerplot.util.PlotPoint;
-
-import java.util.*;
 
 public class Plot {
 

@@ -1,5 +1,9 @@
 package de.whitescan.playerplot.integration;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.plugin.Plugin;
 import org.dynmap.DynmapAPI;
 import org.dynmap.markers.AreaMarker;
@@ -10,12 +14,7 @@ import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.util.PlotPoint;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-public class Dynmap {
+public class DynMap implements MapIntegration {
 
 	private MarkerAPI markerAPI;
 	private DynmapAPI dynmapAPI;
@@ -25,7 +24,7 @@ public class Dynmap {
 
 	private Map<UUID, AreaMarker> plotToMarker = new HashMap<>();
 
-	public Dynmap(Plugin plugin) {
+	public DynMap(Plugin plugin) {
 		assert plugin instanceof DynmapAPI;
 		this.dynmapAPI = (DynmapAPI) plugin;
 		this.markerAPI = dynmapAPI.getMarkerAPI();
@@ -35,16 +34,7 @@ public class Dynmap {
 
 	}
 
-	public void registerPlots(List<Plot> plotList) {
-		for (Plot plot : plotList) {
-			drawPlot(plot);
-		}
-	}
-
-	public void registerPlot(Plot plot) {
-		drawPlot(plot);
-	}
-
+	@Override
 	public void deletePlot(Plot plot) {
 		UUID plotID = plot.getID();
 		if (plotToMarker.containsKey(plotID)) {
@@ -54,11 +44,7 @@ public class Dynmap {
 		}
 	}
 
-	public void updatePlot(Plot plot) {
-		deletePlot(plot);
-		registerPlot(plot);
-	}
-
+	@Override
 	public void updateMarker(Plot plot) {
 		UUID plotID = plot.getID();
 		if (plotToMarker.containsKey(plotID)) {
@@ -73,7 +59,8 @@ public class Dynmap {
 		}
 	}
 
-	private void drawPlot(Plot plot) {
+	@Override
+	public void drawPlot(Plot plot) {
 		UUID plotID = plot.getID();
 		PlotPoint min = plot.getMinCorner();
 		PlotPoint max = plot.getMaxCorner();
@@ -90,6 +77,7 @@ public class Dynmap {
 		plotToMarker.put(plotID, areaMarker);
 	}
 
+	@Override
 	public void shutdown() {
 		for (AreaMarker marker : plotToMarker.values()) {
 			marker.deleteMarker();

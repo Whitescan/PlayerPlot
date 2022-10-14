@@ -9,14 +9,14 @@ import org.bukkit.entity.Player;
 import de.whitescan.playerplot.config.Language;
 import de.whitescan.playerplot.config.Permissions;
 import de.whitescan.playerplot.config.PluginBase;
-import de.whitescan.playerplot.integration.Dynmap;
+import de.whitescan.playerplot.integration.MapIntegration;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
 
 public class CommandDelPlotConfirm implements CommandExecutor {
 
-	private boolean usingDynmap = PluginBase.isDynmapDetected();
-	private Dynmap dynmap = PluginBase.getDynmap();
+	private boolean usingDynmap = PluginBase.isMapIntegrationEnabled();
+	private MapIntegration dynmap = PluginBase.getMapIntegration();
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

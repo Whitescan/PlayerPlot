@@ -27,7 +27,7 @@ public class UserCache implements Listener {
 	private static HashMap<UUID, PermInfo> userToPerms = new HashMap<>();
 
 	private static UserFlatFile userFlatFile = new UserFlatFile();
-	private static boolean usingDatabase = PluginConfig.isUsingDatabase();
+	private static boolean usingDatabase = PluginConfig.isUseDatabase();
 	private static UserDatabase database = usingDatabase ? new UserDatabase() : null;
 
 	public UserCache() {

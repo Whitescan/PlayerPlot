@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import de.whitescan.playerplot.logic.Friend;
 import de.whitescan.playerplot.storage.DatabaseConnection;
-import de.whitescan.playerplot.util.Friend;
 import de.whitescan.playerplot.util.LocationParts;
 import de.whitescan.playerplot.util.PlotPoint;
 

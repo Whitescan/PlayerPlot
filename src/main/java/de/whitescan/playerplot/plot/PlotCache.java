@@ -1,16 +1,23 @@
 package de.whitescan.playerplot.plot;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import de.whitescan.playerplot.config.PluginBase;
 import de.whitescan.playerplot.config.PluginConfig;
-import de.whitescan.playerplot.util.Friend;
+import de.whitescan.playerplot.logic.Friend;
 import de.whitescan.playerplot.util.GridZone;
 import de.whitescan.playerplot.util.MapUtil;
 import de.whitescan.playerplot.util.PlotPoint;
-
-import java.util.*;
 
 public class PlotCache {
 
@@ -20,7 +27,7 @@ public class PlotCache {
 	private static Map<UUID, List<Plot>> playerToFPlots = new HashMap<>();
 	private static Set<UUID> unsavedPlots = new HashSet<>();
 
-	private static boolean usingDatabase = PluginConfig.isUsingDatabase();
+	private static boolean usingDatabase = PluginConfig.isUseDatabase();
 	private static PlotDatabase database = usingDatabase ? new PlotDatabase() : null;
 
 	public PlotCache() {
@@ -37,8 +44,8 @@ public class PlotCache {
 				MapUtil.addItemToList(playerToFPlots, friend.getUuid(), plot);
 			}
 		}
-		if (PluginBase.isDynmapDetected()) {
-			PluginBase.getDynmap().registerPlots(plots);
+		if (PluginBase.isMapIntegrationEnabled()) {
+			PluginBase.getMapIntegration().registerPlots(plots);
 		}
 	}
 

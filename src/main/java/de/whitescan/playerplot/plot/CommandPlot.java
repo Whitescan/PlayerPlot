@@ -1,16 +1,9 @@
 package de.whitescan.playerplot.plot;
 
-import com.google.common.collect.ImmutableSet;
-
-import de.whitescan.playerplot.config.Language;
-import de.whitescan.playerplot.config.Permissions;
-import de.whitescan.playerplot.config.PluginBase;
-import de.whitescan.playerplot.config.PluginConfig;
-import de.whitescan.playerplot.integration.Dynmap;
-import de.whitescan.playerplot.user.UserCache;
-import de.whitescan.playerplot.user.UserData;
-import de.whitescan.playerplot.util.*;
-import de.whitescan.playerplot.util.xseries.XSound;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,15 +13,28 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+
+import de.whitescan.playerplot.config.Language;
+import de.whitescan.playerplot.config.Permissions;
+import de.whitescan.playerplot.config.PluginBase;
+import de.whitescan.playerplot.config.PluginConfig;
+import de.whitescan.playerplot.integration.MapIntegration;
+import de.whitescan.playerplot.logic.Friend;
+import de.whitescan.playerplot.user.UserCache;
+import de.whitescan.playerplot.user.UserData;
+import de.whitescan.playerplot.util.Help;
+import de.whitescan.playerplot.util.InfoList;
+import de.whitescan.playerplot.util.PermInfo;
+import de.whitescan.playerplot.util.PlotPoint;
+import de.whitescan.playerplot.util.PlotUtil;
+import de.whitescan.playerplot.util.Scheduler;
+import de.whitescan.playerplot.util.xseries.XSound;
 
 public class CommandPlot implements CommandExecutor {
 
-	private boolean usingDynmap = PluginBase.isDynmapDetected();
-	private Dynmap dynmap = PluginBase.getDynmap();
+	private boolean usingDynmap = PluginBase.isMapIntegrationEnabled();
+	private MapIntegration dynmap = PluginBase.getMapIntegration();
 
 	private ImmutableSet<String> plotActionArgs = new ImmutableSet.Builder<String>().add("info").add("free")
 			.add("trust").add("untrust").add("upgrade").add("downgrade").add("setcenter").add("setspawn").add("rename")
@@ -192,7 +198,7 @@ public class CommandPlot implements CommandExecutor {
 			PermInfo permInfo = UserCache.getPerms(playerID);
 			if (PlotCache.getPlayerPlotsUsed(playerID) < PluginConfig.getStartingPlotNum() + userData.getUnlockedPlots()
 					+ permInfo.getPlotBonus()) {
-				int unitSideLength = PluginConfig.getPlotUnitSideLength();
+				int unitSideLength = PluginConfig.getUnitSize();
 				Validation.RegionStatus regionStatus = Validation.canPlotBeRegisteredAt(player.getLocation(),
 						unitSideLength, null);
 				if (regionStatus == Validation.RegionStatus.VALID) {
@@ -383,7 +389,7 @@ public class CommandPlot implements CommandExecutor {
 		if (Permissions.canPlotDowngrade(player)) {
 			PlotPoint center = plot.getCenter();
 			int newSideLength = PlotUtil.getDowngradeLength(plot.getComponents());
-			if (newSideLength >= PluginConfig.getPlotUnitSideLength()) {
+			if (newSideLength >= PluginConfig.getUnitSize()) {
 				PlotScanner.showPlot(player, plot, 1);
 				if (XSound.BLOCK_BEACON_DEACTIVATE.isSupported()) {
 					player.playSound(player.getLocation(), XSound.BLOCK_BEACON_DEACTIVATE.parseSound(), 1f, 1f);
