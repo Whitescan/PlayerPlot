@@ -60,11 +60,11 @@ The latest version of Player Plot is available on [SpigotMC](https://www.spigotm
 
 ![Tested Versions][tested-shield]
 
-Player Plot requires a Minecraft server running one of the tested version displayed above.
+Player Plot requires a Minecraft server running version 1.8 to 1.6.
 
 #### Installation
 
-Install PlayerPlot like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://gitlab.com/sword7/playerplot/-/wikis/setup/installation).
+Install Player Plot like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://gitlab.com/sword7/playerplot/-/wikis/setup/installation).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -78,7 +78,7 @@ Plots offer robust protection from both players and the elements. Plots protect 
 
 - Unauthorized building
 - Unauthorized breaking
-- Unauthorized use (for example chests/doors)
+- Unauthorized use (ie chests/doors)
 - Unauthorized harming of animals
 - Explosions
 - Fire-spread
@@ -121,23 +121,23 @@ _For more information, please refer to the [Documentation](https://gitlab.com/sw
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-See [CONTRIBUTING](https://github.com/Whitescan/PlayerPlot/blob/main/CONTRIBUTING.md) for more information.
+See `CONTRIBUTING` for more information.
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/Whitescan/PlayerPlot/blob/main/LICENSE.txt) for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
 
-[Discord](https://discord.gg/Uszg4C55Ev)
-Whitescan: whitescan.minecraft@gmail.com
+sword7 - devsword7@gmail.com
+
+Project Link: [https://gitlab.com/sword7/playerplot](https://gitlab.com/sword7/playerplot)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [Original](https://gitlab.com/sword7/playerplot)
 * [XSeries](https://github.com/CryptoMorin/XSeries)
 
 
