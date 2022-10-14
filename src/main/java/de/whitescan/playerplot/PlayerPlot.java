@@ -7,13 +7,13 @@ import de.whitescan.playerplot.admin.CommandAllPlots;
 import de.whitescan.playerplot.admin.CommandDelPlot;
 import de.whitescan.playerplot.admin.CommandDelPlotCancel;
 import de.whitescan.playerplot.admin.CommandDelPlotConfirm;
+import de.whitescan.playerplot.border.Border;
 import de.whitescan.playerplot.config.*;
 import de.whitescan.playerplot.plot.*;
 import de.whitescan.playerplot.plotdeed.*;
+import de.whitescan.playerplot.storage.DatabaseConnection;
 import de.whitescan.playerplot.user.UserCache;
 import de.whitescan.playerplot.util.AutoCompleteListener;
-import de.whitescan.playerplot.util.border.Border;
-import de.whitescan.playerplot.util.storage.DatabaseConnection;
 
 public final class PlayerPlot extends JavaPlugin {
 

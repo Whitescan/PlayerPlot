@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.UUID;
 
+import de.whitescan.playerplot.storage.CallbackQuery;
+import de.whitescan.playerplot.storage.DatabaseConnection;
 import de.whitescan.playerplot.util.Scheduler;
-import de.whitescan.playerplot.util.storage.CallbackQuery;
-import de.whitescan.playerplot.util.storage.DatabaseConnection;
 
 public class UserDatabase {
 
