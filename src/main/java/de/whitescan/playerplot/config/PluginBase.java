@@ -5,7 +5,7 @@ import org.bukkit.plugin.Plugin;
 
 import de.whitescan.playerplot.PlayerPlot;
 import de.whitescan.playerplot.integration.BlueMap;
-import de.whitescan.playerplot.integration.DynMap;
+import de.whitescan.playerplot.integration.Dynmap;
 import de.whitescan.playerplot.integration.MapIntegration;
 import lombok.Getter;
 
@@ -37,7 +37,7 @@ public class PluginBase {
 	private void loadDynmap() {
 		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(dynmapNameSpace);
 		if (plugin != null && plugin.isEnabled()) {
-			mapIntegration = new DynMap(plugin);
+			mapIntegration = new Dynmap(plugin);
 			mapIntegrationEnabled = true;
 			PlayerPlot.getPlugin().getLogger().info(Language.CONSOLE_DETECT.fromPlugin(dynmapNameSpace));
 		}

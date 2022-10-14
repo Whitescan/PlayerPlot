@@ -1,11 +1,11 @@
-name: PlayerPlot
-version: 1.20.0
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
 main: de.whitescan.playerplot.PlayerPlot
 api-version: 1.13
 authors: [ sword7(Original), Whitescan(Maintainer) ]
-description: A plugin that adds protected areas for player use.
 load: POSTWORLD
-softdepend: [ dynmap ]
+softdepend: [ dynmap, bluemap ]
 
 commands:
   pplot:

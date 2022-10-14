@@ -14,7 +14,7 @@ import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.util.PlotPoint;
 
-public class DynMap implements MapIntegration {
+public class Dynmap implements MapIntegration {
 
 	private MarkerAPI markerAPI;
 	private DynmapAPI dynmapAPI;
@@ -24,7 +24,7 @@ public class DynMap implements MapIntegration {
 
 	private Map<UUID, AreaMarker> plotToMarker = new HashMap<>();
 
-	public DynMap(Plugin plugin) {
+	public Dynmap(Plugin plugin) {
 		assert plugin instanceof DynmapAPI;
 		this.dynmapAPI = (DynmapAPI) plugin;
 		this.markerAPI = dynmapAPI.getMarkerAPI();

@@ -64,6 +64,10 @@ public class Plot {
 		initialize();
 	}
 
+	public String getDisplayName() {
+		return getName() + " ~ " + getOwnerName();
+	}
+
 	public void setRegion(PlotPoint minCorner, PlotPoint maxCorner) {
 		this.minCorner = minCorner;
 		this.maxCorner = maxCorner;

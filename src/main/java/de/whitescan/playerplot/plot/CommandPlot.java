@@ -33,8 +33,8 @@ import de.whitescan.playerplot.util.xseries.XSound;
 
 public class CommandPlot implements CommandExecutor {
 
-	private boolean usingDynmap = PluginBase.isMapIntegrationEnabled();
-	private MapIntegration dynmap = PluginBase.getMapIntegration();
+	private boolean usingMap = PluginBase.isMapIntegrationEnabled();
+	private MapIntegration map = PluginBase.getMapIntegration();
 
 	private ImmutableSet<String> plotActionArgs = new ImmutableSet.Builder<String>().add("info").add("free")
 			.add("trust").add("untrust").add("upgrade").add("downgrade").add("setcenter").add("setspawn").add("rename")
@@ -210,8 +210,8 @@ public class CommandPlot implements CommandExecutor {
 						player.sendMessage(Language.SUCCESS_PLOT_CLAIM.coloredFromPlot(plot.getName(),
 								ChatColor.LIGHT_PURPLE, ChatColor.DARK_PURPLE));
 						PlotScanner.showPlot(player, plot, 7);
-						if (usingDynmap)
-							dynmap.registerPlot(plot);
+						if (usingMap)
+							map.registerPlot(plot);
 						if (XSound.BLOCK_BEACON_ACTIVATE.isSupported()) {
 							player.playSound(player.getLocation(), XSound.BLOCK_BEACON_ACTIVATE.parseSound(), 1f, 1f);
 						}
@@ -233,8 +233,8 @@ public class CommandPlot implements CommandExecutor {
 		if (Permissions.canPlotFree(player)) {
 			PlotScanner.showPlot(player, plot, 1);
 			PlotCache.removePlot(plot);
-			if (usingDynmap)
-				dynmap.deletePlot(plot);
+			if (usingMap)
+				map.deletePlot(plot);
 			player.sendMessage(Language.SUCCESS_PLOT_FREE.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE,
 					ChatColor.DARK_PURPLE));
 			if (XSound.BLOCK_BEACON_DEACTIVATE.isSupported()) {
@@ -365,8 +365,8 @@ public class CommandPlot implements CommandExecutor {
 					plot.incrementComponents();
 					PlotCache.touch(plot);
 
-					if (usingDynmap)
-						dynmap.updateMarker(plot);
+					if (usingMap)
+						map.updateMarker(plot);
 
 					Scheduler.runLater(() -> {
 						PlotScanner.showPlot(player, plot, 7);
@@ -403,8 +403,8 @@ public class CommandPlot implements CommandExecutor {
 					plot.removeSpawn();
 				PlotCache.touch(plot);
 
-				if (usingDynmap)
-					dynmap.updateMarker(plot);
+				if (usingMap)
+					map.updateMarker(plot);
 
 				Scheduler.runLater(() -> {
 					PlotScanner.showPlot(player, plot, 7);
@@ -435,8 +435,8 @@ public class CommandPlot implements CommandExecutor {
 				player.sendMessage(Language.SUCCESS_PLOT_CENTER.coloredFromPlot(plot.getName(), ChatColor.LIGHT_PURPLE,
 						ChatColor.DARK_PURPLE));
 				PlotScanner.showPlot(player, plot, 7);
-				if (usingDynmap)
-					dynmap.updatePlot(plot);
+				if (usingMap)
+					map.updatePlot(plot);
 				if (XSound.BLOCK_BEACON_ACTIVATE.isSupported())
 					player.playSound(location, XSound.BLOCK_BEACON_ACTIVATE.parseSound(), 1f, 1f);
 			} else {
@@ -474,8 +474,8 @@ public class CommandPlot implements CommandExecutor {
 				if (nameStatus == Validation.NameStatus.VALID) {
 					plot.setName(newName);
 					PlotCache.touch(plot);
-					if (usingDynmap)
-						dynmap.updatePlot(plot);
+					if (usingMap)
+						map.updatePlot(plot);
 					player.sendMessage(Language.SUCCESS_PLOT_RENAME.coloredFromPlot(newName, ChatColor.LIGHT_PURPLE,
 							ChatColor.DARK_PURPLE));
 				} else {
