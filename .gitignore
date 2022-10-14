@@ -1,5 +1,6 @@
 # User-specific stuff
 .idea/
+.settings/
 test/
 
 *.iml
@@ -8,6 +9,10 @@ test/
 
 # IntelliJ
 out/
+
+# Eclipse IDE
+.classpath
+.project
 
 # Compiled class file
 *.class
