@@ -8,8 +8,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import de.whitescan.playerplot.PlayerPlot;
+import de.whitescan.playerplot.border.Border;
 import de.whitescan.playerplot.util.Scheduler;
-import de.whitescan.playerplot.util.border.Border;
 import de.whitescan.playerplot.util.xseries.XSound;
 
 import java.util.HashMap;

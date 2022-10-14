@@ -1,4 +1,4 @@
-package de.whitescan.playerplot.util.storage;
+package de.whitescan.playerplot.storage;
 
 import org.bukkit.scheduler.BukkitRunnable;
 

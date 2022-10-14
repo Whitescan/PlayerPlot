@@ -1,17 +1,21 @@
-package de.whitescan.playerplot.util.border;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.entity.Player;
-
-import de.whitescan.playerplot.config.Version;
-import de.whitescan.playerplot.plot.Plot;
-import de.whitescan.playerplot.util.PlotPoint;
+package de.whitescan.playerplot.border;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
+import org.bukkit.entity.Player;
+
+import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.util.PlotPoint;
+import net.minecraft.network.protocol.game.ClientboundInitializeBorderPacket;
+import net.minecraft.network.protocol.game.ClientboundSetBorderLerpSizePacket;
+import net.minecraft.world.level.border.WorldBorder;
 
 public class Border {
 
@@ -32,43 +36,20 @@ public class Border {
 		playerToBorder.clear();
 	}
 
-	private static IBorder border = select();
+	public static void show(Player player, World world, double x, double z, double size) {
+		WorldBorder worldBorder = new WorldBorder();
+		worldBorder.world = ((CraftWorld) world).getHandle();
+		worldBorder.setCenter(x, z);
+		worldBorder.setSize(size);
+		worldBorder.setDamagePerBlock(0);
+		worldBorder.setDamageSafeZone(0);
+		((CraftPlayer) player).getHandle().connection.send(new ClientboundInitializeBorderPacket(worldBorder));
+	}
 
-	public static IBorder select() {
-		switch (Version.getCurrent()) {
-		case v1_17_R1:
-			return new Border_v1_17_R1();
-		case v1_16_R3:
-			return new Border_v1_16_R3();
-		case v1_16_R2:
-			return new Border_v1_16_R2();
-		case v1_16_R1:
-			return new Border_v1_16_R1();
-		case v1_15_R1:
-			return new Border_v1_15_R1();
-		case v1_14_R1:
-			return new Border_v1_14_R1();
-		case v1_13_R2:
-			return new Border_v1_13_R2();
-		case v1_13_R1:
-			return new Border_v1_13_R1();
-		case v1_12_R1:
-			return new Border_v1_12_R1();
-		case v1_11_R1:
-			return new Border_v1_11_R1();
-		case v1_10_R1:
-			return new Border_v1_10_R1();
-		case v1_9_R2:
-			return new Border_v1_9_R2();
-		case v1_9_R1:
-			return new Border_v1_9_R1();
-		case v1_8_R3:
-			return new Border_v1_8_R3();
-		case v1_8_R2:
-			return new Border_v1_8_R2();
-		default:
-			return new Border_Unknown();
-		}
+	public static void hide(Player player, World world) {
+		WorldBorder worldBorder = new WorldBorder();
+		worldBorder.world = ((CraftWorld) world).getHandle();
+		((CraftPlayer) player).getHandle().connection.send(new ClientboundSetBorderLerpSizePacket(worldBorder));
 	}
 
 	public static UUID showPlot(Player player, Plot plot) {
@@ -91,7 +72,7 @@ public class Border {
 		ClientBorder clientBorder = new ClientBorder(world);
 		clientBorder.setPlayerPusher(new PlayerPusher(player, x, z, size));
 		playerToBorder.put(player.getUniqueId(), clientBorder);
-		border.show(player, world, x, z, size);
+		show(player, world, x, z, size);
 		return clientBorder.getId();
 	}
 
@@ -100,7 +81,7 @@ public class Border {
 		if (playerToBorder.containsKey(playerId)) {
 			ClientBorder clientBorder = playerToBorder.get(playerId);
 			if (clientBorder.getId().equals(pid)) {
-				border.hide(player, clientBorder.getWorld());
+				hide(player, clientBorder.getWorld());
 				playerToBorder.remove(playerId);
 				clientBorder.stopPusher();
 			}
@@ -111,7 +92,7 @@ public class Border {
 		UUID playerId = player.getUniqueId();
 		if (playerToBorder.containsKey(playerId)) {
 			ClientBorder clientBorder = playerToBorder.get(playerId);
-			border.hide(player, clientBorder.getWorld());
+			hide(player, clientBorder.getWorld());
 			clientBorder.stopPusher();
 		}
 	}

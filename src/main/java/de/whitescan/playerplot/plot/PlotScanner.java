@@ -8,8 +8,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 
 import de.whitescan.playerplot.PlayerPlot;
+import de.whitescan.playerplot.border.Border;
 import de.whitescan.playerplot.util.Scheduler;
-import de.whitescan.playerplot.util.border.Border;
 
 import java.util.HashMap;
 import java.util.Map;

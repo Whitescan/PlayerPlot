@@ -1,4 +1,4 @@
-package de.whitescan.playerplot.util.border;
+package de.whitescan.playerplot.border;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -19,7 +19,6 @@ public class PlayerPusher extends BukkitRunnable {
 	private double bz1;
 	private double bx2;
 	private double bz2;
-	private boolean cancelled = false;
 
 	public PlayerPusher(Player player, double x, double z, double size) {
 		double rad = size / 2.0;
@@ -49,16 +48,6 @@ public class PlayerPusher extends BukkitRunnable {
 		} else {
 			cancel();
 		}
-	}
-
-	@Override
-	public void cancel() {
-		super.cancel();
-		this.cancelled = true;
-	}
-
-	public boolean isCancelled() {
-		return cancelled;
 	}
 
 }
