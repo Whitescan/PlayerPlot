@@ -9,14 +9,14 @@
 <br/>
 <div align="center">
 
-  [![Player Plot](images/logo.png)](https://gitlab.com/sword7/playerplot)
+  [![Player Plot](images/logo.png)](https://github.com/Whitescan/PlayerPlot)
 
   ### Player Plot <br><sub>*Build without fear!*</sub>
-  **[Explore the docs »](https://gitlab.com/sword7/playerplot)**
+  **[Explore the docs »](https://github.com/Whitescan/PlayerPlot)**
   <br/>
-  [Report Bug](https://gitlab.com/sword7/playerplot/-/issues)
+  [Report Bug](https://github.com/Whitescan/PlayerPlot/-/issues)
   ·
-  [Request Feature](https://gitlab.com/sword7/playerplot/-/issues)
+  [Request Feature](https://github.com/Whitescan/PlayerPlot/-/issues)
   
 </div>
 
@@ -64,7 +64,7 @@ Player Plot requires a Minecraft server running one of the tested version displa
 
 #### Installation
 
-Install PlayerPlot like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://gitlab.com/sword7/playerplot/-/wikis/setup/installation).
+Install PlayerPlot like any other Spigot plugin. If you need a refresher you can refer to [Installation](https://github.com/Whitescan/PlayerPlot/-/wikis/setup/installation).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -106,7 +106,7 @@ The plugin comes with an optional resource pack that adds custom textures to plo
 
 ![Plot Deed](images/plot-deed.png)
 
-You can download the resource pack [here](https://gitlab.com/sword7/playerplot/-/wikis/misc/resource-pack).
+You can download the resource pack [here](https://github.com/Whitescan/PlayerPlot/-/wikis/misc/resource-pack).
 
 #### Dynmap
 
@@ -114,7 +114,7 @@ Player Plot is compatible with dynmap. Configure the dynmap with the options in 
 
 ![Plot Deed](images/dynmap.png)
 
-_For more information, please refer to the [Documentation](https://gitlab.com/sword7/playerplot/-/wikis/home)._
+_For more information, please refer to the [Documentation](https://github.com/Whitescan/PlayerPlot/-/wikis/home)._
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -150,5 +150,5 @@ Whitescan: whitescan.minecraft@gmail.com
 [license-shield]: https://img.shields.io/badge/license-MIT-blue?style=flat-square
 [tested-shield]: https://img.shields.io/spiget/tested-versions/68033?style=flat-square
 [tested-url]: https://www.spigotmc.org/resources/player-plot.68033/
-[license-url]: https://gitlab.com/sword7/playerplot/-/blob/master/LICENSE
+[license-url]: https://github.com/Whitescan/PlayerPlot/-/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
