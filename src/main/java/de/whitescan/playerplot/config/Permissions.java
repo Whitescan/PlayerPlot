@@ -1,12 +1,12 @@
 package de.whitescan.playerplot.config;
 
+import java.util.Set;
+
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import de.whitescan.playerplot.util.PermInfo;
-
-import java.util.Set;
 
 public class Permissions {
 

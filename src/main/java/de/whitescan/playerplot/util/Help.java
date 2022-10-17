@@ -1,5 +1,7 @@
 package de.whitescan.playerplot.util;
 
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,8 +12,6 @@ import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.plot.PlotCache;
 import de.whitescan.playerplot.user.UserCache;
 import de.whitescan.playerplot.user.UserData;
-
-import java.util.UUID;
 
 public class Help {
 

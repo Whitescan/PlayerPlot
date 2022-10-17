@@ -1,5 +1,10 @@
 package de.whitescan.playerplot.user;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,11 +20,6 @@ import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
 import de.whitescan.playerplot.util.PermInfo;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class UserCache implements Listener {
 

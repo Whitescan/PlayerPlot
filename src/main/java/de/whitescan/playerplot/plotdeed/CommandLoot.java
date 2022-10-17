@@ -1,5 +1,7 @@
 package de.whitescan.playerplot.plotdeed;
 
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,8 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import de.whitescan.playerplot.config.Language;
 import de.whitescan.playerplot.config.Permissions;
 import lombok.AllArgsConstructor;
-
-import java.util.Map;
 
 @AllArgsConstructor
 public class CommandLoot implements CommandExecutor {

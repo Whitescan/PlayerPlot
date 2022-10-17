@@ -1,5 +1,8 @@
 package de.whitescan.playerplot.admin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,9 +16,6 @@ import de.whitescan.playerplot.plot.PlotCache;
 import de.whitescan.playerplot.util.InfoList;
 import de.whitescan.playerplot.util.PlotPoint;
 import de.whitescan.playerplot.util.PlotUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CommandAllPlots implements CommandExecutor {
 

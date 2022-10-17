@@ -1,8 +1,8 @@
 package de.whitescan.playerplot.plotdeed;
 
-import org.bukkit.inventory.ItemStack;
-
 import java.util.List;
+
+import org.bukkit.inventory.ItemStack;
 
 public interface ILoot {
 

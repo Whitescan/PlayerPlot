@@ -1,10 +1,7 @@
 package de.whitescan.playerplot.util;
 
-import com.google.common.collect.ImmutableSet;
-
-import de.whitescan.playerplot.config.Version;
-import de.whitescan.playerplot.util.xseries.XEntityType;
-import de.whitescan.playerplot.util.xseries.XMaterial;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Creature;
@@ -12,8 +9,11 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableSet;
+
+import de.whitescan.playerplot.config.Version;
+import de.whitescan.playerplot.util.xseries.XEntityType;
+import de.whitescan.playerplot.util.xseries.XMaterial;
 
 public class ProtectionUtil {
 

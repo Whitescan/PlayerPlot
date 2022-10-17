@@ -1,7 +1,7 @@
 package de.whitescan.playerplot.util;
 
-import org.bukkit.World;
 import org.bukkit.Location;
+import org.bukkit.World;
 
 public class PlotPoint {
 

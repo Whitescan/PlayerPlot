@@ -1,5 +1,7 @@
 package de.whitescan.playerplot.admin;
 
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,8 +14,6 @@ import de.whitescan.playerplot.config.Version;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
 import de.whitescan.playerplot.util.Scheduler;
-
-import java.util.UUID;
 
 public class CommandDelPlot implements CommandExecutor {
 

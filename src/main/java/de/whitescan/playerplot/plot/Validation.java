@@ -1,12 +1,12 @@
 package de.whitescan.playerplot.plot;
 
+import java.util.UUID;
+
 import org.bukkit.Location;
 
 import de.whitescan.playerplot.config.Language;
 import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.util.PlotPoint;
-
-import java.util.UUID;
 
 public class Validation {
 

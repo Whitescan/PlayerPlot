@@ -1,5 +1,22 @@
 package de.whitescan.playerplot.util.xseries;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
+import org.apache.commons.lang.WordUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
 /*
  * The MIT License (MIT)
  *
@@ -29,16 +46,6 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
-import org.apache.commons.lang.WordUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 /**
  * <b>XMaterial</b> - Data Values/Pre-flattening<br>
@@ -525,7 +532,7 @@ public enum XMaterial {
 	 * lot of memory if it's not used. Add it back if you need it.
 	 *
 	 * @see #containsLegacy(String)
-	 * 
+	 *
 	 * @since 2.2.0
 	 *
 	 * private static final ImmutableSet<String> LEGACY_VALUES =
@@ -712,7 +719,7 @@ public enum XMaterial {
 	 * <p>
 	 * <b>Examples</b>
 	 * <p>
-	 * 
+	 *
 	 * <pre>
 	 *     {@code INK_SACK:1 -> RED_DYE}
 	 *     {@code WOOL, 14  -> RED_WOOL}
@@ -916,7 +923,7 @@ public enum XMaterial {
 	 * and each word capitalized.
 	 * <p>
 	 * <b>Examples:</b>
-	 * 
+	 *
 	 * <pre>
 	 *     EMERALD                 -> Emerald
 	 *     EMERALD_BLOCK           -> Emerald Block
@@ -986,22 +993,22 @@ public enum XMaterial {
 	 * {@code REGEX:PATTERN} formats.
 	 * <p>
 	 * <b>Example:</b> <blockquote>
-	 * 
+	 *
 	 * <pre>
 	 *     XMaterial material = {@link #matchXMaterial(ItemStack)};
 	 *     if (material.isOneOf(plugin.getConfig().getStringList("disabled-items")) return;
 	 * </pre>
-	 * 
+	 *
 	 * </blockquote> <br>
 	 * <b>{@code CONTAINS} Examples:</b>
-	 * 
+	 *
 	 * <pre>
 	 *     {@code "CONTAINS:CHEST" -> CHEST, ENDERCHEST, TRAPPED_CHEST -> true}
 	 *     {@code "cOnTaINS:dYe" -> GREEN_DYE, YELLOW_DYE, BLUE_DYE, INK_SACK -> true}
 	 * </pre>
 	 * <p>
 	 * <b>{@code REGEX} Examples</b>
-	 * 
+	 *
 	 * <pre>
 	 *     {@code "REGEX:^.+_.+_.+$" -> Every Material with 3 underlines or more: SHULKER_SPAWN_EGG, SILVERFISH_SPAWN_EGG, SKELETON_HORSE_SPAWN_EGG}
 	 *     {@code "REGEX:^.{1,3}$" -> Material names that have 3 letters only: BED, MAP, AIR}

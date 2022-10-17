@@ -1,5 +1,9 @@
 package de.whitescan.playerplot.plotdeed;
 
+import static de.whitescan.playerplot.config.Language.WARN_PLOT_MAX;
+
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,10 +24,6 @@ import de.whitescan.playerplot.user.UserCache;
 import de.whitescan.playerplot.user.UserData;
 import de.whitescan.playerplot.util.PermInfo;
 import de.whitescan.playerplot.util.xseries.XSound;
-
-import static de.whitescan.playerplot.config.Language.WARN_PLOT_MAX;
-
-import java.util.UUID;
 
 public class PlotDeedListener implements Listener {
 

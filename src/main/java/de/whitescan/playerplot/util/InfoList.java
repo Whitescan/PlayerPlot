@@ -1,11 +1,11 @@
 package de.whitescan.playerplot.util;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import de.whitescan.playerplot.config.Language;
-
-import java.util.List;
 
 public class InfoList {
 

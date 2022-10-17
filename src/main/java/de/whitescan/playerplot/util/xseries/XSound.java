@@ -1,5 +1,26 @@
 package de.whitescan.playerplot.util.xseries;
 
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
+import org.apache.commons.lang.WordUtils;
+import org.bukkit.Instrument;
+import org.bukkit.Location;
+import org.bukkit.Note;
+import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+
 /*
  * The MIT License (MIT)
  *
@@ -26,22 +47,6 @@ import com.google.common.base.Enums;
 import com.google.common.base.Strings;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
-import org.apache.commons.lang.WordUtils;
-import org.bukkit.Instrument;
-import org.bukkit.Location;
-import org.bukkit.Note;
-import org.bukkit.Sound;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 /* References
  *
@@ -442,7 +447,7 @@ public enum XSound {
 	 * <p>
 	 * <b>Examples:</b>
 	 * <p>
-	 * 
+	 *
 	 * <pre>
 	 *     ENTITY_PLAYER_BURP, 0.5, 1f
 	 *     BURP 0.5f 1

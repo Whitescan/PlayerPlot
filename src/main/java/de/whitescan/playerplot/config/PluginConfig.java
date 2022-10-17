@@ -15,7 +15,7 @@ public class PluginConfig {
 	private static String languageFileField = "Language file";
 	@Getter
 	private static String languageFile = "en";
-	
+
 	private static String useAliasField = "Use /pplot root";
 	private static boolean useAlias = false;
 

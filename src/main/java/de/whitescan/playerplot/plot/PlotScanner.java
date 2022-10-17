@@ -1,5 +1,9 @@
 package de.whitescan.playerplot.plot;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,10 +14,6 @@ import org.bukkit.plugin.Plugin;
 import de.whitescan.playerplot.PlayerPlot;
 import de.whitescan.playerplot.border.Border;
 import de.whitescan.playerplot.util.Scheduler;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class PlotScanner implements Listener {
 

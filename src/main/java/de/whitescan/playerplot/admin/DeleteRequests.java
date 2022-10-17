@@ -1,12 +1,12 @@
 package de.whitescan.playerplot.admin;
 
-import org.bukkit.entity.Player;
-
-import de.whitescan.playerplot.plot.Plot;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import org.bukkit.entity.Player;
+
+import de.whitescan.playerplot.plot.Plot;
 
 public class DeleteRequests {
 

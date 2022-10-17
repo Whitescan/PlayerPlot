@@ -1,11 +1,11 @@
 package de.whitescan.playerplot.util.xseries;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.entity.EntityType;
 
 import de.whitescan.playerplot.config.Version;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public enum XEntityType {
 

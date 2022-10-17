@@ -1,11 +1,11 @@
 package de.whitescan.playerplot.plotdeed;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.inventory.ItemStack;
 
 import de.whitescan.playerplot.config.Language;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlotDeedLoot implements ILoot {
 

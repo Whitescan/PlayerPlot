@@ -1,5 +1,9 @@
 package de.whitescan.playerplot.plot;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -11,10 +15,6 @@ import de.whitescan.playerplot.PlayerPlot;
 import de.whitescan.playerplot.border.Border;
 import de.whitescan.playerplot.util.Scheduler;
 import de.whitescan.playerplot.util.xseries.XSound;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class PlotBeam extends BukkitRunnable {
 

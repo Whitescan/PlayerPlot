@@ -1,5 +1,16 @@
 package de.whitescan.playerplot.util;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.server.TabCompleteEvent;
+import org.bukkit.plugin.Plugin;
+
 import com.google.common.collect.ImmutableList;
 
 import de.whitescan.playerplot.PlayerPlot;
@@ -9,17 +20,6 @@ import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.plot.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
 import de.whitescan.playerplot.plotdeed.PlotDeedType;
-
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.server.TabCompleteEvent;
-import org.bukkit.plugin.Plugin;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class AutoCompleteListener implements Listener {
 

@@ -1,14 +1,14 @@
 package de.whitescan.playerplot.storage;
 
-import org.bukkit.scheduler.BukkitRunnable;
-
-import de.whitescan.playerplot.PlayerPlot;
-import de.whitescan.playerplot.config.PluginConfig;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.bukkit.scheduler.BukkitRunnable;
+
+import de.whitescan.playerplot.PlayerPlot;
+import de.whitescan.playerplot.config.PluginConfig;
 
 public class DatabaseConnection {
 

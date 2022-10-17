@@ -42,20 +42,16 @@ public class BlueMap implements MapIntegration {
 	@Override
 	public void drawPlot(Plot plot) {
 
-		Bukkit.getLogger().warning("DEBUG: drawPlot " + plot.getDisplayName());
-
 		POIMarker marker = POIMarker.toBuilder().label(plot.getDisplayName())
 				.position(plot.getCenter().getX(), 63, plot.getCenter().getZ()).maxDistance(1000).build();
 
 		markerSet.getMarkers().put(plot.getID().toString(), marker);
 
 		if (BlueMapAPI.getInstance().isPresent()) {
-			Bukkit.getLogger().warning("DEBUG: BlueMapAPI was present");
 			draw(Bukkit.getWorld(plot.getWorld()), marker);
 
 		} else {
 
-			Bukkit.getLogger().warning("DEBUG: BlueMapAPI was not present, enabling listener...");
 			BlueMapAPI.onEnable(api -> {
 				draw(Bukkit.getWorld(plot.getWorld()), marker);
 			});
@@ -65,11 +61,9 @@ public class BlueMap implements MapIntegration {
 	}
 
 	private void draw(World world, POIMarker marker) {
-		Bukkit.getLogger().warning("DEBUG: Drawing marker: " + marker.getLabel());
 		BlueMapAPI.getInstance().get().getWorld(world).ifPresent(blueMapWorld -> {
 			for (BlueMapMap map : blueMapWorld.getMaps()) {
 				map.getMarkerSets().put("plots", markerSet);
-				Bukkit.getLogger().warning("DEBUG: Finished marker: " + marker.getLabel());
 			}
 		});
 	}

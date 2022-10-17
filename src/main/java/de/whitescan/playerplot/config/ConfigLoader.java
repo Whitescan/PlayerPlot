@@ -1,13 +1,13 @@
 package de.whitescan.playerplot.config;
 
-import com.google.common.collect.ImmutableList;
-
-import de.whitescan.playerplot.PlayerPlot;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+
+import com.google.common.collect.ImmutableList;
+
+import de.whitescan.playerplot.PlayerPlot;
 
 public class ConfigLoader {
 

@@ -1,5 +1,8 @@
 package de.whitescan.playerplot.plotdeed;
 
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,9 +18,6 @@ import de.whitescan.playerplot.user.UserCache;
 import de.whitescan.playerplot.user.UserData;
 import de.whitescan.playerplot.util.PermInfo;
 import de.whitescan.playerplot.util.PlotUtil;
-
-import java.util.Map;
-import java.util.UUID;
 
 public class CommandWriteDeed implements CommandExecutor {
 
