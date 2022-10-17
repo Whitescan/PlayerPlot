@@ -8,7 +8,6 @@ import de.bluecolored.bluemap.api.BlueMapMap;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
 import de.whitescan.playerplot.plot.Plot;
-import de.whitescan.playerplot.util.PlotPoint;
 
 public class BlueMap implements MapIntegration {
 
@@ -45,23 +44,20 @@ public class BlueMap implements MapIntegration {
 
 		Bukkit.getLogger().warning("DEBUG: drawPlot " + plot.getDisplayName());
 
-		PlotPoint min = plot.getMinCorner();
-		PlotPoint max = plot.getMaxCorner();
-
-		POIMarker marker = POIMarker.toBuilder().label(plot.getDisplayName()).position(min.getX(), 63, max.getZ())
-				.maxDistance(1000).build();
+		POIMarker marker = POIMarker.toBuilder().label(plot.getDisplayName())
+				.position(plot.getCenter().getX(), 63, plot.getCenter().getZ()).maxDistance(1000).build();
 
 		markerSet.getMarkers().put(plot.getID().toString(), marker);
 
 		if (BlueMapAPI.getInstance().isPresent()) {
 			Bukkit.getLogger().warning("DEBUG: BlueMapAPI was present");
-			draw(Bukkit.getPlayer(plot.getOwnerID()).getWorld(), marker);
+			draw(Bukkit.getWorld(plot.getWorld()), marker);
 
 		} else {
 
-			Bukkit.getLogger().warning("DEBUG: BlueMapAPI was not present, enableing listener...");
+			Bukkit.getLogger().warning("DEBUG: BlueMapAPI was not present, enabling listener...");
 			BlueMapAPI.onEnable(api -> {
-				draw(Bukkit.getPlayer(plot.getOwnerID()).getWorld(), marker);
+				draw(Bukkit.getWorld(plot.getWorld()), marker);
 			});
 
 		}
