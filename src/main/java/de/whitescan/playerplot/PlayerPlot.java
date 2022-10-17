@@ -62,12 +62,12 @@ public final class PlayerPlot extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		if (PluginBase.isDynmapDetected()) {
-			PluginBase.getDynmap().shutdown();
+		if (PluginBase.isMapIntegrationEnabled()) {
+			PluginBase.getMapIntegration().shutdown();
 		}
 		UserCache.shutdown();
 		PlotCache.shutdown();
-		if (PluginConfig.isUsingDatabase())
+		if (PluginConfig.isUseDatabase())
 			DatabaseConnection.shutdown();
 		Border.shutdown();
 		PlotBeam.shutdown();

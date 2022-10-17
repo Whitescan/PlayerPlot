@@ -4,39 +4,52 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import de.whitescan.playerplot.PlayerPlot;
+import de.whitescan.playerplot.integration.BlueMap;
 import de.whitescan.playerplot.integration.Dynmap;
+import de.whitescan.playerplot.integration.MapIntegration;
+import lombok.Getter;
 
 public class PluginBase {
 
 	private static String dynmapNameSpace = "dynmap";
+	private static String blueMapNameSpace = "bluemap";
 
-	private static Dynmap dynmap;
-	private static boolean dynmapDetected = false;
+	@Getter
+	private static MapIntegration mapIntegration;
+
+	@Getter
+	private static boolean mapIntegrationEnabled = false;
 
 	public PluginBase() {
 		loadDependencies();
 	}
 
 	public void loadDependencies() {
-		if (PluginConfig.isUseDynmap()) {
+
+		if (PluginConfig.isUseDynmap())
 			loadDynmap();
-		}
+
+		if (PluginConfig.isUseBlueMap())
+			loadBlueMap();
+
 	}
 
 	private void loadDynmap() {
 		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(dynmapNameSpace);
 		if (plugin != null && plugin.isEnabled()) {
-			dynmap = new Dynmap(plugin);
-			dynmapDetected = true;
+			mapIntegration = new Dynmap(plugin);
+			mapIntegrationEnabled = true;
 			PlayerPlot.getPlugin().getLogger().info(Language.CONSOLE_DETECT.fromPlugin(dynmapNameSpace));
 		}
 	}
 
-	public static Dynmap getDynmap() {
-		return dynmap;
+	private void loadBlueMap() {
+		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(blueMapNameSpace);
+		if (plugin != null && plugin.isEnabled()) {
+			mapIntegration = new BlueMap();
+			mapIntegrationEnabled = true;
+			PlayerPlot.getPlugin().getLogger().info(Language.CONSOLE_DETECT.fromPlugin(blueMapNameSpace));
+		}
 	}
 
-	public static boolean isDynmapDetected() {
-		return dynmapDetected;
-	}
 }

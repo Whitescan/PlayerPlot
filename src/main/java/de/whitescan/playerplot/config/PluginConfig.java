@@ -1,34 +1,42 @@
 package de.whitescan.playerplot.config;
 
-import org.bukkit.World;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import lombok.Getter;
+
 public class PluginConfig {
 
 	private static String languageFileField = "Language file";
+	@Getter
 	private static String languageFile = "en";
-
+	
 	private static String useAliasField = "Use /pplot root";
 	private static boolean useAlias = false;
 
 	private static String startingPlotNumField = "Starting Plot Amount";
+	@Getter
 	private static int startingPlotNum = 1;
 
 	private static String maxPlotNumField = "Maximum Plot Amount";
+	@Getter
 	private static int maxPlotNum = 50;
 
 	private static String unitSizeField = "Plot Unit Size";
+	@Getter
 	private static int unitSize = 25;
 
 	private static String plotPvpField = "Plot pvp";
+	@Getter
 	private static boolean plotPvp = true;
 
 	private static String blacklistWorldsString = "Plot world blacklist";
+	@Getter
 	private static List<String> blacklistWorlds = buildBlacklistWorld();
 
 	private static List<String> buildBlacklistWorld() {
@@ -39,37 +47,53 @@ public class PluginConfig {
 
 	private static String protectionWarningSection = "Protection warning";
 	private static String warnParticleField = "particle";
+	@Getter
 	private static boolean warnParticle = true;
 	private static String warnSoundField = "sound";
+	@Getter
 	private static boolean warnSound = true;
 	private static String warnMessageField = "message";
+	@Getter
 	private static boolean warnMessage = true;
 
 	private static String useDatabaseField = "Use database";
+	@Getter
 	private static boolean useDatabase = false;
 
 	private static String hostField = "host";
+	@Getter
 	private static String host = "00.00.000.00";
 
 	private static String portField = "port";
+	@Getter
 	private static String port = "3306";
 
 	private static String databaseField = "database";
+	@Getter
 	private static String database = "myDatabase";
 
 	private static String userField = "username";
-	private static String user = "myUsername";
+	@Getter
+	private static String username = "myUsername";
 
 	private static String passField = "password";
-	private static String pass = "myPassword";
+	@Getter
+	private static String password = "myPassword";
 
 	private static String sslField = "ssl";
+	@Getter
 	private static boolean ssl = false;
 
 	private static String useDynmapField = "Use dynmap";
+	@Getter
 	private static boolean useDynmap = true;
 
+	private static String useBlueMapField = "Use bluemap";
+	@Getter
+	private static boolean useBlueMap = false;
+
 	private static String showPlotsMarkersByDefaultField = "Show Plot Markers by Default";
+	@Getter
 	private static boolean showPlotMarkersByDefault = true;
 
 	public PluginConfig() {
@@ -95,10 +119,11 @@ public class PluginConfig {
 				host = config.getString(hostField, host);
 				port = config.getString(portField, port);
 				database = config.getString(databaseField, database);
-				user = config.getString(userField, user);
-				pass = config.getString(passField, pass);
+				username = config.getString(userField, username);
+				password = config.getString(passField, password);
 				ssl = config.getBoolean(sslField, ssl);
 				useDynmap = config.getBoolean(useDynmapField, useDynmap);
+				useBlueMap = config.getBoolean(useBlueMapField, useBlueMap);
 				showPlotMarkersByDefault = config.getBoolean(showPlotsMarkersByDefaultField, showPlotMarkersByDefault);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -110,34 +135,6 @@ public class PluginConfig {
 		load();
 	}
 
-	public static String getLanguageFile() {
-		return languageFile;
-	}
-
-	public static boolean isUseAlias() {
-		return useAlias;
-	}
-
-	public static String getRootCommand() {
-		return useAlias ? "pplot" : "plot";
-	}
-
-	public static int getStartingPlotNum() {
-		return startingPlotNum;
-	}
-
-	public static int getMaxPlotNum() {
-		return maxPlotNum;
-	}
-
-	public static int getPlotUnitSideLength() {
-		return unitSize;
-	}
-
-	public static boolean isPlotPvp() {
-		return plotPvp;
-	}
-
 	public static boolean isAllowedPlotWorld(String world) {
 		return !blacklistWorlds.contains(world);
 	}
@@ -146,52 +143,7 @@ public class PluginConfig {
 		return world != null && !blacklistWorlds.contains(world.getName());
 	}
 
-	public static boolean isWarnParticle() {
-		return warnParticle;
+	public static String getRootCommand() {
+		return useAlias ? "pplot" : "plot";
 	}
-
-	public static boolean isWarnSound() {
-		return warnSound;
-	}
-
-	public static boolean isWarnMessage() {
-		return warnMessage;
-	}
-
-	public static boolean isUsingDatabase() {
-		return useDatabase;
-	}
-
-	public static String getHost() {
-		return host;
-	}
-
-	public static String getPort() {
-		return port;
-	}
-
-	public static String getDatabase() {
-		return database;
-	}
-
-	public static String getUsername() {
-		return user;
-	}
-
-	public static String getPassword() {
-		return pass;
-	}
-
-	public static boolean isSsl() {
-		return ssl;
-	}
-
-	public static boolean isUseDynmap() {
-		return useDynmap;
-	}
-
-	public static boolean isShowPlotMarkersByDefault() {
-		return showPlotMarkersByDefault;
-	}
-
 }

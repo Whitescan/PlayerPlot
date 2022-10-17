@@ -23,4 +23,5 @@ password: 'myPassword'
 ssl: false
 # Dynmap
 Use dynmap: true
+Use bluemap: true
 Show Plot Markers by Default: true

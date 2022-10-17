@@ -7,7 +7,7 @@ import de.whitescan.playerplot.config.PluginConfig;
 
 public class GridZone {
 
-	private static int gridGroupAmount = PluginConfig.getPlotUnitSideLength() * 16;
+	private static int gridGroupAmount = PluginConfig.getUnitSize() * 16;
 	private int x;
 	private int z;
 
