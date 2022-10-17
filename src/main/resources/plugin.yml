@@ -2,7 +2,7 @@ name: ${project.name}
 version: ${project.version}
 description: ${project.description}
 main: de.whitescan.playerplot.PlayerPlot
-api-version: 1.13
+api-version: 1.19
 authors: [ sword7(Original), Whitescan(Maintainer) ]
 load: POSTWORLD
 softdepend: [ dynmap, bluemap ]
