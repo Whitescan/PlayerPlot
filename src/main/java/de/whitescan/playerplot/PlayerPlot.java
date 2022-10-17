@@ -1,38 +1,58 @@
 package de.whitescan.playerplot;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.whitescan.playerplot.admin.CommandAllPlots;
-import de.whitescan.playerplot.admin.CommandDelPlot;
-import de.whitescan.playerplot.admin.CommandDelPlotCancel;
-import de.whitescan.playerplot.admin.CommandDelPlotConfirm;
 import de.whitescan.playerplot.border.Border;
+import de.whitescan.playerplot.command.CommandAllPlots;
+import de.whitescan.playerplot.command.CommandDelPlot;
+import de.whitescan.playerplot.command.CommandDelPlotCancel;
+import de.whitescan.playerplot.command.CommandDelPlotConfirm;
+import de.whitescan.playerplot.command.CommandLoot;
+import de.whitescan.playerplot.command.CommandPlayerPlot;
+import de.whitescan.playerplot.command.CommandPlot;
+import de.whitescan.playerplot.command.CommandToPlot;
+import de.whitescan.playerplot.command.CommandWriteDeed;
 import de.whitescan.playerplot.config.ConfigLoader;
 import de.whitescan.playerplot.config.Language;
 import de.whitescan.playerplot.config.PluginBase;
 import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.config.Version;
-import de.whitescan.playerplot.plot.CommandPlot;
-import de.whitescan.playerplot.plot.CommandToPlot;
+import de.whitescan.playerplot.database.DatabaseConnection;
+import de.whitescan.playerplot.listener.AutoCompleteListener;
+import de.whitescan.playerplot.listener.PlotDeedListener;
+import de.whitescan.playerplot.listener.PlotListener;
+import de.whitescan.playerplot.listener.PlotScanner;
+import de.whitescan.playerplot.listener.ProtectionListener;
+import de.whitescan.playerplot.listener.UserCache;
+import de.whitescan.playerplot.logic.Plot;
+import de.whitescan.playerplot.logic.PlotDeedLoot;
+import de.whitescan.playerplot.logic.PlotDeedType;
+import de.whitescan.playerplot.logic.Request;
 import de.whitescan.playerplot.plot.PlotBeam;
 import de.whitescan.playerplot.plot.PlotCache;
-import de.whitescan.playerplot.plot.PlotListener;
-import de.whitescan.playerplot.plot.PlotScanner;
-import de.whitescan.playerplot.plot.ProtectionListener;
-import de.whitescan.playerplot.plotdeed.CommandLoot;
-import de.whitescan.playerplot.plotdeed.CommandWriteDeed;
-import de.whitescan.playerplot.plotdeed.PlotDeedListener;
-import de.whitescan.playerplot.plotdeed.PlotDeedLoot;
-import de.whitescan.playerplot.plotdeed.PlotDeedType;
-import de.whitescan.playerplot.storage.DatabaseConnection;
-import de.whitescan.playerplot.user.UserCache;
-import de.whitescan.playerplot.util.AutoCompleteListener;
+import lombok.Getter;
 
 public final class PlayerPlot extends JavaPlugin {
 
+	// Setup
+
+	@Getter
 	private static Plugin plugin;
+
+	@Getter
 	private PlayerPlotAPI playerPlotAPI = PlayerPlotAPI.getInstance();
+
+	private PlotCache plotCache;
+
+	// Runtime
+
+	private static Map<UUID, Request> playerToRequest = new HashMap<>();
 
 	@Override
 	public void onEnable() {
@@ -50,7 +70,7 @@ public final class PlayerPlot extends JavaPlugin {
 		new PluginBase();
 
 		// initialize caches
-		new PlotCache();
+		this.plotCache = new PlotCache();
 		new UserCache();
 
 		// register commands
@@ -80,7 +100,7 @@ public final class PlayerPlot extends JavaPlugin {
 			PluginBase.getMapIntegration().shutdown();
 		}
 		UserCache.shutdown();
-		PlotCache.shutdown();
+		plotCache.shutdown();
 		if (PluginConfig.isUseDatabase())
 			DatabaseConnection.shutdown();
 		Border.shutdown();
@@ -91,17 +111,24 @@ public final class PlayerPlot extends JavaPlugin {
 		ConfigLoader.load();
 		PluginConfig.reload();
 		Language.reload();
-		// TODO - update perm info with new maxPlots from reload (or only load in if has
-		// override and compare greater on unlock)
-		// TODO - add plot file/database reload once new storage system is implemented
 	}
 
-	public static Plugin getPlugin() {
-		return plugin;
+	public static Request add(Player player, Plot plot) {
+		Request request = new Request(plot);
+		playerToRequest.put(player.getUniqueId(), request);
+		return request;
 	}
 
-	public PlayerPlotAPI getPlayerPlotAPI() {
-		return playerPlotAPI;
+	public static void remove(Player player) {
+		playerToRequest.remove(player.getUniqueId());
+	}
+
+	public static boolean hasPending(Player player) {
+		return playerToRequest.containsKey(player.getUniqueId());
+	}
+
+	public static Request getPending(Player player) {
+		return playerToRequest.get(player.getUniqueId());
 	}
 
 }

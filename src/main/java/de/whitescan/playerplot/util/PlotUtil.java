@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 
 import de.whitescan.playerplot.config.PluginConfig;
 import de.whitescan.playerplot.logic.Friend;
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.logic.Plot;
 import de.whitescan.playerplot.plot.PlotCache;
 
 public class PlotUtil {

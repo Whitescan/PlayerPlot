@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import de.whitescan.playerplot.config.Language;
 import de.whitescan.playerplot.config.Permissions;
 import de.whitescan.playerplot.config.PluginConfig;
+import de.whitescan.playerplot.listener.UserCache;
+import de.whitescan.playerplot.logic.UserData;
 import de.whitescan.playerplot.plot.PlotCache;
-import de.whitescan.playerplot.user.UserCache;
-import de.whitescan.playerplot.user.UserData;
 
 public class Help {
 

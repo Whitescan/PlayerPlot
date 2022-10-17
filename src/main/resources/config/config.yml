@@ -1,6 +1,6 @@
 # Player Plot Configuration
 # Read more on the wiki:
-# https://gitlab.com/sword7/playerplot/-/wikis/setup/configuration
+# https://github.com/Whitescan/PlayerPlot/wiki/Configuration#configuring-configyml
 Language file: en
 Use /pplot root: false
 Starting Plot Amount: 1

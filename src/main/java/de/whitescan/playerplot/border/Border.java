@@ -11,7 +11,7 @@ import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.logic.Plot;
 import de.whitescan.playerplot.util.PlotPoint;
 import net.minecraft.network.protocol.game.ClientboundInitializeBorderPacket;
 import net.minecraft.network.protocol.game.ClientboundSetBorderLerpSizePacket;
