@@ -5,7 +5,7 @@ main: de.whitescan.playerplot.PlayerPlot
 api-version: 1.19
 authors: [ sword7(Original), Whitescan(Maintainer) ]
 load: POSTWORLD
-softdepend: [ dynmap, bluemap ]
+softdepend: [ dynmap, bluemap, worldguard ]
 
 commands:
   pplot:
