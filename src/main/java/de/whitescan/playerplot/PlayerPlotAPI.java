@@ -3,10 +3,10 @@ package de.whitescan.playerplot;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.listener.UserCache;
+import de.whitescan.playerplot.logic.Plot;
+import de.whitescan.playerplot.logic.UserData;
 import de.whitescan.playerplot.plot.PlotCache;
-import de.whitescan.playerplot.user.UserCache;
-import de.whitescan.playerplot.user.UserData;
 
 public class PlayerPlotAPI {
 

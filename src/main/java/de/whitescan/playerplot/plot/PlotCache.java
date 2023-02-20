@@ -14,39 +14,52 @@ import org.bukkit.entity.Player;
 
 import de.whitescan.playerplot.config.PluginBase;
 import de.whitescan.playerplot.config.PluginConfig;
+import de.whitescan.playerplot.database.FilePlotDatabase;
+import de.whitescan.playerplot.database.IPlotDatabase;
+import de.whitescan.playerplot.database.SQLPlotDatabase;
 import de.whitescan.playerplot.logic.Friend;
+import de.whitescan.playerplot.logic.Plot;
 import de.whitescan.playerplot.util.GridZone;
 import de.whitescan.playerplot.util.MapUtil;
 import de.whitescan.playerplot.util.PlotPoint;
 
 public class PlotCache {
 
-	private static Map<UUID, Plot> IDToPlot = new HashMap<>();
+	private static Map<UUID, Plot> iDToPlot = new HashMap<>();
 	private static Map<GridZone, List<Plot>> zoneToPlots = new HashMap<>();
 	private static Map<UUID, List<Plot>> playerToPlots = new HashMap<>();
 	private static Map<UUID, List<Plot>> playerToFPlots = new HashMap<>();
 	private static Set<UUID> unsavedPlots = new HashSet<>();
 
-	private static boolean usingDatabase = PluginConfig.isUseDatabase();
-	private static PlotDatabase database = usingDatabase ? new PlotDatabase() : null;
+	private IPlotDatabase database;
 
 	public PlotCache() {
 		load();
 	}
 
 	private void load() {
-		List<Plot> plots = (usingDatabase) ? database.fetchPlots() : PlotFlatFile.fetch();
+
+		if (PluginConfig.isUseDatabase()) {
+			this.database = new SQLPlotDatabase();
+		} else {
+			this.database = new FilePlotDatabase();
+		}
+
+		List<Plot> plots = database.fetch();
+
 		for (Plot plot : plots) {
-			IDToPlot.put(plot.getID(), plot);
+			iDToPlot.put(plot.getId(), plot);
 			assignToZones(plot);
-			MapUtil.addItemToList(playerToPlots, plot.getOwnerID(), plot);
+			MapUtil.addItemToList(playerToPlots, plot.getOwnerId(), plot);
 			for (Friend friend : plot.getFriends()) {
 				MapUtil.addItemToList(playerToFPlots, friend.getUuid(), plot);
 			}
 		}
+
 		if (PluginBase.isMapIntegrationEnabled()) {
 			PluginBase.getMapIntegration().registerPlots(plots);
 		}
+
 	}
 
 	public static void assignToZones(Plot plot) {
@@ -60,24 +73,17 @@ public class PlotCache {
 		}
 	}
 
-	public static void shutdown() {
+	public void shutdown() {
 		save();
-		IDToPlot.clear();
+		iDToPlot.clear();
 		zoneToPlots.clear();
 		playerToPlots.clear();
 		playerToFPlots.clear();
 	}
 
-	public static void save() {
-		if (usingDatabase) {
-			for (UUID plotID : unsavedPlots) {
-				database.storePlot(plotID, IDToPlot.get(plotID));
-			}
-		} else {
-			for (UUID plotID : unsavedPlots) {
-				PlotFlatFile.store(plotID, IDToPlot.get(plotID));
-			}
-			PlotFlatFile.save();
+	public void save() {
+		for (UUID plotID : unsavedPlots) {
+			database.store(plotID, iDToPlot.get(plotID));
 		}
 		unsavedPlots.clear();
 	}
@@ -107,7 +113,7 @@ public class PlotCache {
 	}
 
 	public static Collection<Plot> getAllPlots() {
-		return IDToPlot.values();
+		return iDToPlot.values();
 	}
 
 	public static Set<Plot> getPlotsNear(Location location, int sideLength) {
@@ -126,16 +132,16 @@ public class PlotCache {
 	}
 
 	public static void registerPlot(Plot plot) {
-		IDToPlot.put(plot.getID(), plot);
-		MapUtil.addItemToList(playerToPlots, plot.getOwnerID(), plot);
-		unsavedPlots.add(plot.getID());
+		iDToPlot.put(plot.getId(), plot);
+		MapUtil.addItemToList(playerToPlots, plot.getOwnerId(), plot);
+		unsavedPlots.add(plot.getId());
 		assignToZones(plot);
 	}
 
 	public static void removePlot(Plot plot) {
-		IDToPlot.remove(plot.getID());
-		MapUtil.removeItemFromList(playerToPlots, plot.getOwnerID(), plot);
-		unsavedPlots.add(plot.getID());
+		iDToPlot.remove(plot.getId());
+		MapUtil.removeItemFromList(playerToPlots, plot.getOwnerId(), plot);
+		unsavedPlots.add(plot.getId());
 		for (Friend friend : plot.getFriends()) {
 			registerFriendRemove(friend, plot);
 		}
@@ -153,7 +159,7 @@ public class PlotCache {
 	}
 
 	public static void touch(Plot plot) {
-		unsavedPlots.add(plot.getID());
+		unsavedPlots.add(plot.getId());
 	}
 
 	public static List<Plot> getFriendPlots(Player player) {

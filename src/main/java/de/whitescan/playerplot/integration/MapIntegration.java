@@ -2,7 +2,7 @@ package de.whitescan.playerplot.integration;
 
 import java.util.List;
 
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.logic.Plot;
 
 public interface MapIntegration {
 

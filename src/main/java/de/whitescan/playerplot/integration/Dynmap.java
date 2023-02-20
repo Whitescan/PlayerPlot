@@ -11,7 +11,7 @@ import org.dynmap.markers.MarkerAPI;
 import org.dynmap.markers.MarkerSet;
 
 import de.whitescan.playerplot.config.PluginConfig;
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.logic.Plot;
 import de.whitescan.playerplot.util.PlotPoint;
 
 public class Dynmap implements MapIntegration {
@@ -36,7 +36,7 @@ public class Dynmap implements MapIntegration {
 
 	@Override
 	public void deletePlot(Plot plot) {
-		UUID plotID = plot.getID();
+		UUID plotID = plot.getId();
 		if (plotToMarker.containsKey(plotID)) {
 			AreaMarker areaMarker = plotToMarker.get(plotID);
 			areaMarker.deleteMarker();
@@ -46,7 +46,7 @@ public class Dynmap implements MapIntegration {
 
 	@Override
 	public void updateMarker(Plot plot) {
-		UUID plotID = plot.getID();
+		UUID plotID = plot.getId();
 		if (plotToMarker.containsKey(plotID)) {
 			PlotPoint min = plot.getMinCorner();
 			PlotPoint max = plot.getMaxCorner();
@@ -61,7 +61,7 @@ public class Dynmap implements MapIntegration {
 
 	@Override
 	public void drawPlot(Plot plot) {
-		UUID plotID = plot.getID();
+		UUID plotID = plot.getId();
 		PlotPoint min = plot.getMinCorner();
 		PlotPoint max = plot.getMaxCorner();
 		double[] x = new double[] { min.getX(), max.getX() };

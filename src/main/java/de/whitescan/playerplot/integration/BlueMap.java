@@ -7,7 +7,7 @@ import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
-import de.whitescan.playerplot.plot.Plot;
+import de.whitescan.playerplot.logic.Plot;
 
 public class BlueMap implements MapIntegration {
 
@@ -20,11 +20,11 @@ public class BlueMap implements MapIntegration {
 	@Override
 	public void deletePlot(Plot plot) {
 
-		markerSet.getMarkers().remove(plot.getID().toString());
+		markerSet.getMarkers().remove(plot.getId().toString());
 
 		BlueMapAPI.getInstance().ifPresent(api -> {
 
-			api.getWorld(Bukkit.getPlayer(plot.getOwnerID()).getWorld()).ifPresent(world -> {
+			api.getWorld(Bukkit.getPlayer(plot.getOwnerId()).getWorld()).ifPresent(world -> {
 				for (BlueMapMap map : world.getMaps()) {
 					map.getMarkerSets().put("plots", markerSet);
 				}
@@ -45,7 +45,7 @@ public class BlueMap implements MapIntegration {
 		POIMarker marker = POIMarker.toBuilder().label(plot.getDisplayName())
 				.position(plot.getCenter().getX(), 63, plot.getCenter().getZ()).maxDistance(1000).build();
 
-		markerSet.getMarkers().put(plot.getID().toString(), marker);
+		markerSet.getMarkers().put(plot.getId().toString(), marker);
 
 		if (BlueMapAPI.getInstance().isPresent()) {
 			draw(Bukkit.getWorld(plot.getWorld()), marker);
